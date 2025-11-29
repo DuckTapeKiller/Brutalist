@@ -1,6 +1,6 @@
 # Brutalist Theme for Obsidian
 
-![Brutalist Dark Mode](Dark Mode — Desktop.png)
+![Brutalist Dark Mode](screenshot.png)
 
 A stark, geometric theme for Obsidian that prioritises function and raw aesthetics over softness. This theme removes rounded corners in favour of a strictly angular, squared-off user interface.
 
@@ -21,7 +21,7 @@ A stark, geometric theme for Obsidian that prioritises function and raw aestheti
 
 ### Light Mode
 *Features distinct blue accents and black borders.*
-![Brutalist Light Mode](Light Mode — Desktop.png)
+![Brutalist Light Mode](screenshot-light.png)
 
 ## Installation
 

@@ -1,23 +1,24 @@
 # Brutalist Theme for Obsidian
 
-![Brutalist Dark Mode](screenshot.png)
+**What is it?**
 
-A stark, geometric theme for Obsidian that prioritises function and raw aesthetics over softness. This theme removes rounded corners in favour of a strictly angular, squared-off user interface.
+A stark, geometric theme for Obsidian that prioritises function and raw aesthetics over softness or embellishment. The theme features a strictly angular, squared-off user interface, eliminating all rounded corners for a precise, purposeful appearance. The colour scheme is defined by low-contrast shades of grey and an accentuating blue highlight, engineered to maintain focus and minimise visual strain. It is named 'Brutalist' because its main aesthetic inspiration is Brutalist architecture.
 
-## Key Features
+**Why I made it?**
 
-* **Zero Radius UI:** All elements—including tabs, checkboxes, toggle switches, and status bar items—are square.
-* **High Contrast Borders:**
-    * **Dark Mode:** Features distinct white borders with **Orange** (#BA7428) accents and text.
-    * **Light Mode:** Features sharp black borders with **Blue** (#0066CC) accents and text.
-* **Typography:** Headings utilise 'American Typewriter' for a mechanical, structured feel.
-* **Custom Interface Elements:**
-    * **Toggles:** Custom circular switches with pastel indicators (Red for off, Green for on).
-    * **Checkboxes:** Fully square inputs, customised for both standard tasks and database plugins (Bases).
-    * **Navigation:** High-visibility indentation lines in the file explorer (Blue in Light Mode).
-* **Status Bar:** Minimalist container with boxed items and invisible outer borders.
+The goal was to create a theme that prioritises focused reading and note creation by offering an exceptionally low-distraction, text-centric interface. This design is aimed at users who require deep work and minimal visual clutter.
+
+The dark mode draws inspiration from focused reading applications such as Instapaper and Safari’s 'Reader View'. It features a low-contrast palette engineered for optimal reading comfort in varied lighting conditions.
+
+The light mode serves as an alternative for users who prefer a slightly more varied colour scheme, while still maintaining the core design principles of text primacy and minimal visual interruption.
+
+**Who is this theme for?**
+
+The theme was designed for people who spend, or want to spend, significant time in Obsidian reading their notes. This is particularly useful for those who use Obsidian Web Clipper to save their articles and use Obsidian as a read-it-later app. It would also be useful for writers or coders who want to be focused, almost isolated from the world.
 
 ## Gallery
+### Dark Mode
+![Brutalist Dark Mode](screenshot.png)
 
 ### Light Mode
 *Features distinct blue accents and black borders.*

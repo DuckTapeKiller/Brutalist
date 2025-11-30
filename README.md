@@ -25,7 +25,7 @@ A stark, geometric theme for Obsidian that prioritises function and raw aestheti
 
 ## Installation
 
-### Method 1: Community Themes (Pending)
+### Method 1: Community Themes
 1.  Open **Settings** > **Appearance**.
 2.  Click **Manage** under Themes.
 3.  Search for **Brutalist**.
@@ -35,10 +35,6 @@ A stark, geometric theme for Obsidian that prioritises function and raw aestheti
 1.  Download the `theme.css` and `manifest.json` from this repository.
 2.  Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3.  Reload Obsidian and select the theme.
-
-### Method 3: BRAT Plugin
-1.  Install the **BRAT** plugin via Community Plugins.
-2.  Add this repository URL: `https://github.com/DuckTapeKiller/obsidian-brutalist-theme`.
 
 ---
 Created by **DuckTapeKiller**.

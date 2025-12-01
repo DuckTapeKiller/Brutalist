@@ -7,23 +7,16 @@
 /* 0. VARIABLES PRINCIPALES */
 /* ================================================================= */
 :root {
-  /* 1. Fuente Monoespaciada (Código/Bloques) */
   --font-monospace: 'Georgia', serif; 
-
-  /* 2. Fuente Interfaz (Paneles, Pestañas, Carpetas) */
   --font-interface-override: 'American Typewriter', sans-serif;
-
-  /* 3. Fuente Texto Principal (Cuerpo de nota) */
   --font-text-override: 'Georgia', serif;
   
-  /* 4. Ajustes Generales */
   --icon-size: 20px;
   --border-width: 1px;
 }
 
 /* MODO OSCURO */
 .theme-dark {
-  /* 1. Backgrounds */
   --background-primary: #424242 !important;
   --background-primary-alt: #424242 !important; 
   --background-secondary: #383838 !important;
@@ -33,7 +26,6 @@
   --modal-background: #383838 !important;
   --prompt-background: #383838 !important;
 
-  /* 2. Text & Icons */
   --text-normal: #A5A5A5;
   --text-muted: #909090;
   --text-faint: #606060;
@@ -41,7 +33,6 @@
   --text-accent: #D0D0D0;
   --icon-color: #B0B0B0;
   
-  /* 3. Headers */
   --h1-color: #D0D0D0;
   --h2-color: #D0D0D0;
   --h3-color: #D0D0D0;
@@ -49,20 +40,19 @@
   --h5-color: #D0D0D0;
   --h6-color: #D0D0D0;
 
-  /* 4. Interactive */
   --interactive-accent: #D0D0D0;
   --interactive-accent-hover: #ffffff;
   --interactive-normal: #383838;
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   
-  /* 5. Components */
   --table-border-color: #606060;
   --quote-opening-modifier: #606060;
+
+  --checkbox-color: #D0D0D0;
 }
 
 /* MODO CLARO */
 .theme-light {
-  /* 1. Backgrounds */
   --background-primary: #C5C5C5 !important;
   --background-primary-alt: #B0B0B0 !important;
   --background-secondary: #B0B0B0 !important;
@@ -72,14 +62,12 @@
   --modal-background: #B0B0B0 !important;
   --prompt-background: #B0B0B0 !important;
 
-  /* 2. Text */
   --text-normal: #222222;
   --text-muted: #444444;
   --text-faint: #666666;
   --text-on-accent: #ffffff;
   --text-accent: #0066CC;
 
-  /* 3. Headers */
   --h1-color: #0066CC;
   --h2-color: #0066CC;
   --h3-color: #0066CC;
@@ -87,165 +75,129 @@
   --h5-color: #0066CC;
   --h6-color: #0066CC;
 
-  /* 4. Interactive */
   --interactive-accent: #0066CC;
   --interactive-accent-hover: #004c99;
   --interactive-normal: #B0B0B0;
   --scrollbar-active-thumb-bg: rgba(0, 0, 0, 0.2);
 
-  /* 5. Components */
   --table-border-color: #808080;
   --quote-opening-modifier: #808080;
+
+  --checkbox-color: #000000;
 }
 
 /* ================================================================= */
 /* 1. COLORES Y SELECCIÓN */
 /* ================================================================= */
-
-/* Selección Global */
-body {
-  --text-selection: rgba(0, 200, 255, 0.15) !important;
-}
-
-::selection {
+body { --text-selection: rgba(0, 200, 255, 0.15) !important; }
+::selection { background-color: rgba(0, 200, 255, 0.15) !important; }
+.cm-selectionBackground, .cm-line::selection, .cm-content::selection {
   background-color: rgba(0, 200, 255, 0.15) !important;
 }
 
-/* Selección Editor */
-.cm-selectionBackground,
-.cm-line::selection,
-.cm-content::selection {
-  background-color: rgba(0, 200, 255, 0.15) !important;
-}
-
-/* Override Modo Oscuro */
 .theme-dark {
-  --background-primary: #424242 !important;
-  --background-secondary: #383838 !important;
-  --background-secondary-alt: #383838 !important;
-  --background-modifier-border: #606060 !important;
-  --divider-color: #606060 !important;
-  --titlebar-background: #383838 !important;
-  --header-background: #383838 !important;
-  
   --list-marker-color: #D0D0D0 !important;
   --indentation-guide-color: #D0D0D0 !important;
   --indentation-guide-color-active: #D0D0D0 !important;
 }
-
-/* Override Modo Claro */
 .theme-light {
-  --background-primary: #C5C5C5 !important;
-  --background-secondary: #B0B0B0 !important;
-  --background-secondary-alt: #B0B0B0 !important;
-  --background-modifier-border: #808080 !important;
-  --divider-color: #808080 !important;
-  --titlebar-background: #B0B0B0 !important;
-  --header-background: #B0B0B0 !important;
-  --text-normal: #222222 !important;
-  --text-muted: #444444 !important;
-  --text-accent: #000000 !important;
-  --icon-color: #333333 !important;
-  --icon-color-hover: #000000 !important;
-  --icon-color-active: #000000 !important;
-  
-  --list-marker-color: #000000 !important;
+  --list-marker-color: #0066CC !important;
   --indentation-guide-color: #000000 !important;
   --indentation-guide-color-active: #000000 !important;
 }
 
+/* FIX LISTAS Y TEXTO: Color Normal */
+.markdown-preview-view ul > li, .markdown-preview-view ol > li, 
+.markdown-preview-view ul > li > p, .markdown-preview-view ol > li > p,
+.cm-s-obsidian .HyperMD-list-line, .cm-line {
+    color: var(--text-normal) !important;
+}
+
+/* MARCADORES (a., b., 1.): Color Acento */
+.markdown-preview-view ul > li::marker, .markdown-preview-view ol > li::marker,
+.markdown-preview-view blockquote ul > li::marker, .markdown-preview-view blockquote ol > li::marker,
+.theme-light .cm-formatting-list, .theme-light .cm-formatting-list-ul, .theme-light .cm-formatting-list-ol,
+.theme-dark .cm-formatting-list, .theme-dark .cm-formatting-list-ul, .theme-dark .cm-formatting-list-ol,
+.cm-s-obsidian .cm-quote .cm-formatting-list {
+    color: var(--list-marker-color) !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
+}
 .theme-light .cm-formatting-list-ol { color: #0066CC !important; }
-.theme-light ol > li::marker { color: #0066CC !important; }
-
-.theme-dark .cm-formatting-list-ul,
-.theme-dark .cm-formatting-list-ol,
-.theme-dark ul > li::marker,
-.theme-dark ol > li::marker {
-  color: #D0D0D0 !important;
-}
 
 /* ================================================================= */
-/* 2. ESTRUCTURA LATERAL */
+/* 2. ESTRUCTURA LATERAL Y BARRA DE TÍTULO (FIX MANCHA) */
 /* ================================================================= */
 
-.theme-dark .workspace-ribbon.mod-left,
-.theme-dark .workspace-split.mod-left-split,
-.theme-dark .workspace-sidedock-vault-profile,
-.theme-dark .nav-header,
-.theme-dark .workspace-split.mod-right-split,
-.theme-dark .workspace-split.mod-right-split .workspace-tabs,
-.theme-dark .workspace-split.mod-right-split .workspace-tab-container {
-  background-color: #383838 !important;
-  border-right: 1px solid #606060 !important;
-  border-bottom: none !important;
+/* MODO OSCURO: Ajuste exacto de color para evitar manchas */
+.theme-dark .workspace-ribbon.mod-left, 
+.theme-dark .workspace-split.mod-left-split, 
+.theme-dark .workspace-sidedock-vault-profile, 
+.theme-dark .nav-header, 
+.theme-dark .workspace-split.mod-right-split, 
+.theme-dark .workspace-split.mod-right-split .workspace-tabs, 
+.theme-dark .workspace-split.mod-right-split .workspace-tab-container { 
+    background-color: #383838 !important; 
+    border-right: 1px solid #606060 !important; 
+    border-bottom: none !important; 
 }
+
+/* FIX: La mancha superior izquierda se pinta del MISMO color que el ribbon */
+.theme-dark .workspace-ribbon.mod-left::before,
+.theme-dark .titlebar-button-container.mod-left {
+    background-color: #383838 !important; 
+    border: none !important;
+}
+
 .theme-dark .workspace-split.mod-root { background-color: #424242 !important; }
 
-.theme-light .workspace-ribbon.mod-left,
-.theme-light .workspace-split.mod-left-split,
-.theme-light .workspace-sidedock-vault-profile,
-.theme-light .nav-header,
-.theme-light .workspace-split.mod-right-split,
-.theme-light .workspace-split.mod-right-split .workspace-tabs,
-.theme-light .workspace-split.mod-right-split .workspace-tab-container {
-  background-color: #B0B0B0 !important;
-  border-right: 1px solid #808080 !important;
-  border-bottom: none !important;
+/* MODO CLARO: Ajuste exacto de color para evitar manchas */
+.theme-light .workspace-ribbon.mod-left, 
+.theme-light .workspace-split.mod-left-split, 
+.theme-light .workspace-sidedock-vault-profile, 
+.theme-light .nav-header, 
+.theme-light .workspace-split.mod-right-split, 
+.theme-light .workspace-split.mod-right-split .workspace-tabs, 
+.theme-light .workspace-split.mod-right-split .workspace-tab-container { 
+    background-color: #B0B0B0 !important; 
+    border-right: 1px solid #808080 !important; 
+    border-bottom: none !important; 
 }
+
+/* FIX: La mancha superior izquierda se pinta del MISMO color que el ribbon */
+.theme-light .workspace-ribbon.mod-left::before,
+.theme-light .titlebar-button-container.mod-left {
+    background-color: #B0B0B0 !important; 
+    border: none !important;
+}
+
 .theme-light .workspace-split.mod-root { background-color: #C5C5C5 !important; }
 
-.theme-light .sidebar-toggle-button,
-.theme-light .titlebar-button-container {
-  background-color: #B0B0B0 !important; border: none !important;
-}
+.theme-light .sidebar-toggle-button { background-color: #B0B0B0 !important; border: none !important; }
 
 /* ================================================================= */
 /* 3. PESTAÑAS */
 /* ================================================================= */
-
 .workspace-tab-header-container { padding-bottom: 0 !important; margin-bottom: 0 !important; }
 .theme-dark .workspace-tab-header-container { background-color: #383838 !important; border-bottom: 1px solid #606060 !important; }
 .theme-light .workspace-tab-header-container { background-color: #B0B0B0 !important; border-bottom: 1px solid #808080 !important; }
 .workspace-tab-header, .workspace-tab-header-inner { border-radius: 0 !important; box-shadow: none !important; }
 .workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
 
-/* Activa Root */
-.theme-dark .workspace-split.mod-root .workspace-tab-header.is-active {
-  background-color: #424242 !important; border: 1px solid #606060 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
-}
-.theme-dark .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
-  border: 2.0px solid #D0D0D0 !important; background-color: #424242 !important; color: #D0D0D0 !important; width: 100% !important; margin: 0 !important;
-}
+.theme-dark .workspace-split.mod-root .workspace-tab-header.is-active { background-color: #424242 !important; border: 1px solid #606060 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100; }
+.theme-dark .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.0px solid #D0D0D0 !important; background-color: #424242 !important; color: #D0D0D0 !important; width: 100% !important; margin: 0 !important; }
 
-.theme-light .workspace-split.mod-root .workspace-tab-header.is-active {
-  background-color: #C5C5C5 !important; border: 1px solid #808080 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
-}
-.theme-light .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
-  border: 2.5px solid #0066CC !important; background-color: #C5C5C5 !important; color: #0066CC !important; width: 100% !important; margin: 0 !important;
-}
+.theme-light .workspace-split.mod-root .workspace-tab-header.is-active { background-color: #C5C5C5 !important; border: 1px solid #808080 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100; }
+.theme-light .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.5px solid #0066CC !important; background-color: #C5C5C5 !important; color: #0066CC !important; width: 100% !important; margin: 0 !important; }
 
-/* Inactiva */
-.theme-dark .workspace-split.mod-root .workspace-tab-header:not(.is-active) {
-  background-color: #383838 !important; border: 1px solid #606060 !important; margin: 4px 2px 0 0 !important;
-}
-.theme-dark .workspace-split.mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
-  border: none !important; background: transparent !important; color: #A5A5A5 !important;
-}
-.theme-light .workspace-split.mod-root .workspace-tab-header:not(.is-active) {
-  background-color: #B0B0B0 !important; border: 1px solid #808080 !important; margin: 4px 2px 0 0 !important;
-}
-.theme-light .workspace-split.mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
-  border: none !important; background: transparent !important; color: #222222 !important;
-}
+.theme-dark .workspace-split.mod-root .workspace-tab-header:not(.is-active) { background-color: #383838 !important; border: 1px solid #606060 !important; margin: 4px 2px 0 0 !important; }
+.theme-dark .workspace-split.mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner { border: none !important; background: transparent !important; color: #A5A5A5 !important; }
+.theme-light .workspace-split.mod-root .workspace-tab-header:not(.is-active) { background-color: #B0B0B0 !important; border: 1px solid #808080 !important; margin: 4px 2px 0 0 !important; }
+.theme-light .workspace-split.mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner { border: none !important; background: transparent !important; color: #222222 !important; }
 
-/* Sidebars */
-.theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-.theme-dark .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.0px solid #D0D0D0 !important; }
+.theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner, .theme-dark .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.0px solid #D0D0D0 !important; }
+.theme-light .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner, .theme-light .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.5px solid #0066CC !important; }
 
-.theme-light .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-.theme-light .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.5px solid #0066CC !important; }
-
-/* Títulos Pestañas */
 .theme-dark .workspace-leaf.mod-active .view-header-title { color: #D0D0D0; }
 .theme-dark .workspace-leaf:not(.mod-active) .view-header-title { color: #A5A5A5 !important; }
 .theme-light .workspace-leaf.mod-active .view-header-title { color: #0066CC !important; font-weight: bold; }
@@ -257,14 +209,9 @@ body {
 /* 4. ICONOS Y BOTONES */
 /* ================================================================= */
 .theme-light .clickable-icon, .theme-light .svg-icon, .theme-light .side-dock-ribbon-action, .theme-light .nav-action-button { color: #333333 !important; stroke: #333333 !important; }
-.theme-light .clickable-icon.is-active, .theme-light .side-dock-ribbon-action.is-active, .theme-light .nav-action-button.is-active {
-  color: #000000 !important; stroke: #000000 !important; box-shadow: inset 0 0 0 1px #0066CC !important; background-color: rgba(0, 102, 204, 0.15) !important; border-radius: 0 !important;
-}
+.theme-light .clickable-icon.is-active, .theme-light .side-dock-ribbon-action.is-active, .theme-light .nav-action-button.is-active { color: #000000 !important; stroke: #000000 !important; box-shadow: inset 0 0 0 1px #0066CC !important; background-color: rgba(0, 102, 204, 0.15) !important; border-radius: 0 !important; }
 .theme-light .clickable-icon:hover, .theme-light .side-dock-ribbon-action:hover { color: #000000 !important; stroke: #000000 !important; }
-
-.theme-dark .clickable-icon.is-active, .theme-dark .side-dock-ribbon-action.is-active, .theme-dark .nav-action-button.is-active {
-  color: #D0D0D0 !important; stroke: #D0D0D0 !important; box-shadow: inset 0 0 0 1px #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.15) !important; border-radius: 0 !important;
-}
+.theme-dark .clickable-icon.is-active, .theme-dark .side-dock-ribbon-action.is-active, .theme-dark .nav-action-button.is-active { color: #D0D0D0 !important; stroke: #D0D0D0 !important; box-shadow: inset 0 0 0 1px #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.15) !important; border-radius: 0 !important; }
 
 /* ================================================================= */
 /* 5. BARRA DE ESTADO */
@@ -286,40 +233,21 @@ body {
 /* ================================================================= */
 /* 7. ICONOS DE CARPETAS */
 /* ================================================================= */
-
-:root {
-  /* Máscara de icono chevron */
-  --chevron-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" fill="none"/></svg>');
-}
-
-.theme-light .nav-folder .collapse-icon svg.svg-icon,
-.theme-dark .nav-folder .collapse-icon svg.svg-icon { display: none; }
-
-.theme-dark .nav-folder .collapse-icon,
-.theme-light .nav-folder .collapse-icon {
-  mask: var(--chevron-icon) no-repeat center;
-  width: 16px; height: 16px; opacity: 1 !important; margin-right: 2px;
-  background: currentColor !important;
-  transition: transform 0.1s ease-in-out;
-}
+:root { --chevron-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" fill="none"/></svg>'); }
+.theme-light .nav-folder .collapse-icon svg.svg-icon, .theme-dark .nav-folder .collapse-icon svg.svg-icon { display: none; }
+.theme-dark .nav-folder .collapse-icon, .theme-light .nav-folder .collapse-icon { mask: var(--chevron-icon) no-repeat center; width: 16px; height: 16px; opacity: 1 !important; margin-right: 2px; background: currentColor !important; transition: transform 0.1s ease-in-out; }
 .theme-dark .nav-folder .collapse-icon { background: #D0D0D0 !important; }
 .theme-light .nav-folder .collapse-icon { background: #0066CC !important; }
-
-.nav-folder.is-collapsed > .nav-folder-title .collapse-icon {
-  transform: rotate(0deg) !important;
-}
-.nav-folder:not(.is-collapsed) > .nav-folder-title .collapse-icon {
-  transform: rotate(90deg) !important;
-}
+.nav-folder.is-collapsed > .nav-folder-title .collapse-icon { transform: rotate(0deg) !important; }
+.nav-folder:not(.is-collapsed) > .nav-folder-title .collapse-icon { transform: rotate(90deg) !important; }
 
 /* ================================================================= */
-/* 8. TIPOGRAFÍA Y TEXTO */
+/* 8. TIPOGRAFÍA Y TEXTO (FIX: COLOR DE BLOCKQUOTE) */
 /* ================================================================= */
 .theme-dark .markdown-source-view, .theme-dark .markdown-preview-view, .theme-dark .cm-s-obsidian .cm-line, .theme-dark .nav-folder-title-content, .theme-dark .nav-file-title-content { color: #A5A5A5 !important; }
 .theme-dark .nav-folder-children, .theme-dark .nav-folder-children::before, .theme-dark .nav-folder-children > .nav-folder-item { border-left: 1px solid #D0D0D0 !important; }
 .theme-dark .nav-file-title::before { border-left: none !important; content: none !important; }
 .theme-light .markdown-source-view, .theme-light .markdown-preview-view, .theme-light .cm-s-obsidian .cm-line, .theme-light .nav-folder-title-content, .theme-light .nav-file-title-content { color: #222222 !important; }
-
 .theme-light .nav-folder-children, .theme-light .nav-folder-children::before, .theme-light .nav-folder-children > .nav-folder-item { border-left: 1px solid #0066CC !important; } 
 .theme-light .nav-file-title::before { border-left: none !important; content: none !important; }
 
@@ -328,132 +256,86 @@ body {
 .theme-light .inline-title, .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light h5, .theme-light h6, .theme-light .cm-header { color: #0066CC !important; }
 .markdown-preview-view p, .markdown-source-view.mod-cm6 .cm-line { text-align: justify; text-justify: inter-word; }
 
-.markdown-preview-view blockquote { border-color: transparent; font-size: 95%; text-align: center; hyphens: auto; color: lightgrey; padding: 1px 2%; margin: 15pt 0; }
+/* FIX: BLOCKQUOTE COLOR (con marcadores brillantes) */
+.markdown-preview-view blockquote { border-color: transparent; font-size: 95%; text-align: center; hyphens: auto; color: var(--text-normal) !important; padding: 1px 2%; margin: 15pt 0; }
 .theme-light .markdown-preview-view blockquote { color: #222222 !important; }
 .theme-light a:hover, .theme-light .metadata-link:hover, .theme-light .external-link:hover, .theme-light .cm-s-obsidian .cm-link:hover, .theme-light .metadata-property-value a:hover { color: #000000 !important; font-weight: bold !important; }
 
-/* Bloques de código (Light Mode) */
-.theme-light code,
-.theme-light .cm-s-obsidian .cm-inline-code,
-.theme-light .markdown-source-view.mod-cm6 .cm-content code,
-.theme-light .markdown-preview-view code,
-.theme-light pre,
-.theme-light .HyperMD-codeblock {
-  background-color: #B0B0B0 !important;
-  color: #222222 !important;
-  border-radius: 4px;
+/* Marcadores en Blockquotes */
+.markdown-preview-view blockquote ul > li::marker, 
+.markdown-preview-view blockquote ol > li::marker {
+    color: var(--list-marker-color) !important;
+    font-weight: bold !important;
+    opacity: 1 !important;
 }
 
-/* Bloques de código (Dark Mode) */
-.theme-dark code,
-.theme-dark .cm-s-obsidian .cm-inline-code,
-.theme-dark .markdown-source-view.mod-cm6 .cm-content code,
-.theme-dark .markdown-preview-view code,
-.theme-dark pre,
-.theme-dark .HyperMD-codeblock {
-  background-color: #262626 !important;
-  color: #A5A5A5 !important;
-  border-radius: 4px;
-}
+/* Bloques de código */
+.theme-light code, .theme-light .cm-s-obsidian .cm-inline-code, .theme-light .markdown-source-view.mod-cm6 .cm-content code, .theme-light .markdown-preview-view code, .theme-light pre, .theme-light .HyperMD-codeblock { background-color: #B0B0B0 !important; color: #222222 !important; border-radius: 4px; }
+.theme-dark code, .theme-dark .cm-s-obsidian .cm-inline-code, .theme-dark .markdown-source-view.mod-cm6 .cm-content code, .theme-dark .markdown-preview-view code, .theme-dark pre, .theme-dark .HyperMD-codeblock { background-color: #262626 !important; color: #A5A5A5 !important; border-radius: 4px; }
 
 /* Callouts */
-.theme-light .callout {
-  background-color: rgba(0, 102, 204, 0.15) !important;
-  border-left: 4px solid #0066CC !important;
-}
-.theme-light .callout-title-inner {
-  color: #0066CC !important;
-  font-weight: bold !important;
-}
-
-.theme-dark .callout {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border-left: 4px solid #A5A5A5 !important;
-  --callout-color: 165, 165, 165 !important;
-  --callout-icon: #A5A5A5 !important;
-}
-.theme-dark .callout-title {
-  color: #A5A5A5 !important;
-}
-.theme-dark .callout-icon {
-  color: #A5A5A5 !important;
-}
+.theme-light .callout { background-color: rgba(0, 102, 204, 0.15) !important; border-left: 4px solid #0066CC !important; }
+.theme-light .callout-title-inner { color: #0066CC !important; font-weight: bold !important; }
+.theme-dark .callout { background-color: rgba(255, 255, 255, 0.05) !important; border-left: 4px solid #A5A5A5 !important; --callout-color: 165, 165, 165 !important; --callout-icon: #A5A5A5 !important; }
+.theme-dark .callout-title { color: #A5A5A5 !important; }
+.theme-dark .callout-icon { color: #A5A5A5 !important; }
 
 /* ================================================================= */
-/* 9. CASILLAS DE VERIFICACIÓN */
+/* 9. CASILLAS DE VERIFICACIÓN (MARKDOWN & TOGGLES) */
 /* ================================================================= */
 
-/* Notas Estándar */
-.task-list-item-checkbox { border-radius: 0 !important; border: 1px solid currentColor; }
-
-/* Dark Mode Dot */
-.theme-dark input[type="checkbox"]:checked,
-.theme-dark .task-list-item-checkbox:checked {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
-  background-color: transparent !important;
-  border: 1px solid #D0D0D0 !important;
-  border-radius: 0 !important;
+/* --- A. CHECKBOXES DE NOTAS --- */
+.markdown-source-view .task-list-item-checkbox,
+.markdown-preview-view input[type="checkbox"],
+.metadata-property input[type="checkbox"] {
+  -webkit-appearance: none !important; appearance: none !important;
+  border-radius: 0 !important; width: 16px !important; height: 16px !important; margin: 0 !important; padding: 0 !important;
+  border: 1px solid var(--checkbox-color) !important; background-color: transparent !important; cursor: pointer;
+  display: inline-flex !important; vertical-align: middle; box-sizing: border-box !important;
 }
 
-/* Light Mode Dot */
-.theme-light input[type="checkbox"]:checked,
-.theme-light .task-list-item-checkbox:checked {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
-  background-color: transparent !important;
-  border: 1px solid #000000 !important;
-  border-radius: 0 !important;
+.markdown-source-view .task-list-item-checkbox:checked,
+.markdown-preview-view input[type="checkbox"]:checked,
+.metadata-property input[type="checkbox"]:checked {
+  background-color: var(--checkbox-color) !important; border-color: var(--checkbox-color) !important;
+  box-shadow: inset 0 0 0 3px var(--background-primary) !important;
+  background-image: none !important;
 }
 
-/* Switches de Configuración */
+.markdown-source-view .task-list-item-checkbox::before, .markdown-source-view .task-list-item-checkbox::after,
+.markdown-preview-view input[type="checkbox"]::before, .markdown-preview-view input[type="checkbox"]::after {
+  content: none !important; display: none !important;
+}
+
+/* --- B. TOGGLES DE CONFIGURACIÓN --- */
+/* FIX: Scoped to .modal to prevent affecting titlebar */
+.modal .checkbox-container { width: 42px !important; height: 22px !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important; border-radius: 0 !important; }
+.modal .checkbox-container::after { content: "" !important; display: block !important; width: 14px !important; height: 14px !important; position: absolute !important; top: 50% !important; left: 3px !important; transform: translateY(-50%) !important; margin: 0 !important; box-shadow: none !important; transition: left 0.2s ease-in-out, background-color 0.2s !important; border-radius: 50% !important; }
+.modal .checkbox-container.is-enabled::after { transform: translate3d(20px, -50%, 0) !important; left: 3px !important; }
+
+.theme-light .modal .checkbox-container { border: 1px solid #000000 !important; background-color: rgba(255, 0, 0, 0.15) !important; }
+.theme-light .modal .checkbox-container.is-enabled { background-color: rgba(0, 255, 0, 0.15) !important; border: 1px solid #000000 !important; }
+.theme-light .modal .checkbox-container::after { background-color: #000000 !important; border: none !important; }
+
+.theme-dark .modal .checkbox-container { border: 1px solid #FFFFFF !important; background-color: rgba(255, 0, 0, 0.2) !important; }
+.theme-dark .modal .checkbox-container.is-enabled { background-color: rgba(0, 255, 0, 0.2) !important; border: 1px solid #FFFFFF !important; }
+.theme-dark .modal .checkbox-container::after { background-color: #000000 !important; border: 1px solid #FFFFFF !important; }
+
 .modal button, .modal .dropdown, .modal input[type="search"], .modal input[type="text"] { border-radius: 0 !important; }
-.modal .checkbox-container { border-radius: 0 !important; }
-.modal .checkbox-container::after { border-radius: 50% !important; }
-.checkbox-container { width: 42px !important; height: 22px !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important; }
-.checkbox-container::after { content: "" !important; display: block !important; width: 14px !important; height: 14px !important; position: absolute !important; top: 50% !important; left: 3px !important; transform: translateY(-50%) !important; margin: 0 !important; box-shadow: none !important; transition: left 0.2s ease-in-out, background-color 0.2s !important; }
-.checkbox-container.is-enabled::after { transform: translate3d(20px, -50%, 0) !important; left: 3px !important; }
 
-/* Colores Toggle */
-.theme-light .checkbox-container::after { background-color: #000000 !important; border: none !important; }
-.theme-light .checkbox-container { border: 1px solid #000000 !important; background-color: rgba(255, 0, 0, 0.15) !important; }
-.theme-light .checkbox-container.is-enabled { background-color: rgba(0, 255, 0, 0.15) !important; border: 1px solid #000000 !important; }
-.theme-dark .checkbox-container::after { background-color: #000000 !important; border: 1px solid #FFFFFF !important; }
-.theme-dark .checkbox-container { border: 1px solid #FFFFFF !important; background-color: rgba(255, 0, 0, 0.2) !important; }
-.theme-dark .checkbox-container.is-enabled { background-color: rgba(0, 255, 0, 0.2) !important; border: 1px solid #FFFFFF !important; }
+/* --- C. FRONT MATTER (METADATA) --- */
+.metadata-container, .metadata-content, .metadata-property, 
+.metadata-property-key-input, .metadata-property-value-input,
+.metadata-property:hover, .metadata-property.is-active,
+.metadata-property-key-input:hover, .metadata-property-value-input:hover,
+.metadata-property-key-input:focus, .metadata-property-value-input:focus { border-radius: 0 !important; }
 
-/* Front Matter Checkboxes */
 .theme-light .metadata-property-key, .theme-light .metadata-property-value, .theme-light .metadata-label, .theme-light .multi-select-pill-content, .theme-light .metadata-input-longtext { color: #333333 !important; }
 .theme-light .metadata-property-key-input, .theme-light .metadata-property-value-input { color: #000000 !important; }
 .theme-light .metadata-link, .theme-light .metadata-property-value .external-link, .theme-light .metadata-property-value a { color: #000000 !important; text-decoration-color: #000000 !important; }
 .theme-light .metadata-input-longtext:empty::before, .theme-light .metadata-property-value-input:empty::before { color: #707070 !important; opacity: 1 !important; }
-
-/* Hover Properties */
 .theme-light .metadata-property:hover, .theme-light .metadata-property.is-active, .theme-light .metadata-property-key-input:hover, .theme-light .metadata-property-value-input:hover { border-color: #0066CC !important; box-shadow: 0 0 0 1px #0066CC !important; z-index: 10; }
 .theme-dark .metadata-property:hover, .theme-dark .metadata-property.is-active, .theme-dark .metadata-property-key-input:hover, .theme-dark .metadata-property-value-input:hover { border-color: #D0D0D0 !important; box-shadow: 0 0 0 1px #D0D0D0 !important; z-index: 10; }
-
-/* Dark Mode Dot Property */
-.theme-dark .metadata-property input[type="checkbox"] {
-  -webkit-appearance: none !important; appearance: none !important; border: 1px solid #D0D0D0 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
-  display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.05) !important; cursor: pointer; position: relative; margin: 0;
-}
-.theme-dark .metadata-property input[type="checkbox"]:checked {
-  background-color: transparent !important; border-color: #D0D0D0 !important; 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important; 
-  background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
-}
-
-/* Light Mode Dot Property */
-.theme-light .metadata-property input[type="checkbox"] {
-  -webkit-appearance: none !important; appearance: none !important; border: 1px solid #000000 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
-  display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(0, 102, 204, 0.1) !important; cursor: pointer; position: relative; margin: 0;
-}
-.theme-light .metadata-property input[type="checkbox"]:checked {
-  background-color: rgba(0, 102, 204, 0.15) !important; border-color: #000000 !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
-  background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
-}
-.metadata-property input[type="checkbox"]::before, .metadata-property input[type="checkbox"]::after { content: none !important; display: none !important; }
-.metadata-property:hover, .metadata-property:focus-within, .metadata-property-key-input:hover, .metadata-property-value-input:hover, .metadata-property-key-input:focus, .metadata-property-value-input:focus { border-radius: 0 !important; }
-.metadata-container, .metadata-content, .metadata-property { border-radius: 0 !important; }
 
 /* ================================================================= */
 /* 10. VARIOS */
@@ -471,140 +353,42 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 /* ================================================================= */
 /* 11. BASES DE DATOS */
 /* ================================================================= */
-.bases-td input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; border-radius: 0 !important; width: 16px !important; height: 16px !important; cursor: pointer; margin: 0; display: inline-flex; justify-content: center; align-items: center; }
-
-/* Dark Bases Dot */
-.theme-dark .bases-td input[type="checkbox"] { border: 1px solid #D0D0D0 !important; background-color: transparent !important; }
-.theme-dark .bases-td input[type="checkbox"]:checked {
-  border: 1px solid #D0D0D0 !important; background-color: transparent !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
-  background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
+.bases-td input[type="checkbox"] { 
+  -webkit-appearance: none !important; appearance: none !important; border-radius: 0 !important; width: 16px !important; height: 16px !important; cursor: pointer; margin: 0 !important; padding: 0 !important; 
+  display: inline-flex !important; justify-content: center; align-items: center; vertical-align: middle; box-sizing: border-box !important; border: 1px solid var(--checkbox-color) !important; background-color: transparent !important;
 }
-
-/* Light Bases Dot */
-.theme-light .bases-td input[type="checkbox"] { border: 1px solid #0066CC !important; background-color: transparent !important; }
-.theme-light .bases-td input[type="checkbox"]:checked {
-  border: 1px solid #0066CC !important; background-color: transparent !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%230066CC" /></svg>') !important;
-  background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
+.bases-td input[type="checkbox"]:checked {
+  border: 1px solid var(--checkbox-color) !important; background-color: var(--checkbox-color) !important; box-shadow: inset 0 0 0 3px var(--background-primary) !important; background-image: none !important;
 }
+.bases-td input[type="checkbox"]::before, .bases-td input[type="checkbox"]::after { content: none !important; display: none !important; background-image: none !important; }
 
 /* ================================================================= */
 /* 12. ETIQUETAS Y CONTADORES */
 /* ================================================================= */
-
-/* 12.1 Etiquetas (Tags con borde) */
-.tag, .cm-hashtag, .cm-hashtag-begin, .cm-hashtag-end, .metadata-tag, .multi-select-pill {
-    border-radius: 0 !important;
-}
-
-/* Light Mode Tags */
-.theme-light .tag, .theme-light .cm-hashtag, .theme-light .cm-hashtag-begin, .theme-light .cm-hashtag-end, .theme-light .metadata-tag, .theme-light .multi-select-pill {
-    color: #0066CC !important;
-    border: 1px solid #0066CC !important;
-    background-color: rgba(0, 102, 204, 0.1) !important;
-}
-
-/* Dark Mode Tags */
-.theme-dark .tag, .theme-dark .cm-hashtag, .theme-dark .cm-hashtag-begin, .theme-dark .cm-hashtag-end, .theme-dark .metadata-tag, .theme-dark .multi-select-pill {
-    color: #D0D0D0 !important;
-    border: 1px solid #D0D0D0 !important;
-    background-color: rgba(208, 208, 208, 0.1) !important;
-}
-
-/* 12.2 Contadores y Flairs (Sin borde, solo color) */
-.theme-light .tag-pane-tag-count, .theme-light .tree-item-flair {
-    color: #0066CC !important;
-    background-color: rgba(0, 102, 204, 0.1) !important;
-    border: none !important;
-}
-
-.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair {
-    color: #D0D0D0 !important;
-    background-color: rgba(208, 208, 208, 0.1) !important;
-    border: none !important;
-}
+.tag, .cm-hashtag, .cm-hashtag-begin, .cm-hashtag-end, .metadata-tag, .multi-select-pill { border-radius: 0 !important; }
+.theme-light .tag, .theme-light .cm-hashtag, .theme-light .cm-hashtag-begin, .theme-light .cm-hashtag-end, .theme-light .metadata-tag, .theme-light .multi-select-pill { color: #0066CC !important; border: 1px solid #0066CC !important; background-color: rgba(0, 102, 204, 0.1) !important; }
+.theme-dark .tag, .theme-dark .cm-hashtag, .theme-dark .cm-hashtag-begin, .theme-dark .cm-hashtag-end, .theme-dark .metadata-tag, .theme-dark .multi-select-pill { color: #D0D0D0 !important; border: 1px solid #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.1) !important; }
+.theme-light .tag-pane-tag-count, .theme-light .tree-item-flair { color: #0066CC !important; background-color: rgba(0, 102, 204, 0.1) !important; border: none !important; }
+.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair { color: #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.1) !important; border: none !important; }
 
 /* ================================================================= */
 /* 13. RESALTADO */
 /* ================================================================= */
-body {
-  --text-highlight-bg: rgba(0, 102, 255, 0.2) !important;
-}
-mark, .cm-highlight {
-  background-color: rgba(0, 102, 255, 0.2) !important; color: inherit !important;
-}
+body { --text-highlight-bg: rgba(0, 102, 255, 0.2) !important; }
+mark, .cm-highlight { background-color: rgba(0, 102, 255, 0.2) !important; color: inherit !important; }
 
 /* ================================================================= */
 /* 14. PÁGINA DE NUEVA PESTAÑA */
 /* ================================================================= */
-.theme-light .empty-state-action:hover,
-.theme-light .empty-state-action.is-focused {
-  color: #000000 !important;
-  background-color: rgba(0, 102, 204, 0.1) !important;
-}
+.theme-light .empty-state-action:hover, .theme-light .empty-state-action.is-focused { color: #000000 !important; background-color: rgba(0, 102, 204, 0.1) !important; }
 
 /* ================================================================= */
 /* 15. AJUSTES MÓVILES */
 /* ================================================================= */
-.is-mobile.theme-light .workspace-ribbon.mod-left::before,
-.is-mobile.theme-light .workspace-ribbon.mod-left {
-  background-color: #B0B0B0 !important;
-  border: none !important;
-}
-.is-mobile.theme-light .sidebar-toggle-button.mod-left,
-.is-mobile.theme-light .sidebar-toggle-button.mod-left .clickable-icon {
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
+.is-mobile.theme-light .workspace-ribbon.mod-left::before, .is-mobile.theme-light .workspace-ribbon.mod-left { background-color: #B0B0B0 !important; border: none !important; }
+.is-mobile.theme-light .sidebar-toggle-button.mod-left, .is-mobile.theme-light .sidebar-toggle-button.mod-left .clickable-icon { background-color: transparent !important; box-shadow: none !important; border: none !important; }
 
 /* ================================================================= */
-/* 16. PLUGIN KANBAN */
+/* 16. MODALES Y CONFIGURACIÓN */
 /* ================================================================= */
-
-/* Limpieza de marcas fantasma */
-.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-}
-
-.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox::before,
-.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox::after {
-    content: none !important;
-    display: none !important;
-}
-
-/* Light Mode Kanban Dot */
-.theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
-    border: 1px solid #000000 !important;
-    background-color: transparent !important;
-}
-.theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox:checked {
-    border: 1px solid #000000 !important;
-    background-color: transparent !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
-    background-size: 70% !important; background-repeat: no-repeat !important; background-position: center !important;
-}
-
-/* Dark Mode Kanban Dot */
-.theme-dark .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
-    border: 1px solid #D0D0D0 !important;
-    background-color: transparent !important;
-}
-.theme-dark .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox:checked {
-    border: 1px solid #D0D0D0 !important;
-    background-color: transparent !important;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
-    background-size: 70% !important; background-repeat: no-repeat !important; background-position: center !important;
-}
-
-/* ================================================================= */
-/* 17. MODALES Y CONFIGURACIÓN (Texto más claro) */
-/* ================================================================= */
-.theme-dark .modal {
-    --text-normal: #D0D0D0 !important; /* Gris claro para lectura fácil */
-    --text-muted: #B0B0B0 !important;  /* Texto secundario un poco más claro */
-}
+.theme-dark .modal { --text-normal: #D0D0D0 !important; --text-muted: #B0B0B0 !important; }

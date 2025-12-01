@@ -7,11 +7,16 @@
 /* 0. VARIABLES PRINCIPALES */
 /* ================================================================= */
 :root {
-  /* Global Settings */
-  --font-monospace: 'Georgia', monospace;
+  /* 1. Fuente Monoespaciada (Código/Bloques) */
+  --font-monospace: 'Georgia', serif; 
+
+  /* 2. Fuente Interfaz (Paneles, Pestañas, Carpetas) */
   --font-interface-override: 'American Typewriter', sans-serif;
-  --font-text-override: 'American Typewriter', sans-serif;
+
+  /* 3. Fuente Texto Principal (Cuerpo de nota) */
+  --font-text-override: 'Georgia', serif;
   
+  /* 4. Ajustes Generales */
   --icon-size: 20px;
   --border-width: 1px;
 }
@@ -30,11 +35,11 @@
 
   /* 2. Text & Icons */
   --text-normal: #A5A5A5;
-  --text-muted: #909090; /* Aclarado ligeramente */
+  --text-muted: #909090;
   --text-faint: #606060;
   --text-on-accent: #383838;
   --text-accent: #D0D0D0;
-  --icon-color: #B0B0B0; /* ICONOS: Gris más claro para destacar */
+  --icon-color: #B0B0B0;
   
   /* 3. Headers */
   --h1-color: #D0D0D0;
@@ -594,4 +599,12 @@ mark, .cm-highlight {
     background-color: transparent !important;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
     background-size: 70% !important; background-repeat: no-repeat !important; background-position: center !important;
+}
+
+/* ================================================================= */
+/* 17. MODALES Y CONFIGURACIÓN (Texto más claro) */
+/* ================================================================= */
+.theme-dark .modal {
+    --text-normal: #D0D0D0 !important; /* Gris claro para lectura fácil */
+    --text-muted: #B0B0B0 !important;  /* Texto secundario un poco más claro */
 }

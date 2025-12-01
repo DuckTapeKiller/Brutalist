@@ -1,4 +1,10 @@
 /* ================================================================= */
+/* BRUTALIST THEME by DuckTapeKiller */
+/* https://github.com/DuckTapeKiller/Brutalist */
+/* ================================================================= */
+
+
+/* ================================================================= */
 /* 1. CONFIGURACIÓN DE COLORES Y SELECCIÓN (AZUL CLARO) */
 /* ================================================================= */
 
@@ -28,6 +34,11 @@ body {
   --divider-color: #606060 !important;
   --titlebar-background: #383838 !important;
   --header-background: #383838 !important;
+  
+  /* CORRECCIÓN 1: Bulletpoints, Números y LÍNEAS VERTICALES en Gris Claro */
+  --list-marker-color: #D0D0D0 !important;
+  --indentation-guide-color: #D0D0D0 !important; /* Línea vertical inactiva */
+  --indentation-guide-color-active: #D0D0D0 !important; /* Línea vertical activa */
 }
 
 /* --- MODO CLARO --- */
@@ -45,6 +56,23 @@ body {
   --icon-color: #333333 !important;
   --icon-color-hover: #000000 !important;
   --icon-color-active: #000000 !important;
+  
+  /* REGLA 6: Bullets y líneas de indentación en NEGRO (Solo editor) */
+  --list-marker-color: #000000 !important;
+  --indentation-guide-color: #000000 !important;
+  --indentation-guide-color-active: #000000 !important;
+}
+
+/* REGLA 1 (LIGHT): Números de lista en AZUL */
+.theme-light .cm-formatting-list-ol { color: #0066CC !important; }
+.theme-light ol > li::marker { color: #0066CC !important; }
+
+/* CORRECCIÓN 1 (DARK): Números y Bullets en Gris Claro explícito */
+.theme-dark .cm-formatting-list-ul,
+.theme-dark .cm-formatting-list-ol,
+.theme-dark ul > li::marker,
+.theme-dark ol > li::marker {
+  color: #D0D0D0 !important;
 }
 
 /* ================================================================= */
@@ -92,18 +120,21 @@ body {
 .workspace-tab-header, .workspace-tab-header-inner { border-radius: 0 !important; box-shadow: none !important; }
 .workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
 
-/* ACTIVA */
+/* ACTIVA (ROOT) */
 .theme-dark .workspace-split.mod-root .workspace-tab-header.is-active {
   background-color: #424242 !important; border: 1px solid #606060 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
 }
+/* ACTUALIZACIÓN DARK: Borde 2.0px y Color #D0D0D0 */
 .theme-dark .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
-  border: 1px solid #ece6dc !important; background-color: #424242 !important; color: #ece6dc !important; width: 100% !important; margin: 0 !important;
+  border: 2.0px solid #D0D0D0 !important; background-color: #424242 !important; color: #D0D0D0 !important; width: 100% !important; margin: 0 !important;
 }
+
 .theme-light .workspace-split.mod-root .workspace-tab-header.is-active {
   background-color: #C5C5C5 !important; border: 1px solid #808080 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
 }
+/* ACTUALIZACIÓN LIGHT: Borde 2.5px */
 .theme-light .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
-  border: 1px solid #0066CC !important; background-color: #C5C5C5 !important; color: #0066CC !important; width: 100% !important; margin: 0 !important;
+  border: 2.5px solid #0066CC !important; background-color: #C5C5C5 !important; color: #0066CC !important; width: 100% !important; margin: 0 !important;
 }
 
 /* INACTIVA */
@@ -120,14 +151,15 @@ body {
   border: none !important; background: transparent !important; color: #222222 !important;
 }
 
-/* Sidebars */
+/* Sidebars - PESTAÑA ACTIVA GROSOR 2.5px (Light) / 2.0px (Dark) */
 .theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-.theme-dark .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 1px solid #ece6dc !important; }
+.theme-dark .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.0px solid #D0D0D0 !important; }
+
 .theme-light .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-.theme-light .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 1px solid #0066CC !important; }
+.theme-light .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.5px solid #0066CC !important; }
 
 /* Títulos */
-.theme-dark .workspace-leaf.mod-active .view-header-title { color: #ece6dc; }
+.theme-dark .workspace-leaf.mod-active .view-header-title { color: #D0D0D0; }
 .theme-dark .workspace-leaf:not(.mod-active) .view-header-title { color: #A5A5A5 !important; }
 .theme-light .workspace-leaf.mod-active .view-header-title { color: #0066CC !important; font-weight: bold; }
 .theme-light .workspace-leaf:not(.mod-active) .view-header-title { color: #000000 !important; }
@@ -142,24 +174,25 @@ body {
   color: #000000 !important; stroke: #000000 !important; box-shadow: inset 0 0 0 1px #0066CC !important; background-color: rgba(0, 102, 204, 0.15) !important; border-radius: 0 !important;
 }
 .theme-light .clickable-icon:hover, .theme-light .side-dock-ribbon-action:hover { color: #000000 !important; stroke: #000000 !important; }
+
 .theme-dark .clickable-icon.is-active, .theme-dark .side-dock-ribbon-action.is-active, .theme-dark .nav-action-button.is-active {
-  color: #ece6dc !important; stroke: #ece6dc !important; box-shadow: inset 0 0 0 1px #ece6dc !important; background-color: rgba(236, 230, 220, 0.15) !important; border-radius: 0 !important;
+  color: #D0D0D0 !important; stroke: #D0D0D0 !important; box-shadow: inset 0 0 0 1px #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.15) !important; border-radius: 0 !important;
 }
 
 /* ================================================================= */
 /* 5. STATUS BAR */
 /* ================================================================= */
 .status-bar, .status-bar-item { border-radius: 0 !important; }
-.theme-dark .status-bar { color: #ece6dc; background-color: #383838 !important; border: none !important; }
-.theme-dark .status-bar-item { border: 1px solid #ece6dc !important; padding: 2px 6px; margin: 0; color: #ece6dc; background-color: #424242; }
+.theme-dark .status-bar { color: #D0D0D0; background-color: #383838 !important; border: none !important; }
+.theme-dark .status-bar-item { border: 1px solid #D0D0D0 !important; padding: 2px 6px; margin: 0; color: #D0D0D0; background-color: #424242; }
 .theme-light .status-bar { color: #0066CC; background-color: #B0B0B0 !important; border: none !important; }
 .theme-light .status-bar-item { border: 1px solid #0066CC !important; padding: 2px 6px; margin: 0; color: #0066CC; background-color: #C5C5C5; }
 
 /* ================================================================= */
 /* 6. CALENDARIO */
 /* ================================================================= */
-.theme-dark #calendar-container .day.today { background: none !important; border: none !important; border-radius: 0 !important; color: #ece6dc !important; font-weight: bold !important; }
-.theme-dark #calendar-container .day .dot { background-color: #ece6dc !important; border: none !important; width: 6px !important; height: 6px !important; border-radius: 50% !important; display: block !important; margin: 0 auto !important; }
+.theme-dark #calendar-container .day.today { background: none !important; border: none !important; border-radius: 0 !important; color: #D0D0D0 !important; font-weight: bold !important; }
+.theme-dark #calendar-container .day .dot { background-color: #D0D0D0 !important; border: none !important; width: 6px !important; height: 6px !important; border-radius: 50% !important; display: block !important; margin: 0 auto !important; }
 .theme-light #calendar-container .day.today { background: none !important; border: none !important; border-radius: 0 !important; color: #0066CC !important; font-weight: bold !important; }
 .theme-light #calendar-container .day .dot { background-color: #0066CC !important; border: none !important; width: 6px !important; height: 6px !important; border-radius: 50% !important; display: block !important; margin: 0 auto !important; }
 
@@ -184,7 +217,7 @@ body {
   background: currentColor !important;
   transition: transform 0.1s ease-in-out;
 }
-.theme-dark .nav-folder .collapse-icon { background: #ece6dc !important; }
+.theme-dark .nav-folder .collapse-icon { background: #D0D0D0 !important; }
 .theme-light .nav-folder .collapse-icon { background: #0066CC !important; }
 
 /* LOGICA DE ROTACIÓN */
@@ -202,19 +235,61 @@ body {
 /* 8. TIPOGRAFÍA Y TEXTO */
 /* ================================================================= */
 .theme-dark .markdown-source-view, .theme-dark .markdown-preview-view, .theme-dark .cm-s-obsidian .cm-line, .theme-dark .nav-folder-title-content, .theme-dark .nav-file-title-content { color: #A5A5A5 !important; }
-.theme-dark .nav-folder-children, .theme-dark .nav-folder-children::before, .theme-dark .nav-folder-children > .nav-folder-item { border-left: 1px solid #ece6dc !important; }
+.theme-dark .nav-folder-children, .theme-dark .nav-folder-children::before, .theme-dark .nav-folder-children > .nav-folder-item { border-left: 1px solid #D0D0D0 !important; }
 .theme-dark .nav-file-title::before { border-left: none !important; content: none !important; }
 .theme-light .markdown-source-view, .theme-light .markdown-preview-view, .theme-light .cm-s-obsidian .cm-line, .theme-light .nav-folder-title-content, .theme-light .nav-file-title-content { color: #222222 !important; }
-.theme-light .nav-folder-children, .theme-light .nav-folder-children::before, .theme-light .nav-folder-children > .nav-folder-item { border-left: 1px solid #0066CC !important; }
+
+/* CORRECCIÓN: Guías del sidebar en AZUL */
+.theme-light .nav-folder-children, .theme-light .nav-folder-children::before, .theme-light .nav-folder-children > .nav-folder-item { border-left: 1px solid #0066CC !important; } 
+
 .theme-light .nav-file-title::before { border-left: none !important; content: none !important; }
 
 .inline-title, h1, h2, h3, h4, h5, h6, .cm-header { font-family: 'American Typewriter', monospace !important; font-weight: normal !important; }
-.theme-dark .inline-title, .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6, .theme-dark .cm-header { color: #ece6dc !important; }
+.theme-dark .inline-title, .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6, .theme-dark .cm-header { color: #D0D0D0 !important; }
 .theme-light .inline-title, .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light h5, .theme-light h6, .theme-light .cm-header { color: #0066CC !important; }
 .markdown-preview-view p, .markdown-source-view.mod-cm6 .cm-line { text-align: justify; text-justify: inter-word; }
+
 .markdown-preview-view blockquote { border-color: transparent; font-size: 95%; text-align: center; hyphens: auto; color: lightgrey; padding: 1px 2%; margin: 15pt 0; }
 .theme-light .markdown-preview-view blockquote { color: #222222 !important; }
 .theme-light a:hover, .theme-light .metadata-link:hover, .theme-light .external-link:hover, .theme-light .cm-s-obsidian .cm-link:hover, .theme-light .metadata-property-value a:hover { color: #000000 !important; font-weight: bold !important; }
+
+/* REGLA 5: Bloques de código gris oscuro (no blanco) */
+.theme-light code,
+.theme-light .cm-s-obsidian .cm-inline-code,
+.theme-light .markdown-source-view.mod-cm6 .cm-content code,
+.theme-light .markdown-preview-view code,
+.theme-light pre,
+.theme-light .HyperMD-codeblock {
+  background-color: #B0B0B0 !important; /* Más oscuro que el fondo C5C5C5 */
+  color: #222222 !important;
+  border-radius: 4px;
+}
+
+/* --- CALLOUTS / NOTE BLOCKS --- */
+
+/* LIGHT MODE: Azul tenue */
+.theme-light .callout {
+  background-color: rgba(0, 102, 204, 0.15) !important;
+  border-left: 4px solid #0066CC !important;
+}
+.theme-light .callout-title-inner {
+  color: #0066CC !important;
+  font-weight: bold !important;
+}
+
+/* CORRECCIÓN 2 (DARK): Forzar GRIS en todos los Callouts (para evitar que salga azul) */
+.theme-dark .callout {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-left: 4px solid #A5A5A5 !important;
+  --callout-color: 165, 165, 165 !important; /* Fuerza las variables internas a gris */
+  --callout-icon: #A5A5A5 !important;
+}
+.theme-dark .callout-title {
+  color: #A5A5A5 !important;
+}
+.theme-dark .callout-icon {
+  color: #A5A5A5 !important;
+}
 
 /* ================================================================= */
 /* 9. ELEMENTOS CUADRADOS Y FRONT MATTER */
@@ -270,24 +345,24 @@ body {
   z-index: 10;
 }
 
-/* Dark Mode: Borde Crema + Shadow Crema */
+/* Dark Mode: Borde Gris Claro + Shadow Gris Claro */
 .theme-dark .metadata-property:hover,
 .theme-dark .metadata-property.is-active,
 .theme-dark .metadata-property-key-input:hover,
 .theme-dark .metadata-property-value-input:hover {
-  border-color: #ece6dc !important;
-  box-shadow: 0 0 0 1px #ece6dc !important;
+  border-color: #D0D0D0 !important;
+  box-shadow: 0 0 0 1px #D0D0D0 !important;
   z-index: 10;
 }
 
 /* Checkboxes Front Matter */
-.theme-dark .metadata-property .multi-select-pill, .theme-dark .metadata-tag, .theme-dark .multi-select-pill { border: 1px solid #ece6dc !important; border-radius: 0 !important; }
+.theme-dark .metadata-property .multi-select-pill, .theme-dark .metadata-tag, .theme-dark .multi-select-pill { border: 1px solid #D0D0D0 !important; border-radius: 0 !important; }
 .theme-dark .metadata-property input[type="checkbox"] {
-  -webkit-appearance: none !important; appearance: none !important; border: 1px solid #ece6dc !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
+  -webkit-appearance: none !important; appearance: none !important; border: 1px solid #D0D0D0 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
   display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.05) !important; cursor: pointer; position: relative; margin: 0;
 }
 .theme-dark .metadata-property input[type="checkbox"]:checked {
-  background-color: #ece6dc !important; border-color: #ece6dc !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
+  background-color: #D0D0D0 !important; border-color: #D0D0D0 !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
 }
 
 .theme-light .metadata-property .multi-select-pill, .theme-light .metadata-tag, .theme-light .multi-select-pill { border: 1px solid #0066CC !important; border-radius: 0 !important; }
@@ -295,8 +370,15 @@ body {
   -webkit-appearance: none !important; appearance: none !important; border: 1px solid #000000 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
   display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(0, 102, 204, 0.1) !important; cursor: pointer; position: relative; margin: 0;
 }
+
+/* REGLA 4: Front Matter Checkbox CHECKED (Fondo Azul Tenue) */
 .theme-light .metadata-property input[type="checkbox"]:checked {
-  background-color: #0066CC !important; border-color: #000000 !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
+  background-color: rgba(0, 102, 204, 0.15) !important; /* Azul tenue, no sólido */
+  border-color: #000000 !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: 70% !important;
 }
 .metadata-property input[type="checkbox"]::before, .metadata-property input[type="checkbox"]::after { content: none !important; display: none !important; }
 .metadata-property:hover, .metadata-property:focus-within, .metadata-property-key-input:hover, .metadata-property-value-input:hover, .metadata-property-key-input:focus, .metadata-property-value-input:focus { border-radius: 0 !important; }
@@ -306,10 +388,10 @@ body {
 /* 10. VARIOS */
 /* ================================================================= */
 .countTable table table td:nth-child(2) { width: 40px; white-space: normal; }
-body.theme-dark .search-result-file-title { color: #ece6dc !important; font-weight: normal; }
+body.theme-dark .search-result-file-title { color: #D0D0D0 !important; font-weight: normal; }
 body.theme-light .search-result-file-title { color: black !important; font-weight: bold; }
 .workspace-drawer-vault-name { display: inline-block; padding: 0.1em 0.8em; font-weight: bold; font-size: 0.85em; border-radius: 0; margin: 0; }
-.theme-dark .workspace-drawer-vault-name { background-color: #414141 !important; color: #ece6dc !important; border: 1px solid #ece6dc !important; }
+.theme-dark .workspace-drawer-vault-name { background-color: #414141 !important; color: #D0D0D0 !important; border: 1px solid #D0D0D0 !important; }
 .theme-light .workspace-drawer-vault-name { background-color: #B0B0B0 !important; color: #0066CC !important; border: 1px solid #0066CC !important; }
 .markdown-preview-view, .markdown-source-view { max-width: 700px; margin: auto; }
 .markdown-preview-view p, .cm-content .cm-line { line-height: 1.8; }
@@ -319,9 +401,9 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 /* 11. BASES (Database Checkboxes) */
 /* ================================================================= */
 .bases-td input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; border-radius: 0 !important; width: 16px !important; height: 16px !important; cursor: pointer; margin: 0; display: inline-flex; justify-content: center; align-items: center; }
-.theme-dark .bases-td input[type="checkbox"] { border: 1px solid #ece6dc !important; background-color: transparent !important; }
+.theme-dark .bases-td input[type="checkbox"] { border: 1px solid #D0D0D0 !important; background-color: transparent !important; }
 .theme-dark .bases-td input[type="checkbox"]:checked {
-  border: 1px solid #ece6dc !important; background-color: transparent !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ece6dc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
+  border: 1px solid #D0D0D0 !important; background-color: transparent !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23D0D0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
 }
 .theme-light .bases-td input[type="checkbox"] { border: 1px solid #0066CC !important; background-color: transparent !important; }
 .theme-light .bases-td input[type="checkbox"]:checked {
@@ -332,7 +414,7 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 /* 12. ETIQUETAS Y CONTADORES */
 /* ================================================================= */
 .theme-light .tag-pane-tag-count, .theme-light .tree-item-flair { color: #0066CC !important; background-color: rgba(0, 102, 204, 0.1) !important; }
-.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair { color: #ece6dc !important; background-color: rgba(236, 230, 220, 0.1) !important; }
+.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair { color: #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.1) !important; }
 
 /* ================================================================= */
 /* 13. RESALTADO (HIGHLIGHT ==TEXT==) - AZUL FUERTE */
@@ -370,4 +452,21 @@ mark, .cm-highlight {
   background-color: transparent !important;
   box-shadow: none !important;
   border: none !important;
+}
+
+/* ================================================================= */
+/* 16. KANBAN PLUGIN FIXES (CORREGIDO) */
+/* ================================================================= */
+
+/* Checkbox normal: Borde negro, fondo transparente */
+.theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
+    border: 1px solid #000000 !important;
+    background-color: transparent !important;
+}
+
+/* Checkbox marcado: Fondo negro (para ver el chulo blanco por defecto) */
+.theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox:checked {
+    border: 1px solid #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
 }

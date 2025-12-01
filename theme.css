@@ -3,29 +3,117 @@
 /* https://github.com/DuckTapeKiller/Brutalist */
 /* ================================================================= */
 
+/* ================================================================= */
+/* 0. VARIABLES PRINCIPALES */
+/* ================================================================= */
+:root {
+  /* Global Settings */
+  --font-monospace: 'Georgia', monospace;
+  --font-interface-override: 'American Typewriter', sans-serif;
+  --font-text-override: 'American Typewriter', sans-serif;
+  
+  --icon-size: 20px;
+  --border-width: 1px;
+}
+
+/* MODO OSCURO */
+.theme-dark {
+  /* 1. Backgrounds */
+  --background-primary: #424242 !important;
+  --background-primary-alt: #424242 !important; 
+  --background-secondary: #383838 !important;
+  --background-secondary-alt: #383838 !important;
+  --background-modifier-border: #606060 !important;
+  --background-modifier-form-field: rgba(0, 0, 0, 0.2);
+  --modal-background: #383838 !important;
+  --prompt-background: #383838 !important;
+
+  /* 2. Text & Icons */
+  --text-normal: #A5A5A5;
+  --text-muted: #909090; /* Aclarado ligeramente */
+  --text-faint: #606060;
+  --text-on-accent: #383838;
+  --text-accent: #D0D0D0;
+  --icon-color: #B0B0B0; /* ICONOS: Gris más claro para destacar */
+  
+  /* 3. Headers */
+  --h1-color: #D0D0D0;
+  --h2-color: #D0D0D0;
+  --h3-color: #D0D0D0;
+  --h4-color: #D0D0D0;
+  --h5-color: #D0D0D0;
+  --h6-color: #D0D0D0;
+
+  /* 4. Interactive */
+  --interactive-accent: #D0D0D0;
+  --interactive-accent-hover: #ffffff;
+  --interactive-normal: #383838;
+  --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
+  
+  /* 5. Components */
+  --table-border-color: #606060;
+  --quote-opening-modifier: #606060;
+}
+
+/* MODO CLARO */
+.theme-light {
+  /* 1. Backgrounds */
+  --background-primary: #C5C5C5 !important;
+  --background-primary-alt: #B0B0B0 !important;
+  --background-secondary: #B0B0B0 !important;
+  --background-secondary-alt: #a0a0a0 !important;
+  --background-modifier-border: #808080 !important;
+  --background-modifier-form-field: rgba(255, 255, 255, 0.4);
+  --modal-background: #B0B0B0 !important;
+  --prompt-background: #B0B0B0 !important;
+
+  /* 2. Text */
+  --text-normal: #222222;
+  --text-muted: #444444;
+  --text-faint: #666666;
+  --text-on-accent: #ffffff;
+  --text-accent: #0066CC;
+
+  /* 3. Headers */
+  --h1-color: #0066CC;
+  --h2-color: #0066CC;
+  --h3-color: #0066CC;
+  --h4-color: #0066CC;
+  --h5-color: #0066CC;
+  --h6-color: #0066CC;
+
+  /* 4. Interactive */
+  --interactive-accent: #0066CC;
+  --interactive-accent-hover: #004c99;
+  --interactive-normal: #B0B0B0;
+  --scrollbar-active-thumb-bg: rgba(0, 0, 0, 0.2);
+
+  /* 5. Components */
+  --table-border-color: #808080;
+  --quote-opening-modifier: #808080;
+}
 
 /* ================================================================= */
-/* 1. CONFIGURACIÓN DE COLORES Y SELECCIÓN (AZUL CLARO) */
+/* 1. COLORES Y SELECCIÓN */
 /* ================================================================= */
 
-/* Variable global de selección (Azul Cielo muy suave) */
+/* Selección Global */
 body {
   --text-selection: rgba(0, 200, 255, 0.15) !important;
 }
 
-/* Selección en modo lectura */
 ::selection {
   background-color: rgba(0, 200, 255, 0.15) !important;
 }
 
-/* Selección en el Editor (CodeMirror) */
+/* Selección Editor */
 .cm-selectionBackground,
 .cm-line::selection,
 .cm-content::selection {
   background-color: rgba(0, 200, 255, 0.15) !important;
 }
 
-/* --- MODO OSCURO --- */
+/* Override Modo Oscuro */
 .theme-dark {
   --background-primary: #424242 !important;
   --background-secondary: #383838 !important;
@@ -35,13 +123,12 @@ body {
   --titlebar-background: #383838 !important;
   --header-background: #383838 !important;
   
-  /* CORRECCIÓN 1: Bulletpoints, Números y LÍNEAS VERTICALES en Gris Claro */
   --list-marker-color: #D0D0D0 !important;
-  --indentation-guide-color: #D0D0D0 !important; /* Línea vertical inactiva */
-  --indentation-guide-color-active: #D0D0D0 !important; /* Línea vertical activa */
+  --indentation-guide-color: #D0D0D0 !important;
+  --indentation-guide-color-active: #D0D0D0 !important;
 }
 
-/* --- MODO CLARO --- */
+/* Override Modo Claro */
 .theme-light {
   --background-primary: #C5C5C5 !important;
   --background-secondary: #B0B0B0 !important;
@@ -57,17 +144,14 @@ body {
   --icon-color-hover: #000000 !important;
   --icon-color-active: #000000 !important;
   
-  /* REGLA 6: Bullets y líneas de indentación en NEGRO (Solo editor) */
   --list-marker-color: #000000 !important;
   --indentation-guide-color: #000000 !important;
   --indentation-guide-color-active: #000000 !important;
 }
 
-/* REGLA 1 (LIGHT): Números de lista en AZUL */
 .theme-light .cm-formatting-list-ol { color: #0066CC !important; }
 .theme-light ol > li::marker { color: #0066CC !important; }
 
-/* CORRECCIÓN 1 (DARK): Números y Bullets en Gris Claro explícito */
 .theme-dark .cm-formatting-list-ul,
 .theme-dark .cm-formatting-list-ol,
 .theme-dark ul > li::marker,
@@ -111,7 +195,7 @@ body {
 }
 
 /* ================================================================= */
-/* 3. PESTAÑAS (TABS) */
+/* 3. PESTAÑAS */
 /* ================================================================= */
 
 .workspace-tab-header-container { padding-bottom: 0 !important; margin-bottom: 0 !important; }
@@ -120,11 +204,10 @@ body {
 .workspace-tab-header, .workspace-tab-header-inner { border-radius: 0 !important; box-shadow: none !important; }
 .workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
 
-/* ACTIVA (ROOT) */
+/* Activa Root */
 .theme-dark .workspace-split.mod-root .workspace-tab-header.is-active {
   background-color: #424242 !important; border: 1px solid #606060 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
 }
-/* ACTUALIZACIÓN DARK: Borde 2.0px y Color #D0D0D0 */
 .theme-dark .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
   border: 2.0px solid #D0D0D0 !important; background-color: #424242 !important; color: #D0D0D0 !important; width: 100% !important; margin: 0 !important;
 }
@@ -132,12 +215,11 @@ body {
 .theme-light .workspace-split.mod-root .workspace-tab-header.is-active {
   background-color: #C5C5C5 !important; border: 1px solid #808080 !important; border-bottom: none !important; padding: 3px !important; margin-bottom: -1px !important; z-index: 100;
 }
-/* ACTUALIZACIÓN LIGHT: Borde 2.5px */
 .theme-light .workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
   border: 2.5px solid #0066CC !important; background-color: #C5C5C5 !important; color: #0066CC !important; width: 100% !important; margin: 0 !important;
 }
 
-/* INACTIVA */
+/* Inactiva */
 .theme-dark .workspace-split.mod-root .workspace-tab-header:not(.is-active) {
   background-color: #383838 !important; border: 1px solid #606060 !important; margin: 4px 2px 0 0 !important;
 }
@@ -151,14 +233,14 @@ body {
   border: none !important; background: transparent !important; color: #222222 !important;
 }
 
-/* Sidebars - PESTAÑA ACTIVA GROSOR 2.5px (Light) / 2.0px (Dark) */
+/* Sidebars */
 .theme-dark .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
 .theme-dark .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.0px solid #D0D0D0 !important; }
 
 .theme-light .workspace-split.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
 .theme-light .workspace-split.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner { border: 2.5px solid #0066CC !important; }
 
-/* Títulos */
+/* Títulos Pestañas */
 .theme-dark .workspace-leaf.mod-active .view-header-title { color: #D0D0D0; }
 .theme-dark .workspace-leaf:not(.mod-active) .view-header-title { color: #A5A5A5 !important; }
 .theme-light .workspace-leaf.mod-active .view-header-title { color: #0066CC !important; font-weight: bold; }
@@ -167,7 +249,7 @@ body {
 .theme-dark .vertical-tab-header-group-title { color: #FFFFFF !important; font-weight: bold !important; }
 
 /* ================================================================= */
-/* 4. ICONOS Y BOTONES (Ribbon/Nav) */
+/* 4. ICONOS Y BOTONES */
 /* ================================================================= */
 .theme-light .clickable-icon, .theme-light .svg-icon, .theme-light .side-dock-ribbon-action, .theme-light .nav-action-button { color: #333333 !important; stroke: #333333 !important; }
 .theme-light .clickable-icon.is-active, .theme-light .side-dock-ribbon-action.is-active, .theme-light .nav-action-button.is-active {
@@ -180,7 +262,7 @@ body {
 }
 
 /* ================================================================= */
-/* 5. STATUS BAR */
+/* 5. BARRA DE ESTADO */
 /* ================================================================= */
 .status-bar, .status-bar-item { border-radius: 0 !important; }
 .theme-dark .status-bar { color: #D0D0D0; background-color: #383838 !important; border: none !important; }
@@ -201,15 +283,13 @@ body {
 /* ================================================================= */
 
 :root {
-  /* Máscara de icono chevron (apunta a la DERECHA por defecto) */
+  /* Máscara de icono chevron */
   --chevron-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" fill="none"/></svg>');
 }
 
-/* Ocultar iconos nativos */
 .theme-light .nav-folder .collapse-icon svg.svg-icon,
 .theme-dark .nav-folder .collapse-icon svg.svg-icon { display: none; }
 
-/* Configuración Base */
 .theme-dark .nav-folder .collapse-icon,
 .theme-light .nav-folder .collapse-icon {
   mask: var(--chevron-icon) no-repeat center;
@@ -220,13 +300,9 @@ body {
 .theme-dark .nav-folder .collapse-icon { background: #D0D0D0 !important; }
 .theme-light .nav-folder .collapse-icon { background: #0066CC !important; }
 
-/* LOGICA DE ROTACIÓN */
-/* 1. CERRADA (Collapsed): DERECHA (0deg) */
 .nav-folder.is-collapsed > .nav-folder-title .collapse-icon {
   transform: rotate(0deg) !important;
 }
-
-/* 2. ABIERTA (Not collapsed): ABAJO (90deg) */
 .nav-folder:not(.is-collapsed) > .nav-folder-title .collapse-icon {
   transform: rotate(90deg) !important;
 }
@@ -239,9 +315,7 @@ body {
 .theme-dark .nav-file-title::before { border-left: none !important; content: none !important; }
 .theme-light .markdown-source-view, .theme-light .markdown-preview-view, .theme-light .cm-s-obsidian .cm-line, .theme-light .nav-folder-title-content, .theme-light .nav-file-title-content { color: #222222 !important; }
 
-/* CORRECCIÓN: Guías del sidebar en AZUL */
 .theme-light .nav-folder-children, .theme-light .nav-folder-children::before, .theme-light .nav-folder-children > .nav-folder-item { border-left: 1px solid #0066CC !important; } 
-
 .theme-light .nav-file-title::before { border-left: none !important; content: none !important; }
 
 .inline-title, h1, h2, h3, h4, h5, h6, .cm-header { font-family: 'American Typewriter', monospace !important; font-weight: normal !important; }
@@ -253,21 +327,31 @@ body {
 .theme-light .markdown-preview-view blockquote { color: #222222 !important; }
 .theme-light a:hover, .theme-light .metadata-link:hover, .theme-light .external-link:hover, .theme-light .cm-s-obsidian .cm-link:hover, .theme-light .metadata-property-value a:hover { color: #000000 !important; font-weight: bold !important; }
 
-/* REGLA 5: Bloques de código gris oscuro (no blanco) */
+/* Bloques de código (Light Mode) */
 .theme-light code,
 .theme-light .cm-s-obsidian .cm-inline-code,
 .theme-light .markdown-source-view.mod-cm6 .cm-content code,
 .theme-light .markdown-preview-view code,
 .theme-light pre,
 .theme-light .HyperMD-codeblock {
-  background-color: #B0B0B0 !important; /* Más oscuro que el fondo C5C5C5 */
+  background-color: #B0B0B0 !important;
   color: #222222 !important;
   border-radius: 4px;
 }
 
-/* --- CALLOUTS / NOTE BLOCKS --- */
+/* Bloques de código (Dark Mode) */
+.theme-dark code,
+.theme-dark .cm-s-obsidian .cm-inline-code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-content code,
+.theme-dark .markdown-preview-view code,
+.theme-dark pre,
+.theme-dark .HyperMD-codeblock {
+  background-color: #262626 !important;
+  color: #A5A5A5 !important;
+  border-radius: 4px;
+}
 
-/* LIGHT MODE: Azul tenue */
+/* Callouts */
 .theme-light .callout {
   background-color: rgba(0, 102, 204, 0.15) !important;
   border-left: 4px solid #0066CC !important;
@@ -277,11 +361,10 @@ body {
   font-weight: bold !important;
 }
 
-/* CORRECCIÓN 2 (DARK): Forzar GRIS en todos los Callouts (para evitar que salga azul) */
 .theme-dark .callout {
   background-color: rgba(255, 255, 255, 0.05) !important;
   border-left: 4px solid #A5A5A5 !important;
-  --callout-color: 165, 165, 165 !important; /* Fuerza las variables internas a gris */
+  --callout-color: 165, 165, 165 !important;
   --callout-icon: #A5A5A5 !important;
 }
 .theme-dark .callout-title {
@@ -292,32 +375,37 @@ body {
 }
 
 /* ================================================================= */
-/* 9. ELEMENTOS CUADRADOS Y FRONT MATTER */
+/* 9. CASILLAS DE VERIFICACIÓN */
 /* ================================================================= */
+
+/* Notas Estándar */
 .task-list-item-checkbox { border-radius: 0 !important; border: 1px solid currentColor; }
 
-/* --- SETTINGS (BOTONES, DROPDOWNS, INPUTS Y TOGGLES) --- */
-
-/* Botones, Dropdowns y Inputs (Búsqueda/Texto) en Settings -> Cuadrados */
-.modal button,
-.modal .dropdown,
-.modal input[type="search"],
-.modal input[type="text"] {
+/* Dark Mode Dot */
+.theme-dark input[type="checkbox"]:checked,
+.theme-dark .task-list-item-checkbox:checked {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
+  background-color: transparent !important;
+  border: 1px solid #D0D0D0 !important;
   border-radius: 0 !important;
 }
 
-/* Toggles (Switch) en Settings -> Contenedor Cuadrado, Botón Redondo */
+/* Light Mode Dot */
+.theme-light input[type="checkbox"]:checked,
+.theme-light .task-list-item-checkbox:checked {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
+  background-color: transparent !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0 !important;
+}
+
+/* Switches de Configuración */
+.modal button, .modal .dropdown, .modal input[type="search"], .modal input[type="text"] { border-radius: 0 !important; }
 .modal .checkbox-container { border-radius: 0 !important; }
 .modal .checkbox-container::after { border-radius: 50% !important; }
-
-/* Estilos de Toggle */
 .checkbox-container { width: 42px !important; height: 22px !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important; }
-.checkbox-container::after {
-  content: "" !important; display: block !important; width: 14px !important; height: 14px !important; position: absolute !important; top: 50% !important; left: 3px !important;
-  transform: translateY(-50%) !important; margin: 0 !important; box-shadow: none !important; transition: left 0.2s ease-in-out, background-color 0.2s !important;
-}
+.checkbox-container::after { content: "" !important; display: block !important; width: 14px !important; height: 14px !important; position: absolute !important; top: 50% !important; left: 3px !important; transform: translateY(-50%) !important; margin: 0 !important; box-shadow: none !important; transition: left 0.2s ease-in-out, background-color 0.2s !important; }
 .checkbox-container.is-enabled::after { transform: translate3d(20px, -50%, 0) !important; left: 3px !important; }
-.checkbox-container input[type="checkbox"] { width: 100% !important; height: 100% !important; opacity: 0 !important; position: absolute !important; top: 0 !important; left: 0 !important; border: none !important; cursor: pointer !important; z-index: 10 !important; }
 
 /* Colores Toggle */
 .theme-light .checkbox-container::after { background-color: #000000 !important; border: none !important; }
@@ -327,58 +415,36 @@ body {
 .theme-dark .checkbox-container { border: 1px solid #FFFFFF !important; background-color: rgba(255, 0, 0, 0.2) !important; }
 .theme-dark .checkbox-container.is-enabled { background-color: rgba(0, 255, 0, 0.2) !important; border: 1px solid #FFFFFF !important; }
 
-/* --- FRONT MATTER (TEXTOS) --- */
+/* Front Matter Checkboxes */
 .theme-light .metadata-property-key, .theme-light .metadata-property-value, .theme-light .metadata-label, .theme-light .multi-select-pill-content, .theme-light .metadata-input-longtext { color: #333333 !important; }
 .theme-light .metadata-property-key-input, .theme-light .metadata-property-value-input { color: #000000 !important; }
 .theme-light .metadata-link, .theme-light .metadata-property-value .external-link, .theme-light .metadata-property-value a { color: #000000 !important; text-decoration-color: #000000 !important; }
 .theme-light .metadata-input-longtext:empty::before, .theme-light .metadata-property-value-input:empty::before { color: #707070 !important; opacity: 1 !important; }
 
-/* --- FRONT MATTER HOVER (CORRECCIÓN MARCO) --- */
+/* Hover Properties */
+.theme-light .metadata-property:hover, .theme-light .metadata-property.is-active, .theme-light .metadata-property-key-input:hover, .theme-light .metadata-property-value-input:hover { border-color: #0066CC !important; box-shadow: 0 0 0 1px #0066CC !important; z-index: 10; }
+.theme-dark .metadata-property:hover, .theme-dark .metadata-property.is-active, .theme-dark .metadata-property-key-input:hover, .theme-dark .metadata-property-value-input:hover { border-color: #D0D0D0 !important; box-shadow: 0 0 0 1px #D0D0D0 !important; z-index: 10; }
 
-/* Light Mode: Borde Azul + Shadow Azul */
-.theme-light .metadata-property:hover,
-.theme-light .metadata-property.is-active,
-.theme-light .metadata-property-key-input:hover,
-.theme-light .metadata-property-value-input:hover {
-  border-color: #0066CC !important;
-  box-shadow: 0 0 0 1px #0066CC !important;
-  z-index: 10;
-}
-
-/* Dark Mode: Borde Gris Claro + Shadow Gris Claro */
-.theme-dark .metadata-property:hover,
-.theme-dark .metadata-property.is-active,
-.theme-dark .metadata-property-key-input:hover,
-.theme-dark .metadata-property-value-input:hover {
-  border-color: #D0D0D0 !important;
-  box-shadow: 0 0 0 1px #D0D0D0 !important;
-  z-index: 10;
-}
-
-/* Checkboxes Front Matter */
-.theme-dark .metadata-property .multi-select-pill, .theme-dark .metadata-tag, .theme-dark .multi-select-pill { border: 1px solid #D0D0D0 !important; border-radius: 0 !important; }
+/* Dark Mode Dot Property */
 .theme-dark .metadata-property input[type="checkbox"] {
   -webkit-appearance: none !important; appearance: none !important; border: 1px solid #D0D0D0 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
   display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.05) !important; cursor: pointer; position: relative; margin: 0;
 }
 .theme-dark .metadata-property input[type="checkbox"]:checked {
-  background-color: #D0D0D0 !important; border-color: #D0D0D0 !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
+  background-color: transparent !important; border-color: #D0D0D0 !important; 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important; 
+  background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
 }
 
-.theme-light .metadata-property .multi-select-pill, .theme-light .metadata-tag, .theme-light .multi-select-pill { border: 1px solid #0066CC !important; border-radius: 0 !important; }
+/* Light Mode Dot Property */
 .theme-light .metadata-property input[type="checkbox"] {
   -webkit-appearance: none !important; appearance: none !important; border: 1px solid #000000 !important; border-radius: 0 !important; width: 16px !important; height: 16px !important;
   display: inline-flex !important; justify-content: center; align-items: center; background-color: rgba(0, 102, 204, 0.1) !important; cursor: pointer; position: relative; margin: 0;
 }
-
-/* REGLA 4: Front Matter Checkbox CHECKED (Fondo Azul Tenue) */
 .theme-light .metadata-property input[type="checkbox"]:checked {
-  background-color: rgba(0, 102, 204, 0.15) !important; /* Azul tenue, no sólido */
-  border-color: #000000 !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-size: 70% !important;
+  background-color: rgba(0, 102, 204, 0.15) !important; border-color: #000000 !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
+  background-position: center center !important; background-repeat: no-repeat !important; background-size: 70% !important;
 }
 .metadata-property input[type="checkbox"]::before, .metadata-property input[type="checkbox"]::after { content: none !important; display: none !important; }
 .metadata-property:hover, .metadata-property:focus-within, .metadata-property-key-input:hover, .metadata-property-value-input:hover, .metadata-property-key-input:focus, .metadata-property-value-input:focus { border-radius: 0 !important; }
@@ -398,26 +464,64 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background-color: rgba(100, 100, 100, 0.5); border-radius: 4px; } body:not(:hover) ::-webkit-scrollbar-thumb { background-color: transparent; }
 
 /* ================================================================= */
-/* 11. BASES (Database Checkboxes) */
+/* 11. BASES DE DATOS */
 /* ================================================================= */
 .bases-td input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; border-radius: 0 !important; width: 16px !important; height: 16px !important; cursor: pointer; margin: 0; display: inline-flex; justify-content: center; align-items: center; }
+
+/* Dark Bases Dot */
 .theme-dark .bases-td input[type="checkbox"] { border: 1px solid #D0D0D0 !important; background-color: transparent !important; }
 .theme-dark .bases-td input[type="checkbox"]:checked {
-  border: 1px solid #D0D0D0 !important; background-color: transparent !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23D0D0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
+  border: 1px solid #D0D0D0 !important; background-color: transparent !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
+  background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
 }
+
+/* Light Bases Dot */
 .theme-light .bases-td input[type="checkbox"] { border: 1px solid #0066CC !important; background-color: transparent !important; }
 .theme-light .bases-td input[type="checkbox"]:checked {
-  border: 1px solid #0066CC !important; background-color: transparent !important; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%230066CC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') !important; background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
+  border: 1px solid #0066CC !important; background-color: transparent !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%230066CC" /></svg>') !important;
+  background-position: center !important; background-size: 70% !important; background-repeat: no-repeat !important;
 }
 
 /* ================================================================= */
 /* 12. ETIQUETAS Y CONTADORES */
 /* ================================================================= */
-.theme-light .tag-pane-tag-count, .theme-light .tree-item-flair { color: #0066CC !important; background-color: rgba(0, 102, 204, 0.1) !important; }
-.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair { color: #D0D0D0 !important; background-color: rgba(208, 208, 208, 0.1) !important; }
+
+/* 12.1 Etiquetas (Tags con borde) */
+.tag, .cm-hashtag, .cm-hashtag-begin, .cm-hashtag-end, .metadata-tag, .multi-select-pill {
+    border-radius: 0 !important;
+}
+
+/* Light Mode Tags */
+.theme-light .tag, .theme-light .cm-hashtag, .theme-light .cm-hashtag-begin, .theme-light .cm-hashtag-end, .theme-light .metadata-tag, .theme-light .multi-select-pill {
+    color: #0066CC !important;
+    border: 1px solid #0066CC !important;
+    background-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+/* Dark Mode Tags */
+.theme-dark .tag, .theme-dark .cm-hashtag, .theme-dark .cm-hashtag-begin, .theme-dark .cm-hashtag-end, .theme-dark .metadata-tag, .theme-dark .multi-select-pill {
+    color: #D0D0D0 !important;
+    border: 1px solid #D0D0D0 !important;
+    background-color: rgba(208, 208, 208, 0.1) !important;
+}
+
+/* 12.2 Contadores y Flairs (Sin borde, solo color) */
+.theme-light .tag-pane-tag-count, .theme-light .tree-item-flair {
+    color: #0066CC !important;
+    background-color: rgba(0, 102, 204, 0.1) !important;
+    border: none !important;
+}
+
+.theme-dark .tag-pane-tag-count, .theme-dark .tree-item-flair {
+    color: #D0D0D0 !important;
+    background-color: rgba(208, 208, 208, 0.1) !important;
+    border: none !important;
+}
 
 /* ================================================================= */
-/* 13. RESALTADO (HIGHLIGHT ==TEXT==) - AZUL FUERTE */
+/* 13. RESALTADO */
 /* ================================================================= */
 body {
   --text-highlight-bg: rgba(0, 102, 255, 0.2) !important;
@@ -427,7 +531,7 @@ mark, .cm-highlight {
 }
 
 /* ================================================================= */
-/* 14. PÁGINA DE NUEVA PESTAÑA (EMPTY STATE) - CORRECCIÓN HOVER */
+/* 14. PÁGINA DE NUEVA PESTAÑA */
 /* ================================================================= */
 .theme-light .empty-state-action:hover,
 .theme-light .empty-state-action.is-focused {
@@ -436,17 +540,13 @@ mark, .cm-highlight {
 }
 
 /* ================================================================= */
-/* 15. MOBILE FIXES (LIGHT MODE) */
+/* 15. AJUSTES MÓVILES */
 /* ================================================================= */
-
-/* Forzar fondo del ribbon para igualar el gris de la barra lateral en mobile light */
 .is-mobile.theme-light .workspace-ribbon.mod-left::before,
 .is-mobile.theme-light .workspace-ribbon.mod-left {
   background-color: #B0B0B0 !important;
   border: none !important;
 }
-
-/* Quitar fondo del botón de toggle en mobile para que se vea el gris del ribbon */
 .is-mobile.theme-light .sidebar-toggle-button.mod-left,
 .is-mobile.theme-light .sidebar-toggle-button.mod-left .clickable-icon {
   background-color: transparent !important;
@@ -455,18 +555,43 @@ mark, .cm-highlight {
 }
 
 /* ================================================================= */
-/* 16. KANBAN PLUGIN FIXES (CORREGIDO) */
+/* 16. PLUGIN KANBAN */
 /* ================================================================= */
 
-/* Checkbox normal: Borde negro, fondo transparente */
+/* Limpieza de marcas fantasma */
+.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox::before,
+.kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Light Mode Kanban Dot */
 .theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
     border: 1px solid #000000 !important;
     background-color: transparent !important;
 }
-
-/* Checkbox marcado: Fondo negro (para ver el chulo blanco por defecto) */
 .theme-light .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox:checked {
     border: 1px solid #000000 !important;
-    background-color: #000000 !important;
-    background-image: none !important;
+    background-color: transparent !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23000000" /></svg>') !important;
+    background-size: 70% !important; background-repeat: no-repeat !important; background-position: center !important;
+}
+
+/* Dark Mode Kanban Dot */
+.theme-dark .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox {
+    border: 1px solid #D0D0D0 !important;
+    background-color: transparent !important;
+}
+.theme-dark .kanban-plugin__item-prefix-button-wrapper .task-list-item-checkbox:checked {
+    border: 1px solid #D0D0D0 !important;
+    background-color: transparent !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D0D0D0" /></svg>') !important;
+    background-size: 70% !important; background-repeat: no-repeat !important; background-position: center !important;
 }

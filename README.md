@@ -1,7 +1,7 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
-![](/Cover.png)
+![](/cover.png)
 
 **What is it?**
 

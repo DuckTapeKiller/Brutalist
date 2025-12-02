@@ -1,4 +1,5 @@
 # Brutalist Theme for Obsidian
+Compatible with Style Settings
 
 **What is it?**
 
@@ -37,5 +38,12 @@ The theme was designed for people who spend, or want to spend, significant time 
 2.  Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3.  Reload Obsidian and select the theme.
 
+**IMPORTANT: The width of the paragraph is 700px, but this can be adjusted by the user with the plugin Style Settings.** 
+
 ---
+
+**IMPORTANT: The width of the notes is 700px, but this can be adjusted by the user with the plugin Style Settings.** 
+
+---
+
 Created by **DuckTapeKiller**.

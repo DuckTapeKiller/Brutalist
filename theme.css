@@ -14,6 +14,13 @@ settings:
         type: variable-number
         default: 700
         format: px
+-
+        id: disable-justification
+        title: Disable Text Justification / Desactivar Justificación
+        description: Switches text alignment from justified to left-aligned. / Cambia la alineación de justificada a izquierda.
+        type: class-toggle
+        className: is-unjustified
+        default: false
 */
 
 /* ================================================================= */

@@ -34,7 +34,7 @@
   --b-light-text-muted: #444444;
   --b-light-text-faint: #666666;
   --b-light-accent:     #0066CC; /* Headers, Links, Active items */
-  --b-light-selection:  rgba(0, 200, 255, 0.15);
+  --b-light-selection:  rgba(0, 200, 255, 0.25); /* Adjusted for visibility */
 }
 
 /* ================================================================= */
@@ -123,11 +123,16 @@
 }
 
 /* ================================================================= */
-/* 1. COLORES Y SELECCIÓN */
+/* 1. COLORES Y SELECCIÓN (FIXED FOR VISIBILITY) */
 /* ================================================================= */
 body { --text-selection: var(--b-light-selection) !important; } /* Default fallback */
 .theme-dark { --text-selection: var(--b-dark-selection) !important; }
 
+/* FIX: Force readable selection in Light Mode (Settings/Editor) */
+.theme-light ::selection { background-color: rgba(0, 200, 255, 0.25) !important; color: #000000 !important; }
+.theme-light .modal ::selection { background-color: rgba(0, 200, 255, 0.25) !important; color: #000000 !important; }
+
+/* Fallback/Dark Mode Selection */
 ::selection { background-color: rgba(0, 200, 255, 0.15) !important; }
 .cm-selectionBackground, .cm-line::selection, .cm-content::selection {
   background-color: rgba(0, 200, 255, 0.15) !important;
@@ -153,7 +158,7 @@ body { --text-selection: var(--b-light-selection) !important; } /* Default fallb
 .theme-light .cm-formatting-list-ol { color: var(--b-light-accent) !important; }
 
 /* ================================================================= */
-/* 2. ESTRUCTURA LATERAL Y BARRA DE TÍTULO (FIX MANCHA) */
+/* 2. ESTRUCTURA LATERAL Y BARRA DE TÍTULO (FIX TOP LEFT LINE) */
 /* ================================================================= */
 
 /* MODO OSCURO: Ajuste exacto de color para evitar manchas */
@@ -169,11 +174,12 @@ body { --text-selection: var(--b-light-selection) !important; } /* Default fallb
     border-bottom: none !important; 
 }
 
-/* FIX: La mancha superior izquierda se pinta del MISMO color que el ribbon */
+/* FIX: Top Left Corner (Mac Traffic Lights Area) - Restore ONLY horizontal border */
 .theme-dark .workspace-ribbon.mod-left::before,
 .theme-dark .titlebar-button-container.mod-left {
     background-color: var(--b-dark-surface) !important; 
-    border: none !important;
+    border: none !important; /* Reset all borders first */
+    border-bottom: 1px solid var(--b-dark-border) !important; /* Add back only the bottom one */
 }
 
 .theme-dark .workspace-split.mod-root { background-color: var(--b-dark-bg) !important; }
@@ -191,11 +197,12 @@ body { --text-selection: var(--b-light-selection) !important; } /* Default fallb
     border-bottom: none !important; 
 }
 
-/* FIX: La mancha superior izquierda se pinta del MISMO color que el ribbon */
+/* FIX: Top Left Corner (Mac Traffic Lights Area) - Restore ONLY horizontal border */
 .theme-light .workspace-ribbon.mod-left::before,
 .theme-light .titlebar-button-container.mod-left {
     background-color: var(--b-light-surface) !important; 
-    border: none !important;
+    border: none !important; /* Reset all borders first */
+    border-bottom: 1px solid var(--b-light-border) !important; /* Add back only the bottom one */
 }
 
 .theme-light .workspace-split.mod-root { background-color: var(--b-light-bg) !important; }
@@ -235,12 +242,15 @@ body { --text-selection: var(--b-light-selection) !important; } /* Default fallb
 .theme-dark .vertical-tab-header-group-title { color: #FFFFFF !important; font-weight: bold !important; }
 
 /* ================================================================= */
-/* 4. ICONOS Y BOTONES */
+/* 4. ICONOS Y BOTONES (FIXED BLACK TEXT ON BUTTONS) */
 /* ================================================================= */
 .theme-light .clickable-icon, .theme-light .svg-icon, .theme-light .side-dock-ribbon-action, .theme-light .nav-action-button { color: #333333 !important; stroke: #333333 !important; }
 .theme-light .clickable-icon.is-active, .theme-light .side-dock-ribbon-action.is-active, .theme-light .nav-action-button.is-active { color: #000000 !important; stroke: #000000 !important; box-shadow: inset 0 0 0 1px var(--b-light-accent) !important; background-color: rgba(0, 102, 204, 0.15) !important; border-radius: 0 !important; }
 .theme-light .clickable-icon:hover, .theme-light .side-dock-ribbon-action:hover { color: #000000 !important; stroke: #000000 !important; }
 .theme-dark .clickable-icon.is-active, .theme-dark .side-dock-ribbon-action.is-active, .theme-dark .nav-action-button.is-active { color: var(--b-dark-accent) !important; stroke: var(--b-dark-accent) !important; box-shadow: inset 0 0 0 1px var(--b-dark-accent) !important; background-color: rgba(208, 208, 208, 0.15) !important; border-radius: 0 !important; }
+
+/* FIX: Ensure buttons with accent background have white text in Light Mode */
+.theme-light button.mod-cta, .theme-light button.mod-cta:hover { color: #ffffff !important; }
 
 /* ================================================================= */
 /* 5. BARRA DE ESTADO */
@@ -420,3 +430,9 @@ mark, .cm-highlight { background-color: rgba(0, 102, 255, 0.2) !important; color
 /* 16. MODALES Y CONFIGURACIÓN */
 /* ================================================================= */
 .theme-dark .modal { --text-normal: var(--b-dark-accent) !important; --text-muted: #B0B0B0 !important; }
+
+/* FIX: Text color on selected settings menu items in Light Mode */
+.theme-light .vertical-tab-nav-item.is-active {
+    color: #ffffff !important;
+    background-color: var(--b-light-accent) !important;
+}

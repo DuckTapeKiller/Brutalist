@@ -42,8 +42,4 @@ The theme was designed for people who spend, or want to spend, significant time 
 
 ---
 
-**IMPORTANT: The width of the notes is 700px, but this can be adjusted by the user with the plugin Style Settings.** 
-
----
-
 Created by **DuckTapeKiller**.

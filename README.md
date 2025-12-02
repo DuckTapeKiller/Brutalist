@@ -1,6 +1,8 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
+![](/cover.png)
+
 **What is it?**
 
 A stark, geometric theme for Obsidian that prioritises function and raw aesthetics over softness or embellishment. The theme features a strictly angular, squared-off user interface, eliminating all rounded corners for a precise, purposeful appearance. The colour scheme is defined by low-contrast shades of grey and an accentuating blue highlight, engineered to maintain focus and minimise visual strain. It is named 'Brutalist' because its main aesthetic inspiration is Brutalist architecture.

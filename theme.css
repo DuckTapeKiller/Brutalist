@@ -3,10 +3,26 @@
 /* https://github.com/DuckTapeKiller/Brutalist */
 /* ================================================================= */
 
+/* @settings
+name: Brutalist Theme Settings
+id: brutalist-theme
+settings:
+    - 
+        id: editor-width
+        title: Editor Max Width
+        description: Controls the maximum width of the text area. Default is 700.
+        type: variable-number
+        default: 700
+        format: px
+*/
+
 /* ================================================================= */
 /* 0. VARIABLES PRINCIPALES Y PALETA */
 /* ================================================================= */
 :root {
+  /* --- CONFIGURACIÓN DE USUARIO (FALLBACK) --- */
+  --editor-width: 700px;
+
   /* --- FUENTES --- */
   --font-monospace: 'Georgia', serif; 
   --font-interface-override: 'American Typewriter', sans-serif;
@@ -384,7 +400,10 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 .workspace-drawer-vault-name { display: inline-block; padding: 0.1em 0.8em; font-weight: bold; font-size: 0.85em; border-radius: 0; margin: 0; }
 .theme-dark .workspace-drawer-vault-name { background-color: #414141 !important; color: var(--b-dark-accent) !important; border: 1px solid var(--b-dark-accent) !important; }
 .theme-light .workspace-drawer-vault-name { background-color: var(--b-light-surface) !important; color: var(--b-light-accent) !important; border: 1px solid var(--b-light-accent) !important; }
-.markdown-preview-view, .markdown-source-view { max-width: 700px; margin: auto; }
+
+/* MODIFIED: Uses variable defined in Style Settings block at top */
+.markdown-preview-view, .markdown-source-view { max-width: var(--editor-width); margin: auto; }
+
 .markdown-preview-view p, .cm-content .cm-line { line-height: 1.8; }
 ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background-color: rgba(100, 100, 100, 0.5); border-radius: 4px; } body:not(:hover) ::-webkit-scrollbar-thumb { background-color: transparent; }
 

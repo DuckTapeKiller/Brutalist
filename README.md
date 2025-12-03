@@ -43,4 +43,4 @@ This theme is tailored for individuals who dedicate significant time to reading 
 
 > **Note:** The default paragraph width is set to 700px to optimise readability. This can be adjusted to your preference using the **Style Settings** plugin.
 
-Created by **DuckTapeKiller**""")
+Created by **DuckTapeKiller**)

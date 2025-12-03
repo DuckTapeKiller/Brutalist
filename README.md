@@ -5,43 +5,42 @@ Compatible with Style Settings
 
 **What is it?**
 
-A stark, geometric theme for Obsidian that prioritises function and raw aesthetics over softness or embellishment. The theme features a strictly angular, squared-off user interface, eliminating all rounded corners for a precise, purposeful appearance. The colour scheme is defined by low-contrast shades of grey and an accentuating blue highlight, engineered to maintain focus and minimise visual strain. It is named 'Brutalist' because its main aesthetic inspiration is Brutalist architecture.
+**Brutalist is a theme designed specifically for heavy readers and writers.**
 
-**Why I made it?**
+Its stark, geometric aesthetics prioritise function and raw form over embellishment. The interface features a strictly angular, squared-off architecture, eliminating rounded corners for a precise, purposeful appearance. The colour scheme utilises low-contrast shades of grey and restrained accents, engineered to maintain focus and minimise visual strain during prolonged sessions. As the name suggests, the aesthetic derives from Brutalist architecture: honest, utilitarian, and bold.
 
-The goal was to create a theme that prioritises focused reading and note creation by offering an exceptionally low-distraction, text-centric interface. This design is aimed at users who require deep work and minimal visual clutter.
+**Design Philosophy**
 
-The dark mode draws inspiration from focused reading applications such as Instapaper and Safari’s 'Reader View'. It features a low-contrast palette engineered for optimal reading comfort in varied lighting conditions.
+The objective was to create a comfortable environment that facilitates focused reading and note creation through a low-distraction, text-centric interface. This aids deep work by removing visual clutter.
 
-The light mode serves as an alternative for users who prefer a slightly more varied colour scheme, while still maintaining the core design principles of text primacy and minimal visual interruption.
+* **Dark Mode:** Inspired by dedicated reading applications such as Instapaper and Safari’s 'Reader View', the palette is calibrated for optimal comfort in low-light conditions.
+* **Light Mode:** Offers a distinct alternative for those who prefer a brighter interface, whilst strictly adhering to the core principles of text primacy and minimal visual interruption.
 
 **Who is this theme for?**
 
-The theme was designed for people who spend, or want to spend, significant time in Obsidian reading their notes. This is particularly useful for those who use Obsidian Web Clipper to save their articles and use Obsidian as a read-it-later app. It would also be useful for writers or coders who want to be focused, almost isolated from the world.
+This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers and coders with an immersive environment conducive to focused output.
 
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)
 
 ### Light Mode
-*Features distinct blue accents and black borders.*
+*Features distinct accents and clear visual hierarchy.*
 ![Brutalist Light Mode](screenshot-light.png)
 
 ## Installation
 
 ### Method 1: Community Themes
-1.  Open **Settings** > **Appearance**.
-2.  Click **Manage** under Themes.
-3.  Search for **Brutalist**.
-4.  Click **Install** and then **Use**.
+1. Open **Settings** > **Appearance**.
+2. Click **Manage** under Themes.
+3. Search for **Brutalist**.
+4. Click **Install** and then **Use**.
 
 ### Method 2: Manual Installation
-1.  Download the `theme.css` and `manifest.json` from this repository.
-2.  Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
-3.  Reload Obsidian and select the theme.
+1. Download `theme.css` and `manifest.json` from this repository.
+2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
+3. Reload Obsidian and select the theme.
 
-**IMPORTANT: The width of the paragraph is 700px, but this can be adjusted by the user with the plugin Style Settings.** 
+> **Note:** The default paragraph width is set to 700px to optimise readability. This can be adjusted to your preference using the **Style Settings** plugin.
 
----
-
-Created by **DuckTapeKiller**.
+Created by **DuckTapeKiller**""")

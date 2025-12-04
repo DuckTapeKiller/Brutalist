@@ -20,6 +20,14 @@ The objective was to create a comfortable environment that facilitates focused r
 
 This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers and coders with an immersive environment conducive to focused output.
 
+## Customisation
+You can tweak the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
+
+* **Typography:** Customise fonts for the body and UI, and adjust line height.
+* **Alignment:** Toggle between Justified text (default) and Left alignment.
+* **Colours:** Change the specific accent colours for Light and Dark modes, and the text highlight colour.
+* **Layout:** Adjust the maximum editor width.
+
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)
@@ -41,6 +49,6 @@ This theme is tailored for individuals who dedicate significant time to reading 
 2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3. Reload Obsidian and select the theme.
 
-> **Note:** The default paragraph width is set to 700px to optimise readability. This can be adjusted to your preference using the **Style Settings** plugin.
+> **Note:** The default paragraph width is set to 700px to optimise readability. This can be adjusted to your preference using the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin.
 
 Created by **DuckTapeKiller**

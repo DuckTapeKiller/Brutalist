@@ -49,6 +49,6 @@ You can tweak the following visual elements via the [**Style Settings**](https:/
 2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3. Reload Obsidian and select the theme.
 
-> **Note:** The default paragraph width is set to 700px to optimise readability. This can be adjusted to your preference using the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin.
+---
 
 Created by **DuckTapeKiller**

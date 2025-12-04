@@ -8,6 +8,72 @@ name: Brutalist Theme Settings
 id: brutalist-theme
 settings:
     - 
+        id: typography-heading
+        title: Typography
+        type: heading
+        level: 1
+    - 
+        id: font-text-override
+        title: Body Font
+        description: Font family for main text content.
+        type: variable-text
+        default: "'Georgia', serif"
+    - 
+        id: font-ui-override
+        title: UI & Header Font
+        description: Font family for interface, headers, and monospace.
+        type: variable-text
+        default: "'American Typewriter', 'Courier Prime', monospace"
+    - 
+        id: text-align-mode
+        title: Text Alignment
+        description: Choose between Left aligned or Justified text.
+        type: variable-select
+        default: justify
+        options:
+          - label: Justified
+            value: justify
+          - label: Left Align
+            value: left
+    - 
+        id: line-height-custom
+        title: Line Height
+        description: Controls spacing between lines of text. Default is 1.8.
+        type: variable-number
+        default: 1.8
+        format: ratio
+    - 
+        id: colours-heading
+        title: Colours
+        type: heading
+        level: 1
+    - 
+        id: highlight-color-custom
+        title: Text Highlight Colour
+        type: variable-color
+        format: rgb
+        default: 'rgba(0, 102, 255, 0.2)'
+        opacity: true
+    - 
+        id: light-accent-custom
+        title: Light Mode Accent
+        description: Main accent colour for Light Mode.
+        type: variable-color
+        format: hex
+        default: '#505050'
+    - 
+        id: dark-accent-custom
+        title: Dark Mode Accent
+        description: Main accent colour for Dark Mode.
+        type: variable-color
+        format: hex
+        default: '#BFBFBF'
+    - 
+        id: layout-heading
+        title: Layout
+        type: heading
+        level: 1
+    - 
         id: editor-width
         title: Editor Max Width
         description: Controls the maximum width of the text area. Default is 700.
@@ -20,8 +86,15 @@ settings:
 /* 0. MAIN VARIABLES AND PALETTE */
 /* ================================================================= */
 :root {
-  /* --- USER SETTINGS --- */
+  /* --- USER SETTINGS DEFAULTS --- */
   --editor-width: 700px;
+  --font-text-override: 'Georgia', serif;
+  --font-ui-override: 'American Typewriter', 'Courier Prime', monospace;
+  --text-align-mode: justify;
+  --line-height-custom: 1.8;
+  --light-accent-custom: #505050;
+  --dark-accent-custom: #BFBFBF;
+  --highlight-color-custom: rgba(0, 102, 255, 0.2);
 
   /* --- OBSIDIAN DEFAULT ACCENT OVERRIDE --- */
   /* Definimos que el color es GRIS (Hue 0, Saturation 0) globalmente */
@@ -44,14 +117,14 @@ settings:
   --toggle-track-radius: 0px !important;
 
   /* --- FONTS --- */
-  --font-default: 'American Typewriter', 'Courier Prime', monospace !important;
-  --font-interface: 'American Typewriter', 'Courier Prime', monospace !important;
-  --font-ui: 'American Typewriter', 'Courier Prime', monospace !important;
+  --font-default: var(--font-ui-override) !important;
+  --font-interface: var(--font-ui-override) !important;
+  --font-ui: var(--font-ui-override) !important;
   
   /* This ensures Georgia is the default for TEXT content only */
-  --font-text: 'Georgia', serif !important;
-  --font-text-theme: 'Georgia', serif !important;
-  --font-monospace: 'Georgia', serif !important; 
+  --font-text: var(--font-text-override) !important;
+  --font-text-theme: var(--font-text-override) !important;
+  --font-monospace: var(--font-text-override) !important; 
     
   --icon-size: 20px;
   --border-width: 1px;
@@ -63,7 +136,7 @@ settings:
   --b-dark-text-main:   #A5A5A5; 
   --b-dark-text-muted:  #909090;
   --b-dark-text-faint:  #606060;
-  --b-dark-accent:      #BFBFBF; /* Gris Claro (para fondo oscuro) */
+  --b-dark-accent:      var(--dark-accent-custom); /* Gris Claro (para fondo oscuro) */
   --b-dark-selection:   rgba(191, 191, 191, 0.25);
 
   /* --- LIGHT MODE PALETTE --- */
@@ -74,7 +147,7 @@ settings:
   --b-light-text-main:  #222222;
   --b-light-text-muted: #444444;
   --b-light-text-faint: #666666;
-  --b-light-accent:     #505050; /* Gris Oscuro (para fondo claro) */
+  --b-light-accent:     var(--light-accent-custom); /* Gris Oscuro (para fondo claro) */
   --b-light-selection:  rgba(80, 80, 80, 0.35); /* Aumentada opacidad para visibilidad */
 }
 
@@ -177,9 +250,9 @@ settings:
 /* ================================================================= */
 body { 
     --text-selection: var(--b-light-selection) !important;
-    font-family: 'American Typewriter', 'Courier Prime', monospace !important;
-    --font-ui: 'American Typewriter', 'Courier Prime', monospace !important;
-    --font-interface: 'American Typewriter', 'Courier Prime', monospace !important;
+    font-family: var(--font-ui-override) !important;
+    --font-ui: var(--font-ui-override) !important;
+    --font-interface: var(--font-ui-override) !important;
 }
 
 .theme-dark { --text-selection: var(--b-dark-selection) !important; }
@@ -191,7 +264,6 @@ body {
 .theme-dark ::selection { background-color: var(--b-dark-selection) !important; }
 
 /* --- LIVE PREVIEW SELECTION --- */
-
 /* DARK MODE LIVE PREVIEW */
 .theme-dark .cm-selectionBackground, 
 .theme-dark .cm-line::selection, 
@@ -445,12 +517,12 @@ body {
 .empty-state-container, .empty-state-title, .empty-state-action,
 .view-header-title, .nav-file-title, .nav-folder-title, .workspace-tab-header-inner,
 .status-bar, .tree-item, .workspace-ribbon, .sidebar-toggle-button {
-    font-family: 'American Typewriter', 'Courier Prime', monospace !important;
+    font-family: var(--font-ui-override) !important;
 }
 
 /* EDITOR FONT */
 .markdown-source-view, .markdown-preview-view, .cm-line, .markdown-rendered, .prose {
-    font-family: 'Georgia', serif !important;
+    font-family: var(--font-text-override) !important;
 }
 
 .theme-dark .markdown-source-view, .theme-dark .markdown-preview-view, .theme-dark .cm-s-obsidian .cm-line, .theme-dark .nav-folder-title-content, .theme-dark .nav-file-title-content { color: var(--b-dark-text-main) !important; }
@@ -462,13 +534,19 @@ body {
 
 /* HEADERS */
 .inline-title, h1, h2, h3, h4, h5, h6, .cm-header { 
-    font-family: 'American Typewriter', 'Courier Prime', monospace !important; 
+    font-family: var(--font-ui-override) !important; 
     font-weight: normal !important; 
 }
 
 .theme-dark .inline-title, .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6, .theme-dark .cm-header { color: var(--b-dark-accent) !important; }
 .theme-light .inline-title, .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light h5, .theme-light h6, .theme-light .cm-header { color: var(--b-light-accent) !important; }
-.markdown-preview-view p, .markdown-source-view.mod-cm6 .cm-line { text-align: justify; text-justify: inter-word; }
+
+/* TEXT ALIGNMENT AND LINE HEIGHT */
+.markdown-preview-view p, .markdown-source-view.mod-cm6 .cm-line { 
+    text-align: var(--text-align-mode); 
+    text-justify: inter-word; 
+    line-height: var(--line-height-custom);
+}
 
 /* BLOCKQUOTE */
 .markdown-preview-view blockquote { border-left: 4px solid var(--quote-opening-modifier) !important; font-size: 95%; text-align: center; hyphens: auto; color: var(--text-normal) !important; padding: 1px 2%; margin: 15pt 0; }
@@ -558,7 +636,6 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 
 .markdown-preview-view, .markdown-source-view { max-width: var(--editor-width); margin: auto; }
 
-.markdown-preview-view p, .cm-content .cm-line { line-height: 1.8; }
 ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background-color: rgba(100, 100, 100, 0.5); border-radius: 4px; } body:not(:hover) ::-webkit-scrollbar-thumb { background-color: transparent; }
 ::-webkit-scrollbar-corner { background: transparent !important; }
 
@@ -566,7 +643,7 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 /* 11. DATABASES */
 /* ================================================================= */
 .bases-td, .bases-td a, .bases-cell, .bases-title {
-    font-family: 'American Typewriter', 'Courier Prime', monospace !important;
+    font-family: var(--font-ui-override) !important;
 }
 
 .bases-td input[type="checkbox"] { 
@@ -590,8 +667,8 @@ body.theme-light .search-result-file-title { color: black !important; font-weigh
 /* ================================================================= */
 /* 13. HIGHLIGHTING */
 /* ================================================================= */
-body { --text-highlight-bg: rgba(0, 102, 255, 0.2) !important; }
-mark, .cm-highlight { background-color: rgba(0, 102, 255, 0.2) !important; color: inherit !important; }
+body { --text-highlight-bg: var(--highlight-color-custom) !important; }
+mark, .cm-highlight { background-color: var(--highlight-color-custom) !important; color: inherit !important; }
 
 /* ================================================================= */
 /* 14. NEW TAB PAGE */

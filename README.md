@@ -28,6 +28,8 @@ You can tweak the following visual elements via the [**Style Settings**](https:/
 * **Colours:** Change the specific accent colours for Light and Dark modes, and the text highlight colour.
 * **Layout:** Adjust the maximum editor width.
 
+![](/text-alignment.png)
+
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)

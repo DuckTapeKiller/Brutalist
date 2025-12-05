@@ -1,8 +1,6 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
-![](/cover.png)
-
 **What is it?**
 
 **Brutalist is a theme designed specifically for heavy readers and writers.**
@@ -23,12 +21,8 @@ This theme is tailored for individuals who dedicate significant time to reading 
 ## Customisation
 You can tweak the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
-* **Typography:** Customise fonts for the body and UI, and adjust line height.
 * **Alignment:** Toggle between Justified text (default) and Left alignment.
-* **Colours:** Change the specific accent colours for Light and Dark modes, and the text highlight colour.
 * **Layout:** Adjust the maximum editor width.
-
-![](/text-alignment.png)
 
 ## Gallery
 ### Dark Mode

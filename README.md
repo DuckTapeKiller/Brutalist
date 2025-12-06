@@ -1,6 +1,8 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
+![](/cover.png)
+
 **What is it?**
 
 **Brutalist is a theme designed specifically for heavy readers and writers.**
@@ -16,7 +18,7 @@ The objective was to create a comfortable environment that facilitates focused r
 
 **Who is this theme for?**
 
-This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers and coders with an immersive environment conducive to focused output.
+This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
 
 ## Customisation
 You can tweak the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:

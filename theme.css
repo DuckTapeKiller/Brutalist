@@ -81,7 +81,7 @@ settings:
 /* ================================================================= */
 /* 0. MAIN VARIABLES AND PALETTE */
 /* ================================================================= */
-body {
+:root body {
   --editor-width: 700px;
   
   --font-text-override: 'Montserrat', sans-serif; 
@@ -144,6 +144,8 @@ body {
 
 /* DARK MODE */
 .theme-dark {
+  --markdown-formatting-color: #66b3ff; /* Visible Blue for Dark Mode */
+
   --accent-h: 0;
   --accent-s: 0%;
   --accent-l: 75%; 
@@ -193,6 +195,8 @@ body {
 
 /* LIGHT MODE */
 .theme-light {
+  --markdown-formatting-color: #2962ff; /* Blue for Markdown Syntax */
+
   --accent-h: 0;
   --accent-s: 0%;
   --accent-l: 35%; 
@@ -830,4 +834,12 @@ mark, .cm-highlight { background-color: var(--highlight-color-custom) !important
 .nav-header,
 .nav-buttons-container {
     font-family: var(--font-ui-override, 'Marcellus', serif) !important;
+}
+
+/* ================================================================= */
+/* 22. MARKDOWN FORMATTING (SHRINK & COLOR) */
+/* ================================================================= */
+.markdown-source-view.mod-cm6 .cm-line span.cm-formatting:not(.cm-s-obsidian span.cm-link, .cm-s-obsidian span.cm-hmd-internal-link, .cm-s-obsidian span.cm-url, .cm-s-obsidian span.cm-attribute, .cm-s-obsidian span.cm-quote, span.cm-hashtag.cm-hashtag-begin, .cm-s-obsidian span.cm-formatting-list) {
+    color: var(--markdown-formatting-color) !important;
+    font-size: 0.8em !important;
 }

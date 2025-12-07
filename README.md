@@ -64,7 +64,8 @@ The following fonts are sourced from Google Fonts:
 * **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
 * **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
 
-Clarification: Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
+ **Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
+
 ---
 
 Created by **DuckTapeKiller**

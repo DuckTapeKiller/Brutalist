@@ -23,6 +23,7 @@ This theme is tailored for individuals who dedicate significant time to reading 
 ## Customisation
 You can tweak the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
+* **Fonts:** Choose fonts from a curated selection for UI and body. 
 * **Alignment:** Toggle between Justified text (default) and Left alignment.
 * **Layout:** Adjust the maximum editor width.
 

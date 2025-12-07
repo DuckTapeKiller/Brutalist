@@ -37,7 +37,7 @@ You can configure the following visual elements via the [**Style Settings**](htt
 
 ## Installation
 
-### Method 1: Community Themes
+### Method 1: Community Themes (Currently this plugin is pending review)
 1. Open **Settings** > **Appearance**.
 2. Click **Manage** under Themes.
 3. Search for **Brutalist**.

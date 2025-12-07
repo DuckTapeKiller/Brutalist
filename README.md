@@ -47,6 +47,22 @@ You can tweak the following visual elements via the [**Style Settings**](https:/
 1. Download `theme.css` and `manifest.json` from this repository.
 2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3. Reload Obsidian and select the theme.
+### Fonts Used in This Theme
+
+This theme uses the following typefaces:
+
+**iA Writer Family**
+* **iA Writer Duo S**, **iA Writer Mono S**, and **iA Writer Quattro S** are sourced from the [iA-Fonts GitHub repository](https://github.com/iaolo/iA-Fonts).
+
+**Google Fonts**
+The following fonts are sourced from Google Fonts:
+* **Josefin Slab** by Santiago Orozco: [Source](https://fonts.google.com/specimen/Josefin+Slab)
+* **Manrope** by Mikhail Sharanda: [Source](https://fonts.google.com/specimen/Manrope)
+* **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
+* **Montserrat** by Julieta Ulanovsky: [Source](https://fonts.google.com/specimen/Montserrat)
+* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
+* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
+* **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
 
 ---
 

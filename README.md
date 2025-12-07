@@ -21,11 +21,11 @@ The objective was to create a comfortable environment that facilitates focused r
 This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
 
 ## Customisation
-You can tweak the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
+You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
-* **Fonts:** Choose fonts from a curated selection for UI and body. 
-* **Alignment:** Toggle between Justified text (default) and Left alignment.
-* **Layout:** Adjust the maximum editor width.
+* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
+* **Alignment:** Switch between Left Align (default) and Justified text.
+* **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
 ## Gallery
 ### Dark Mode

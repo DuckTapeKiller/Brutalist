@@ -27,6 +27,19 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
+### Per-Note Styling (cssclasses)
+This theme supports the `cssclasses` property for specific overrides.
+
+**Full Width:** Although by default notes are restricted to a readable width (default 600px), which can be changed with Style Settings, you can force a specific note to use 100% of the pane width (useful for large tables). Just add the following to your frontmatter. This is particularly useful with markdown tables:
+
+    ```yaml
+    ---
+    cssclasses: full-width
+    ---
+    ```
+
+print(text)
+
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)

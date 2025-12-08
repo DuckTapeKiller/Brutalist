@@ -21,24 +21,40 @@ The objective was to create a comfortable environment that facilitates focused r
 This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
 
 ## Customisation
+There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**, or you can use them all combined.
+
+### Global Configuration (Style Settings)
 You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
-### Per-Note Styling (cssclasses)
-This theme supports the `cssclasses` property for specific overrides.
+### Per-Note Configuration (cssclasses)
+This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
 
-**Full Width:** Although by default notes are restricted to a readable width (default 600px), which can be changed with Style Settings, you can force a specific note to use 100% of the pane width (useful for large tables). Just add the following to your frontmatter. This is particularly useful with markdown tables:
+**1. Note Width Controls**
+By default, notes are restricted to a readable width (600px). You can force specific notes to use more horizontal space—useful for large tables, Kanban boards, or diagrams.
 
-    ```yaml
-    ---
-    cssclasses: full-width
-    ---
-    ```
+* **Pixel Presets:** `width-800`, `width-900`, `width-1000`, `width-1200`, `width-1600`
+* **Full Screen:** `full-width` (Uses 100% of the pane width).
 
-print(text)
+> **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
+
+**2. Table Column Layouts**
+Markdown tables often auto-expand unpredictably. These utility classes force specific columns to "shrink-to-fit" (occupying only necessary space), leaving remaining space for other columns.
+
+* **Single Columns:** `col-1-narrow`, `col-2-narrow` ... up to `col-8-narrow`.
+* **Presets:** `narrow-normal-narrow` (Shrinks columns 1 & 3; Column 2 expands).
+
+**Example Usage:**
+You can combine classes to create custom layouts. For example, to make a note 1200px wide while shrinking the 1st and 3rd columns:
+
+```yaml
+---
+cssclasses: width-1200, col-1-narrow, col-3-narrow
+---
+```
 
 ## Gallery
 ### Dark Mode

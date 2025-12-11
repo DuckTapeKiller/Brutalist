@@ -86,7 +86,7 @@ This theme uses the following typefaces:
 **Google Fonts**
 The following fonts are sourced from Google Fonts:
 * **Josefin Slab** by Santiago Orozco: [Source](https://fonts.google.com/specimen/Josefin+Slab)
-* **Manrope** by Mikhail Sharanda: [Source](https://fonts.google.com/specimen/Manrope)
+* **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
 * **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
 * **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
 * **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)

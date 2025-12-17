@@ -30,9 +30,7 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
-### Per-Note Configuration (cssclasses)
-This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
-
+### Per-Note Configuration
 **1. Note Width Controls**
 By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space. The options available:
 
@@ -48,6 +46,8 @@ By default, notes are restricted to a readable width (800px). You can force spec
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
 **2. Table Column Layouts**
+This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
+
 The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. In the YAML, simply add one of the following CSS classes:
 
 * width-800

@@ -29,10 +29,9 @@ You can configure the following visual elements via the [**Style Settings**](htt
 
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
 * **Alignment:** Switch between Left Align (default) and Justified text.
-* **Note Width:** Choose between different paragraph width options.
-* **Line height:** Manually select any line height you want. 
-* **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
-
+* **Note Width Control:** Choose between different paragraph width options.
+* **Line height:** Manually select any line height you want. It is set by defaault to 1.8.
+* **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes. 
 
 ### 1. Fonts
 

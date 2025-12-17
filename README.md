@@ -24,6 +24,7 @@ This theme is tailored for individuals who dedicate significant time to reading 
 There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**, or you can use them all combined.
 
 ### Global Configuration (Style Settings)
+
 You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
@@ -32,6 +33,7 @@ You can configure the following visual elements via the [**Style Settings**](htt
 
 ### Per-Note Configuration
 **1. Note Width Controls**
+
 By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space. The options available:
 
 * 500px
@@ -46,6 +48,7 @@ By default, notes are restricted to a readable width (800px). You can force spec
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
 **2. Table Column Layouts**
+
 This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
 
 The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. In the YAML, simply add one of the following CSS classes:

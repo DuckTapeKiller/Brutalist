@@ -30,7 +30,9 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Note Width:** Choose between different paragraph width options.
+* **Line height:** Manually select any line height you want. 
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
+
 
 ### 1. Fonts
 
@@ -52,7 +54,9 @@ The following fonts are sourced from Google Fonts:
 * **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
 * **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
 
-**Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
+**Clarification:** Typefaces are embedded within the theme, ensuring they are available offline and on any device without requiring local installation.
+
+On Style settings, you can chose any of these fonts for either Body or UI and Headers.
 
 ### 2. Alignment
 
@@ -78,13 +82,15 @@ The available options are:
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
-### 4. Table and Note Width (Per-Note Overrides)
+### 4. Line height
 
-This theme supports the `cssclasses` property to override global settings for specific files.
+On Style Settings you have an input field where you can manually select any line height you want. By default, it is set to 1.8.
 
-The width selected for your notes will also affect your tables. To apply a specific width to a particular note (and its tables), you can use the CSS classes incorporated into the theme.
+### 5. Width Per-Note Overrides
 
-Simply add one of the following classes to the **frontmatter** of the note:
+This feature is particularly useful for notes containing wide tables, although it can be applied to any note.
+
+You can use the `cssclasses` property to override the global width settings for specific files. To set a custom width for a single note (and the tables within it), add one of the following classes to the **frontmatter**:
 
 * `width-800`
 * `width-900`
@@ -110,7 +116,7 @@ cssclasses: width-1200
 
 ## Installation
 
-### Method 1: Community Themes (Currently this plugin is pending review)
+### Method 1: Community Themes (Currently this theme is pending review)
 1. Open **Settings** > **Appearance**.
 2. Click **Manage** under Themes.
 3. Search for **Brutalist**.
@@ -122,7 +128,8 @@ cssclasses: width-1200
 3. Reload Obsidian and select the theme.
 
 
-
 ---
+
+_This theme is a perpetual work in progress._
 
 Created by **DuckTapeKiller**

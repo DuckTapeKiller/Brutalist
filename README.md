@@ -31,8 +31,31 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
-### Per-Note Configuration
+### Fonts
+
+This theme contains the following typefaces:
+
+**iA Writer Family**
+* **iA Writer Duo S**, **iA Writer Mono S**, and **iA Writer Quattro S** are sourced from the [iA-Fonts GitHub repository](https://github.com/iaolo/iA-Fonts).
+
+**Google Fonts**
+The following fonts are sourced from Google Fonts:
+* **Literata** by TypeTogether : [Source](https://fonts.google.com/specimen/Literata).
+* **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
+* **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
+* **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
+* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
+* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
+* **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
+
+ **Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
 **1. Note Width Controls**
+
+### Alignment
+
+You can chose between the text being justify or left aligned.
+
+### Note width
 
 By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space. The options available:
 
@@ -47,7 +70,7 @@ By default, notes are restricted to a readable width (800px). You can force spec
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
-**2. Table Column Layouts**
+**Table layouts/width**
 
 This theme supports the `cssclasses` property to override global settings for specific files.
 
@@ -87,24 +110,8 @@ cssclasses: width-1200
 1. Download `theme.css` and `manifest.json` from this repository.
 2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3. Reload Obsidian and select the theme.
-### Fonts Used in This Theme
 
-This theme uses the following typefaces:
 
-**iA Writer Family**
-* **iA Writer Duo S**, **iA Writer Mono S**, and **iA Writer Quattro S** are sourced from the [iA-Fonts GitHub repository](https://github.com/iaolo/iA-Fonts).
-
-**Google Fonts**
-The following fonts are sourced from Google Fonts:
-* **Literata** by TypeTogether : [Source](https://fonts.google.com/specimen/Literata).
-* **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
-* **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
-* **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
-* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
-* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
-* **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
-
- **Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
 
 ---
 

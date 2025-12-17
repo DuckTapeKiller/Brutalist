@@ -49,9 +49,9 @@ By default, notes are restricted to a readable width (800px). You can force spec
 
 **2. Table Column Layouts**
 
-This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
+This theme supports the `cssclasses` property to override global settings for specific files.
 
-The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. In the YAML, simply add one of the following CSS classes:
+The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. **In the front matter**, simply add one of the following CSS classes:
 
 * width-800
 * width-900

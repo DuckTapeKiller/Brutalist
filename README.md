@@ -51,10 +51,10 @@ By default, notes are restricted to a readable width (800px). You can force spec
 The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. In the YAML, simply add one of the following CSS classes:
 
 * width-800
-* .width-900
-* .width-1000
-* .width-1200
-* .width-1600
+* width-900
+* width-1000
+* width-1200
+* width-1600
 
 Example:
 

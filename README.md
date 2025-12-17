@@ -34,25 +34,33 @@ You can configure the following visual elements via the [**Style Settings**](htt
 This theme supports the `cssclasses` property to override global settings for specific files. Add these to your note's YAML frontmatter.
 
 **1. Note Width Controls**
-By default, notes are restricted to a readable width (600px). You can force specific notes to use more horizontal space—useful for large tables, Kanban boards, or diagrams.
+By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space. The options available:
 
-* **Pixel Presets:** `width-800`, `width-900`, `width-1000`, `width-1200`, `width-1600`
-* **Full Screen:** `full-width` (Uses 100% of the pane width).
+* 500px
+* 600px (Default)
+* 700px
+* 800px
+* 900px
+* 1000px
+* Wide (1200px)
+* Full Width (100%)
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
 **2. Table Column Layouts**
-Markdown tables often auto-expand unpredictably. These utility classes force specific columns to "shrink-to-fit" (occupying only necessary space), leaving remaining space for other columns.
+The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. In the YAML, simply add one of the following CSS classes:
 
-* **Single Columns:** `col-1-narrow`, `col-2-narrow` ... up to `col-8-narrow`.
-* **Presets:** `narrow-normal-narrow` (Shrinks columns 1 & 3; Column 2 expands).
+* width-800
+* .width-900
+* .width-1000
+* .width-1200
+* .width-1600
 
-**Example Usage:**
-You can combine classes to create custom layouts. For example, to make a note 1200px wide while shrinking the 1st and 3rd columns:
+Example:
 
 ```yaml
 ---
-cssclasses: width-1200, col-1-narrow, col-3-narrow
+cssclasses: width-1200
 ---
 ```
 

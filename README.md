@@ -19,9 +19,9 @@ The objective was to create a comfortable environment that facilitates focused r
 **Who is this theme for?**
 
 This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
-
 ## Customisation
-There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**, or you can use them all combined.
+
+There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**. These methods can be combined.
 
 ### Global Configuration (Style Settings)
 
@@ -29,18 +29,22 @@ You can configure the following visual elements via the [**Style Settings**](htt
 
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
 * **Alignment:** Switch between Left Align (default) and Justified text.
+* **Note Width:** Choose between different paragraph width options.
 * **Layout:** Adjust the maximum note width (default: 600px) and line height (default: 1.8).
 
-### Fonts
+### 1. Fonts
 
 This theme contains the following typefaces:
 
 **iA Writer Family**
+
 * **iA Writer Duo S**, **iA Writer Mono S**, and **iA Writer Quattro S** are sourced from the [iA-Fonts GitHub repository](https://github.com/iaolo/iA-Fonts).
 
 **Google Fonts**
+
 The following fonts are sourced from Google Fonts:
-* **Literata** by TypeTogether : [Source](https://fonts.google.com/specimen/Literata).
+
+* **Literata** by TypeTogether: [Source](https://fonts.google.com/specimen/Literata)
 * **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
 * **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
 * **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
@@ -48,16 +52,20 @@ The following fonts are sourced from Google Fonts:
 * **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
 * **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
 
- **Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
-**1. Note Width Controls**
+**Clarification:** Typefaces are embedded within the theme, ensuring availability regardless of internet connection or device.
 
-### Alignment
+### 2. Alignment
 
-You can chose between the text being justify or left aligned.
+You can modify the alignment of your notes. In **Style Settings**, simply display the dropdown menu and select between:
 
-### Note width
+* Left aligned (default)
+* Justified
 
-By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space. The options available:
+### 3. Note Width Control
+
+By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space.
+
+The available options are:
 
 * 500px
 * 600px (Default)
@@ -70,17 +78,19 @@ By default, notes are restricted to a readable width (800px). You can force spec
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
-**Table layouts/width**
+### 4. Table and Note Width (Per-Note Overrides)
 
 This theme supports the `cssclasses` property to override global settings for specific files.
 
-The width you choose for your notes will also affect your tables. However, if you want a specific table to have a particular width, you can use CSS classes incorporated into the theme. **In the front matter**, simply add one of the following CSS classes:
+The width selected for your notes will also affect your tables. To apply a specific width to a particular note (and its tables), you can use the CSS classes incorporated into the theme.
 
-* width-800
-* width-900
-* width-1000
-* width-1200
-* width-1600
+Simply add one of the following classes to the **frontmatter** of the note:
+
+* `width-800`
+* `width-900`
+* `width-1000`
+* `width-1200`
+* `width-1600`
 
 Example:
 

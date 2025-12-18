@@ -30,7 +30,6 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Note Width Control:** Choose between different paragraph width options.
-* **Line height:** Manually select any line height you want. It is set by defaault to 1.8.
 * **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes. 
 
 ### 1. Fonts
@@ -81,11 +80,7 @@ The available options are:
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
-### 4. Line height
-
-On Style Settings you have an input field where you can manually select any line height you want. By default, it is set to 1.8.
-
-### 5. Width Per-Note Overrides
+### 4. Width Per-Note Overrides
 
 This feature is particularly useful for notes containing wide tables, although it can be applied to any note.
 

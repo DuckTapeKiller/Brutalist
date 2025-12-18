@@ -81,7 +81,7 @@ The available options are:
 
 > **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
 
-### 4. Line Spacing Width
+### 4. Line Height
 
 The theme defaults to a decimal line spacing of 1.5. You can adjust this value between 1.0 and 3.0 via the Style Settings slider to customise the vertical density of your text.
 

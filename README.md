@@ -1,6 +1,9 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)
+
+
 ![](/cover.png)
 
 **What is it?**
@@ -130,7 +133,6 @@ cssclasses: width-1200
 
 ---
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)
 
 _This theme is a perpetual work in progress._
 

@@ -30,11 +30,12 @@ There are two distinct methods for customising the theme: globally via the **Sty
 
 You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
-* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Marcellus).
+* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Sen (UI) and iA Writter Quattro S (Body)).
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Note Width Control:** Choose between different paragraph width options.
 * **Line Height:** Assign a line spacing between 1.0 and 3.0. This provides options for vertical breathing room between lines.
-* **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes. 
+* **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes.
+  * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
 
 ### 1. Fonts
 
@@ -88,7 +89,6 @@ The available options are:
 
 The theme defaults to a decimal line spacing of 1.5. You can adjust this value between 1.0 and 3.0 via the Style Settings slider to customise the vertical density of your text.
 
-
 ### 5. Width Per-Note Overrides
 
 This feature is particularly useful for notes containing wide tables, although it can be applied to any note.
@@ -106,6 +106,13 @@ Example:
 ```yaml
 ---
 cssclasses: width-1200
+---
+```
+**Hide front matter or note titles (per individual notes):** You can hide any front matter and note title by simply adding this to your cssclasses:
+
+```yaml
+---
+cssclasses: hide-all
 ---
 ```
 

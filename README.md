@@ -126,7 +126,7 @@ cssclasses: hide-all
 
 ## Installation
 
-### Method 1: Community Themes (Currently this theme is pending review)
+### Method 1: Community Themes
 1. Open **Settings** > **Appearance**.
 2. Click **Manage** under Themes.
 3. Search for **Brutalist**.

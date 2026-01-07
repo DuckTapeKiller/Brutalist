@@ -115,6 +115,73 @@ cssclasses: hide-all
 ---
 ```
 
+### 6. Dashboard & Masonry Layout System
+
+The theme allows you to organise your notes into a clean, visual grid. The system is highly versatile, supporting both native **Obsidian Callouts** and custom **HTML structures**.
+
+### 📋 Key Features
+* **Masonry Layout:** Automatic column distribution (2 columns by default, 3 on wide screens, and 1 on mobile).
+* **Hybrid Compatibility:** Works by either wrapping content in HTML containers or simply applying the CSS class to notes using standard Callouts.
+* **Brutalist Aesthetic:** Sharp edges, zero border-radius, and high-contrast UI elements.
+* **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
+
+---
+
+### 🛠️ How to Use
+
+To activate the dashboard view, add `cssclasses: dashboard` to your note's Properties (YAML).
+
+#### Option A: Using Callouts (Simple & Native)
+Every Callout within a note using the `dashboard` class will automatically transform into a masonry card.
+
+```
+---
+cssclasses: dashboard
+---
+# [Dashboard Title](Link)
+
+> [!info] My Card
+> - [[Link 1]]
+> - [[Link 2]]
+
+```
+Example:
+
+![Dashboard Callout Source](screenshots/dashboard-callout-source.png)
+
+Should look like this:
+
+![Dashboard Callout Result](screenshots/dashboard-callout-result.png)
+
+
+#### Option B: Using HTML (Advanced Control)
+
+Ideal for complex layouts or if you prefer to avoid Callout syntax.
+
+```
+---
+cssclasses: dashboard
+---
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <h2>HTML Card Title</h2>
+        <div class="link-group">
+            <a class="internal-link">Link 1</a>
+            <a class="internal-link">Link 2</a>
+        </div>
+    </div>
+</div>
+```
+Example:
+
+![Dashboard HTML Source](screenshots/dashboard-html-source.png)
+
+It should look like this:
+
+![Dashboard HTML Result](screenshots/dashboard-html-result.png)
+
+![Brutalist Dark Mode](screenshot.png)
+
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)

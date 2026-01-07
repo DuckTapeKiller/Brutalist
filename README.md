@@ -35,6 +35,7 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Line Height:** Assign a line spacing between 1.0 and 3.0. This provides options for vertical breathing room between lines.
 * **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes.
   * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
+* **Dashboard & Masonry Layout System:** Ideal to crete homepages and menus in your notes using either callouts or HTML. 
 
 ### 1. Fonts
 

@@ -181,8 +181,6 @@ It should look like this:
 
 ![Dashboard HTML Result](screenshots/dashboard-html-result.png)
 
-![Brutalist Dark Mode](screenshot.png)
-
 ## Gallery
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)

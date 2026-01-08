@@ -118,11 +118,11 @@ cssclasses: hide-all
 
 ### 6. Dashboard & Masonry Layout System
 
-The theme allows you to organise your notes into a clean, visual grid. The system is highly versatile, supporting both native **Obsidian Callouts** and custom **HTML structures**.
+The theme allows you to organise your notes into a clean, visual grid. The system is highly versatile, supporting native **Obsidian Callouts**.
 
 ### 📋 Key Features
 * **Masonry Layout:** Automatic column distribution (2 columns by default, 3 on wide screens, and 1 on mobile).
-* **Hybrid Compatibility:** Works by either wrapping content in HTML containers or simply applying the CSS class to notes using standard Callouts.
+* **Hybrid Compatibility:** Works by either wrapping content simply applying the CSS class to notes using standard Callouts.
 * **Brutalist Aesthetic:** Sharp edges, zero border-radius, and high-contrast UI elements.
 * **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
 
@@ -155,31 +155,22 @@ Should look like this:
 ![Dashboard Callout Result](screenshots/dashboard-callout-result.png)
 
 
-#### Option B: Using HTML (Advanced Control)
+#### Create Dashboard Banners 
 
-Ideal for complex layouts or if you prefer to avoid Callout syntax.
+Create a banner callout.
 
+**Usage:**
+Place this at the top of your dashboard note:
+
+```markdown
+> [!BANNER]
+> ![[your-image.png]]
 ```
----
-cssclasses: dashboard
----
-<div class="dashboard-grid">
-    <div class="dashboard-card">
-        <h2>HTML Card Title</h2>
-        <div class="link-group">
-            <a class="internal-link">Link 1</a>
-            <a class="internal-link">Link 2</a>
-        </div>
-    </div>
-</div>
-```
-Example:
 
-![Dashboard HTML Source](screenshots/dashboard-html-source.png)
 
 It should look like this:
 
-![Dashboard HTML Result](screenshots/dashboard-html-result.png)
+![Banner Result](screenshots/banner.png)
 
 ## Gallery
 ### Dark Mode

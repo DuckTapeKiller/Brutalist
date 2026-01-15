@@ -1,7 +1,7 @@
 # Brutalist Theme for Obsidian
 Compatible with Style Settings
 
-Version 2.0.0 designed for: Obsidian 1.11.4
+Version 2.0 designed for: Obsidian 1.11.4
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)
 

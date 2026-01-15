@@ -23,6 +23,7 @@ The objective was to create a comfortable environment that facilitates focused r
 **Who is this theme for?**
 
 This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
+
 ## Customisation
 
 There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**. These methods can be combined.
@@ -31,13 +32,16 @@ There are two distinct methods for customising the theme: globally via the **Sty
 
 You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
 
-* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Sen (UI) and iA Writter Quattro S (Body)).
+* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Sen (UI) and iA Writer Quattro S (Body)).
 * **Alignment:** Switch between Left Align (default) and Justified text.
 * **Note Width Control:** Choose between different paragraph width options.
-* **Line Height:** Assign a line spacing between 1.0 and 3.0. This provides options for vertical breathing room between lines.
-* **Width Per-Note Overrides:** Ideal for tables. Use `cssclasses` to override global settings and apply specific widths to individual notes.
+* **Line Height:** Assign a line spacing between 1.0 and 3.0.
+* **Inline Title Size:** Adjust the size of the inline title relative to the text.
+* **Auto-hide Side Ribbon:** Hides the left ribbon and only shows it on hover.
+* **Mobile Settings:** Configuration for the mobile drawer and navigation bar.
+* **Width Per-Note Overrides:** Use `cssclasses` to override global settings and apply specific widths to individual notes.
   * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
-* **Dashboard & Masonry Layout System:** Ideal to crete homepages and menus in your notes using either callouts or HTML. 
+* **Dashboard & Masonry Layout System:** Create homepages and menus in your notes using either callouts or HTML.
 
 ### 1. Fonts
 
@@ -89,9 +93,33 @@ The available options are:
 
 ### 4. Line Height
 
-The theme defaults to a decimal line spacing of 1.5. You can adjust this value between 1.0 and 3.0 via the Style Settings slider to customise the vertical density of your text.
+The theme defaults to a decimal line spacing of 1.5. You can adjust this value between 1.0 and 3.0 via the Style Settings slider.
 
-### 5. Width Per-Note Overrides
+### 5. Inline Title Size
+
+Adjust the size of the inline title.
+* **Range:** 1.0em to 5.0em (Default: 2em)
+
+### 6. Auto-hide Side Ribbon
+
+Toggle this option to hide the left ribbon interface. It will only appear when hovering over the left edge.
+
+### 7. Mobile Settings
+
+Settings for the Drawer and Navigation Bar.
+
+**Drawer**
+* **Light Mode:** Set background colour.
+* **Dark Mode:** Set background colour.
+
+**Navigation Bar**
+Settings for both Light and Dark modes:
+* **Border Thickness:** 0px - 10px.
+* **Opacity:** 0.0 - 1.0.
+* **Colour:** Set background colour.
+* **Nav Bar Radius:** Adjust corner curvature (0px - 30px).
+
+### 8. Width Per-Note Overrides
 
 This feature is particularly useful for notes containing wide tables, although it can be applied to any note.
 
@@ -118,13 +146,13 @@ cssclasses: hide-all
 ---
 ```
 
-### 6. Dashboard & Masonry Layout System
+### 9. Dashboard & Masonry Layout System
 
 The theme allows you to organise your notes into a clean, visual grid. The system is highly versatile, supporting native **Obsidian Callouts**.
 
 ### 📋 Key Features
 * **Masonry Layout:** Automatic column distribution (2 columns by default, 3 on wide screens, and 1 on mobile).
-* **Hybrid Compatibility:** Works by either wrapping content simply applying the CSS class to notes using standard Callouts.
+* **Hybrid Compatibility:** Works by either wrapping content, simply applying the CSS class to notes, or using standard Callouts.
 * **Brutalist Aesthetic:** Sharp edges, zero border-radius, and high-contrast UI elements.
 * **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
 
@@ -137,7 +165,7 @@ To activate the dashboard view, add `cssclasses: dashboard` to your note's Prope
 #### Option A: Using Callouts (Simple & Native)
 Every Callout within a note using the `dashboard` class will automatically transform into a masonry card.
 
-```
+```markdown
 ---
 cssclasses: dashboard
 ---
@@ -157,7 +185,7 @@ Should look like this:
 ![Dashboard Callout Result](screenshots/dashboard-callout-result.png)
 
 
-#### Create Dashboard Banners 
+#### Create Dashboard Banners
 
 Create a banner callout.
 
@@ -194,7 +222,6 @@ It should look like this:
 1. Download `theme.css` and `manifest.json` from this repository.
 2. Move these files into your vault's hidden folder: `.obsidian/themes/Brutalist/`.
 3. Reload Obsidian and select the theme.
-
 
 ---
 

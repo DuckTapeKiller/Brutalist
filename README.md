@@ -74,6 +74,8 @@ On Style settings, you can chose any of these fonts for either Body or UI and He
 You can modify the alignment of your notes. In **Style Settings**, simply display the dropdown menu and select between:
 
 * Left aligned (default)
+* Right aligned
+* Centre aligned
 * Justified
 
 ### 3. Note Width Control

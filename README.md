@@ -45,22 +45,26 @@ You can configure the following visual elements via the [**Style Settings**](htt
 
 This theme contains the following typefaces:
 
-**iA Writer Family**
+### Serif
 
-* **iA Writer Duo S**, **iA Writer Mono S**, and **iA Writer Quattro S** are sourced from the [iA-Fonts GitHub repository](https://github.com/iaolo/iA-Fonts).
-
-**Google Fonts**
-
-The following fonts are sourced from Google Fonts:
-
-* **Literata** by TypeTogether: [Source](https://fonts.google.com/specimen/Literata)
+* **Hepta Slab** by Mike LaGoudy: [Source](https://fonts.google.com/specimen/Hepta+Slab)
 * **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
+* **Libre Caslon Text** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Caslon+Text)
 * **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
-* **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
-* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
-* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
 * **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
 
+### Sans Serif
+
+* **iA Writer Duo S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
+* **iA Writer Quattro S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
+* **Libre Franklin** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Franklin)
+* **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
+* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
+
+### Monospace
+
+* **iA Writer Mono S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
+* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
 **Clarification:** Typefaces are embedded within the theme, ensuring they are available offline and on any device without requiring local installation.
 
 On Style settings, you can chose any of these fonts for either Body or UI and Headers.

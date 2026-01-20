@@ -123,6 +123,10 @@ Settings for both Light and Dark modes:
 * **Colour:** Set background colour.
 * **Nav Bar Radius:** Adjust corner curvature (0px - 30px).
 
+![brutalist](screenshots/mobile_navbar_1.png)
+
+![brutalist](screenshots/mobile_navbar_2.png)
+
 ### 8. Width Per-Note Overrides
 
 This feature is particularly useful for notes containing wide tables, although it can be applied to any note.

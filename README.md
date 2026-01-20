@@ -1,13 +1,9 @@
-# Brutalist Theme for Obsidian
+# A Theme for Obsidian
 Compatible with Style Settings
-
-Current version: v2.0.2
-
-Designed for: Obsidian 1.11.4
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)
 
-![](/cover.png)
+![brutalist](screenshots/brutalist_pixel_art.jpg)
 
 **What is it?**
 
@@ -186,7 +182,6 @@ Should look like this:
 
 ![Dashboard Callout Result](screenshots/dashboard-callout-result.png)
 
-
 #### Create Dashboard Banners
 
 Create a banner callout.
@@ -230,3 +225,5 @@ It should look like this:
 _This theme is a perpetual work in progress._
 
 Created by **DuckTapeKiller**
+
+

@@ -162,7 +162,7 @@ The theme allows you to organise your notes into a clean, visual grid. The syste
 * **Masonry Layout:** Automatic column distribution (2 columns by default, 3 on wide screens, and 1 on mobile).
 * **Hybrid Compatibility:** Works by either wrapping content, simply applying the CSS class to notes, or using standard Callouts.
 * **Brutalist Aesthetic:** Sharp edges, zero border-radius, and high-contrast UI elements.
-* **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
+
 
 ---
 
@@ -196,18 +196,25 @@ Should look like this:
 
 Create a banner callout.
 
-**Usage:**
-Place this at the top of your dashboard note:
+* **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
+* **Immersive Banners: The banner now spans the entire width of the window, reaching all the way up to the tab header (removing the top margins).
+* **Adjustable Height: You can now control exactly how tall the banner is directly via Style Settings.
+* **ard Positioning: You can control the vertical offset of your dashboard cards. Pull them up to overlap the banner or push them down below it.
+* **Transparency Control: If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a "frosted glass" effect, keeping the text readable while revealing the image behind it.
+To add a banner, simply use:
 
-```markdown
-> [!BANNER]
-> ![[your-image.png]]
+```yaml
+> [!banner]
+> ![[your_banner.jpg]]
 ```
 
+Important Considerations:
+Desktop Only: This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space, leaving you with a clean, functional list of cards and buttons.
+Hidden Interface Elements: For aesthetic reasons, when you enable the Dashboard mode, the top header buttons (the "three dots" menu and the Editing/Reading toggle) are hidden to provide a clutter-free experience. You can still switch views using the button in the Status Bar or the Command Palette.
 
 It should look like this:
 
-![Banner Result](screenshots/banner.png)
+<img width="1388" height="1064" alt="Captura de pantalla 2026-01-28 a las 15 10 30" src="https://github.com/user-attachments/assets/e20502d8-af85-447c-9c0f-e03825de871b" />
 
 ## Gallery
 ### Dark Mode

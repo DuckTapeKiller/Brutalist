@@ -177,7 +177,6 @@ Every Callout within a note using the `dashboard` class will automatically trans
 ---
 cssclasses: dashboard
 ---
-# [Dashboard Title](Link)
 
 > [!info] My Card
 > - [[Link 1]]

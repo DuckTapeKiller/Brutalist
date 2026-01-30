@@ -196,10 +196,10 @@ Should look like this:
 Create a banner callout.
 
 * **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
-* **Immersive Banners: The banner now spans the entire width of the window, reaching all the way up to the tab header (removing the top margins).
-* **Adjustable Height: You can now control exactly how tall the banner is directly via Style Settings.
-* **ard Positioning: You can control the vertical offset of your dashboard cards. Pull them up to overlap the banner or push them down below it.
-* **Transparency Control: If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a "frosted glass" effect, keeping the text readable while revealing the image behind it.
+* **Immersive Banners:** The banner now spans the entire width of the window, reaching all the way up to the tab header (removing the top margins).
+* **Adjustable Height:** You can now control exactly how tall the banner is directly via Style Settings.
+* **ard Positioning:** You can control the vertical offset of your dashboard cards. Pull them up to overlap the banner or push them down below it.
+* **Transparency Control:** If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a "frosted glass" effect, keeping the text readable while revealing the image behind it.
 To add a banner, simply use:
 
 ```yaml
@@ -209,7 +209,6 @@ To add a banner, simply use:
 
 Important Considerations:
 Desktop Only: This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space, leaving you with a clean, functional list of cards and buttons.
-Hidden Interface Elements: For aesthetic reasons, when you enable the Dashboard mode, the top header buttons (the "three dots" menu and the Editing/Reading toggle) are hidden to provide a clutter-free experience. You can still switch views using the button in the Status Bar or the Command Palette.
 
 It should look like this:
 

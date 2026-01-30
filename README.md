@@ -207,7 +207,7 @@ To add a banner, simply use:
 > ![[your_banner.jpg]]
 ```
 
-Important Considerations:
+## **Important Considerations:**
 
 * **Desktop Only:** This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space.
 

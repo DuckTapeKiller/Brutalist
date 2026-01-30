@@ -208,7 +208,10 @@ To add a banner, simply use:
 ```
 
 Important Considerations:
-Desktop Only: This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space, leaving you with a clean, functional list of cards and buttons.
+
+Desktop Only: This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space.
+
+Suggested plugin: The banner is fixed and should remain so provided your dashboards are not too long. When they are long enough to require scrolling, the banner will disappear because the varying nature of Obsidian prevents it from remaining fixed. If you plan to use very tall cards or numerous cards, I therefore developed this ultra-minimalist plugin to make the banner permanently fixed and always visible: https://github.com/DuckTapeKiller/brutalist-persistent-banner
 
 It should look like this:
 

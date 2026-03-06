@@ -1123,7 +1123,7 @@ body.theme-dark {
 
   /* Tabs */
   --tab-outline-color: transparent !important;
-  --tab-hover-bg-doc: #00526E;
+  --tab-hover-bg-doc: #000000;
   --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
   --tab-hover-text-ui: #B3B3B3;
   --tab-active-bg-sidebar: color-mix(in srgb, #ffffff, transparent 95%);
@@ -1245,7 +1245,7 @@ body.theme-light {
 
   /* Tabs */
   --tab-outline-color: transparent !important;
-  --tab-hover-bg-doc: #7a9f79;
+  --tab-hover-bg-doc: #dfdfdf;
   --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
   --tab-hover-text-ui: #000000;
   --tab-active-bg-sidebar: color-mix(in srgb, #FFFFFF, transparent 60%);

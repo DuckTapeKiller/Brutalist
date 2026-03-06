@@ -1255,7 +1255,7 @@ body.theme-light {
   --vertical-tab-header-color: #000000;
 
   /* Mobile */
-  --mobile-active-bg: #9a9a9a;
+  --mobile-active-bg: #d6d6d6;
   --mobile-navbar-border-color-light: #000000;
 
   /* Lists & Indentation */
@@ -2319,7 +2319,7 @@ body.is-mobile .side-dock-ribbon-action.is-active,
 body.is-mobile .nav-action-button.is-active,
 body.is-mobile .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
 body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
-  background-color: var(--background-secondary);
+  background-color: var(--mobile-active-bg);
 }
 
 /* Settings Form Elements */
@@ -2402,8 +2402,8 @@ body.is-mobile.theme-dark .menu .menu-item:not(.is-warning) .menu-item-icon {
 }
 
 /* Settings Items selection background */
-body.is-mobile .setting-item:active,
-body.is-mobile .setting-item.is-selected {
+body.is-mobile .setting-item.is-selected,
+body.is-mobile .setting-item.mod-action:active {
   background-color: var(--background-secondary);
 }
 
@@ -2455,7 +2455,12 @@ body.is-mobile .workspace-drawer-tab-options-list {
 }
 
 body.is-mobile .nav-buttons-container .clickable-icon.nav-action-button.is-active {
-  background-color: var(--background-secondary);
+  background-color: var(--mobile-active-bg);
+}
+
+/* Active Drawer Tab - Distinct Background */
+body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: var(--mobile-active-bg) !important;
 }
 
 /* Command Palette & Suggestions */

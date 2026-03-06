@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.1 */
+/* v3.0.2 */
 /* ================================================================= */
 
 @font-face {
@@ -1133,7 +1133,7 @@ body.theme-dark {
   --vertical-tab-header-color: #E0E0E0;
 
   /* Mobile */
-  --mobile-active-bg: #00526E;
+  --mobile-active-bg: #505050;
   --mobile-navbar-border-color-dark: #6a6a6a;
 
   /* Lists & Indentation */
@@ -1255,7 +1255,7 @@ body.theme-light {
   --vertical-tab-header-color: #000000;
 
   /* Mobile */
-  --mobile-active-bg: #7a9f79;
+  --mobile-active-bg: #9a9a9a;
   --mobile-navbar-border-color-light: #000000;
 
   /* Lists & Indentation */
@@ -2319,7 +2319,7 @@ body.is-mobile .side-dock-ribbon-action.is-active,
 body.is-mobile .nav-action-button.is-active,
 body.is-mobile .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
 body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
-  background-color: var(--mobile-active-bg);
+  background-color: var(--background-secondary);
 }
 
 /* Settings Form Elements */
@@ -2388,17 +2388,23 @@ body.is-mobile.theme-dark .menu .menu-item {
 /* Menu Items selection background (Dark/Light Mode) */
 body.is-mobile.theme-dark .menu .menu-item.is-selected,
 body.is-mobile.theme-dark .menu .menu-item:active {
-  background-color: var(--mobile-active-bg);
+  background-color: var(--background-secondary);
 }
 
 body.is-mobile.theme-light .menu .menu-item.is-selected,
 body.is-mobile.theme-light .menu .menu-item:active {
-  background-color: var(--mobile-active-bg);
+  background-color: var(--background-secondary);
 }
 
 body.is-mobile.theme-dark .menu .menu-item:not(.is-warning),
 body.is-mobile.theme-dark .menu .menu-item:not(.is-warning) .menu-item-icon {
   color: var(--text-accent);
+}
+
+/* Settings Items selection background */
+body.is-mobile .setting-item:active,
+body.is-mobile .setting-item.is-selected {
+  background-color: var(--background-secondary);
 }
 
 /* Modal Buttons & Radius */
@@ -2449,7 +2455,7 @@ body.is-mobile .workspace-drawer-tab-options-list {
 }
 
 body.is-mobile .nav-buttons-container .clickable-icon.nav-action-button.is-active {
-  background-color: var(--mobile-active-bg);
+  background-color: var(--background-secondary);
 }
 
 /* Command Palette & Suggestions */
@@ -2460,6 +2466,16 @@ body.is-mobile .prompt-input,
 body.is-mobile .prompt-input-container,
 body.is-mobile .prompt {
   border-radius: 0 !important;
+}
+
+/* Command Palette Input Pseudo-element Removal */
+body.is-mobile .prompt-input::before,
+body.is-mobile .prompt-input::after,
+body.is-mobile .prompt-input-container::before,
+body.is-mobile .prompt-input-container::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
 }
 
 body.is-mobile .suggestion-item.is-selected {
@@ -2480,11 +2496,12 @@ body.theme-dark .modal {
 body .vertical-tab-nav-item {
   border-radius: var(--menu-radius);
   border: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 body .vertical-tab-nav-item.is-active {
   border-radius: var(--menu-radius);
-  background-color: var(--text-selection);
+  background-color: var(--background-secondary);
   color: var(--text-accent-hover);
 }
 
@@ -2498,6 +2515,11 @@ body .vertical-tab-header-group-title {
 /* Settings Modal Container */
 body .mod-settings .setting-items {
   border-radius: var(--button-radius) !important;
+}
+
+/* Settings Items Mobile Tap Highlight Fix */
+body.is-mobile .setting-item {
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 /* ================================================================= */

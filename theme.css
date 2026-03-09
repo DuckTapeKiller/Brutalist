@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.2 */
+/* v3.0.3 */
 /* ================================================================= */
 
 @font-face {
@@ -950,11 +950,6 @@ body {
   --line-height: var(--line-height-custom, 1.6);
   --line-height-normal: var(--line-height-custom, 1.6);
 
-  /* Links */
-  --link-color: var(--text-accent);
-  --link-external-color: var(--text-accent);
-  --link-decoration: none;
-
   /* Code */
   --code-normal: var(--text-normal);
   --code-comment: var(--text-muted);
@@ -1153,12 +1148,17 @@ body.theme-dark {
   --tag-color: var(--dark-accent-custom);
   --tag-border-color: var(--dark-accent-custom);
   --tag-background: color-mix(in srgb, var(--dark-accent-custom), transparent 80%);
-  --tag-background-hover: #00526E;
+  --tag-background-hover: #000000;
 
   /* Calendar */
   --calendar-today-color: #feb43f;
   --calendar-dot-bg: #feb43f;
   --calendar-header-color: #d0d0d0;
+
+  /* Links */
+  --link-color: #e2e2e2;
+  --link-external-color: #e2e2e2;
+  --link-decoration: underline;
 
   /* Callouts */
   --callout-note: 96, 138, 176;
@@ -1279,12 +1279,17 @@ body.theme-light {
   --tag-color: var(--light-accent-custom);
   --tag-border-color: var(--light-accent-custom);
   --tag-background: color-mix(in srgb, var(--text-muted), transparent 90%);
-  --tag-background-hover: #7a9f79;
+  --tag-background-hover: #d6d6d6;
 
   /* Calendar */
   --calendar-today-color: #d10000;
   --calendar-dot-bg: #d10000;
   --calendar-header-color: #111111;
+
+  /* Links */
+  --link-color: #505050;
+  --link-external-color: #505050;
+  --link-decoration: underline;
 
   /* Callouts */
   --callout-note: 84, 122, 155;
@@ -2278,6 +2283,17 @@ body.theme-dark div.bases-view * {
   color: var(--bases-text-color);
 }
 
+/* Bases Cell Backgrounds (Active/Focused) */
+body.theme-light .metadata-input-longtext:focus,
+body.theme-light .metadata-input-longtext.is-focused {
+  background-color: #d6d6d6 !important;
+}
+
+body.theme-dark .metadata-input-longtext:focus,
+body.theme-dark .metadata-input-longtext.is-focused {
+  background-color: #000000 !important;
+}
+
 /* ================================================================= */
 /* 11. NEW TAB PAGE                                                  */
 /* ================================================================= */
@@ -2938,4 +2954,108 @@ body.is-mobile .workspace-drawer-inner {
   body.is-mobile .workspace-drawer {
     width: 100vw !important;
   }
+}
+
+/* ================================================================= */
+/* 19. TIMELINE                                                      */
+/* ================================================================= */
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) {
+  display: grid !important;
+  grid-template-columns: 200px 1fr !important;
+  column-gap: 0 !important;
+  list-style: none !important;
+  padding: 2rem 1rem !important;
+  margin: 0 !important;
+  position: relative !important;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--text-muted) 0px,
+    var(--text-muted) 6px,
+    transparent 6px,
+    transparent 12px
+  ) !important;
+  background-size: 4px 100% !important;
+  background-position: calc(1rem + 198px) 0 !important;
+  background-repeat: repeat-y !important;
+}
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li > .list-bullet {
+  display: none !important;
+}
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  align-self: start !important;
+}
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li > p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* DATE */
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
+  grid-column: 1 !important;
+  grid-row: span 2 !important;
+  align-self: start !important;
+  text-align: right !important;
+  padding-right: 2rem !important;
+  padding-top: 0.15rem !important;
+  padding-bottom: 2.5rem !important;
+  font-size: 1.4rem !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.3 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  color: var(--color-accent, var(--text-accent)) !important;
+  font-family: var(--font-interface) !important;
+}
+
+/* Accent solid line segment next to date */
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  right: -2px !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background-color: var(--text-selection) !important;
+  z-index: 2 !important;
+}
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::after {
+  display: none !important;
+}
+
+/* TITLE */
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
+  grid-column: 2 !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--text-normal) !important;
+  font-family: var(--font-interface) !important;
+  padding: 0.15rem 0 0.15rem 2rem !important;
+}
+
+/* CONTENT */
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+  grid-column: 2 !important;
+  font-size: 0.88rem !important;
+  color: var(--text-muted) !important;
+  line-height: 1.8 !important;
+  padding: 0 0 2.5rem 2rem !important;
+}
+
+/* Force width-800 when custom-timeline is active */
+.markdown-preview-view.custom-timeline .markdown-preview-sizer {
+  max-width: 800px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

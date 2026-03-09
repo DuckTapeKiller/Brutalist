@@ -230,13 +230,13 @@ Structure your timeline as a single, continuous unordered list. Every event must
 cssclasses: custom-timeline
 ---
 
-* 1950–1953
-* Land Reform Movement
-* Shortly after the establishment of the PRC, the Chinese Communist Party (CCP) launched a nationwide campaign to confiscate land from rural landlords and redistribute it to landless peasants.
+- 1950–1953
+- Land Reform Movement
+- Shortly after the establishment of the PRC, the Chinese Communist Party (CCP) launched a nationwide campaign to confiscate land from rural landlords and redistribute it to landless peasants.
 
-* 1951–1952
-* Three-Anti and Five-Anti Campaigns
-* These were urban reform movements designed to consolidate state control over the economy...
+- 1951–1952
+- Three-Anti and Five-Anti Campaigns
+- These were urban reform movements designed to consolidate state control over the economy...
 ```
 
 ![timeline](screenshots/timeline.png)

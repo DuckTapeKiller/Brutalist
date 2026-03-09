@@ -15,7 +15,7 @@ Its stark, geometric aesthetics prioritise function and raw form over embellishm
 
 The objective was to create a comfortable environment that facilitates focused reading and note creation through a low-distraction, text-centric interface. This aids deep work by removing visual clutter.
 
-* **Dark Mode:** Inspired by dedicated reading applications such as Instapaper and Safari’s 'Reader View', the palette is calibrated for optimal comfort in low-light conditions.
+* **Dark Mode:** Inspired by dedicated reading applications such as Instapaper and Safari’s “Reader View”, the palette is calibrated for optimal comfort in low-light conditions.
 * **Light Mode:** Offers a distinct alternative for those who prefer a brighter interface, whilst strictly adhering to the core principles of text primacy and minimal visual interruption.
 
 **Who is this theme for?**
@@ -38,7 +38,7 @@ You can configure the following visual elements via the [**Style Settings**](htt
 * **Auto-hide Side Ribbon:** Hides the left ribbon and only shows it on hover.
 * **Mobile Settings:** Configuration for the mobile drawer and navigation bar.
 * **Width Per-Note Overrides:** Use `cssclasses` to override global settings and apply specific widths to individual notes.
-  * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
+  * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
 * **Dashboard & Masonry Layout System:** Create homepages and menus in your notes using either callouts or HTML.
 
 ### 1. Fonts
@@ -199,7 +199,7 @@ Create a banner callout.
 * **Immersive Banners:** The banner now spans the entire width of the window, reaching all the way up to the tab header (removing the top margins).
 * **Adjustable Height:** You can now control exactly how tall the banner is directly via Style Settings.
 * **ard Positioning:** You can control the vertical offset of your dashboard cards. Pull them up to overlap the banner or push them down below it.
-* **Transparency Control:** If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a "frosted glass" effect, keeping the text readable while revealing the image behind it.
+* **Transparency Control:** If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a “frosted glass” effect, keeping the text readable while revealing the image behind it.
 To add a banner, simply use:
 
 ```yaml
@@ -216,6 +216,30 @@ To add a banner, simply use:
 It should look like this:
 
 <img width="1388" height="1064" alt="Captura de pantalla 2026-01-28 a las 15 10 30" src="https://github.com/user-attachments/assets/e20502d8-af85-447c-9c0f-e03825de871b" />
+
+### 10. CSS-Only Timelines
+
+The theme features a native, CSS-only timeline layout that transforms standard bulleted lists into a professional split-view chronology without requiring any external plugins. To activate it, add `cssclasses: custom-timeline` to your note's frontmatter.
+
+Structure your timeline as a single, continuous unordered list. Every event must consist of exactly three bullet points in this strict sequence: Date, Title, and Content. The theme will automatically remove the default bullet points, draw a vertical line, and format the items into a structured grid.
+
+**Example:**
+
+```markdown
+---
+cssclasses: custom-timeline
+---
+
+* 1950–1953
+* Land Reform Movement
+* Shortly after the establishment of the PRC, the Chinese Communist Party (CCP) launched a nationwide campaign to confiscate land from rural landlords and redistribute it to landless peasants.
+
+* 1951–1952
+* Three-Anti and Five-Anti Campaigns
+* These were urban reform movements designed to consolidate state control over the economy...
+```
+
+![Brutalist Dark Mode](timeline.png)
 
 ## Gallery
 ### Dark Mode
@@ -243,5 +267,3 @@ It should look like this:
 _This theme is a perpetual work in progress._
 
 Created by **DuckTapeKiller**
-
-

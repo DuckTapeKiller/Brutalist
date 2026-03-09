@@ -2957,7 +2957,7 @@ body.is-mobile .workspace-drawer-inner {
 }
 
 /* ================================================================= */
-/* 19. TIMELINE                                                      */
+/* 19. TIMELINE                                                       */
 /* ================================================================= */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) {
@@ -3058,4 +3058,50 @@ body.is-mobile .workspace-drawer-inner {
   width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* ================================================================= */
+/* 19. TIMELINE — MOBILE                                             */
+/* ================================================================= */
+
+@media (max-width: 480px) {
+
+  /* Switch to single column, move vertical line to the left edge */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) {
+    grid-template-columns: 1fr !important;
+    padding: 1rem 1rem 1rem 2rem !important;
+    background-position: 8px 0 !important;
+  }
+
+  /* DATE: full width, left-aligned, smaller, sits above its entry */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    text-align: left !important;
+    padding: 0.15rem 0 0.1rem 1.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 900 !important;
+  }
+
+  /* Move accent line to left side */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
+    right: auto !important;
+    left: -2px !important;
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  /* TITLE: full width, reduced left padding */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
+    grid-column: 1 !important;
+    padding: 0 0 0.15rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* CONTENT: full width, reduced left padding */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+    grid-column: 1 !important;
+    padding: 0 0 2rem 1.5rem !important;
+    font-size: 0.85rem !important;
+  }
 }

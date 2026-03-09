@@ -239,7 +239,7 @@ cssclasses: custom-timeline
 * These were urban reform movements designed to consolidate state control over the economy...
 ```
 
-![Brutalist Dark Mode](timeline.png)
+![timeline](screenshots/timeline.png)
 
 ## Gallery
 ### Dark Mode

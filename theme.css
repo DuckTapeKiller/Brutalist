@@ -911,6 +911,7 @@ settings:
 /* 16. MINOR COSMETIC AMENDMENTS                                     */
 /* 17. DASHBOARD CORE & LAYOUT                                       */
 /* 18. CUSTOM FEATURES IMPLEMENTATION                                */
+/* 19. TIMELINE                                                      */
 /* ================================================================= */
 
 /* ================================================================= */
@@ -1038,6 +1039,21 @@ body {
 .is-mobile,
 .ophidian-dialog {
   --input-radius: 0 !important;
+}
+
+/* TIMELINE */
+/*
+  Custom properties — tweak these to adjust the layout globally.
+  --tl-date-width   : width of the left date column
+  --tl-row-gap      : vertical spacing between timeline entries
+  --tl-dot-size     : diameter of the accent dot
+  --tl-dot-color: var(--text-selection);
+*/
+.markdown-preview-view.custom-timeline {
+  --tl-date-width: 200px;
+  --tl-row-gap: 2.5rem;
+  --tl-dot-size: 1.2rem;
+  --tl-dot-color: var(--text-selection);
 }
 
 /* ================================================================= */
@@ -2962,7 +2978,7 @@ body.is-mobile .workspace-drawer-inner {
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) {
   display: grid !important;
-  grid-template-columns: 200px 1fr !important;
+  grid-template-columns: var(--tl-date-width) 1fr !important;
   column-gap: 0 !important;
   list-style: none !important;
   padding: 2rem 1rem !important;
@@ -2976,7 +2992,7 @@ body.is-mobile .workspace-drawer-inner {
     transparent 12px
   ) !important;
   background-size: 4px 100% !important;
-  background-position: calc(1rem + 198px) 0 !important;
+  background-position: calc(1rem + var(--tl-date-width) - 2px) 0 !important;
   background-repeat: repeat-y !important;
 }
 
@@ -3005,7 +3021,7 @@ body.is-mobile .workspace-drawer-inner {
   text-align: right !important;
   padding-right: 2rem !important;
   padding-top: 0.15rem !important;
-  padding-bottom: 2.5rem !important;
+  padding-bottom: var(--tl-row-gap) !important;
   font-size: 1.4rem !important;
   font-weight: 900 !important;
   letter-spacing: -0.03em !important;
@@ -3016,16 +3032,18 @@ body.is-mobile .workspace-drawer-inner {
   font-family: var(--font-interface) !important;
 }
 
-/* Accent solid line segment next to date */
+/* Accent dot next to date */
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
   content: "" !important;
   display: block !important;
   position: absolute !important;
-  right: -2px !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  width: 4px !important;
-  background-color: var(--text-selection) !important;
+  right: 0px !important;
+  top: 8px !important;
+  height: var(--tl-dot-size) !important;
+  width: var(--tl-dot-size) !important;
+  background-color: var(--tl-dot-color) !important;
+  border-radius: 50% !important;
+  transform: translateX(50%) !important;
   z-index: 2 !important;
 }
 
@@ -3049,7 +3067,7 @@ body.is-mobile .workspace-drawer-inner {
   font-size: 0.88rem !important;
   color: var(--text-muted) !important;
   line-height: 1.8 !important;
-  padding: 0 0 2.5rem 2rem !important;
+  padding: 0 0 var(--tl-row-gap) 2rem !important;
 }
 
 /* Force width-800 when custom-timeline is active */
@@ -3065,6 +3083,10 @@ body.is-mobile .workspace-drawer-inner {
 /* ================================================================= */
 
 @media (max-width: 480px) {
+
+  .markdown-preview-view.custom-timeline {
+    --tl-row-gap: 2rem;
+  }
 
   /* Switch to single column, move vertical line to the left edge */
   .markdown-preview-view.custom-timeline ul:not(ul ul) {
@@ -3083,12 +3105,14 @@ body.is-mobile .workspace-drawer-inner {
     font-weight: 900 !important;
   }
 
-  /* Move accent line to left side */
+  /* Move dot to left side */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
     right: auto !important;
     left: -2px !important;
-    top: 0 !important;
-    bottom: 0 !important;
+    top: 8px !important;
+    height: var(--tl-dot-size) !important;
+    width: var(--tl-dot-size) !important;
+    transform: translateX(-50%) !important;
   }
 
   /* TITLE: full width, reduced left padding */
@@ -3101,7 +3125,7 @@ body.is-mobile .workspace-drawer-inner {
   /* CONTENT: full width, reduced left padding */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
     grid-column: 1 !important;
-    padding: 0 0 2rem 1.5rem !important;
+    padding: 0 0 var(--tl-row-gap) 1.5rem !important;
     font-size: 0.85rem !important;
   }
 }

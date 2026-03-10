@@ -1,177 +1,117 @@
-# A Theme for Obsidian
-Compatible with Style Settings
+# Brutalist: A Theme for Obsidian
+
+Compatible with Style Settings.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)
 
 ![brutalist](screenshots/brutalist_pixel_art.jpg)
 
+## Table of Contents
+1. [Introduction](#1-introduction)
+2. [Global Configuration](#2-global-configuration)
+   1. [Fonts](#21-fonts)
+   2. [Alignment](#22-alignment)
+   3. [Note Width Control](#23-note-width-control)
+   4. [Line Height](#24-line-height)
+   5. [Inline Title Size](#25-inline-title-size)
+   6. [Auto-hide Side Ribbon](#26-auto-hide-side-ribbon)
+   7. [Mobile Settings](#27-mobile-settings)
+3. [Per-Note Overrides](#3-per-note-overrides)
+   1. [Custom Widths and Interface Hiding](#31-custom-widths-and-interface-hiding)
+4. [Dashboard and Masonry Layout](#4-dashboard-and-masonry-layout)
+   1. [Using Callouts](#41-using-callouts)
+   2. [Dashboard Banners](#42-dashboard-banners)
+5. [CSS-Only Timelines](#5-css-only-timelines)
+6. [Gallery](#6-gallery)
+7. [Installation](#7-installation)
+## 1 Introduction
+
 **What is it?**
-
-**Brutalist is a theme designed specifically for heavy readers and writers.**
-
-Its stark, geometric aesthetics prioritise function and raw form over embellishment. The interface features a strictly angular, squared-off architecture, eliminating rounded corners for a precise, purposeful appearance. The colour scheme utilises low-contrast shades of grey and restrained accents, engineered to maintain focus and minimise visual strain during prolonged sessions. As the name suggests, the aesthetic derives from Brutalist architecture: honest, utilitarian, and bold.
+“Brutalist” is a theme designed for heavy readers and writers. Its stark, geometric aesthetics prioritise function and raw form over embellishment. The interface features a strictly angular architecture, eliminating rounded corners for a precise appearance. The colour scheme utilises low-contrast shades of grey and restrained accents to maintain focus and minimise visual strain. The aesthetic derives from Brutalist architecture: honest, utilitarian, and bold.
 
 **Design Philosophy**
+The objective is to create a comfortable environment that facilitates focused reading and note creation through a low-distraction, text-centric interface.
 
-The objective was to create a comfortable environment that facilitates focused reading and note creation through a low-distraction, text-centric interface. This aids deep work by removing visual clutter.
-
-* **Dark Mode:** Inspired by dedicated reading applications such as Instapaper and Safari’s “Reader View”, the palette is calibrated for optimal comfort in low-light conditions.
-* **Light Mode:** Offers a distinct alternative for those who prefer a brighter interface, whilst strictly adhering to the core principles of text primacy and minimal visual interruption.
+* **Dark Mode:** Inspired by dedicated reading applications such as Instapaper and Safari’s “Reader View”, the palette is calibrated for low-light conditions.
+* **Light Mode:** Offers a brighter interface whilst adhering to the core principles of text primacy.
 
 **Who is this theme for?**
+It is tailored for individuals who dedicate significant time to reading or drafting content within Obsidian. It is effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository.
 
-This theme is tailored for individuals who dedicate significant time to reading notes or drafting content within Obsidian. It is particularly effective for users leveraging the Obsidian Web Clipper to manage long-form articles, treating the vault as a reading repository. Similarly, it provides writers with an immersive environment conducive to focused output.
+## 2 Global Configuration
 
-## Customisation
+You can configure the following visual elements via the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin.
 
-There are two distinct methods for customising the theme: globally via the **Style Settings** plugin, or on a per-note basis using **cssclasses**. These methods can be combined.
+### 2.1 Fonts
 
-### Global Configuration (Style Settings)
+The theme embeds several typefaces, ensuring offline availability without local installation. In Style Settings, you can choose these for Body or UI/Headers (Default: Sen for UI, iA Writer Quattro S for Body).
 
-You can configure the following visual elements via the [**Style Settings**](https://github.com/mgmeyers/obsidian-style-settings) plugin:
+* **Serif:** Hepta Slab, Libre Baskerville, Libre Caslon Text, Marcellus, Spectral.
+* **Sans Serif:** iA Writer Duo S, iA Writer Quattro S, Libre Franklin, Montserrat, Sen.
+* **Monospace:** iA Writer Mono S, Noto Sans Mono.
 
-* **Fonts:** Select distinct typefaces for the body text and the UI/headers (Default: Sen (UI) and iA Writer Quattro S (Body)).
-* **Alignment:** Switch between Left Align (default) and Justified text.
-* **Note Width Control:** Choose between different paragraph width options.
-* **Line Height:** Assign a line spacing between 1.0 and 3.0.
-* **Inline Title Size:** Adjust the size of the inline title relative to the text.
-* **Auto-hide Side Ribbon:** Hides the left ribbon and only shows it on hover.
-* **Mobile Settings:** Configuration for the mobile drawer and navigation bar.
-* **Width Per-Note Overrides:** Use `cssclasses` to override global settings and apply specific widths to individual notes.
-  * **Hide both front matter and note titles (per individual notes):** Ideal for Homepage or tables.
-* **Dashboard & Masonry Layout System:** Create homepages and menus in your notes using either callouts or HTML.
+### 2.2 Alignment
 
-### 1. Fonts
-
-This theme contains the following typefaces:
-
-### Serif
-
-* **Hepta Slab** by Mike LaGoudy: [Source](https://fonts.google.com/specimen/Hepta+Slab)
-* **Libre Baskerville** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Baskerville)
-* **Libre Caslon Text** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Caslon+Text)
-* **Marcellus** by Astigmatic: [Source](https://fonts.google.com/specimen/Marcellus)
-* **Spectral** by Production Type: [Source](https://fonts.google.com/specimen/Spectral)
-
-### Sans Serif
-
-* **iA Writer Duo S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-* **iA Writer Quattro S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-* **Libre Franklin** by Impallari Type: [Source](https://fonts.google.com/specimen/Libre+Franklin)
-* **Montserrat** by Julieta Ulanovsky, Sol Matas, Juan Pablo del Peral and Jacques Le Bailly: [Source](https://fonts.google.com/specimen/Montserrat)
-* **Sen** by Kosal Sen: [Source](https://fonts.google.com/specimen/Sen)
-
-### Monospace
-
-* **iA Writer Mono S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-* **Noto Sans Mono** by Google: [Source](https://fonts.google.com/noto/specimen/Noto+Sans+Mono)
-**Clarification:** Typefaces are embedded within the theme, ensuring they are available offline and on any device without requiring local installation.
-
-On Style settings, you can chose any of these fonts for either Body or UI and Headers.
-
-### 2. Alignment
-
-You can modify the alignment of your notes. In **Style Settings**, simply display the dropdown menu and select between:
-
+Modify text alignment via the dropdown menu in Style Settings:
 * Left aligned (default)
 * Right aligned
 * Centre aligned
 * Justified
 
-### 3. Note Width Control
+### 2.3 Note Width Control
 
-By default, notes are restricted to a readable width (800px). You can force specific notes to use more horizontal space.
+Notes are restricted to a readable width (800px) by default. Options include:
+* 500px, 600px, 700px, 800px, 900px, 1000px, Wide (1200px), Full Width (100%).
 
-The available options are:
+> **Note on Mobile:** Width constraints apply to desktop only. On mobile devices, the theme fits content to the screen width.
 
-* 500px
-* 600px (Default)
-* 700px
-* 800px
-* 900px
-* 1000px
-* Wide (1200px)
-* Full Width (100%)
+### 2.4 Line Height
 
-> **Note on Mobile:** These width constraints apply to **Desktop** only. On mobile devices, the theme ignores these classes and fits content to the screen width.
+Default decimal line spacing is 1.5. Adjust between 1.0 and 3.0 via the Style Settings slider.
 
-### 4. Line Height
+### 2.5 Inline Title Size
 
-The theme defaults to a decimal line spacing of 1.5. You can adjust this value between 1.0 and 3.0 via the Style Settings slider.
+Adjust the size of the inline title relative to the text. Range: 1.0em to 5.0em (Default: 2em).
 
-### 5. Inline Title Size
+### 2.6 Auto-hide Side Ribbon
 
-Adjust the size of the inline title.
-* **Range:** 1.0em to 5.0em (Default: 2em)
+Toggle this option to hide the left ribbon interface. It appears when hovering over the left edge.
 
-### 6. Auto-hide Side Ribbon
+### 2.7 Mobile Settings
 
-Toggle this option to hide the left ribbon interface. It will only appear when hovering over the left edge.
-
-### 7. Mobile Settings
-
-Settings for the Drawer and Navigation Bar.
-
-**Drawer**
-* **Light Mode:** Set background colour.
-* **Dark Mode:** Set background colour.
-
-**Navigation Bar**
-Settings for both Light and Dark modes:
-* **Border Thickness:** 0px - 10px.
-* **Opacity:** 0.0 - 1.0.
-* **Colour:** Set background colour.
-* **Nav Bar Radius:** Adjust corner curvature (0px - 30px).
+Configure the mobile drawer and navigation bar.
+* **Drawer:** Set background colour for Light and Dark modes.
+* **Navigation Bar:** Set border thickness (0px - 10px), opacity (0.0 - 1.0), background colour, and radius (0px - 30px).
 
 ![brutalist](screenshots/mobile_navbar_1.png)
-
 ![brutalist](screenshots/mobile_navbar_2.png)
 
-### 8. Width Per-Note Overrides
+## 3 Per-Note Overrides
 
-This feature is particularly useful for notes containing wide tables, although it can be applied to any note.
+Use the `cssclasses` property in your frontmatter to override global settings for specific files.
 
-You can use the `cssclasses` property to override the global width settings for specific files. To set a custom width for a single note (and the tables within it), add one of the following classes to the **frontmatter**:
+### 3.1 Custom Widths and Interface Hiding
 
-* `width-800`
-* `width-900`
-* `width-1000`
-* `width-1200`
-* `width-1600`
+To set a custom width, add one of the following classes: `width-800`, `width-900`, `width-1000`, `width-1200`, `width-1600`.
 
-Example:
+To hide frontmatter and note titles (useful for homepages or tables), use `hide-all`.
 
+Example combining both:
 ```yaml
 ---
-cssclasses: width-1200
----
-```
-**Hide front matter or note titles (per individual notes):** You can hide any front matter and note title by simply adding this to your cssclasses:
-
-```yaml
----
-cssclasses: hide-all
+cssclasses:
+  - width-1200
+  - hide-all
 ---
 ```
 
-### 9. Dashboard & Masonry Layout System
+## 4 Dashboard and Masonry Layout
 
-The theme allows you to organise your notes into a clean, visual grid. The system is highly versatile, supporting native **Obsidian Callouts**.
+Organise notes into a clean grid. The system supports native Obsidian callouts, automatically distributing columns (2 by default, 3 on wide screens, 1 on mobile). To activate, add `cssclasses: dashboard` to your frontmatter.
 
-### 📋 Key Features
-* **Masonry Layout:** Automatic column distribution (2 columns by default, 3 on wide screens, and 1 on mobile).
-* **Hybrid Compatibility:** Works by either wrapping content, simply applying the CSS class to notes, or using standard Callouts.
-* **Brutalist Aesthetic:** Sharp edges, zero border-radius, and high-contrast UI elements.
+### 4.1 Using Callouts
 
-
----
-
-### 🛠️ How to Use
-
-To activate the dashboard view, add `cssclasses: dashboard` to your note's Properties (YAML).
-
-#### Option A: Using Callouts (Simple & Native)
-Every Callout within a note using the `dashboard` class will automatically transform into a masonry card.
+Every callout within a `dashboard` note transforms into a masonry card.
 
 ```markdown
 ---
@@ -181,78 +121,59 @@ cssclasses: dashboard
 > [!info] My Card
 > - [[Link 1]]
 > - [[Link 2]]
-
 ```
-Example:
-
-![Dashboard Callout Source](screenshots/dashboard-callout-source.png)
-
-Should look like this:
 
 ![Dashboard Callout Result](screenshots/dashboard-callout-result.png)
 
-#### Create Dashboard Banners
+### 4.2 Dashboard Banners
 
-Create a banner callout.
+Create a full-width banner callout that spans to the tab header. Adjust height, card vertical offset, and banner transparency (for a “frosted glass” effect) via Style Settings.
 
-* **Full Customisation:** Integrated with *Style Settings* to adjust column widths and grid spacing.
-* **Immersive Banners:** The banner now spans the entire width of the window, reaching all the way up to the tab header (removing the top margins).
-* **Adjustable Height:** You can now control exactly how tall the banner is directly via Style Settings.
-* **ard Positioning:** You can control the vertical offset of your dashboard cards. Pull them up to overlap the banner or push them down below it.
-* **Transparency Control:** If you choose to overlap your cards with the banner, you can now adjust their transparency level in Style Settings. This creates a “frosted glass” effect, keeping the text readable while revealing the image behind it.
-To add a banner, simply use:
-
-```yaml
+```markdown
 > [!banner]
 > ![[your_banner.jpg]]
 ```
 
-## **Important Considerations:**
+**Important Considerations:**
+* **Desktop Only:** Banners are hidden on mobile to save space.
+* **Fixed Positioning:** The banner is fixed. For dashboards requiring scrolling, it is recommended to use the [Brutalist Persistent Banner](https://github.com/DuckTapeKiller/brutalist-persistent-banner) plugin to keep it permanently visible.
 
-* **Desktop Only:** This banner update applies strictly to the Desktop interface. On mobile, the banner is automatically hidden to save screen space.
+<img width="1388" height="1064" alt="Screenshot" src="https://github.com/user-attachments/assets/e20502d8-af85-447c-9c0f-e03825de871b" />
 
-* **Suggested plugin:** The banner is fixed and should remain so provided your dashboards are not too long. When they are long enough to require scrolling, the banner will disappear because the varying nature of Obsidian prevents it from remaining fixed. If you plan to use very tall cards or numerous cards, I therefore developed this ultra-minimalist plugin to make the banner permanently fixed and always visible: https://github.com/DuckTapeKiller/brutalist-persistent-banner
+## 5 CSS-Only Timelines
 
-It should look like this:
-
-<img width="1388" height="1064" alt="Captura de pantalla 2026-01-28 a las 15 10 30" src="https://github.com/user-attachments/assets/e20502d8-af85-447c-9c0f-e03825de871b" />
-
-### 10. CSS-Only Timelines
-
-The theme features a native, CSS-only timeline layout that transforms standard bulleted lists into a professional split-view chronology without requiring any external plugins. To activate it, add `cssclasses: custom-timeline` to your note's frontmatter.
-
-Structure your timeline as a single, continuous unordered list. Every event must consist of exactly three bullet points in this strict sequence: Date, Title, and Content. The theme will automatically remove the default bullet points, draw a vertical line, and format the items into a structured grid.
-
-**Example:**
+A native layout transforming bulleted lists into a split-view chronology. Add `cssclasses: custom-timeline` to the frontmatter. Structure the timeline as a single unordered list with three bullet points per event: Date, Title, and Content.
 
 ```markdown
 ---
-cssclasses: custom-timeline
+cssclasses:
+  - custom-timeline
+  - hide-all
 ---
 
 - 1950–1953
 - Land Reform Movement
-- Shortly after the establishment of the PRC, the Chinese Communist Party (CCP) launched a nationwide campaign to confiscate land from rural landlords and redistribute it to landless peasants.
+- Shortly after the establishment of the PRC, the Chinese Communist Party (CCP) launched a nationwide campaign to confiscate land from rural landlords and redistribute it to landless peasants. This movement violently dismantled the traditional rural class structure and consolidated CCP control in the countryside.
 
 - 1951–1952
 - Three-Anti and Five-Anti Campaigns
-- These were urban reform movements designed to consolidate state control over the economy...
+- These were urban reform movements designed to consolidate state control over the economy. The "Three-Anti" campaign targeted communist cadres for corruption, waste, and bureaucracy. The "Five-Anti" campaign targeted the capitalist class, penalising business owners for bribery, tax evasion, theft of state property, cheating on government contracts, and stealing state economic information.
 ```
 
 ![timeline](screenshots/timeline.png)
 
-## Gallery
+## 6 Gallery
+
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)
 
 ### Light Mode
-*Features distinct accents and clear visual hierarchy.*
 ![Brutalist Light Mode](screenshot-light.png)
 
-## Installation
+## 7 Installation
 
 ### Method 1: Community Themes
-1. Open **Settings** > **Appearance**.
+1. Open **Settings > Appearance**.
 2. Click **Manage** under Themes.
 3. Search for **Brutalist**.
 4. Click **Install** and then **Use**.

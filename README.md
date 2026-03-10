@@ -26,7 +26,6 @@ Compatible with Style Settings.
 7. [Installation](#7-installation)
 - [SUMMARY: ALL CSSCLASSES AVAILABLE](#summary-all-cssclasses-available)
 
-## SUMMARY: ALL CSSCLASSES AVAILABLE
 ## 1 Introduction
 
 **What is it?**

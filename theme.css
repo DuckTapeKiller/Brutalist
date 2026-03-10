@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.3 */
+/* v3.0.4 */
 /* ================================================================= */
 
 @font-face {
@@ -2976,6 +2976,11 @@ body.is-mobile .workspace-drawer-inner {
 /* 19. TIMELINE                                                       */
 /* ================================================================= */
 
+/* 19A. GRID LAYOUT + VERTICAL DASHED LINE
+   Sets up the two-column grid (date | content) and draws the
+   vertical dashed line using a repeating-linear-gradient as a
+   background stripe positioned on the border between columns. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) {
   display: grid !important;
   grid-template-columns: var(--tl-date-width) 1fr !important;
@@ -2996,6 +3001,10 @@ body.is-mobile .workspace-drawer-inner {
   background-repeat: repeat-y !important;
 }
 
+/* 19B. LIST ITEM RESETS
+   Removes Obsidian's default bullet markers and spacing from all
+   list items so the grid layout has full control over positioning. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li > .list-bullet {
   display: none !important;
 }
@@ -3013,7 +3022,11 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0 !important;
 }
 
-/* DATE */
+/* 19C. DATE ITEM (every 3n+1)
+   The first item of each group. Spans 2 rows so it sits beside both
+   the title and content. Right-aligned, large bold accent-colored text.
+   The transition here drives the hover text effect in 19H. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
   grid-column: 1 !important;
   grid-row: span 2 !important;
@@ -3030,9 +3043,14 @@ body.is-mobile .workspace-drawer-inner {
   overflow-wrap: break-word !important;
   color: var(--color-accent, var(--text-accent)) !important;
   font-family: var(--font-interface) !important;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 
-/* Accent dot next to date */
+/* 19D. DOT MARKER (::before on date item)
+   The circular dot sitting on the vertical line, level with the date.
+   Positioned at the right edge of the date column and shifted 50%
+   right so it straddles the line. Drives the pulse animation in 19L. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
   content: "" !important;
   display: block !important;
@@ -3045,13 +3063,21 @@ body.is-mobile .workspace-drawer-inner {
   border-radius: 50% !important;
   transform: translateX(50%) !important;
   z-index: 2 !important;
+  animation: dot-pulse 4s ease-in-out infinite !important;
 }
+
+/* 19E. ::after RESERVED
+   Kept hidden — used by the hover highlight in 19I to span
+   a background block across both grid columns. */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::after {
   display: none !important;
 }
 
-/* TITLE */
+/* 19F. TITLE ITEM (every 3n+2)
+   The second item in each group. Bold, normal-colored heading text
+   sitting in column 2, directly to the right of the date. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
   grid-column: 2 !important;
   font-size: 1.1rem !important;
@@ -3061,7 +3087,10 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0.15rem 0 0.15rem 2rem !important;
 }
 
-/* CONTENT */
+/* 19G. CONTENT ITEM (every 3n)
+   The third item in each group. Smaller muted body text beneath
+   the title. Bottom padding uses --tl-row-gap to space out entries. */
+
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
   grid-column: 2 !important;
   font-size: 0.88rem !important;
@@ -3070,7 +3099,10 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0 0 var(--tl-row-gap) 2rem !important;
 }
 
-/* Force width-800 when custom-timeline is active */
+/* 19H. MAX WIDTH CONSTRAINT
+   Caps the timeline at 800px and centers it, overriding any
+   wider readable-line-length set by the theme. */
+
 .markdown-preview-view.custom-timeline .markdown-preview-sizer {
   max-width: 800px !important;
   width: 100% !important;
@@ -3078,10 +3110,56 @@ body.is-mobile .workspace-drawer-inner {
   margin-right: auto !important;
 }
 
+/* 19I. HOVER — FULL ROW HIGHLIGHT
+   Hovering the date item highlights all three items in that group
+   (date, title, content) with a soft accent background.
+   The adjacent sibling selectors (+li, +li+li) reach the title
+   and content from the date item. */
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
+  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
+  border-radius: 6px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+/* 19J. HOVER — DOT SCALE + GLOW
+   On hover the dot scales up slightly and gains a soft outer ring.
+   color-mix is used here (outside @keyframes) where it is well supported. */
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
+  transform: translateX(50%) scale(1.4) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tl-dot-color) 30%, transparent) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 19K. ENTRANCE ANIMATION — SLIDE IN FROM RIGHT
+   Title and content items slide in from the right on load.
+   Each pair has a manually staggered delay so entries appear
+   in sequence top to bottom.
+   Extend the delay list if your timeline has more than 5 entries. */
+
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2),
+.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+  animation: slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+li:nth-child(2)  { animation-delay: 0.15s; }
+li:nth-child(3)  { animation-delay: 0.2s; }
+li:nth-child(5)  { animation-delay: 0.3s; }
+li:nth-child(6)  { animation-delay: 0.35s; }
+li:nth-child(8)  { animation-delay: 0.45s; }
+li:nth-child(9)  { animation-delay: 0.5s; }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 /* ================================================================= */
 /* 19. TIMELINE — MOBILE                                             */
 /* ================================================================= */
-
 @media (max-width: 480px) {
 
   .markdown-preview-view.custom-timeline {
@@ -3093,6 +3171,7 @@ body.is-mobile .workspace-drawer-inner {
     grid-template-columns: 1fr !important;
     padding: 1rem 1rem 1rem 2rem !important;
     background-position: 8px 0 !important;
+    background-size: 4px 12px !important;
   }
 
   /* DATE: full width, left-aligned, smaller, sits above its entry */
@@ -3105,7 +3184,7 @@ body.is-mobile .workspace-drawer-inner {
     font-weight: 900 !important;
   }
 
-  /* Move dot to left side */
+  /* Move dot to left side — pulse disabled on mobile for performance */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
     right: auto !important;
     left: -2px !important;
@@ -3113,19 +3192,37 @@ body.is-mobile .workspace-drawer-inner {
     height: var(--tl-dot-size) !important;
     width: var(--tl-dot-size) !important;
     transform: translateX(-50%) !important;
+    animation: none !important;
   }
 
-  /* TITLE: full width, reduced left padding */
+  /* Dot hover scale disabled on mobile — tap triggers :hover */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
+    transform: translateX(-50%) scale(1) !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+
+  /* Hover row highlight disabled on mobile */
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
+  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
+    background-color: transparent !important;
+    transition: none !important;
+  }
+
+  /* TITLE: full width, reduced left padding — slide-in disabled on mobile */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
     grid-column: 1 !important;
     padding: 0 0 0.15rem 1.5rem !important;
     font-size: 1rem !important;
+    animation: none !important;
   }
 
-  /* CONTENT: full width, reduced left padding */
+  /* CONTENT: full width, reduced left padding — slide-in disabled on mobile */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
     grid-column: 1 !important;
     padding: 0 0 var(--tl-row-gap) 1.5rem !important;
     font-size: 0.85rem !important;
+    animation: none !important;
   }
 }

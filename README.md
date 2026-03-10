@@ -24,6 +24,9 @@ Compatible with Style Settings.
 5. [CSS-Only Timelines](#5-css-only-timelines)
 6. [Gallery](#6-gallery)
 7. [Installation](#7-installation)
+- [SUMMARY: ALL CSSCLASSES AVAILABLE](#summary-all-cssclasses-available)
+
+## SUMMARY: ALL CSSCLASSES AVAILABLE
 ## 1 Introduction
 
 **What is it?**
@@ -162,6 +165,9 @@ cssclasses:
 
 ![timeline](screenshots/timeline.png)
 
+---
+Would you like me to map out the built-in callout types and their corresponding rgb colour values from the CSS?
+
 ## 6 Gallery
 
 ### Dark Mode
@@ -184,6 +190,20 @@ cssclasses:
 3. Reload Obsidian and select the theme.
 
 ---
+
+## SUMMARY: ALL CSSCLASSES AVAILABLE
+
+| `cssclass` | Function | Behaviour Details |
+| :--- | :--- | :--- |
+| `width-800` | Sets fixed note width | Constrains the editor and reading view content to a maximum width of 800px. Centers the content. |
+| `width-900` | Sets fixed note width | Constrains the editor and reading view content to a maximum width of 900px. Centers the content. |
+| `width-1000` | Sets fixed note width | Constrains the editor and reading view content to a maximum width of 1000px. Centers the content. |
+| `width-1200` | Sets fixed note width | Constrains the editor and reading view content to a maximum width of 1200px. Centers the content. |
+| `width-1600` | Sets fixed note width | Constrains the editor and reading view content to a maximum width of 1600px. Centers the content. |
+| `full-width` | Sets responsive width | Forces the note content to span 100% of the available viewing pane. |
+| `hide-all` | UI visibility toggle | Completely hides the frontmatter container, metadata properties, and inline note titles. |
+| `dashboard` | Activates grid layout | Transforms the note into a responsive masonry grid structure. Converts standard callouts into floating dashboard cards. |
+| `custom-timeline` | Activates timeline layout | Converts standard unordered lists into a split-view, CSS-only vertical chronology grid. |
 
 _This theme is a perpetual work in progress._
 

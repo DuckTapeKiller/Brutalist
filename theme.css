@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.4 */
+/* v3.0.5 */
 /* ================================================================= */
 
 @font-face {
@@ -441,7 +441,6 @@ settings:
     title: Typography & Typeface
     type: heading
     level: 1
-    collapsed: false
   - id: font-text-override
     title: Body Font
     description: Main font for reading notes.
@@ -526,7 +525,6 @@ settings:
     title: Light mode Font Colours
     type: heading
     level: 2
-    collapsed: false
   - id: ui-font-color-light
     title: UI Font Colour (Light Mode)
     type: variable-select
@@ -567,7 +565,6 @@ settings:
     title: Dark Mode Font Colours
     type: heading
     level: 2
-    collapsed: false
   - id: ui-font-color-dark
     title: UI Font Colour (Dark Mode)
     type: variable-select
@@ -626,7 +623,6 @@ settings:
     title: Page Layout & Geometry
     type: heading
     level: 1
-    collapsed: false
   - id: enable-book-style
     title: Book Style Paragraphs
     description: Removes paragraph spacing and adds indentation. (Disable for block style).
@@ -672,7 +668,7 @@ settings:
     title: Note Title Alignment
     description: Alignment of the inline title.
     type: variable-select
-    default: left
+    default: center
     options:
       - label: Left
         value: left
@@ -693,6 +689,7 @@ settings:
     title: Auto-hide Side Ribbon
     description: Hides the left ribbon and only shows it on hover.
     type: class-toggle
+    default: true
   - id: line-height-custom
     title: Line Height
     description: Vertical breathing room between lines.
@@ -705,7 +702,6 @@ settings:
     title: Dashboard Layout Settings
     type: heading
     level: 1
-    collapsed: false
   - id: dashboard-col-width
     title: Minimum Card Width
     description: The grid will fit as many columns as possible based on this width.
@@ -740,7 +736,7 @@ settings:
     title: Banner Height
     description: How tall the banner image is.
     type: variable-number-slider
-    default: 300
+    default: 600
     min: 100
     max: 600
     step: 10
@@ -749,7 +745,7 @@ settings:
     title: Banner Content Offset
     description: Controls how far down the cards start. Lower value = Higher up (More overlap with banner).
     type: variable-number-slider
-    default: 100
+    default: 150
     min: 0
     max: 400
     step: 10
@@ -758,7 +754,7 @@ settings:
     title: Card Transparency
     description: Adjusts how see-through the cards are. Higher % = More transparent.
     type: variable-number-slider
-    default: 15
+    default: 20
     min: 0
     max: 100
     step: 5
@@ -767,12 +763,10 @@ settings:
     title: Mobile Settings
     type: heading
     level: 1
-    collapsed: false
   - id: mobile-drawer-light-header
     title: Light Mode (Drawer)
     type: heading
     level: 2
-    collapsed: false
   - id: mobile-drawer-color-light
     title: Drawer Color
     type: variable-color
@@ -782,7 +776,6 @@ settings:
     title: Light Mode (Navigation Bar)
     type: heading
     level: 2
-    collapsed: false
   - id: mobile-navbar-border-width-light
     title: Nav Bar Border Thickness
     type: variable-number-slider
@@ -825,7 +818,6 @@ settings:
     title: Dark Mode (Drawer)
     type: heading
     level: 2
-    collapsed: false
   - id: mobile-drawer-color-dark
     title: Drawer Color
     type: variable-color
@@ -835,7 +827,6 @@ settings:
     title: Dark Mode (Navigation Bar)
     type: heading
     level: 2
-    collapsed: false
   - id: mobile-navbar-border-width-dark
     title: Nav Bar Border Thickness
     type: variable-number-slider
@@ -878,7 +869,6 @@ settings:
     title: Navigation Bar Universal Radius
     type: heading
     level: 2
-    collapsed: false
   - id: mobile-navbar-radius
     title: Nav Bar Radius
     type: variable-number-slider
@@ -943,7 +933,7 @@ body {
 
   /* Text Alignment, Spacing and Titles */
   --text-align-mode: left;
-  --inline-title-align: left;
+  --inline-title-align: center;
   --inline-title-size: 3em;
   --p-spacing: 1rem;
   --heading-spacing: 1.5em;
@@ -1884,9 +1874,7 @@ body .is-being-dragged :is(.nav-file-title-content, .nav-folder-title-content, .
 }
 
 /* BOOK STYLE INDENTATION (Toggleable)                               */
-
-/* --- 1. READING VIEW (The Fix) --- */
-
+/* --- READING VIEW ONLY --- */
 /* Default State: No margin, No indent */
 body.enable-book-style .markdown-preview-view p {
     margin-block-start: 0 !important;
@@ -1897,38 +1885,15 @@ body.enable-book-style .markdown-preview-view p {
     padding-bottom: 0 !important;
     text-indent: 0;
 }
-
 /* The Magic Rule: Indent ONLY if the previous element was ALSO a paragraph wrapper.
    This automatically excludes paragraphs after Headers, Lists, or manual breaks. */
 body.enable-book-style .markdown-preview-view div:has(> p) + div:has(> p) > p {
     text-indent: 1em;
 }
-
 /* Fix for Blockquotes (Don't indent inside quotes) */
 body.enable-book-style .markdown-preview-view blockquote p {
     text-indent: 0 !important;
     margin-bottom: 1rem !important;
-}
-
-/* --- 2. EDITING VIEW (Live Preview) --- */
-
-/* Default State: No spacing */
-body.enable-book-style .markdown-source-view.mod-cm6 .cm-line {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    /* Do not reset text-indent here; CodeMirror needs it for wrap math */
-}
-
-/* Indent logic: Inject an inline block at the start of the line */
-body.enable-book-style .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-header):not(.HyperMD-list-line):not(.HyperMD-quote):not(.HyperMD-codeblock) + .cm-line:not(.HyperMD-header):not(.HyperMD-list-line):not(.HyperMD-quote):not(.HyperMD-codeblock)::before {
-    content: "";
-    display: inline-block;
-    width: 1em;
-}
-
-/* Safety: Ensure empty lines don't get an indent box */
-body.enable-book-style .cm-line:has(br)::before {
-    display: none;
 }
 
 /* ================================================================= */
@@ -2345,6 +2310,11 @@ body.is-mobile .nav-buttons-container .nav-action-button {
   border-radius: var(--menu-radius) !important;
 }
 
+/* Applies color to the settings button background as well */
+body.is-mobile {
+  --settings-bg-color: var(--mobile-drawer-bg);
+}
+
 /* Active States (Global) */
 body.is-mobile .clickable-icon.is-active,
 body.is-mobile .side-dock-ribbon-action.is-active,
@@ -2385,6 +2355,7 @@ body.is-mobile.theme-light .mobile-navbar {
   background: color-mix(in srgb, var(--mobile-navbar-color-light), transparent calc((1 - var(--mobile-navbar-opacity-light)) * 100%));
   box-shadow: var(--shadow-navbar-separator-light), 0 4px 12px rgba(0, 0, 0, 0.25);
   border-width: var(--mobile-navbar-border-width-light) !important;
+  border-style: var(--mobile-navbar-border-style-light) !important;
   border-color: var(--mobile-navbar-border-color-light) !important;
   border-radius: var(--mobile-navbar-radius) !important;
 }
@@ -2400,6 +2371,7 @@ body.is-mobile.theme-dark .mobile-navbar {
   background-color: color-mix(in srgb, var(--mobile-navbar-color-dark), transparent calc((1 - var(--mobile-navbar-opacity-dark)) * 100%));
   filter: var(--shadow-floating-card);
   border-width: var(--mobile-navbar-border-width-dark) !important;
+  border-style: var(--mobile-navbar-border-style-dark) !important;
   border-color: var(--mobile-navbar-border-color-dark) !important;
   border-radius: var(--mobile-navbar-radius) !important;
 }
@@ -2973,13 +2945,10 @@ body.is-mobile .workspace-drawer-inner {
 }
 
 /* ================================================================= */
-/* 19. TIMELINE                                                       */
+/* 19. TIMELINE (Desktop & Mobile)                                   */
 /* ================================================================= */
 
-/* 19A. GRID LAYOUT + VERTICAL DASHED LINE
-   Sets up the two-column grid (date | content) and draws the
-   vertical dashed line using a repeating-linear-gradient as a
-   background stripe positioned on the border between columns. */
+/* 19A. GRID LAYOUT + VERTICAL DASHED LINE */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) {
   display: grid !important;
@@ -3001,9 +2970,7 @@ body.is-mobile .workspace-drawer-inner {
   background-repeat: repeat-y !important;
 }
 
-/* 19B. LIST ITEM RESETS
-   Removes Obsidian's default bullet markers and spacing from all
-   list items so the grid layout has full control over positioning. */
+/* 19B. LIST ITEM RESETS */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li > .list-bullet {
   display: none !important;
@@ -3015,6 +2982,7 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0 !important;
   position: relative !important;
   align-self: start !important;
+  transition: background-color 0.4s ease !important;
 }
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li > p {
@@ -3022,10 +2990,7 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0 !important;
 }
 
-/* 19C. DATE ITEM (every 3n+1)
-   The first item of each group. Spans 2 rows so it sits beside both
-   the title and content. Right-aligned, large bold accent-colored text.
-   The transition here drives the hover text effect in 19H. */
+/* 19C. DATE ITEM (every 3n+1) */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
   grid-column: 1 !important;
@@ -3046,10 +3011,7 @@ body.is-mobile .workspace-drawer-inner {
   transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 
-/* 19D. DOT MARKER (::before on date item)
-   The circular dot sitting on the vertical line, level with the date.
-   Positioned at the right edge of the date column and shifted 50%
-   right so it straddles the line. Drives the pulse animation in 19L. */
+/* 19D. DOT MARKER (::before on date item) */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
   content: "" !important;
@@ -3063,20 +3025,16 @@ body.is-mobile .workspace-drawer-inner {
   border-radius: 50% !important;
   transform: translateX(50%) !important;
   z-index: 2 !important;
-  animation: dot-pulse 4s ease-in-out infinite !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease !important;
 }
 
-/* 19E. ::after RESERVED
-   Kept hidden — used by the hover highlight in 19I to span
-   a background block across both grid columns. */
+/* 19E. ::after RESERVED */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::after {
   display: none !important;
 }
 
-/* 19F. TITLE ITEM (every 3n+2)
-   The second item in each group. Bold, normal-colored heading text
-   sitting in column 2, directly to the right of the date. */
+/* 19F. TITLE ITEM (every 3n+2) */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
   grid-column: 2 !important;
@@ -3087,9 +3045,7 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0.15rem 0 0.15rem 2rem !important;
 }
 
-/* 19G. CONTENT ITEM (every 3n)
-   The third item in each group. Smaller muted body text beneath
-   the title. Bottom padding uses --tl-row-gap to space out entries. */
+/* 19G. CONTENT ITEM (every 3n) */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
   grid-column: 2 !important;
@@ -3099,9 +3055,7 @@ body.is-mobile .workspace-drawer-inner {
   padding: 0 0 var(--tl-row-gap) 2rem !important;
 }
 
-/* 19H. MAX WIDTH CONSTRAINT
-   Caps the timeline at 800px and centers it, overriding any
-   wider readable-line-length set by the theme. */
+/* 19H. MAX WIDTH CONSTRAINT */
 
 .markdown-preview-view.custom-timeline .markdown-preview-sizer {
   max-width: 800px !important;
@@ -3110,23 +3064,16 @@ body.is-mobile .workspace-drawer-inner {
   margin-right: auto !important;
 }
 
-/* 19I. HOVER — FULL ROW HIGHLIGHT
-   Hovering the date item highlights all three items in that group
-   (date, title, content) with a soft accent background.
-   The adjacent sibling selectors (+li, +li+li) reach the title
-   and content from the date item. */
+/* 19I. HOVER — FULL ROW HIGHLIGHT */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
   background-color: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
   border-radius: 6px !important;
-  transition: background-color 0.2s ease !important;
 }
 
-/* 19J. HOVER — DOT SCALE + GLOW
-   On hover the dot scales up slightly and gains a soft outer ring.
-   color-mix is used here (outside @keyframes) where it is well supported. */
+/* 19J. HOVER — DOT SCALE + GLOW */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
   transform: translateX(50%) scale(1.4) !important;
@@ -3134,23 +3081,14 @@ body.is-mobile .workspace-drawer-inner {
   transition: all 0.2s ease !important;
 }
 
-/* 19K. ENTRANCE ANIMATION — SLIDE IN FROM RIGHT
-   Title and content items slide in from the right on load.
-   Each pair has a manually staggered delay so entries appear
-   in sequence top to bottom.
-   Extend the delay list if your timeline has more than 5 entries. */
+/* 19K. ENTRANCE ANIMATION — SLIDE IN FROM RIGHT */
 
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2),
 .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
   animation: slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-li:nth-child(2)  { animation-delay: 0.15s; }
-li:nth-child(3)  { animation-delay: 0.2s; }
-li:nth-child(5)  { animation-delay: 0.3s; }
-li:nth-child(6)  { animation-delay: 0.35s; }
-li:nth-child(8)  { animation-delay: 0.45s; }
-li:nth-child(9)  { animation-delay: 0.5s; }
+/* 19L. KEYFRAMES */
 
 @keyframes slide-in {
   from { opacity: 0; transform: translateX(20px); }
@@ -3160,13 +3098,13 @@ li:nth-child(9)  { animation-delay: 0.5s; }
 /* ================================================================= */
 /* 19. TIMELINE — MOBILE                                             */
 /* ================================================================= */
+
 @media (max-width: 480px) {
 
   .markdown-preview-view.custom-timeline {
     --tl-row-gap: 2rem;
   }
 
-  /* Switch to single column, move vertical line to the left edge */
   .markdown-preview-view.custom-timeline ul:not(ul ul) {
     grid-template-columns: 1fr !important;
     padding: 1rem 1rem 1rem 2rem !important;
@@ -3174,7 +3112,6 @@ li:nth-child(9)  { animation-delay: 0.5s; }
     background-size: 4px 12px !important;
   }
 
-  /* DATE: full width, left-aligned, smaller, sits above its entry */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
     grid-column: 1 !important;
     grid-row: auto !important;
@@ -3184,7 +3121,6 @@ li:nth-child(9)  { animation-delay: 0.5s; }
     font-weight: 900 !important;
   }
 
-  /* Move dot to left side — pulse disabled on mobile for performance */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
     right: auto !important;
     left: -2px !important;
@@ -3195,14 +3131,12 @@ li:nth-child(9)  { animation-delay: 0.5s; }
     animation: none !important;
   }
 
-  /* Dot hover scale disabled on mobile — tap triggers :hover */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
     transform: translateX(-50%) scale(1) !important;
     box-shadow: none !important;
     transition: none !important;
   }
 
-  /* Hover row highlight disabled on mobile */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
@@ -3210,7 +3144,6 @@ li:nth-child(9)  { animation-delay: 0.5s; }
     transition: none !important;
   }
 
-  /* TITLE: full width, reduced left padding — slide-in disabled on mobile */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
     grid-column: 1 !important;
     padding: 0 0 0.15rem 1.5rem !important;
@@ -3218,7 +3151,6 @@ li:nth-child(9)  { animation-delay: 0.5s; }
     animation: none !important;
   }
 
-  /* CONTENT: full width, reduced left padding — slide-in disabled on mobile */
   .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
     grid-column: 1 !important;
     padding: 0 0 var(--tl-row-gap) 1.5rem !important;

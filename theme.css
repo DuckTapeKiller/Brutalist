@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.5 */
+/* v3.0.6 */
 /* ================================================================= */
 
 @font-face {
@@ -910,11 +910,11 @@ settings:
 body {
   /* Typography & Style */
   --font-text-override: 'iA Writer Quattro S', sans-serif;
-  --font-ui-override: 'Sen', sans-serif;
+  --font-interface-override: 'Sen', sans-serif;
   --font-monospace-override: 'Noto Sans Mono', monospace;
-  --font-default: var(--font-ui-override);
-  --font-interface: var(--font-ui-override);
-  --font-ui: var(--font-ui-override);
+  --font-default: var(--font-interface-override);
+  --font-interface: var(--font-interface-override);
+  --font-ui: var(--font-interface-override);
   --font-text: var(--font-text-override);
   --font-text-theme: var(--font-text-override);
   --font-monospace: var(--font-monospace-override);
@@ -1675,14 +1675,14 @@ body h3,
 body h4,
 body h5,
 body h6 {
-  font-family: var(--font-ui-override, 'Sen', sans-serif) !important;
+  font-family: var(--font-interface-override, 'Sen', sans-serif) !important;
   font-weight: normal;
   color: var(--text-accent) !important;
 }
 
 /* Tooltip Exception */
 body .tooltip {
-  font-family: var(--font-ui-override, 'Sen', sans-serif);
+  font-family: var(--font-interface-override, 'Sen', sans-serif);
   font-weight: normal;
   color: #ffffff;
 }

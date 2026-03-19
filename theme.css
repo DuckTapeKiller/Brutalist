@@ -445,9 +445,9 @@ settings:
     title: Body Font
     description: Main font for reading notes.
     type: variable-select
-    default: "'iA Writer Quattro S', sans-serif"
+    default: "'Libre Baskerville', serif"
     options:
-      - label: iA Writer Quattro S (Default Sans)
+      - label: iA Writer Quattro S (Sans)
         value: "'iA Writer Quattro S', sans-serif"
       - label: Montserrat (Sans)
         value: "'Montserrat', sans-serif"
@@ -457,7 +457,7 @@ settings:
         value: "'Libre Franklin', sans-serif"
       - label: iA Writer Duo S (Sans)
         value: "'iA Writer Duo S', sans-serif"
-      - label: Libre Baskerville (Serif)
+      - label: Libre Baskerville (Default Serif)
         value: "'Libre Baskerville', serif"
       - label: Hepta Slab (Serif)
         value: "'Hepta Slab', serif"
@@ -473,13 +473,13 @@ settings:
         value: "'Azeret Mono', monospace"
       - label: Space Mono (Mono Sans)
         value: "'Space Mono', monospace"
-  - id: font-ui-override
+  - id: font-interface-override
     title: Interface Font
     description: Font for sidebar, tabs, and headers.
     type: variable-select
-    default: "'Sen', sans-serif"
+    default: "'Marcellus', serif"
     options:
-      - label: Sen (Default Sans)
+      - label: Sen (Sans)
         value: "'Sen', sans-serif"
       - label: Montserrat (Sans)
         value: "'Montserrat', sans-serif"
@@ -489,7 +489,7 @@ settings:
         value: "'Libre Franklin', sans-serif"
       - label: iA Writer Duo S (Sans)
         value: "'iA Writer Duo S', sans-serif"
-      - label: Marcellus (Serif)
+      - label: Marcellus (Default Serif)
         value: "'Marcellus', serif"
       - label: Libre Baskerville (Serif)
         value: "'Libre Baskerville', serif"
@@ -909,8 +909,8 @@ settings:
 /* ================================================================= */
 body {
   /* Typography & Style */
-  --font-text-override: 'iA Writer Quattro S', sans-serif;
-  --font-interface-override: 'Sen', sans-serif;
+  --font-text-override: 'Libre Baskerville', serif;
+  --font-interface-override: 'Marcellus', serif;
   --font-monospace-override: 'Noto Sans Mono', monospace;
   --font-default: var(--font-interface-override);
   --font-interface: var(--font-interface-override);

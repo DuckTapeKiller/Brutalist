@@ -48,9 +48,9 @@ You can configure the following visual elements via the [Style Settings](https:/
 
 The theme embeds several typefaces, ensuring offline availability without local installation. In Style Settings, you can choose these for Body or UI/Headers (Default: Sen for UI, iA Writer Quattro S for Body).
 
-* **Serif:** Hepta Slab, Libre Baskerville, Libre Caslon Text, Marcellus, Spectral.
+* **Serif:** Hepta Slab, Libre Baskerville, Marcellus.
 * **Sans Serif:** iA Writer Duo S, iA Writer Quattro S, Libre Franklin, Montserrat, Sen.
-* **Monospace:** iA Writer Mono S, Noto Sans Mono.
+* **Monospace:** iA Writer Mono S.
 
 ### 2.2 Alignment
 

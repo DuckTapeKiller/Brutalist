@@ -47,19 +47,9 @@ You can configure the following visual elements via the [Style Settings](https:/
 ### 2.1 Fonts
 
 The theme embeds several typefaces, ensuring offline availability without local installation. In Style Settings, you can choose these for Body or UI/Headers (Default: Marcellus for UI, IBM Plex Serif for Body).
-
-* **Serif:**
-  * **Lora** by Cyreal: [Source](https://fonts.google.com/specimen/Lora)
-  * **IBM Plex Serif** by IBM: [Source](https://fonts.google.com/specimen/IBM+Plex+Serif)
-  * **Marcellus** by Eduardo Tunni: [Source](https://fonts.google.com/specimen/Marcellus)
-* **Sans Serif:**
-  * **iA Writer Duo S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-  * **iA Writer Quattro S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-  * **Montserrat** by Julieta Ulanovsky: [Source](https://fonts.google.com/specimen/Montserrat)
-  * **Sen** by Akira Yoshino: [Source](https://fonts.google.com/specimen/Sen)
-* **Monospace:**
-  * **iA Writer Mono S** by Information Architects: [Source](https://github.com/iaolo/iA-Fonts)
-  * **Space Mono** by Colophon Foundry: [Source](https://fonts.google.com/specimen/Space+Mono)
+* **Serif:** Lora, IBM Plex Serif, Marcellus.
+* **Sans Serif:** iA Writer Duo S, iA Writer Quattro S, Montserrat, Sen.
+* **Monospace:** iA Writer Mono S, Space Mono.
 
 ### 2.2 Alignment
 

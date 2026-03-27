@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.7 */
+/* v3.0.8 */
 /* ================================================================= */
 
 @font-face {
@@ -792,6 +792,7 @@ settings:
 /* 17. DASHBOARD CORE & LAYOUT                                       */
 /* 18. CUSTOM FEATURES IMPLEMENTATION                                */
 /* 19. TIMELINE                                                      */
+/* 20. TAGS                                                          */
 /* ================================================================= */
 
 /* ================================================================= */
@@ -3046,5 +3047,52 @@ body.is-mobile .workspace-drawer-inner {
     padding: 0 0 var(--tl-row-gap) 1.5rem !important;
     font-size: 0.85rem !important;
     animation: none !important;
+  }
+}
+
+/* ================================================================= */
+/* 20. TAGS                                                          */
+/* ================================================================= */
+body a.tag,
+body .cm-hashtag,
+body .markdown-preview-view .tag {
+  font-family: var(--font-ui) !important;
+  background-color: var(--tag-background) !important;
+  color: var(--tag-color) !important;
+  border: var(--tag-border-width) solid var(--tag-border-color) !important;
+  outline: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border-radius: var(--tag-radius) !important;
+  line-height: inherit !important;
+  padding-block: 0 !important;
+  transition: none !important;
+}
+
+body .cm-hashtag-begin {
+  border-right: none !important;
+  padding-right: 0 !important;
+}
+
+body .cm-hashtag-end {
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+
+body .metadata-property .multi-select-pill {
+  font-family: var(--font-ui) !important;
+  background-color: var(--tag-background) !important;
+  color: var(--tag-color) !important;
+  border: var(--tag-border-width) solid transparent !important;
+  border-radius: var(--tag-radius) !important;
+  box-shadow: none !important;
+}
+
+@media (hover: hover) {
+  body .metadata-property .multi-select-pill:hover,
+  body a.tag:hover {
+    background-color: var(--tag-background-hover) !important;
+    border-color: var(--tag-border-color) !important;
+    color: var(--text-accent-hover) !important;
   }
 }

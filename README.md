@@ -22,8 +22,9 @@ Compatible with Style Settings.
    1. [Using Callouts](#41-using-callouts)
    2. [Dashboard Banners](#42-dashboard-banners)
 5. [CSS-Only Timelines](#5-css-only-timelines)
-6. [Gallery](#6-gallery)
-7. [Installation](#7-installation)
+6. [Image Captions](#6-image-captions)
+7. [Gallery](#7-gallery)
+8. [Installation](#8-installation)
 - [SUMMARY: ALL CSSCLASSES AVAILABLE](#summary-all-cssclasses-available)
 
 ## 1 Introduction
@@ -164,9 +165,26 @@ cssclasses:
 ![timeline](screenshots/timeline.png)
 
 ---
-Would you like me to map out the built-in callout types and their corresponding rgb colour values from the CSS?
 
-## 6 Gallery
+## 6 Image Captions
+
+This theme includes built-in support for displaying image captions. The caption text is automatically extracted from the image embed syntax and displayed directly beneath the image, utilising the theme's interface font.
+
+#### How to use
+
+To add a caption, insert your text after a pipe character (`|`) within the standard Obsidian image embed brackets:
+
+```markdown
+![[filename.jpg|Your caption text goes here]]
+```
+
+#### Expected behaviour
+
+When rendered, the text provided after the pipe will appear as a formatted caption block beneath the image. 
+
+Please note a technical limitation: if you embed an image without specifying a custom caption, Obsidian automatically assigns the file name as the alternative text. In this scenario, the theme will display the file name beneath the image instead of remaining blank.
+
+## 7 Gallery
 
 ### Dark Mode
 ![Brutalist Dark Mode](screenshot.png)
@@ -174,7 +192,7 @@ Would you like me to map out the built-in callout types and their corresponding 
 ### Light Mode
 ![Brutalist Light Mode](screenshot-light.png)
 
-## 7 Installation
+## 8 Installation
 
 ### Method 1: Community Themes
 1. Open **Settings > Appearance**.

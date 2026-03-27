@@ -2503,6 +2503,24 @@ div.search-params {
   border-radius: var(--radius-s) !important;
 }
 
+/* CREATE CAPTIONS UNDER IMAGES IN NOTES */
+
+/* Extracts and displays the alt attribute as a caption block */
+.markdown-rendered .image-embed[alt]::after {
+    content: attr(alt);
+    display: block;
+    text-align: center;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-family: var(--font-interface-override);
+}
+
+/* Prevents empty alt attributes from rendering a blank block */
+.markdown-rendered .image-embed[alt=""]::after {
+    display: none;
+}
+
 /* ================================================================= */
 /* 17. DASHBOARD CORE & LAYOUT                                       */
 /* ================================================================= */

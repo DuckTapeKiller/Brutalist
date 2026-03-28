@@ -4,6 +4,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub manifest version](https://img.shields.io/github/manifest-json/v/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/blob/main/manifest.json)
+
+
 Compatible with Style Settings.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)

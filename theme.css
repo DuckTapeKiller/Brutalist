@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.8 */
+/* v3.0.9 */
 /* ================================================================= */
 
 @font-face {
@@ -993,6 +993,7 @@ body.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: dashed #00526E;
   --drag-bg: color-mix(in srgb, var(--text-selection), transparent 85%);
+  --toggle-on-color: #25efa5;
 
   /* Buttons & CTAs */
   --button-bg-dynamic: var(--light-accent-custom);
@@ -1108,6 +1109,7 @@ body.theme-light {
   --modal-background: #B0B0B0;
   --prompt-background: #B0B0B0;
   --mobile-drawer-bg: #B0B0B0;
+  --toggle-on-color: #ff7700;
 
   /* Interactive Elements & UI */
   --interactive-accent-hover: #000000;
@@ -1566,9 +1568,9 @@ body h3,
 body h4,
 body h5,
 body h6 {
-  font-family: var(--font-interface-override, 'Sen', sans-serif) !important;
+  font-family: var(--font-interface-override) !important;
   font-weight: normal;
-  color: var(--text-accent) !important;
+  color: var(--text-muted) !important;
 }
 
 /* Tooltip Exception */
@@ -1590,6 +1592,19 @@ body .markdown-source-view .cm-content .inline-title {
   -webkit-font-smoothing: subpixel-antialiased;
   text-rendering: optimizeLegibility;
   font-size: var(--inline-title-size) !important;
+}
+
+/* Heading Rendering Fix */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .cm-header {
+  font-synthesis: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* Editor Color */
@@ -1833,14 +1848,14 @@ body .checkbox-container:active::after {
   top: 50% !important;
   transform: translateY(-50%) !important;
   transition: transform 0.2s, background 0.2s !important;
-  background: var(--text-normal) !important;
+  background: var(--background-primary) !important;
   box-shadow: none !important;
   border: none !important;
 }
 
 /* Toggle 'On' State Container */
 body .checkbox-container.is-enabled {
-  background: var(--text-selection) !important;
+  background: var(--toggle-on-color) !important;
 }
 
 /* Toggle 'On' State Thumb Movement */
@@ -1902,10 +1917,33 @@ body .checkbox-container.is-enabled:active::after {
   z-index: 10;
 }
 
+/* Removes default background and borders from the input */
+body input[type="range"] {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Styles the slider track */
 body input[type="range"]::-webkit-slider-runnable-track {
-  background-color: var(--slider-track-background) !important;
+  background-color: var(--toggle-on-color) !important;
   height: 4px;
-  border-radius: 2px;
+  border-radius: 0px;
+  width: 100%;
+}
+
+/* Styles the slider thumb */
+body input[type="range"]::-webkit-slider-thumb,
+body .slider-thumb {
+  background-color: var(--toggle-on-color) !important;
+  border-color: var(--toggle-on-color) !important;
+}
+
+/* Global rule that also targets the thumb to remove roundness and apply border */
+.slider-thumb {
+  border-radius: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: var(--border-width) solid var(--toggle-on-color) !important;
 }
 
 body input::placeholder {
@@ -1998,6 +2036,17 @@ body.is-mobile .metadata-content,
 body.is-mobile .metadata-container {
   border-radius: var(--metadata-content-radius) !important;
   --metadata-border-radius: var(--metadata-content-radius) !important;
+}
+
+/* Installed/Active Theme Flair */
+body .flair.mod-pop {
+  background-color: var(--toggle-on-color) !important;
+  border: 1px solid var(--toggle-on-color) !important;
+  color: #000000 !important;
+}
+
+body.theme-light .flair.mod-pop {
+  color: #ffffff !important;
 }
 
 /* ================================================================= */

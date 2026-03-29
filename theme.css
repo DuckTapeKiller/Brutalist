@@ -2088,7 +2088,7 @@ body.theme-light .flair.mod-pop {
     --editor-width: 100%;
   }
 
-  /* Apply Width to Editor */
+/* Apply Width to Editor */
   .full-width .cm-sizer,
   .full-width .cm-content,
   .full-width .markdown-preview-sizer,
@@ -2107,13 +2107,17 @@ body.theme-light .flair.mod-pop {
   .width-1600 .cm-sizer,
   .width-1600 .cm-content,
   .width-1600 .markdown-preview-sizer,
-  .markdown-preview-sizer,
-  .markdown-source-view.mod-cm6 .cm-sizer,
+  .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
   .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
     max-width: var(--editor-width) !important;
     width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+
+  .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,
+  .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer {
+    max-width: none !important;
   }
 
   /* Scrollbar Positioning (Desktop Layout) */
@@ -3135,26 +3139,38 @@ body .markdown-preview-view .tag {
   padding-block: 0 !important;
   transition: none !important;
 }
-
 body .cm-hashtag-begin {
   border-right: none !important;
   padding-right: 0 !important;
 }
-
 body .cm-hashtag-end {
   border-left: none !important;
   padding-left: 0 !important;
 }
-
-body .metadata-property .multi-select-pill {
+body .metadata-property .multi-select-pill,
+body .metadata-property .multi-select-pill:focus,
+body .metadata-property .multi-select-pill:focus-within,
+body .metadata-property .multi-select-pill:focus-visible,
+body .metadata-property .multi-select-pill.is-active,
+body .metadata-property .multi-select-pill[tabindex]:focus {
   font-family: var(--font-ui) !important;
   background-color: var(--tag-background) !important;
   color: var(--tag-color) !important;
   border: var(--tag-border-width) solid transparent !important;
   border-radius: var(--tag-radius) !important;
   box-shadow: none !important;
+  outline: none !important;
+  transition: none !important;
 }
-
+body .metadata-property .multi-select-pill::after,
+body .metadata-property .multi-select-pill:focus::after,
+body .metadata-property .multi-select-pill:focus-visible::after,
+body .metadata-property .multi-select-pill[tabindex]:focus::after {
+  display: none !important;
+  border-radius: var(--tag-radius) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
 @media (hover: hover) {
   body .metadata-property .multi-select-pill:hover,
   body a.tag:hover {

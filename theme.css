@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v3.0.9 */
+/* v4.0.0 */
 /* ================================================================= */
 
 @font-face {
@@ -344,13 +344,9 @@
 }
 
 /* @settings
-name: Brutalist Theme Settings
-id: brutalist-theme
+name: Typography & Typeface
+id: brutalist-typography
 settings:
-  - id: section-typography
-    title: Typography & Typeface
-    type: heading
-    level: 1
   - id: font-text-override
     title: Body Font
     description: Main font for reading notes.
@@ -412,7 +408,7 @@ settings:
       - label: Space Mono (Mono Sans)
         value: "'Space Mono', monospace"
   - id: section-typography-light
-    title: Light mode Font Colours
+    title: Light Mode Font Colours
     type: heading
     level: 2
   - id: ui-font-color-light
@@ -509,10 +505,12 @@ settings:
         value: '#f5f5f5'
       - label: '#ffffff'
         value: '#ffffff'
-  - id: section-layout
-    title: Page Layout & Geometry
-    type: heading
-    level: 1
+*/
+
+/* @settings
+name: Page Layout & Geometry
+id: brutalist-layout
+settings:
   - id: enable-book-style
     title: Book Style Paragraphs
     description: Removes paragraph spacing and adds indentation. (Disable for block style).
@@ -588,10 +586,12 @@ settings:
     min: 1.0
     max: 3.0
     step: 0.1
-  - id: section-dashboard
-    title: Dashboard Layout Settings
-    type: heading
-    level: 1
+*/
+
+/* @settings
+name: Dashboard Layout Settings
+id: brutalist-dashboard
+settings:
   - id: dashboard-col-width
     title: Minimum Card Width
     description: The grid will fit as many columns as possible based on this width.
@@ -649,10 +649,12 @@ settings:
     max: 100
     step: 5
     format: "%"
-  - id: section-mobile-styles
-    title: Mobile Settings
-    type: heading
-    level: 1
+*/
+
+/* @settings
+name: Mobile Settings
+id: brutalist-mobile
+settings:
   - id: mobile-drawer-light-header
     title: Light Mode (Drawer)
     type: heading
@@ -698,12 +700,12 @@ settings:
     title: Nav Bar Border Color
     type: variable-color
     format: hex
-    default: '#000000'
+    default: '#B0B0B0'
   - id: mobile-navbar-color-light
     title: Nav Bar Color
     type: variable-color
     format: hex
-    default: '#C5C5C5'
+    default: '#B0B0B0'
   - id: mobile-drawer-dark-header
     title: Dark Mode (Drawer)
     type: heading
@@ -749,12 +751,12 @@ settings:
     title: Nav Bar Border Color
     type: variable-color
     format: hex
-    default: '#6a6a6a'
+    default: '#323232'
   - id: mobile-navbar-color-dark
     title: Nav Bar Color
     type: variable-color
     format: hex
-    default: '#3c3c3c'
+    default: '#323232'
   - id: mobile-navbar-radius-header
     title: Navigation Bar Universal Radius
     type: heading
@@ -889,22 +891,22 @@ body {
   --shadow-checkbox-inset: inset 0 0 0 2px var(--background-primary);
   --shadow-focus-ring: 0 0 0 2px var(--interactive-accent);
   --shadow-focus-inset: inset 0 0 0 1px var(--text-normal);
-  --shadow-navbar-separator-light: inset 0 -0.5px 0 0 rgba(0, 0, 0, 0.1);
-  --shadow-navbar-separator-dark: inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1);
-  --shadow-floating-card: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+  --shadow-floating-card: none;
 
   /* Mobile Styles Defaults */
   --mobile-navbar-border-width-light: 0px;
   --mobile-navbar-border-style-light: solid;
   --mobile-navbar-opacity-light: 0.7;
   --mobile-navbar-radius: 20px;
-  --mobile-navbar-color-light: var(--background-primary);
-  --mobile-navbar-color-dark: var(--background-primary);
+  --mobile-navbar-color-light: var(--background-secondary);
+  --mobile-navbar-color-dark: var(--background-secondary);
   --mobile-navbar-border-width-dark: 0px;
   --mobile-navbar-border-style-dark: solid;
   --mobile-navbar-opacity-dark: 0.7;
   --mobile-drawer-color-light: var(--background-secondary);
   --mobile-drawer-color-dark: var(--background-primary);
+  --mobile-navbar-border-color-dark: var(--background-secondary);
+  --mobile-navbar-border-color-light: var(--background-secondary);
 
   /* Dashboard Integration */
   --dashboard-col-width: 300px;
@@ -1027,7 +1029,6 @@ body.theme-dark {
 
   /* Mobile */
   --mobile-active-bg: #505050;
-  --mobile-navbar-border-color-dark: #6a6a6a;
 
   /* Lists & Indentation */
   --list-marker-color: var(--dark-accent-custom);
@@ -1155,7 +1156,6 @@ body.theme-light {
 
   /* Mobile */
   --mobile-active-bg: #d6d6d6;
-  --mobile-navbar-border-color-light: #000000;
 
   /* Lists & Indentation */
   --list-marker-color: var(--light-accent-custom);
@@ -1451,7 +1451,7 @@ body .modal-container .modal .modal-button-container button.mod-destructive:hove
   border-color: var(--font-text-destructive) !important;
 }
 
-/* Removes pseudo-elements on div.view-actions and settings button */
+/* Removes pseudo-elements — Light Mode */
 body.is-mobile.theme-light .view-actions::before,
 body.is-mobile.theme-light .view-actions::after,
 body.is-mobile.theme-light .view-header-nav-buttons::before,
@@ -1467,6 +1467,23 @@ body.is-mobile.theme-light .modal-close-button.mod-raised::after,
 body.is-mobile.theme-light .modal-setting-back-button.mod-raised::before,
 body.is-mobile.theme-light .modal-setting-back-button.mod-raised::after {
   display: none !important;
+}
+
+/* Removes borders, shadows & pseudo-elements — Dark Mode Navbar */
+body.is-mobile.theme-dark .mobile-navbar,
+body.is-mobile.theme-dark .mobile-navbar * {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body.is-mobile.theme-dark .mobile-navbar::before,
+body.is-mobile.theme-dark .mobile-navbar::after,
+body.is-mobile.theme-dark .mobile-navbar *::before,
+body.is-mobile.theme-dark .mobile-navbar *::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* ================================================================= */
@@ -1672,13 +1689,9 @@ body.theme-light .metadata-property-value a:hover {
 }
 
 /* Code Blocks */
-body code,
 body .cm-s-obsidian .cm-inline-code,
-body .markdown-source-view.mod-cm6 .cm-content code,
 body .markdown-preview-view code,
-body pre,
-body .HyperMD-codeblock {
-  background-color: var(--background-secondary);
+body pre {
   color: var(--text-normal);
   font-family: var(--font-monospace);
   border-radius: var(--code-radius);
@@ -2297,7 +2310,7 @@ body.is-mobile.theme-light .view-actions.mod-raised,
 body.is-mobile.theme-light .sidebar-toggle-button.mod-raised,
 body.is-mobile.theme-light .mobile-navbar {
   background: color-mix(in srgb, var(--mobile-navbar-color-light), transparent calc((1 - var(--mobile-navbar-opacity-light)) * 100%));
-  box-shadow: var(--shadow-navbar-separator-light), 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   border-width: var(--mobile-navbar-border-width-light) !important;
   border-style: var(--mobile-navbar-border-style-light) !important;
   border-color: var(--mobile-navbar-border-color-light) !important;
@@ -2313,19 +2326,14 @@ body.is-mobile.theme-dark .view-actions.mod-raised,
 body.is-mobile.theme-dark .sidebar-toggle-button.mod-raised,
 body.is-mobile.theme-dark .mobile-navbar {
   background-color: color-mix(in srgb, var(--mobile-navbar-color-dark), transparent calc((1 - var(--mobile-navbar-opacity-dark)) * 100%));
-  filter: var(--shadow-floating-card);
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: blur(6px) saturate(1.5) !important;
+  box-shadow: none !important;
   border-width: var(--mobile-navbar-border-width-dark) !important;
   border-style: var(--mobile-navbar-border-style-dark) !important;
   border-color: var(--mobile-navbar-border-color-dark) !important;
   border-radius: var(--mobile-navbar-radius) !important;
-}
-
-body.is-mobile.theme-dark .mobile-navbar {
-  box-shadow: var(--shadow-navbar-separator-dark);
-}
-
-body.is-mobile.theme-dark .mobile-navbar-actions {
-  filter: var(--shadow-floating-card);
 }
 
 /* Menu Items (Dark Mode) */
@@ -2356,10 +2364,11 @@ body.is-mobile .setting-item.mod-action:active {
 }
 
 /* Modal Buttons & Radius */
-body.is-mobile.theme-light .modal .mod-raised {
+body.is-mobile.theme-light .modal .mod-raised,
+body.is-mobile.theme-dark .modal .mod-raised {
   border: none;
-  box-shadow: none;
-  filter: var(--shadow-floating-card);
+  box-shadow: none !important;
+  filter: none !important;
 }
 
 body.is-mobile .modal,

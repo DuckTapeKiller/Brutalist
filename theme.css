@@ -959,8 +959,8 @@ body.theme-dark {
   --text-faint: #858585;
   --text-on-accent: #323232;
   --text-accent-hover: #ffffff;
-  --text-selection: #00526E;
-  --text-highlight-bg: color-mix(in srgb, #0066FF, transparent 80%);
+  --text-selection: color-mix(in srgb, #2074ad, transparent 30%);
+  --text-highlight-bg: #1a3a5c;
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
   --bases-text-color: #C5C5C5;
@@ -995,7 +995,7 @@ body.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: dashed #00526E;
   --drag-bg: color-mix(in srgb, var(--text-selection), transparent 85%);
-  --toggle-on-color: #25efa5;
+  --toggle-on-color: #4a9eff;
 
   /* Buttons & CTAs */
   --button-bg-dynamic: var(--light-accent-custom);
@@ -1086,8 +1086,8 @@ body.theme-light {
   --text-faint: #7e7e7e;
   --text-on-accent: #ffffff;
   --text-accent-hover: #000000;
-  --text-selection: #7a9f79;
-  --text-highlight-bg: #94b293;
+  --text-selection: color-mix(in srgb, var(--toggle-on-color), transparent 40%);
+  --text-highlight-bg: color-mix(in srgb, #f5c842, transparent 55%);
   --code-background: #e1e1e1;
   --background-modifier-border-focus: #1A3319;
   --bases-text-color: var(--text-normal);

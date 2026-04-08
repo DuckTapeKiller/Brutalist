@@ -959,7 +959,7 @@ body.theme-dark {
   --text-faint: #858585;
   --text-on-accent: #323232;
   --text-accent-hover: #ffffff;
-  --text-selection: color-mix(in srgb, #2074ad, transparent 30%);
+  --text-selection: rgba(200, 200, 200, 0.15);
   --text-highlight-bg: #1a3a5c;
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
@@ -1005,6 +1005,7 @@ body.theme-dark {
   --cta-bg-dynamic: var(--interactive-accent);
   --cta-text-dynamic: #000000;
   --cta-bg-hover-dynamic: #E0E0E0;
+  --status-bar-active-bg: #4a9eff;
 
   /* Scrollbars */
   --scrollbar-track-bg: #3c3c3c;
@@ -1018,7 +1019,7 @@ body.theme-dark {
 
   /* Tabs */
   --tab-outline-color: transparent !important;
-  --tab-hover-bg-doc: #000000;
+  --tab-hover-bg-doc: #262626;
   --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
   --tab-hover-text-ui: #B3B3B3;
   --tab-active-bg-sidebar: color-mix(in srgb, #ffffff, transparent 95%);
@@ -1086,8 +1087,8 @@ body.theme-light {
   --text-faint: #7e7e7e;
   --text-on-accent: #ffffff;
   --text-accent-hover: #000000;
-  --text-selection: color-mix(in srgb, var(--toggle-on-color), transparent 40%);
-  --text-highlight-bg: color-mix(in srgb, #f5c842, transparent 55%);
+  --text-selection: rgba(120, 120, 120, 0.2);
+  --text-highlight-bg: color-mix(in srgb, #ff7700, transparent 55%);
   --code-background: #e1e1e1;
   --background-modifier-border-focus: #1A3319;
   --bases-text-color: var(--text-normal);
@@ -1132,6 +1133,7 @@ body.theme-light {
   --cta-bg-dynamic: var(--interactive-accent);
   --cta-text-dynamic: #ffffff;
   --cta-bg-hover-dynamic: #000000;
+  --status-bar-active-bg: #ff7700;
 
   /* Scrollbars */
   --scrollbar-track-bg: #C5C5C5;
@@ -2229,7 +2231,7 @@ body.theme-light .metadata-input-longtext.is-focused {
 
 body.theme-dark .metadata-input-longtext:focus,
 body.theme-dark .metadata-input-longtext.is-focused {
-  background-color: #000000 !important;
+  background-color: #262626 !important;
 }
 
 /* ================================================================= */

@@ -564,7 +564,7 @@ settings:
     title: Line Height
     description: Vertical breathing room between lines.
     type: variable-number-slider
-    default: 1.6
+    default: 1.7
     min: 1.0
     max: 3.0
     step: 0.1
@@ -946,7 +946,7 @@ body.theme-dark {
   --text-on-accent: #323232;
   --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --text-selection: rgba(200, 200, 200, 0.15);
-  --text-highlight-bg: color-mix(in srgb, #4b66c7, transparent 55%);
+  --text-highlight-bg: color-mix(in srgb, #495ca1, transparent 55%);
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
   --bases-text-color: var(--body-font-color-dark);
@@ -983,7 +983,7 @@ body.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: none;
   --drag-bg: #000000;
-  --toggle-on-color: #798ccf; 
+  --toggle-on-color: #5f6a93; 
   /* Buttons & CTAs */
   --button-bg-dynamic: var(--light-accent-custom);
   --button-bg-hover-dynamic: #000000;
@@ -1668,7 +1668,7 @@ body .markdown-preview-view p,
 body .markdown-preview-view ul,
 body .markdown-preview-view ol,
 body .markdown-preview-view li {
-  line-height: var(--line-height-custom, 1.6) !important;
+  line-height: var(--line-height-custom, 1.7) !important;
 }
 
 /* Blockquotes */
@@ -2268,6 +2268,31 @@ body div.bases-view input[type="checkbox"] {
 body div.bases-view input[type="checkbox"]:checked { 
   background-color: var(--text-muted) !important; 
   border-color: var(--text-muted) !important; 
+}
+
+/* Update Ordenar and Filtrar buttons to match chosen UI font colour */
+.text-icon-button,
+.text-icon-button .text-button-label,
+.text-icon-button .text-button-icon .svg-icon {
+    color: var(--text-muted) !important;
+    stroke: var(--text-muted) !important;
+}
+
+/* Ensure the toolbar badge (flair) remains legible */
+.text-icon-button .flair.toolbar-badge {
+    background-color: var(--text-muted) !important;
+    color: var(--background-primary) !important;
+}
+
+/* Hover state to match your theme's interactive style */
+.text-icon-button:hover {
+    background-color: var(--surface-highlight) !important;
+}
+
+.text-icon-button:hover .text-button-label,
+.text-icon-button:hover .svg-icon {
+    color: var(--text-accent-hover) !important;
+    stroke: var(--text-accent-hover) !important;
 }
 
 /* ================================================================= */
@@ -2964,6 +2989,23 @@ body:not(.is-mobile) .workspace-leaf:has(.dashboard) .editingToolbarModalBar {
   top: 35px !important;
 }
 
+/* Reset line height for Dashboard cards to maintain a compact grid */
+.dashboard .markdown-preview-view p,
+.dashboard .markdown-preview-view ul,
+.dashboard .markdown-preview-view ol,
+.dashboard .markdown-preview-view li,
+.dashboard .markdown-source-view.mod-cm6 .cm-line,
+.dashboard .callout-content,
+.dashboard .callout-title,
+.dashboard .callout-content li > a.internal-link {
+    line-height: 1.2 !important; /* Adjust this value if you want it tighter or looser */
+}
+
+/* Ensure list items in dashboard cards don't inherit large vertical padding */
+.dashboard .callout-content li {
+    margin-bottom: 4px !important;
+}
+
 /* ================================================================= */
 /* 18. CUSTOM FEATURES IMPLEMENTATION                                */
 /* ================================================================= */
@@ -3115,7 +3157,7 @@ body.is-mobile .workspace-drawer-inner {
   grid-column: 2 !important;
   font-size: 0.88rem !important;
   color: var(--text-muted) !important;
-  line-height: 1.8 !important;
+  line-height: 1.7 !important;
   padding: 0 0 var(--tl-row-gap) 2rem !important;
 }
 

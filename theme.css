@@ -456,55 +456,37 @@ settings:
     type: variable-select
     default: '#b3b3b3'
     options:
-      - label: '#a0a0a0'
+      - label: '#a0a0a0 (Dark Grey)'
         value: '#a0a0a0'
-      - label: '#a9a9a9'
+      - label: '#a9a9a9 (Silver Grey)'
         value: '#a9a9a9'
-      - label: '#b3b3b3 (Default)'
+      - label: '#b3b3b3 (Light Grey - Default)'
         value: '#b3b3b3'
-      - label: '#bcbcbc'
-        value: '#bcbcbc'
-      - label: '#c6c6c6'
-        value: '#c6c6c6'
-      - label: '#cfcfcf'
-        value: '#cfcfcf'
-      - label: '#d9d9d9'
-        value: '#d9d9d9'
-      - label: '#e2e2e2'
-        value: '#e2e2e2'
-      - label: '#ececec'
-        value: '#ececec'
-      - label: '#f5f5f5'
-        value: '#f5f5f5'
-      - label: '#ffffff'
+      - label: '#ffffff (Pure White)'
         value: '#ffffff'
+      - label: '#c8bc9f (Everforest)'
+        value: '#c8bc9f'
+      - label: '#bcb094 (Deep Everforest)'
+        value: '#bcb094'
+      - label: '#b0a589 (Dark Everforest)'
+        value: '#b0a589'
   - id: body-font-color-dark
     title: Body Font Color (Dark Mode)
     type: variable-select
     default: '#a0a0a0'
     options:
-      - label: '#a0a0a0 (Default)'
+      - label: '#a0a0a0 (Dark Grey - Default)'
         value: '#a0a0a0'
-      - label: '#a9a9a9'
-        value: '#a9a9a9'
-      - label: '#b3b3b3'
+      - label: '#b3b3b3 (Light Grey)'
         value: '#b3b3b3'
-      - label: '#bcbcbc'
-        value: '#bcbcbc'
-      - label: '#c6c6c6'
-        value: '#c6c6c6'
-      - label: '#cfcfcf'
-        value: '#cfcfcf'
-      - label: '#d9d9d9'
-        value: '#d9d9d9'
-      - label: '#e2e2e2'
-        value: '#e2e2e2'
-      - label: '#ececec'
-        value: '#ececec'
-      - label: '#f5f5f5'
-        value: '#f5f5f5'
-      - label: '#ffffff'
+      - label: '#ffffff (Pure White)'
         value: '#ffffff'
+      - label: '#c8bc9f (Everforest)'
+        value: '#c8bc9f'
+      - label: '#bcb094 (Deep Everforest)'
+        value: '#bcb094'
+      - label: '#b0a589 (Dark Everforest)'
+        value: '#b0a589'
 */
 
 /* @settings
@@ -813,11 +795,6 @@ body {
   --font-monospace: var(--font-monospace-override);
   --font-text-destructive: #ff4b4b;
 
-  /* Font Colours (Explicit) */
-  --font-colour-dark-grey-33: #333333;
-  --font-colour-light-grey-70: #707070;
-  --font-colour-light-grey-bd: #BDBDBD;
-
   /* Default Text Colors (overridden by settings) */
   --ui-font-color-light: #222222;
   --ui-font-color-dark: #B3B3B3;
@@ -965,14 +942,14 @@ body.theme-dark {
   /* Text & Typography */
   --text-normal: var(--body-font-color-dark);
   --text-muted: var(--ui-font-color-dark);
-  --text-faint: #858585;
+  --text-faint: color-mix(in srgb, var(--text-muted), transparent 30%);
   --text-on-accent: #323232;
-  --text-accent-hover: #ffffff;
+  --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --text-selection: rgba(200, 200, 200, 0.15);
   --text-highlight-bg: #1a3a5c;
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
-  --bases-text-color: #C5C5C5;
+  --bases-text-color: var(--body-font-color-dark);
 
   /* Headings */
   --h1-color: var(--dark-accent-custom);
@@ -996,11 +973,11 @@ body.theme-dark {
   --menu-custom-bg: var(--surface-highlight);
 
   /* Interactive Elements & UI */
-  --interactive-accent-hover: #ffffff;
+  --interactive-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --interactive-normal: #323232;
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-dark);
-  --icon-color-hover: var(--text-accent);
+  --icon-color-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --input-border: transparent;
   --canvas-node-border-color: #c0c0c0;
   --checkbox-color: var(--dark-accent-custom);
@@ -1026,31 +1003,31 @@ body.theme-dark {
   /* Tabs */
   --tab-outline-color: transparent !important;
   --tab-hover-bg-doc: var(--surface-highlight);
-  --tab-hover-text-ui: #B3B3B3;
+  --tab-hover-text-ui: var(--text-muted);
   --tab-active-bg-sidebar: color-mix(in srgb, #ffffff, transparent 95%);
   --new-tab-hover-bg: color-mix(in srgb, #BFBFBF, transparent 85%);
   --new-tab-hover-text: #ffffff;
-  --vertical-tab-active-color: #B3B3B3;
-  --vertical-tab-header-color: #E0E0E0;
+  --vertical-tab-active-color: var(--text-muted);
+  --vertical-tab-header-color: var(--ui-font-color-dark);
 
   /* Mobile */
   --mobile-active-bg: #505050;
 
   /* Lists & Indentation */
-  --list-marker-color: var(--dark-accent-custom);
-  --indentation-guide-color: var(--dark-accent-custom);
-  --indentation-guide-color-active: var(--dark-accent-custom);
+  --list-marker-color: color-mix(in srgb, var(--text-normal), white 25%);
+  --indentation-guide-color: color-mix(in srgb, var(--text-muted), transparent 10%);
+  --indentation-guide-color-active: var(--text-muted);
 
   /* Tables & Quotes */
-  --table-border-color: #c0c0c0;
-  --quote-opening-modifier: #c0c0c0;
+  --table-border-color: var(--text-normal);
+  --quote-opening-modifier: var(--text-faint);
 
   /* Graph */
-  --graph-line: #B3B3B3;
-  --graph-node: #B3B3B3;
+  --graph-line: var(--text-faint);
+  --graph-node: var(--text-muted);
 
   /* Tags */
-  --tag-color: var(--dark-accent-custom);
+  --tag-color: var(--body-font-color-dark);
   --tag-border-color: var(--dark-accent-custom);
   --tag-background: color-mix(in srgb, var(--dark-accent-custom), transparent 80%);
   --tag-background-hover: #000000;
@@ -1058,7 +1035,7 @@ body.theme-dark {
   /* Calendar */
   --calendar-today-color: #feb43f;
   --calendar-dot-bg: #feb43f;
-  --calendar-header-color: #d0d0d0;
+  --calendar-header-color: var(--text-muted);
 
   /* Links */
   --link-color: #e2e2e2;
@@ -1089,7 +1066,7 @@ body.theme-light {
   /* Text & Typography */
   --text-normal: var(--body-font-color-light);
   --text-muted: var(--ui-font-color-light);
-  --text-faint: #7e7e7e;
+  --text-faint: color-mix(in srgb, var(--text-muted), transparent 30%);
   --text-on-accent: #ffffff;
   --text-accent-hover: #000000;
   --text-selection: rgba(120, 120, 120, 0.2);
@@ -1099,12 +1076,12 @@ body.theme-light {
   --bases-text-color: var(--text-normal);
 
   /* Headings */
-  --h1-color: var(--light-accent-custom);
-  --h2-color: var(--light-accent-custom);
-  --h3-color: var(--light-accent-custom);
-  --h4-color: var(--light-accent-custom);
-  --h5-color: var(--light-accent-custom);
-  --h6-color: var(--light-accent-custom);
+  --h1-color: var(--text-normal);
+  --h2-color: var(--text-normal);
+  --h3-color: var(--text-normal);
+  --h4-color: var(--text-normal);
+  --h5-color: var(--text-normal);
+  --h6-color: var(--text-normal);
 
   /* Backgrounds */
   --background-primary: #C5C5C5;
@@ -1150,12 +1127,12 @@ body.theme-light {
   /* Tabs */
   --tab-outline-color: transparent !important;
   --tab-hover-bg-doc: var(--surface-highlight);
-  --tab-hover-text-ui: #000000;
+  --tab-hover-text-ui: var(--text-muted);
   --tab-active-bg-sidebar: color-mix(in srgb, #FFFFFF, transparent 60%);
   --new-tab-hover-bg: color-mix(in srgb, #505050, transparent 90%);
   --new-tab-hover-text: #000000;
-  --vertical-tab-active-color: #000000;
-  --vertical-tab-header-color: #000000;
+  --vertical-tab-active-color: var(--text-muted);
+  --vertical-tab-header-color: var(--ui-font-color-light);
 
   /* Mobile */
   --mobile-active-bg: #d6d6d6;
@@ -1166,19 +1143,19 @@ body.theme-light {
   --indentation-guide-color-active: var(--light-accent-custom);
 
   /* Tables & Quotes */
-  --table-border-color: #232323;
-  --quote-opening-modifier: #232323;
+  --table-border-color: var(--text-normal);
+  --quote-opening-modifier: var(--text-faint);
 
   /* Graph & Canvas */
-  --graph-line: #222222;
-  --graph-node: #000000;
+  --graph-line: var(--text-faint);
+  --graph-node: var(--text-muted);
   --canvas-color-edge: var(--light-accent-custom);
   --canvas-color-arrow: var(--light-accent-custom);
-  --canvas-ink-light: #505050;
+  --canvas-ink-light: var(--text-muted);
   --canvas-dot-pattern: color-mix(in srgb, var(--canvas-ink-light), transparent 70%);
 
   /* Tags */
-  --tag-color: var(--light-accent-custom);
+  --tag-color: var(--body-font-color-light);
   --tag-border-color: var(--light-accent-custom);
   --tag-background: color-mix(in srgb, var(--text-muted), transparent 90%);
   --tag-background-hover: #d6d6d6;
@@ -1186,7 +1163,7 @@ body.theme-light {
   /* Calendar */
   --calendar-today-color: #d10000;
   --calendar-dot-bg: #d10000;
-  --calendar-header-color: #111111;
+  --calendar-header-color: var(--text-muted);
 
   /* Links */
   --link-color: #505050;
@@ -1283,9 +1260,10 @@ body .workspace-tab-header-tab-list:hover .workspace-tab-header-inner {
   color: var(--tab-hover-text-ui);
 }
 
-/* Active Tabs - Universal Text Color */
-body .workspace-tab-header.is-active .workspace-tab-header-inner {
-  color: var(--text-accent);
+/* Active Tabs - Title and Inner Layout follow UI Font */
+body .workspace-tab-header.is-active .workspace-tab-header-inner,
+body .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--text-muted) !important;
 }
 
 /* Active Tabs - Root Container */
@@ -1393,11 +1371,11 @@ body .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inn
   stroke: var(--text-accent);
 }
 
-/* Hover Color on Vault Name and Files/Folders */
-.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-name,
-.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon,
-.tree-item-self.nav-file-title.is-active .tree-item-inner.nav-file-title-content {
-  color: var(--icon-color-hover) !important;
+/* Active & Hover Color on Vault Name and Sidebar Items (Files/Folders) */ 
+.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-name, 
+.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon, 
+.tree-item-self.is-active .tree-item-inner { 
+  color: var(--text-muted) !important; 
 }
 
 /* Settings Button Container */
@@ -1487,6 +1465,17 @@ body.is-mobile.theme-dark .mobile-navbar *::after {
   content: none !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+/* Force tab header status icons (e.g., pinned) to follow UI font colour */
+body .workspace-tab-header-status-icon {
+  color: var(--text-muted) !important;
+}
+
+/* Maintain UI font colour on main tab icons (like Bases) even during hover */
+body .workspace-tab-header:hover .workspace-tab-header-inner-icon,
+body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon {
+  color: var(--text-muted) !important;
 }
 
 /* ================================================================= */
@@ -1640,11 +1629,17 @@ body .nav-file-title-content {
   color: var(--text-normal);
 }
 
-/* Nav Guide Lines */
+/* Nav Guide Lines - Synchronised with Global Indentation Variables */
 body .nav-folder-children,
 body .nav-folder-children::before,
 body .nav-folder-children>.nav-folder-item {
-  border-left: var(--nav-guide-border-width) solid var(--interactive-accent);
+  border-left: var(--nav-guide-border-width) solid var(--indentation-guide-color);
+}
+
+/* Active Nav Guide - When folder is expanded/focused */
+body .nav-folder-children:hover,
+body .nav-item.is-active + .nav-folder-children {
+  border-left-color: var(--indentation-guide-color-active);
 }
 
 /* Remove Lines for Files */
@@ -1820,6 +1815,13 @@ body.enable-book-style .markdown-preview-view blockquote p {
   margin-bottom: 1rem !important;
 }
 
+/* Editor Indentation Guides - Notes and Lists */
+.cm-indentation-marker,
+.markdown-rendered .indentation-guide {
+  --indentation-guide-color: var(--indentation-guide-color) !important;
+  --indentation-guide-color-active: var(--indentation-guide-color-active) !important;
+}
+
 /* ================================================================= */
 /* 8. FORMS AND CONTROLS                                            */
 /* ================================================================= */
@@ -1838,6 +1840,16 @@ input[type="checkbox"]:checked {
 /* Checkboxes - Hide Checkmark Icon */
 input[type="checkbox"]:checked::after {
   display: none;
+}
+
+/* Force front matter checkboxes to follow UI font colour */
+body .metadata-container input[type="checkbox"] {
+  border-color: var(--text-muted) !important;
+}
+
+body .metadata-container input[type="checkbox"]:checked {
+  background-color: var(--text-muted) !important;
+  border-color: var(--text-muted) !important;
 }
 
 /* Toggles */
@@ -1988,7 +2000,7 @@ body.theme-light .metadata-property-value,
 body.theme-light .metadata-label,
 body.theme-light .multi-select-pill-content,
 body.theme-light .metadata-input-longtext {
-  color: var(--font-colour-dark-grey-33);
+  color: var(--text-muted);
 }
 
 /* Front Matter Metadata - Light Mode Inputs */
@@ -2008,7 +2020,7 @@ body.theme-light .metadata-property-value a {
 /* Front Matter Metadata - Light Mode Placeholders */
 body.theme-light .metadata-input-longtext:empty::before,
 body.theme-light .metadata-property-value-input:empty::before {
-  color: var(--font-colour-light-grey-70);
+  color: var(--text-muted);
   opacity: 1;
 }
 
@@ -2234,10 +2246,37 @@ body .metadata-input-longtext.is-focused {
   background-color: var(--surface-highlight) !important;
 }
 
+/* Force Bases table cells to match font colour */
+body div.bases-view .bases-table-cell,
+body div.bases-view .bases-table-header,
+body div.bases-view .bases-table-row,
+body div.bases-view .bases-td,
+body div.bases-view .bases-th {
+  border-color: var(--text-normal) !important;
+}
+
+/* Force Bases checkboxes to follow UI font colour */ 
+body div.bases-view input[type="checkbox"] { 
+  border-color: var(--text-muted) !important; 
+} 
+
+body div.bases-view input[type="checkbox"]:checked { 
+  background-color: var(--text-muted) !important; 
+  border-color: var(--text-muted) !important; 
+}
+
 /* ================================================================= */
 /* 11. NEW TAB PAGE                                                  */
 /* ================================================================= */
 
+/* Base state: Force typeface and UI color */
+body .empty-state-title,
+body .empty-state-action {
+  font-family: var(--font-interface-override) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Hover state: Already exists in your code */
 body .empty-state-action:hover,
 body .empty-state-action.is-focused {
   color: var(--new-tab-hover-text);
@@ -2349,10 +2388,11 @@ body.is-mobile .menu .menu-item:active {
   background-color: var(--background-secondary);
 }
 
-body.is-mobile.theme-dark .menu .menu-item:not(.is-warning),
-body.is-mobile.theme-dark .menu .menu-item:not(.is-warning) .menu-item-icon {
-  color: var(--text-accent);
-}
+/* Force mobile menu text and icons to follow UI font colour */
+ body.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-title,
+ body.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-icon {
+   color: var(--text-muted) !important;
+ }
 
 /* Settings Items selection background */
 body.is-mobile .setting-item.is-selected,
@@ -2441,14 +2481,28 @@ body.is-mobile .suggestion-item.is-selected {
   background-color: var(--background-modifier-hover);
 }
 
+/* Active option on drawer font color */
+body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner,
+body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-mobile .workspace-drawer .nav-action-button.is-active,
+body.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-content {
+  color: var(--text-muted) !important;
+}
+
 /* ================================================================= */
 /* 13. MODALS AND SETTINGS                                           */
 /* ================================================================= */
 
 /* Dark Mode Modal Overrides */
 body.theme-dark .modal {
-  --text-normal: var(--text-accent);
-  --text-muted: var(--font-colour-light-grey-bd);
+  --text-normal: var(--body-font-color-dark);
+  --text-muted: var(--ui-font-color-dark);
+}
+
+/* Light Mode Modal Overrides */
+body.theme-light .modal {
+  --text-normal: var(--body-font-color-light);
+  --text-muted: var(--ui-font-color-light);
 }
 
 /* Vertical Tabs Styling */
@@ -2458,10 +2512,17 @@ body .vertical-tab-nav-item {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+/* Active setting option: Lighter version of UI font colour */
 body .vertical-tab-nav-item.is-active {
   border-radius: var(--menu-radius);
   background-color: var(--background-secondary);
-  color: var(--text-accent-hover);
+  color: color-mix(in srgb, var(--text-muted), white 40%) !important;
+}
+
+/* Ensure the icon and chevron also follow the lighter colour */
+body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
+body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-chevron {
+  color: inherit !important;
 }
 
 /* Vertical Tab Group Headers */
@@ -2609,7 +2670,6 @@ body .tree-item-self.has-focus {
   box-shadow: none !important;
   background-color: var(--surface-highlight) !important;
 }
-
 
 /* ================================================================= */
 /* 17. DASHBOARD CORE & LAYOUT                                       */
@@ -2826,7 +2886,7 @@ body:not(.is-mobile) .dashboard .callout {
   font-family: var(--font-interface);
   font-weight: 600;
   font-size: 1.2em;
-  color: var(--text-normal);
+  color: var(--text-muted);
 }
 
 .dashboard .callout-content {
@@ -2869,7 +2929,7 @@ body:not(.is-mobile) .dashboard .callout {
 /* Hover States (pointer devices only) */
 @media (hover: hover) {
   .dashboard .callout:hover .callout-title {
-    color: var(--text-accent);
+    color: color-mix(in srgb, var(--text-muted), white 40%) !important;
     transition: color 0.3s ease;
   }
 

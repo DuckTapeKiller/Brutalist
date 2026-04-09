@@ -946,7 +946,7 @@ body.theme-dark {
   --text-on-accent: #323232;
   --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --text-selection: rgba(200, 200, 200, 0.15);
-  --text-highlight-bg: #1a3a5c;
+  --text-highlight-bg: color-mix(in srgb, #4b66c7, transparent 55%);
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
   --bases-text-color: var(--body-font-color-dark);
@@ -983,8 +983,7 @@ body.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: none;
   --drag-bg: #000000;
-  --toggle-on-color: #4a9eff;
-
+  --toggle-on-color: #798ccf; 
   /* Buttons & CTAs */
   --button-bg-dynamic: var(--light-accent-custom);
   --button-bg-hover-dynamic: #000000;
@@ -993,7 +992,7 @@ body.theme-dark {
   --cta-bg-dynamic: var(--interactive-accent);
   --cta-text-dynamic: #000000;
   --cta-bg-hover-dynamic: #E0E0E0;
-  --status-bar-active-bg: #4a9eff;
+  --status-bar-active-bg: #798ccf; 
 
   /* Settings */
   --settings-icon-fill: var(--ui-font-color-dark);
@@ -1479,7 +1478,7 @@ body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-ico
 }
 
 /* ================================================================= */
-/* 5. STATUS BAR                                                    */
+/* 5. STATUS BAR                                                     */
 /* ================================================================= */
 
 body .status-bar,
@@ -1500,12 +1499,18 @@ body .status-bar-item {
   background-color: var(--background-primary);
 }
 
-/* Hover & Active/Selected State */
-body .status-bar-item:hover,
-body .status-bar-item:active,
-body .status-bar-item.is-active {
+/* Hover State - Keeps your grey selection background */
+body .status-bar-item:hover {
   background-color: var(--text-selection) !important;
   color: var(--icon-color-hover) !important;
+}
+
+/* Active/Selected State - Implementation of the lively accent colours */
+body .status-bar-item:active,
+body .status-bar-item.is-active {
+  background-color: var(--status-bar-active-bg) !important;
+  color: #1e1e1e !important; /* Ensures text is readable against Orange/Periwinkle */
+  font-weight: bold;
 }
 
 /* ================================================================= */
@@ -2933,21 +2938,22 @@ body:not(.is-mobile) .dashboard .callout {
     transition: color 0.3s ease;
   }
 
+  /* Buttons adapt to UI font color + shift to background-primary for text */
   .dashboard .callout-content li>a.internal-link:hover,
   .dashboard .callout-content li>a.external-link:hover {
-    background-color: var(--interactive-accent);
-    color: var(--text-on-accent);
+    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
+    color: var(--background-secondary) !important; /* Text "cuts out" to background color */
     padding-left: 18px;
+    font-weight: bold;
   }
 }
 
 /* Active States (touch devices) */
 @media (hover: none) {
-
   .dashboard .callout-content li>a.internal-link:active,
   .dashboard .callout-content li>a.external-link:active {
-    background-color: var(--interactive-accent);
-    color: var(--text-on-accent);
+    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
+    color: var(--background-secondary) !important;
     opacity: 1;
   }
 }

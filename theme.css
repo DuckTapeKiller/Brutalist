@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.0 */
+/* v4.0.1 */
 /* ================================================================= */
 
 @font-face {
@@ -842,10 +842,19 @@ body {
   --light-accent-custom: #000000;
   --dark-accent-custom: #cdcdcd;
 
+  /* Surface Highlight (unified interactive surface) */
+  --surface-highlight-dark: #262626;
+  --surface-highlight-light: #d6d6d6;
+
   /* Layout & Geometry */
   --editor-width: 600px;
   --border-width: 1px;
   --icon-size: 20px;
+
+  /* Shared Computed Variables (resolve per-mode via lazy var()) */
+  --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
+  --scrollbar-active-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 80%);
+  --scrollbar-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 85%);
 
   /* Global Thickness */
   --callout-border-width: 1px;
@@ -875,7 +884,7 @@ body {
   --toggle-track-radius: 0 !important;
   --prompt-border-radius: var(--modal-radius) !important;
   --suggestion-item-border-radius: 0 !important;
-  --suggestion-radius: 4px !important;
+  --suggestion-radius: 0 !important;
   --callout-radius: 0 !important;
   --status-bar-radius: 0 !important;
   --list-bullet-radius: 50% !important;
@@ -936,7 +945,7 @@ body {
   --tl-date-width: 200px;
   --tl-row-gap: 2.5rem;
   --tl-dot-size: 1.2rem;
-  --tl-dot-color: var(--text-selection);
+  --tl-dot-color: var(--toggle-on-color);
 }
 
 /* ================================================================= */
@@ -983,6 +992,8 @@ body.theme-dark {
   --modal-background: #323232;
   --prompt-background: #323232;
   --mobile-drawer-bg: #3c3c3c;
+  --surface-highlight: var(--surface-highlight-dark);
+  --menu-custom-bg: var(--surface-highlight);
 
   /* Interactive Elements & UI */
   --interactive-accent-hover: #ffffff;
@@ -993,8 +1004,8 @@ body.theme-dark {
   --input-border: transparent;
   --canvas-node-border-color: #c0c0c0;
   --checkbox-color: var(--dark-accent-custom);
-  --drag-border: dashed #00526E;
-  --drag-bg: color-mix(in srgb, var(--text-selection), transparent 85%);
+  --drag-border: none;
+  --drag-bg: #000000;
   --toggle-on-color: #4a9eff;
 
   /* Buttons & CTAs */
@@ -1007,11 +1018,6 @@ body.theme-dark {
   --cta-bg-hover-dynamic: #E0E0E0;
   --status-bar-active-bg: #4a9eff;
 
-  /* Scrollbars */
-  --scrollbar-track-bg: #3c3c3c;
-  --scrollbar-active-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 80%);
-  --scrollbar-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 85%);
-
   /* Settings */
   --settings-icon-fill: var(--ui-font-color-dark);
   --settings-border-color: #6a6a6a;
@@ -1019,8 +1025,7 @@ body.theme-dark {
 
   /* Tabs */
   --tab-outline-color: transparent !important;
-  --tab-hover-bg-doc: #262626;
-  --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
+  --tab-hover-bg-doc: var(--surface-highlight);
   --tab-hover-text-ui: #B3B3B3;
   --tab-active-bg-sidebar: color-mix(in srgb, #ffffff, transparent 95%);
   --new-tab-hover-bg: color-mix(in srgb, #BFBFBF, transparent 85%);
@@ -1112,6 +1117,8 @@ body.theme-light {
   --prompt-background: #B0B0B0;
   --mobile-drawer-bg: #B0B0B0;
   --toggle-on-color: #ff7700;
+  --surface-highlight: var(--surface-highlight-light);
+  --menu-custom-bg: var(--surface-highlight);
 
   /* Interactive Elements & UI */
   --interactive-accent-hover: #000000;
@@ -1122,8 +1129,8 @@ body.theme-light {
   --input-border: transparent;
   --canvas-node-border-color: #232323;
   --checkbox-color: var(--light-accent-custom);
-  --drag-border: dashed #7a9f79;
-  --drag-bg: color-mix(in srgb, var(--text-selection), transparent 85%);
+  --drag-border: none;
+  --drag-bg: #ffffff;
 
   /* Buttons & CTAs */
   --button-bg-dynamic: #d0d0d0;
@@ -1135,11 +1142,6 @@ body.theme-light {
   --cta-bg-hover-dynamic: #000000;
   --status-bar-active-bg: #ff7700;
 
-  /* Scrollbars */
-  --scrollbar-track-bg: #C5C5C5;
-  --scrollbar-active-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 80%);
-  --scrollbar-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 85%);
-
   /* Settings */
   --settings-icon-fill: var(--ui-font-color-light);
   --settings-border-color: #000000;
@@ -1147,8 +1149,7 @@ body.theme-light {
 
   /* Tabs */
   --tab-outline-color: transparent !important;
-  --tab-hover-bg-doc: #dfdfdf;
-  --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
+  --tab-hover-bg-doc: var(--surface-highlight);
   --tab-hover-text-ui: #000000;
   --tab-active-bg-sidebar: color-mix(in srgb, #FFFFFF, transparent 60%);
   --new-tab-hover-bg: color-mix(in srgb, #505050, transparent 90%);
@@ -1798,23 +1799,25 @@ body .is-being-dragged :is(.nav-file-title-content, .nav-folder-title-content, .
 /* --- READING VIEW ONLY --- */
 /* Default State: No margin, No indent */
 body.enable-book-style .markdown-preview-view p {
-    margin-block-start: 0 !important;
-    margin-block-end: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    text-indent: 0;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  text-indent: 0;
 }
+
 /* The Magic Rule: Indent ONLY if the previous element was ALSO a paragraph wrapper.
    This automatically excludes paragraphs after Headers, Lists, or manual breaks. */
-body.enable-book-style .markdown-preview-view div:has(> p) + div:has(> p) > p {
-    text-indent: 1em;
+body.enable-book-style .markdown-preview-view div:has(> p)+div:has(> p)>p {
+  text-indent: 1em;
 }
+
 /* Fix for Blockquotes (Don't indent inside quotes) */
 body.enable-book-style .markdown-preview-view blockquote p {
-    text-indent: 0 !important;
-    margin-bottom: 1rem !important;
+  text-indent: 0 !important;
+  margin-bottom: 1rem !important;
 }
 
 /* ================================================================= */
@@ -1926,10 +1929,15 @@ body .checkbox-container.is-enabled:active::after {
 
 /* Input Helpers & Decorators */
 .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
-  background-color: var(--text-selection) !important;
-  color: #ffffff !important;
+  background-color: var(--toggle-on-color) !important;
+  color: var(--text-normal) !important;
   border-radius: 4px;
   z-index: 10;
+}
+
+/* Font color of the decorator only in dark mode */
+.theme-dark .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
+  color: #ffffff !important;
 }
 
 /* Removes default background and borders from the input */
@@ -2010,18 +2018,21 @@ body .metadata-property.is-active,
 body .metadata-property-value-input:hover,
 body .metadata-property-value-input:focus,
 body .metadata-property-key-input:focus {
-  border-color: var(--interactive-accent);
-  box-shadow: var(--shadow-focus-ring);
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-color: var(--surface-highlight) !important;
   z-index: 10;
   border-radius: var(--radius-s) !important;
 }
 
-/* Metadata Containers - Force Radius */
+/* Metadata Containers - Force Radius & Remove Borders */
 body .metadata-container,
 body .metadata-property,
 body .metadata-property-key-input,
 body .metadata-property-value-input {
   border-radius: var(--radius-s) !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Context-Aware Sidebar Metadata */
@@ -2035,15 +2046,8 @@ body.theme-light:not(.is-mobile) .workspace-leaf-content[data-type="file-propert
 .suggestion-container {
   border-radius: var(--suggestion-radius) !important;
   overflow: hidden !important;
-  border: 1px solid transparent;
-}
-
-.theme-light .suggestion-container {
-  border-color: var(--light-accent-custom) !important;
-}
-
-.theme-dark .suggestion-container {
-  border-color: var(--dark-accent-custom) !important;
+  border: none !important;
+  background-color: var(--surface-highlight) !important;
 }
 
 /* Force Radius on Metadata Container (Mobile) */
@@ -2056,7 +2060,7 @@ body.is-mobile .metadata-container {
 /* Installed/Active Theme Flair */
 body .flair.mod-pop {
   background-color: var(--toggle-on-color) !important;
-  border: 1px solid var(--toggle-on-color) !important;
+  border: none !important;
   color: #000000 !important;
 }
 
@@ -2069,6 +2073,7 @@ body.theme-light .flair.mod-pop {
 /* ================================================================= */
 
 @media screen and (min-width: 768px) {
+
   /* Table Safety */
   .markdown-source-view table,
   .markdown-preview-view table {
@@ -2103,7 +2108,7 @@ body.theme-light .flair.mod-pop {
     --editor-width: 100%;
   }
 
-/* Apply Width to Editor */
+  /* Apply Width to Editor */
   .full-width .cm-sizer,
   .full-width .cm-content,
   .full-width .markdown-preview-sizer,
@@ -2224,14 +2229,9 @@ body.theme-dark div.bases-view * {
 }
 
 /* Bases Cell Backgrounds (Active/Focused) */
-body.theme-light .metadata-input-longtext:focus,
-body.theme-light .metadata-input-longtext.is-focused {
-  background-color: #d6d6d6 !important;
-}
-
-body.theme-dark .metadata-input-longtext:focus,
-body.theme-dark .metadata-input-longtext.is-focused {
-  background-color: #262626 !important;
+body .metadata-input-longtext:focus,
+body .metadata-input-longtext.is-focused {
+  background-color: var(--surface-highlight) !important;
 }
 
 /* ================================================================= */
@@ -2343,14 +2343,9 @@ body.is-mobile.theme-dark .menu .menu-item {
   background-color: var(--background-primary);
 }
 
-/* Menu Items selection background (Dark/Light Mode) */
-body.is-mobile.theme-dark .menu .menu-item.is-selected,
-body.is-mobile.theme-dark .menu .menu-item:active {
-  background-color: var(--background-secondary);
-}
-
-body.is-mobile.theme-light .menu .menu-item.is-selected,
-body.is-mobile.theme-light .menu .menu-item:active {
+/* Menu Items selection background */
+body.is-mobile .menu .menu-item.is-selected,
+body.is-mobile .menu .menu-item:active {
   background-color: var(--background-secondary);
 }
 
@@ -2486,6 +2481,13 @@ body.is-mobile .setting-item {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+/* Modals without borders */
+body .modal {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* ================================================================= */
 /* 14. GRAPH VIEW                                                    */
 /* ================================================================= */
@@ -2571,19 +2573,43 @@ div.search-params {
 
 /* Extracts and displays the alt attribute as a caption block */
 .markdown-rendered .image-embed[alt]::after {
-    content: attr(alt);
-    display: block;
-    text-align: center;
-    font-size: 0.85em;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
-    font-family: var(--font-interface-override);
+  content: attr(alt);
+  display: block;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-family: var(--font-interface-override);
 }
 
 /* Prevents empty alt attributes from rendering a blank block */
 .markdown-rendered .image-embed[alt=""]::after {
-    display: none;
+  display: none;
 }
+
+/* Menus background and border color on desktop only */
+@media (hover: hover) {
+
+  body .menu,
+  body .menu .menu-item,
+  body .menu .menu-separator {
+    background-color: var(--menu-custom-bg) !important;
+    border-color: var(--menu-custom-bg) !important;
+  }
+
+  body .menu .menu-item:hover {
+    background-color: var(--background-modifier-hover) !important;
+  }
+}
+
+/* Active state on files and folders on left panel */
+body .tree-item-self.has-focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: var(--surface-highlight) !important;
+}
+
 
 /* ================================================================= */
 /* 17. DASHBOARD CORE & LAYOUT                                       */
@@ -2857,6 +2883,7 @@ body:not(.is-mobile) .dashboard .callout {
 
 /* Active States (touch devices) */
 @media (hover: none) {
+
   .dashboard .callout-content li>a.internal-link:active,
   .dashboard .callout-content li>a.external-link:active {
     background-color: var(--interactive-accent);
@@ -2931,13 +2958,11 @@ body.is-mobile .workspace-drawer-inner {
   padding: 2rem 1rem !important;
   margin: 0 !important;
   position: relative !important;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    var(--text-muted) 0px,
-    var(--text-muted) 6px,
-    transparent 6px,
-    transparent 12px
-  ) !important;
+  background-image: repeating-linear-gradient(to bottom,
+      var(--text-muted) 0px,
+      var(--text-muted) 6px,
+      transparent 6px,
+      transparent 12px) !important;
   background-size: 4px 100% !important;
   background-position: calc(1rem + var(--tl-date-width) - 2px) 0 !important;
   background-repeat: repeat-y !important;
@@ -2945,11 +2970,11 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19B. LIST ITEM RESETS */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li > .list-bullet {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li>.list-bullet {
   display: none !important;
 }
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2958,14 +2983,14 @@ body.is-mobile .workspace-drawer-inner {
   transition: background-color 0.4s ease !important;
 }
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li > p {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li>p {
   margin: 0 !important;
   padding: 0 !important;
 }
 
 /* 19C. DATE ITEM (every 3n+1) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
   grid-column: 1 !important;
   grid-row: span 2 !important;
   align-self: start !important;
@@ -2986,7 +3011,7 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19D. DOT MARKER (::before on date item) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
   content: "" !important;
   display: block !important;
   position: absolute !important;
@@ -3003,13 +3028,13 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19E. ::after RESERVED */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::after {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::after {
   display: none !important;
 }
 
 /* 19F. TITLE ITEM (every 3n+2) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
   grid-column: 2 !important;
   font-size: 1.1rem !important;
   font-weight: 700 !important;
@@ -3020,7 +3045,7 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19G. CONTENT ITEM (every 3n) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
   grid-column: 2 !important;
   font-size: 0.88rem !important;
   color: var(--text-muted) !important;
@@ -3039,16 +3064,16 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19I. HOVER — FULL ROW HIGHLIGHT */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
   background-color: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
   border-radius: 6px !important;
 }
 
 /* 19J. HOVER — DOT SCALE + GLOW */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover::before {
   transform: translateX(50%) scale(1.4) !important;
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--tl-dot-color) 30%, transparent) !important;
   transition: all 0.2s ease !important;
@@ -3056,20 +3081,27 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19K. ENTRANCE ANIMATION — SLIDE IN FROM RIGHT */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2),
-.markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2),
+.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
   animation: slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /* 19L. KEYFRAMES */
 
 @keyframes slide-in {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ================================================================= */
-/* 19. TIMELINE — MOBILE                                             */
+/* 19B. TIMELINE — MOBILE                                            */
 /* ================================================================= */
 
 @media (max-width: 480px) {
@@ -3085,7 +3117,7 @@ body.is-mobile .workspace-drawer-inner {
     background-size: 4px 12px !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1) {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
     grid-column: 1 !important;
     grid-row: auto !important;
     text-align: left !important;
@@ -3094,7 +3126,7 @@ body.is-mobile .workspace-drawer-inner {
     font-weight: 900 !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1)::before {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
     right: auto !important;
     left: -2px !important;
     top: 8px !important;
@@ -3104,27 +3136,27 @@ body.is-mobile .workspace-drawer-inner {
     animation: none !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover::before {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover::before {
     transform: translateX(-50%) scale(1) !important;
     box-shadow: none !important;
     transition: none !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover,
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li,
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+1):hover + li + li {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
     background-color: transparent !important;
     transition: none !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n+2) {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
     grid-column: 1 !important;
     padding: 0 0 0.15rem 1.5rem !important;
     font-size: 1rem !important;
     animation: none !important;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) > li:nth-child(3n) {
+  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
     grid-column: 1 !important;
     padding: 0 0 var(--tl-row-gap) 1.5rem !important;
     font-size: 0.85rem !important;
@@ -3150,14 +3182,17 @@ body .markdown-preview-view .tag {
   padding-block: 0 !important;
   transition: none !important;
 }
+
 body .cm-hashtag-begin {
   border-right: none !important;
   padding-right: 0 !important;
 }
+
 body .cm-hashtag-end {
   border-left: none !important;
   padding-left: 0 !important;
 }
+
 body .metadata-property .multi-select-pill,
 body .metadata-property .multi-select-pill:focus,
 body .metadata-property .multi-select-pill:focus-within,
@@ -3173,6 +3208,7 @@ body .metadata-property .multi-select-pill[tabindex]:focus {
   outline: none !important;
   transition: none !important;
 }
+
 body .metadata-property .multi-select-pill::after,
 body .metadata-property .multi-select-pill:focus::after,
 body .metadata-property .multi-select-pill:focus-visible::after,
@@ -3182,11 +3218,21 @@ body .metadata-property .multi-select-pill[tabindex]:focus::after {
   box-shadow: none !important;
   outline: none !important;
 }
+
 @media (hover: hover) {
   body .metadata-property .multi-select-pill:hover,
   body a.tag:hover {
-    background-color: var(--tag-background-hover) !important;
+    background-color: var(--toggle-on-color) !important;
     border-color: var(--tag-border-color) !important;
-    color: var(--text-accent-hover) !important;
+  }
+
+  body.theme-dark .metadata-property .multi-select-pill:hover,
+  body.theme-dark a.tag:hover {
+    color: #ffffff !important;
+  }
+
+  body.theme-light .metadata-property .multi-select-pill:hover,
+  body.theme-light a.tag:hover {
+    color: #000000 !important;
   }
 }

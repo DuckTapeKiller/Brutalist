@@ -2563,14 +2563,22 @@ body .vertical-tab-nav-item {
   -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Active setting option: Lighter version of UI font colour */
+/* Active setting option: Theme-specific UI font colour */
 body .vertical-tab-nav-item.is-active {
   border-radius: var(--menu-radius);
   background-color: var(--background-secondary);
+}
+
+body.theme-dark .vertical-tab-nav-item.is-active {
   color: color-mix(in srgb, var(--text-muted), white 40%) !important;
 }
 
-/* Ensure the icon and chevron also follow the lighter colour */
+body.theme-light .vertical-tab-nav-item.is-active {
+  color: color-mix(in srgb, var(--text-muted), black 60%) !important;
+  font-weight: bold !important;
+}
+
+/* Ensure the icon and chevron also follow the inherited colour */
 body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
 body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-chevron {
   color: inherit !important;
@@ -2980,17 +2988,36 @@ body:not(.is-mobile) .dashboard .callout {
 /* Hover States (pointer devices only) */
 @media (hover: hover) {
   .dashboard .callout:hover .callout-title {
-    color: color-mix(in srgb, var(--text-muted), white 40%) !important;
     transition: color 0.3s ease;
   }
 
-  /* Buttons adapt to UI font color + shift to background-primary for text */
+  body.theme-dark .dashboard .callout:hover .callout-title {
+    color: color-mix(in srgb, var(--text-muted), white 40%) !important;
+  }
+
+  body.theme-light .dashboard .callout:hover .callout-title {
+    color: color-mix(in srgb, var(--text-muted), black 60%) !important;
+  }
+
+  /* Base layout for button hover */
   .dashboard .callout-content li>a.internal-link:hover,
   .dashboard .callout-content li>a.external-link:hover {
-    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
-    color: var(--background-secondary) !important; /* Text "cuts out" to background color */
     padding-left: 18px;
     font-weight: bold;
+  }
+
+  /* Dark Mode: Bright background, dark text */
+  body.theme-dark .dashboard .callout-content li>a.internal-link:hover,
+  body.theme-dark .dashboard .callout-content li>a.external-link:hover {
+    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
+    color: var(--background-secondary) !important;
+  }
+
+  /* Light Mode: Dark background, pure white text */
+  body.theme-light .dashboard .callout-content li>a.internal-link:hover,
+  body.theme-light .dashboard .callout-content li>a.external-link:hover {
+    background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
+    color: #ffffff !important;
   }
 }
 
@@ -2998,9 +3025,21 @@ body:not(.is-mobile) .dashboard .callout {
 @media (hover: none) {
   .dashboard .callout-content li>a.internal-link:active,
   .dashboard .callout-content li>a.external-link:active {
+    opacity: 1;
+  }
+
+  /* Dark Mode */
+  body.theme-dark .dashboard .callout-content li>a.internal-link:active,
+  body.theme-dark .dashboard .callout-content li>a.external-link:active {
     background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
     color: var(--background-secondary) !important;
-    opacity: 1;
+  }
+
+  /* Light Mode */
+  body.theme-light .dashboard .callout-content li>a.internal-link:active,
+  body.theme-light .dashboard .callout-content li>a.external-link:active {
+    background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
+    color: #ffffff !important;
   }
 }
 

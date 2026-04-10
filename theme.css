@@ -2540,6 +2540,33 @@ body.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-conte
   color: var(--text-muted) !important;
 }
 
+/* Sync Button Mobile */
+/* Default (Light Mode) background and clear filters */
+.is-mobile .sync-status-icon,
+.is-mobile .plugin-sync {
+    background-color: var(--background-secondary) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Dark Mode override: Chained classes for the body tag */
+.theme-dark.is-mobile .sync-status-icon,
+.theme-dark.is-mobile .plugin-sync {
+    background-color: var(--background-primary) !important;
+}
+
+/* Completely remove pseudo-elements */
+.is-mobile .sync-status-icon::before,
+.is-mobile .sync-status-icon::after,
+.is-mobile .plugin-sync::before,
+.is-mobile .plugin-sync::after {
+    display: none !important;
+    content: none !important;
+}
+
 /* ================================================================= */
 /* 13. MODALS AND SETTINGS                                           */
 /* ================================================================= */

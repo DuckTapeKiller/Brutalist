@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.1 */
+/* v4.0.2 */
 /* ================================================================= */
 
 @font-face {
@@ -416,37 +416,47 @@ settings:
     type: variable-select
     default: '#222222'
     options:
-      - label: '#505050'
+      - label: '#505050 (Soft Grey)'
         value: '#505050'
-      - label: '#404040'
+      - label: '#404040 (Charcoal)'
         value: '#404040'
-      - label: '#303030'
+      - label: '#303030 (Deep Charcoal)'
         value: '#303030'
       - label: '#222222 (Default)'
         value: '#222222'
-      - label: '#202020'
+      - label: '#202020 (Near Black)'
         value: '#202020'
-      - label: '#101010'
+      - label: '#101010 (Pitch Black)'
         value: '#101010'
-      - label: '#000000'
+      - label: '#000000 (Pure Black)'
         value: '#000000'
   - id: body-font-color-light
     title: Body Font Color (Light Mode)
     type: variable-select
     default: '#000000'
     options:
-      - label: '#505050'
+      - label: '#505050 (Soft Grey)'
         value: '#505050'
-      - label: '#404040'
+      - label: '#404040 (Charcoal)'
         value: '#404040'
-      - label: '#303030'
+      - label: '#303030 (Deep Charcoal)'
         value: '#303030'
-      - label: '#202020'
+      - label: '#202020 (Near Black)'
         value: '#202020'
-      - label: '#101010'
+      - label: '#101010 (Pitch Black)'
         value: '#101010'
-      - label: '#000000 (Default)'
+      - label: '#000000 (Pure Black - Default)'
         value: '#000000'
+  - id: link-color-light-custom
+    title: Internal Link Colour (Light Mode)
+    type: variable-color
+    format: hex
+    default: '#000000'
+  - id: link-ext-color-light-custom
+    title: External Link Colour (Light Mode)
+    type: variable-color
+    format: hex
+    default: '#000000'
   - id: section-typography-dark
     title: Dark Mode Font Colours
     type: heading
@@ -487,6 +497,16 @@ settings:
         value: '#bcb094'
       - label: '#b0a589 (Dark Everforest)'
         value: '#b0a589'
+  - id: link-color-dark-custom
+    title: Internal Link Colour (Dark Mode)
+    type: variable-color
+    format: hex
+    default: '#a0a0a0'
+  - id: link-ext-color-dark-custom
+    title: External Link Colour (Dark Mode)
+    type: variable-color
+    format: hex
+    default: '#a0a0a0'
 */
 
 /* @settings
@@ -753,6 +773,7 @@ settings:
     format: px
 */
 
+
 /* ================================================================= */
 /* TABLE OF CONTENTS                                                 */
 /* ================================================================= */
@@ -868,7 +889,7 @@ body {
   --table-selection-border-radius: 0 !important;
   --code-radius: 0px !important;
   --scrollbar-radius: 0px !important;
-  --metadata-content-radius: 8px;
+  --metadata-content-radius: 0px;
 
   /* Shadows */
   --input-shadow: none !important;
@@ -1037,8 +1058,8 @@ body.theme-dark {
   --calendar-header-color: var(--text-muted);
 
   /* Links */
-  --link-color: #e2e2e2;
-  --link-external-color: #e2e2e2;
+  --link-color: var(--link-color-dark-custom, var(--text-normal));
+  --link-external-color: var(--link-ext-color-dark-custom, var(--text-normal));
   --link-decoration: underline;
 
   /* Callouts */
@@ -1165,8 +1186,8 @@ body.theme-light {
   --calendar-header-color: var(--text-muted);
 
   /* Links */
-  --link-color: #505050;
-  --link-external-color: #505050;
+  --link-color: var(--link-color-light-custom, var(--text-normal));
+  --link-external-color: var(--link-ext-color-light-custom, var(--text-normal));
   --link-decoration: underline;
 
   /* Callouts */

@@ -15,7 +15,7 @@ Compatible with Style Settings.
 ## Table of Contents
 1. [Introduction](#1-introduction)
 2. [Global Configuration](#2-global-configuration)
-   1. [Fonts](#21-fonts)
+   1. [Fonts, fonts colors, external and intenral links colors](#21-fonts-fonts-colors-external-and-intenral-links-colors)
    2. [Alignment](#22-alignment)
    3. [Note Width Control](#23-note-width-control)
    4. [Line Height](#24-line-height)
@@ -51,12 +51,14 @@ It is tailored for individuals who dedicate significant time to reading or draft
 
 You can configure the following visual elements via the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin.
 
-### 2.1 Fonts
+### 2.1 Fonts, fonts colors, external and intenral links colors.
 
 The theme embeds several typefaces, ensuring offline availability without local installation. In Style Settings, you can choose these for Body or UI/Headers (Default: Marcellus for UI, IBM Plex Serif for Body).
 * **Serif:** Lora, IBM Plex Serif, Marcellus.
 * **Sans Serif:** iA Writer Duo S, iA Writer Quattro S, Montserrat, Sen.
 * **Monospace:** iA Writer Mono S, Space Mono.
+
+* In this section, you can also change the fonts, external and internal links colors. 
 
 ### 2.2 Alignment
 

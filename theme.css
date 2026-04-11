@@ -967,7 +967,7 @@ body.theme-dark {
   --text-on-accent: #323232;
   --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
   --text-selection: rgba(200, 200, 200, 0.15);
-  --text-highlight-bg: color-mix(in srgb, #495ca1, transparent 55%);
+  --text-highlight-bg: color-mix(in srgb, #38717f, transparent 55%);
   --code-background: #1f1f1f;
   --background-modifier-border-focus: #FFFFFF;
   --bases-text-color: var(--body-font-color-dark);
@@ -1004,7 +1004,7 @@ body.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: none;
   --drag-bg: #000000;
-  --toggle-on-color: #5f6a93; 
+  --toggle-on-color: #448494; 
   /* Buttons & CTAs */
   --button-bg-dynamic: var(--light-accent-custom);
   --button-bg-hover-dynamic: #000000;
@@ -1522,16 +1522,8 @@ body .status-bar-item {
 
 /* Hover State - Keeps your grey selection background */
 body .status-bar-item:hover {
-  background-color: var(--text-selection) !important;
+  background-color: var(--text-highlight-bg) !important;
   color: var(--icon-color-hover) !important;
-}
-
-/* Active/Selected State - Implementation of the lively accent colours */
-body .status-bar-item:active,
-body .status-bar-item.is-active {
-  background-color: var(--status-bar-active-bg) !important;
-  color: #1e1e1e !important; /* Ensures text is readable against Orange/Periwinkle */
-  font-weight: bold;
 }
 
 /* ================================================================= */
@@ -2371,6 +2363,20 @@ body.is-mobile .nav-action-button.is-active,
 body.is-mobile .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
 body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
   background-color: var(--mobile-active-bg);
+}
+
+/* Dimming the Persistent Bottom Bar */
+/* Targets the mirrored selection inside the options container ONLY when it is NOT collapsed */
+body.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
+body.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-title {
+  opacity: 0 !important;
+  transition: opacity 0.2s ease;
+}
+
+/* Ensures full visibility when the container is collapsed (acting as the standard bottom bar) */
+body.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
+body.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-title {
+  opacity: 1 !important;
 }
 
 /* Settings Form Elements */

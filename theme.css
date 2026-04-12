@@ -1061,6 +1061,8 @@ body.theme-dark {
   --link-color: var(--link-color-dark-custom, var(--text-normal));
   --link-external-color: var(--link-ext-color-dark-custom, var(--text-normal));
   --link-decoration: underline;
+  --link-unresolved-color: #e67e80;
+  --link-unresolved-opacity: 1;
 
   /* Callouts */
   --callout-note: 96, 138, 176;
@@ -1189,6 +1191,9 @@ body.theme-light {
   --link-color: var(--link-color-light-custom, var(--text-normal));
   --link-external-color: var(--link-ext-color-light-custom, var(--text-normal));
   --link-decoration: underline;
+  --link-unresolved-color: #753e3f;
+  --link-unresolved-opacity: 1;
+}
 
   /* Callouts */
   --callout-note: 84, 122, 155;
@@ -1838,6 +1843,16 @@ body.enable-book-style .markdown-preview-view blockquote p {
 .markdown-rendered .indentation-guide {
   --indentation-guide-color: var(--indentation-guide-color) !important;
   --indentation-guide-color-active: var(--indentation-guide-color-active) !important;
+}
+
+/* Ensure unresolved links use the defined colour and full opacity */
+.internal-link.is-unresolved,
+.cm-link.is-unresolved,
+.metadata-link-inner.is-unresolved,
+.multi-select-pill-content.is-unresolved {
+  color: var(--link-unresolved-color) !important;
+  opacity: var(--link-unresolved-opacity) !important;
+  text-decoration-style: dashed; /* Optional: adds a brutalist "incomplete" feel */
 }
 
 /* ================================================================= */

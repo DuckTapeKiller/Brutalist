@@ -3409,12 +3409,19 @@ body .cm-hashtag-end {
   padding-left: 0 !important;
 }
 
-body .metadata-property .multi-select-pill,
-body .metadata-property .multi-select-pill:focus,
-body .metadata-property .multi-select-pill:focus-within,
-body .metadata-property .multi-select-pill:focus-visible,
-body .metadata-property .multi-select-pill.is-active,
-body .metadata-property .multi-select-pill[tabindex]:focus {
+/* Metadata & Bases Pills - Styling for actual tags only */
+body .metadata-property .multi-select-pill:not(:has(.internal-link)),
+body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus,
+body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus-within,
+body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus-visible,
+body .metadata-property .multi-select-pill:not(:has(.internal-link)).is-active,
+body .metadata-property .multi-select-pill:not(:has(.internal-link))[tabindex]:focus,
+body div.bases-view .multi-select-pill:not(:has(.internal-link)),
+body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus,
+body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus-within,
+body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus-visible,
+body div.bases-view .multi-select-pill:not(:has(.internal-link)).is-active,
+body div.bases-view .multi-select-pill:not(:has(.internal-link))[tabindex]:focus {
   font-family: var(--font-ui) !important;
   background-color: var(--tag-background) !important;
   color: var(--tag-color) !important;
@@ -3425,30 +3432,68 @@ body .metadata-property .multi-select-pill[tabindex]:focus {
   transition: none !important;
 }
 
+/* Metadata Links - Neutralise container background */
+body .metadata-property .multi-select-pill:has(.internal-link) {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-right: 8px !important;
+}
+
+/* Unresolved Links - Metadata Behaviour */
+body .metadata-property .multi-select-pill-content.internal-link.is-unresolved {
+  color: var(--link-unresolved-color) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--text-faint) !important;
+  font-family: var(--font-ui) !important;
+  transition: text-decoration-color 0.1s ease;
+}
+
+/* Unresolved Links - Hover Effect */
+body .metadata-property .multi-select-pill-content.internal-link.is-unresolved:hover {
+  text-decoration-color: var(--link-unresolved-color) !important;
+}
+
+/* Resolved Links in Metadata */
+body .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved) {
+  color: var(--link-color) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--text-faint) !important;
+}
+
+body .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+  text-decoration-color: var(--link-color) !important;
+}
+
 body .metadata-property .multi-select-pill::after,
 body .metadata-property .multi-select-pill:focus::after,
 body .metadata-property .multi-select-pill:focus-visible::after,
 body .metadata-property .multi-select-pill[tabindex]:focus::after {
   display: none !important;
-  border-radius: var(--tag-radius) !important;
-  box-shadow: none !important;
-  outline: none !important;
 }
 
 @media (hover: hover) {
-  body .metadata-property .multi-select-pill:hover,
-  body a.tag:hover {
+  body a.tag:hover,
+  body .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
+  body div.bases-view .multi-select-pill:not(:has(.internal-link)):hover {
     background-color: var(--toggle-on-color) !important;
     border-color: var(--tag-border-color) !important;
   }
 
-  body.theme-dark .metadata-property .multi-select-pill:hover,
-  body.theme-dark a.tag:hover {
+  body.theme-dark a.tag:hover,
+  body.theme-dark .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
+  body.theme-dark .metadata-property .multi-select-pill:not(:has(.internal-link)):hover *,
+  body.theme-dark div.bases-view .multi-select-pill:not(:has(.internal-link)):hover,
+  body.theme-dark div.bases-view .multi-select-pill:not(:has(.internal-link)):hover * {
     color: #ffffff !important;
   }
 
-  body.theme-light .metadata-property .multi-select-pill:hover,
-  body.theme-light a.tag:hover {
+  body.theme-light a.tag:hover,
+  body.theme-light .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
+  body.theme-light .metadata-property .multi-select-pill:not(:has(.internal-link)):hover *,
+  body.theme-light div.bases-view .multi-select-pill:not(:has(.internal-link)):hover,
+  body.theme-light div.bases-view .multi-select-pill:not(:has(.internal-link)):hover * {
     color: #000000 !important;
   }
 }

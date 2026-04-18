@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.2 */
+/* v4.0.3 */
 /* ================================================================= */
 
 @font-face {
@@ -457,6 +457,11 @@ settings:
     type: variable-color
     format: hex
     default: '#000000'
+  - id: footnote-color-light-custom
+    title: Footnote Link Colour (Light Mode)
+    type: variable-color
+    format: hex
+    default: '#ff7700'
   - id: section-typography-dark
     title: Dark Mode Font Colours
     type: heading
@@ -507,6 +512,11 @@ settings:
     type: variable-color
     format: hex
     default: '#a0a0a0'
+  - id: footnote-color-dark-custom
+    title: Footnote Link Colour (Dark Mode)
+    type: variable-color
+    format: hex
+    default: '#448494'
 */
 
 /* @settings
@@ -588,6 +598,11 @@ settings:
     min: 1.0
     max: 3.0
     step: 0.1
+  - id: toggle-expand-longtext
+    title: Auto-expand Long Text Properties
+    description: Forces the Long Text property fields to expand fully without needing to click them.
+    type: class-toggle
+    default: false
 */
 
 /* @settings
@@ -859,7 +874,7 @@ body {
   --dashboard-border-width: 1px;
   --settings-border-width: 0px;
   --input-border-width: 0px;
-  --checkbox-border-width: 1px;
+  --checkbox-border-width: 0px;
   --drag-border-width: 3px;
   --nav-guide-border-width: 1px;
   --tag-border-width: var(--input-border-width);
@@ -895,7 +910,7 @@ body {
   --input-shadow: none !important;
   --input-shadow-hover: none !important;
   --shadow-s: none !important;
-  --shadow-checkbox-inset: inset 0 0 0 2px var(--background-primary);
+  --shadow-checkbox-inset: none !important;
   --shadow-focus-ring: 0 0 0 2px var(--interactive-accent);
   --shadow-focus-inset: inset 0 0 0 1px var(--text-normal);
   --shadow-floating-card: none;
@@ -992,6 +1007,7 @@ body.theme-dark {
   --mobile-drawer-bg: #3c3c3c;
   --surface-highlight: var(--surface-highlight-dark);
   --menu-custom-bg: var(--surface-highlight);
+  --checkbox-bg-unchecked: #2f2f2f;
 
   /* Interactive Elements & UI */
   --interactive-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
@@ -1047,7 +1063,7 @@ body.theme-dark {
   --graph-node: var(--text-muted);
 
   /* Tags */
-  --tag-color: var(--body-font-color-dark);
+  --tag-color: color-mix(in srgb, var(--ui-font-color-dark), white 10%);
   --tag-border-color: var(--dark-accent-custom);
   --tag-background: color-mix(in srgb, var(--dark-accent-custom), transparent 80%);
   --tag-background-hover: #000000;
@@ -1057,12 +1073,13 @@ body.theme-dark {
   --calendar-dot-bg: #feb43f;
   --calendar-header-color: var(--text-muted);
 
-  /* Links */
-  --link-color: var(--link-color-dark-custom, var(--text-normal));
-  --link-external-color: var(--link-ext-color-dark-custom, var(--text-normal));
+/* Links - Dark Mode */
+  --link-color: var(--ui-font-color-dark);
+  --link-external-color: var(--link-ext-color-dark-custom, #7bb3c0); 
   --link-decoration: underline;
-  --link-unresolved-color: #e67e80;
-  --link-unresolved-opacity: 1;
+  --link-unresolved-color: #8da3a8;                                
+  --link-unresolved-opacity: 0.85;                               
+  --footnote-link-color: #7bb3c0;
 
   /* Callouts */
   --callout-note: 96, 138, 176;
@@ -1118,6 +1135,7 @@ body.theme-light {
   --toggle-on-color: #ff7700;
   --surface-highlight: var(--surface-highlight-light);
   --menu-custom-bg: var(--surface-highlight);
+  --checkbox-bg-unchecked: #a9a9a9;
 
   /* Interactive Elements & UI */
   --interactive-accent-hover: #000000;
@@ -1187,12 +1205,13 @@ body.theme-light {
   --calendar-dot-bg: #d10000;
   --calendar-header-color: var(--text-muted);
 
-  /* Links */
-  --link-color: var(--link-color-light-custom, var(--text-normal));
-  --link-external-color: var(--link-ext-color-light-custom, var(--text-normal));
+/* Links - Light Mode */
+  --link-color: var(--ui-font-color-light);
+  --link-external-color: var(--link-ext-color-light-custom, #a34100);
   --link-decoration: underline;
-  --link-unresolved-color: #753e3f;
-  --link-unresolved-opacity: 1;
+  --link-unresolved-color: #772e00;                            
+  --link-unresolved-opacity: 0.8;                               
+  --footnote-link-color: #bd4b00;
 }
 
   /* Callouts */
@@ -1400,7 +1419,7 @@ body .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inn
 .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-name, 
 .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon, 
 .tree-item-self.is-active .tree-item-inner { 
-  color: var(--text-muted) !important; 
+  color: var(--text-accent-hover) !important; 
 }
 
 /* Settings Button Container */
@@ -1700,13 +1719,27 @@ body .markdown-preview-view blockquote {
   margin: 15pt 0;
 }
 
-/* Links - Light Mode Hover */
-body.theme-light a:hover,
-body.theme-light .metadata-link:hover,
-body.theme-light .external-link:hover,
-body.theme-light .cm-s-obsidian .cm-link:hover,
-body.theme-light .metadata-property-value a:hover {
-  color: var(--text-normal);
+/* LIGHT MODE HOVER - Internal Links (Darker) */
+body.theme-light a.internal-link:hover,
+body.theme-light .cm-s-obsidian .cm-hmd-internal-link:hover,
+body.theme-light .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+    color: #000000 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #000000 !important;
+    text-decoration-thickness: 1px;
+}
+
+/* DARK MODE HOVER - Internal Links (Lighter 45% White) */
+body.theme-dark a.internal-link:hover,
+body.theme-dark .markdown-preview-view a.internal-link:hover,
+body.theme-dark .cm-s-obsidian .cm-hmd-internal-link:hover,
+body.theme-dark .cm-s-obsidian span.cm-hmd-internal-link:hover,
+body.theme-dark .metadata-link:hover,
+body.theme-dark .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+    color: color-mix(in srgb, var(--link-color), white 45%) !important;
+    text-decoration: underline !important;
+    text-decoration-color: color-mix(in srgb, var(--link-color), white 45%) !important;
+    text-decoration-thickness: 1px;
 }
 
 /* Code Blocks */
@@ -1859,30 +1892,40 @@ body.enable-book-style .markdown-preview-view blockquote p {
 /* 8. FORMS AND CONTROLS                                            */
 /* ================================================================= */
 
-/* Checkboxes - Border */
+/* Global Checkbox Base - NO BORDERS */
 input[type="checkbox"] {
-  border: var(--checkbox-border-width) solid var(--checkbox-color);
+    border: none !important;
+    background-color: var(--checkbox-bg-unchecked) !important;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-shadow: none !important;
 }
 
-/* Checkboxes - Checked State */
+/* Checked State - Solid Fill */
 input[type="checkbox"]:checked {
-  background-color: var(--checkbox-color);
-  box-shadow: var(--shadow-checkbox-inset);
+    background-color: var(--checkbox-color) !important;
+    box-shadow: none !important;
 }
 
-/* Checkboxes - Hide Checkmark Icon */
+/* Hide the Checkmark Icon */
 input[type="checkbox"]:checked::after {
-  display: none;
+    display: none !important;
 }
 
-/* Force front matter checkboxes to follow UI font colour */
-body .metadata-container input[type="checkbox"] {
-  border-color: var(--text-muted) !important;
+/* 8A. FRONTMATTER & BASES SYNC                                     */
+body .metadata-container input[type="checkbox"],
+body div.bases-view input[type="checkbox"] {
+    border: none !important;
+    background-color: var(--checkbox-bg-unchecked) !important;
+    box-shadow: none !important;
 }
 
-body .metadata-container input[type="checkbox"]:checked {
-  background-color: var(--text-muted) !important;
-  border-color: var(--text-muted) !important;
+body .metadata-container input[type="checkbox"]:checked,
+body div.bases-view input[type="checkbox"]:checked {
+    background-color: var(--text-muted) !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Toggles */
@@ -2046,8 +2089,8 @@ body.theme-light .metadata-property-value-input {
 body.theme-light .metadata-link,
 body.theme-light .metadata-property-value .external-link,
 body.theme-light .metadata-property-value a {
-  color: var(--text-normal);
-  text-decoration-color: var(--text-normal);
+  color: var(--link-external-color); 
+  text-decoration-color: var(--link-external-color);
 }
 
 /* Front Matter Metadata - Light Mode Placeholders */
@@ -2262,14 +2305,12 @@ div.bases-view * {
   background-color: var(--background-secondary);
 }
 
-/* Theme Specific Colours */
-body.theme-light div.bases-view,
-body.theme-light div.bases-view * {
+/* Theme Specific Colours - Cascade Enabled */
+body.theme-light div.bases-view {
   color: var(--text-normal);
 }
 
-body.theme-dark div.bases-view,
-body.theme-dark div.bases-view * {
+body.theme-dark div.bases-view {
   color: var(--bases-text-color);
 }
 
@@ -2288,17 +2329,22 @@ body div.bases-view .bases-th {
   border-color: var(--text-normal) !important;
 }
 
-/* Force Bases checkboxes to follow UI font colour */ 
+/* NO BORDER Checkboxes Sync */ 
 body div.bases-view input[type="checkbox"] { 
-  border-color: var(--text-muted) !important; 
+  border: none !important;
+  background-color: var(--checkbox-bg-unchecked) !important;
+  box-shadow: none !important;
+  appearance: none;
+  -webkit-appearance: none;
 } 
 
 body div.bases-view input[type="checkbox"]:checked { 
   background-color: var(--text-muted) !important; 
-  border-color: var(--text-muted) !important; 
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* Update Ordenar and Filtrar buttons to match chosen UI font colour */
+/* Toolbar Buttons */
 .text-icon-button,
 .text-icon-button .text-button-label,
 .text-icon-button .text-button-icon .svg-icon {
@@ -2306,13 +2352,11 @@ body div.bases-view input[type="checkbox"]:checked {
     stroke: var(--text-muted) !important;
 }
 
-/* Ensure the toolbar badge (flair) remains legible */
 .text-icon-button .flair.toolbar-badge {
     background-color: var(--text-muted) !important;
     color: var(--background-primary) !important;
 }
 
-/* Hover state to match your theme's interactive style */
 .text-icon-button:hover {
     background-color: var(--surface-highlight) !important;
 }
@@ -2553,12 +2597,13 @@ body.is-mobile .suggestion-item.is-selected {
   background-color: var(--background-modifier-hover);
 }
 
-/* Active option on drawer font color */
+/* Active option on drawer font and icon colour */
 body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner,
 body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-title,
 body.is-mobile .workspace-drawer .nav-action-button.is-active,
 body.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-content {
-  color: var(--text-muted) !important;
+  color: var(--text-accent-hover) !important;
 }
 
 /* Sync Button Mobile */
@@ -2586,6 +2631,24 @@ body.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-conte
 .is-mobile .plugin-sync::after {
     display: none !important;
     content: none !important;
+}
+
+/* GLOBAL MOBILE FIX: Stop Obsidian from hiding mobile modal nav buttons */
+
+/* 1. Primary Action Buttons (e.g., Save, Confirm) */
+body.is-mobile.theme-light .modal button.modal-nav-action.mod-cta {
+    color: #ffffff !important;
+    background-color: var(--cta-bg-dynamic) !important;
+}
+
+body.is-mobile.theme-dark .modal button.modal-nav-action.mod-cta {
+    color: #000000 !important;
+    background-color: var(--cta-bg-dynamic) !important;
+}
+
+/* 2. Secondary Action Buttons (e.g., Cancel) */
+body.is-mobile .modal button.modal-nav-action:not(.mod-cta) {
+    color: var(--text-normal) !important;
 }
 
 /* ================================================================= */
@@ -2738,9 +2801,8 @@ div.search-params {
 }
 
 /* CREATE CAPTIONS UNDER IMAGES IN NOTES */
-
-/* Extracts and displays the alt attribute as a caption block */
-.markdown-rendered .image-embed[alt]::after {
+/* Combined: Only targets images with a non-empty alt attribute */
+.markdown-rendered .image-embed[alt]:not([alt=""])::after {
   content: attr(alt);
   display: block;
   text-align: center;
@@ -2750,19 +2812,12 @@ div.search-params {
   font-family: var(--font-interface-override);
 }
 
-/* Prevents empty alt attributes from rendering a blank block */
-.markdown-rendered .image-embed[alt=""]::after {
-  display: none;
-}
-
 /* Menus background and border color on desktop only */
 @media (hover: hover) {
-
-  body .menu,
-  body .menu .menu-item,
-  body .menu .menu-separator {
+  /* Only style the container; children will sit on this background */
+  body .menu {
     background-color: var(--menu-custom-bg) !important;
-    border-color: var(--menu-custom-bg) !important;
+    border: 1px solid var(--menu-custom-bg) !important;
   }
 
   body .menu .menu-item:hover {
@@ -2776,6 +2831,36 @@ body .tree-item-self.has-focus {
   outline: none !important;
   box-shadow: none !important;
   background-color: var(--surface-highlight) !important;
+}
+
+/* Forces expansion of fields in the front matter */
+.toggle-expand-longtext .metadata-property {
+    height: auto !important;
+}
+
+.toggle-expand-longtext .metadata-property-value .metadata-input-longtext {
+    -webkit-line-clamp: unset !important;
+    max-height: none !important;
+    height: auto !important;
+    white-space: pre-wrap !important;
+    overflow: visible !important;
+}
+
+/* Footnotes */
+.footnote-link, 
+.footnote-backref {
+    color: var(--footnote-link-color) !important;
+    text-decoration: none;
+}
+
+.footnote-link {
+    font-size: 0.8em;
+}
+
+/* Hover: Removed the redundant color line */
+.footnote-link:hover, 
+.footnote-backref:hover {
+    text-decoration: underline;
 }
 
 /* ================================================================= */
@@ -3052,6 +3137,7 @@ body:not(.is-mobile) .dashboard .callout {
   .dashboard .callout-content li>a.external-link:hover {
     padding-left: 18px;
     font-weight: bold;
+    text-decoration: none !important;
   }
 
   /* Dark Mode: Bright background, dark text */
@@ -3059,6 +3145,7 @@ body:not(.is-mobile) .dashboard .callout {
   body.theme-dark .dashboard .callout-content li>a.external-link:hover {
     background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
     color: var(--background-secondary) !important;
+    text-decoration: none !important;
   }
 
   /* Light Mode: Dark background, pure white text */
@@ -3066,6 +3153,7 @@ body:not(.is-mobile) .dashboard .callout {
   body.theme-light .dashboard .callout-content li>a.external-link:hover {
     background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
     color: #ffffff !important;
+    text-decoration: none !important;
   }
 }
 
@@ -3074,6 +3162,7 @@ body:not(.is-mobile) .dashboard .callout {
   .dashboard .callout-content li>a.internal-link:active,
   .dashboard .callout-content li>a.external-link:active {
     opacity: 1;
+    text-decoration: none !important;
   }
 
   /* Dark Mode */
@@ -3081,6 +3170,7 @@ body:not(.is-mobile) .dashboard .callout {
   body.theme-dark .dashboard .callout-content li>a.external-link:active {
     background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
     color: var(--background-secondary) !important;
+    text-decoration: none !important;
   }
 
   /* Light Mode */
@@ -3088,6 +3178,7 @@ body:not(.is-mobile) .dashboard .callout {
   body.theme-light .dashboard .callout-content li>a.external-link:active {
     background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
     color: #ffffff !important;
+    text-decoration: none !important;
   }
 }
 
@@ -3112,6 +3203,14 @@ body:not(.is-mobile) .workspace-leaf:has(.dashboard) .editingToolbarModalBar {
 /* Ensure list items in dashboard cards don't inherit large vertical padding */
 .dashboard .callout-content li {
     margin-bottom: 4px !important;
+}
+
+/* Prevent global hover underlines from bleeding into dashboard buttons during mobile taps */
+body.theme-light .dashboard .callout-content li > a.internal-link:hover,
+body.theme-light .dashboard .callout-content li > a.external-link:hover,
+body.theme-dark .dashboard .callout-content li > a.internal-link:hover,
+body.theme-dark .dashboard .callout-content li > a.external-link:hover {
+    text-decoration: none !important;
 }
 
 /* ================================================================= */

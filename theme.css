@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.3 */
+/* v4.0.4 */
 /* ================================================================= */
 
 @font-face {
@@ -1212,7 +1212,6 @@ body.theme-light {
   --link-unresolved-color: #772e00;                            
   --link-unresolved-opacity: 0.8;                               
   --footnote-link-color: #bd4b00;
-}
 
   /* Callouts */
   --callout-note: 84, 122, 155;

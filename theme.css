@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.4 */
+/* v4.0.5 */
 /* ================================================================= */
 
 @font-face {
@@ -1454,25 +1454,21 @@ body .modal button.mod-cta:hover {
   text-shadow: 0 0 0.65px currentColor;
 }
 
-/* Global Destructive/Warning Buttons */
-body button.mod-destructive,
-body button.mod-warning,
-body .modal-container .modal .modal-button-container button.mod-warning,
-body .modal-container .modal .modal-button-container button.mod-destructive {
-  background: var(--light-accent-custom) !important;
-  color: var(--font-text-destructive) !important;
+/* Unified Destructive & Warning Buttons */
+body :is(button.mod-destructive, button.mod-warning),
+body .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning) {
+  background: #d32f2f !important;
+  color: #ffffff !important;
   font-weight: bold !important;
-  border: 2px dashed transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* Destructive/Warning Buttons - Hover State */
-body button.mod-destructive:hover,
-body button.mod-warning:hover,
-body .modal-container .modal .modal-button-container button.mod-warning:hover,
-body .modal-container .modal .modal-button-container button.mod-destructive:hover {
-  background: var(--light-accent-custom) !important;
-  color: var(--font-text-destructive) !important;
-  border-color: var(--font-text-destructive) !important;
+/* Hover State */
+body :is(button.mod-destructive, button.mod-warning):hover,
+body .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning):hover {
+  background: #b71c1c !important;
+  color: #ffffff !important;
 }
 
 /* Removes pseudo-elements — Light Mode */

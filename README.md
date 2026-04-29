@@ -1,9 +1,9 @@
 # Brutalist: A Theme for Obsidian
-[![GitHub Repo stars](https://img.shields.io/github/stars/DuckTapeKiller/Brutalist?style=flat)](https://github.com/DuckTapeKiller/Brutalist/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub manifest version](https://img.shields.io/github/manifest-json/v/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/blob/main/manifest.json)
-
+[![GitHub Repo stars](https://img.shields.io/github/stars/DuckTapeKiller/Brutalist?style=flat&logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/DuckTapeKiller/Brutalist?logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/DuckTapeKiller/Brutalist?logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub manifest version](https://img.shields.io/github/manifest-json/v/DuckTapeKiller/Brutalist?logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/blob/main/manifest.json)
+[![Downloads](https://img.shields.io/badge/dynamic/json?logo=obsidian&color=%23483699&label=downloads&query=%24.Brutalist.downloads&url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-theme-stats.json)](https://github.com/DuckTapeKiller/Brutalist)
 Compatible with Style Settings.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ducktapekiller)

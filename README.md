@@ -1,10 +1,8 @@
-
 # Brutalist: A Theme for Obsidian
 [![GitHub Repo stars](https://img.shields.io/github/stars/DuckTapeKiller/Brutalist?style=flat)](https://github.com/DuckTapeKiller/Brutalist/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub manifest version](https://img.shields.io/github/manifest-json/v/DuckTapeKiller/Brutalist)](https://github.com/DuckTapeKiller/Brutalist/blob/main/manifest.json)
-
 
 Compatible with Style Settings.
 

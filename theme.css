@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.5 */
+/* v4.0.6 */
 /* ================================================================= */
 
 @font-face {
@@ -469,7 +469,7 @@ settings:
   - id: ui-font-color-dark
     title: UI Font Colour (Dark Mode)
     type: variable-select
-    default: '#b3b3b3'
+    default: '#c8bc9f'
     options:
       - label: '#a0a0a0 (Dark Grey)'
         value: '#a0a0a0'
@@ -488,7 +488,7 @@ settings:
   - id: body-font-color-dark
     title: Body Font Color (Dark Mode)
     type: variable-select
-    default: '#a0a0a0'
+    default: '#b0a589'
     options:
       - label: '#a0a0a0 (Dark Grey - Default)'
         value: '#a0a0a0'
@@ -833,9 +833,9 @@ body {
 
   /* Default Text Colors (overridden by settings) */
   --ui-font-color-light: #222222;
-  --ui-font-color-dark: #B3B3B3;
+  --ui-font-color-dark: #c8bc9f;
   --body-font-color-light: #000000;
-  --body-font-color-dark: #a0a0a0;
+  --body-font-color-dark: #b0a589;
 
   /* Text Alignment, Spacing and Titles */
   --text-align-mode: left;
@@ -853,7 +853,7 @@ body {
 
   /* Palette & Colors */
   --light-accent-custom: #000000;
-  --dark-accent-custom: #cdcdcd;
+  --dark-accent-custom: color-mix(in srgb, var(--ui-font-color-dark), white 20%);
 
   /* Surface Highlight (unified interactive surface) */
   --surface-highlight-dark: #262626;
@@ -1010,11 +1010,11 @@ body.theme-dark {
   --checkbox-bg-unchecked: #2f2f2f;
 
   /* Interactive Elements & UI */
-  --interactive-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
+  --interactive-accent-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%) !important;
   --interactive-normal: #323232;
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-dark);
-  --icon-color-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
+  --icon-color-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%) !important;
   --input-border: transparent;
   --canvas-node-border-color: #c0c0c0;
   --checkbox-color: var(--dark-accent-custom);
@@ -1028,7 +1028,7 @@ body.theme-dark {
   --button-text-hover-dynamic: #ffffff;
   --cta-bg-dynamic: var(--interactive-accent);
   --cta-text-dynamic: #000000;
-  --cta-bg-hover-dynamic: #E0E0E0;
+  --cta-bg-hover-dynamic: color-mix(in srgb, var(--dark-accent-custom), white 25%);
   --status-bar-active-bg: #798ccf; 
 
   /* Settings */
@@ -1096,7 +1096,7 @@ body.theme-dark {
 body.theme-light {
   /* Accents & Palette */
   --text-accent: var(--light-accent-custom);
-  --input-bg-std: var(--dark-accent-custom);
+  --input-bg-std: #cdcdcd;
   --interactive-accent: var(--light-accent-custom);
   --accent-h: 0;
   --accent-s: 0%;
@@ -1138,11 +1138,11 @@ body.theme-light {
   --checkbox-bg-unchecked: #a9a9a9;
 
   /* Interactive Elements & UI */
-  --interactive-accent-hover: #000000;
-  --interactive-normal: #B0B0B0;
+  --interactive-accent-hover: #000000 !important;
+  --icon-color-hover: #000000 !important;
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-light);
-  --icon-color-hover: #000000;
+  --icon-color-hover: color-mix(in srgb, var(--light-accent-custom), black 25%) !important;
   --input-border: transparent;
   --canvas-node-border-color: #232323;
   --checkbox-color: var(--light-accent-custom);

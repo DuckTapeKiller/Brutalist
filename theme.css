@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* v4.0.6 */
+/* 4.0.7 */
 /* ================================================================= */
 
 @font-face {
@@ -818,7 +818,7 @@ settings:
 /* ================================================================= */
 /* 0. MAIN VARIABLES AND PALETTE                                     */
 /* ================================================================= */
-body {
+ html body.obsidian-app {
   /* Typography & Style */
   --font-text-override: 'Lora', serif;
   --font-interface-override: 'Marcellus', serif;
@@ -880,13 +880,13 @@ body {
   --tag-border-width: var(--input-border-width);
 
   /* Brutalist Geometry (Radius) */
-  --menu-radius: 0 !important;
-  --radius-s: 0 !important;
-  --radius-m: 0 !important;
-  --radius-l: 0 !important;
-  --radius-xl: 0 !important;
-  --tab-radius: 0 !important;
-  --tab-radius-active: 0 !important;
+  --menu-radius: 0;
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+  --radius-xl: 0;
+  --tab-radius: 0;
+  --tab-radius-active: 0;
   --tab-curve: 0 !important;
   --tag-radius: 0 !important;
   --button-radius: 0 !important;
@@ -900,17 +900,17 @@ body {
   --suggestion-radius: 0 !important;
   --callout-radius: 0 !important;
   --status-bar-radius: 0 !important;
-  --list-bullet-radius: 50% !important;
+  --list-bullet-radius: 50%;
   --table-selection-border-radius: 0 !important;
   --code-radius: 0px !important;
   --scrollbar-radius: 0px !important;
-  --metadata-content-radius: 0px;
+  --metadata-content-radius: 0px !important;
 
   /* Shadows */
-  --input-shadow: none !important;
-  --input-shadow-hover: none !important;
-  --shadow-s: none !important;
-  --shadow-checkbox-inset: none !important;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+  --shadow-s: none;
+  --shadow-checkbox-inset: none;
   --shadow-focus-ring: 0 0 0 2px var(--interactive-accent);
   --shadow-focus-inset: inset 0 0 0 1px var(--text-normal);
   --shadow-floating-card: none;
@@ -940,9 +940,9 @@ body {
 }
 
 /* Force Reset for Plugins (Tag Wrangler, etc) */
-.modal,
-.is-mobile,
-.ophidian-dialog {
+html body.obsidian-app .modal,
+html body.obsidian-app .is-mobile,
+html body.obsidian-app .ophidian-dialog {
   --input-radius: 0 !important;
 }
 
@@ -954,7 +954,7 @@ body {
   --tl-dot-size     : diameter of the accent dot
   --tl-dot-color: var(--text-selection);
 */
-.markdown-preview-view.custom-timeline {
+html body.obsidian-app .markdown-preview-view.custom-timeline {
   --tl-date-width: 200px;
   --tl-row-gap: 2.5rem;
   --tl-dot-size: 1.2rem;
@@ -966,7 +966,7 @@ body {
 /* ================================================================= */
 
 /* DARK MODE MAPPING */
-body.theme-dark {
+html body.obsidian-app.theme-dark {
   /* Accents & Palette */
   --text-accent: var(--dark-accent-custom);
   --input-bg-std: var(--light-accent-custom);
@@ -980,7 +980,7 @@ body.theme-dark {
   --text-muted: var(--ui-font-color-dark);
   --text-faint: color-mix(in srgb, var(--text-muted), transparent 30%);
   --text-on-accent: #323232;
-  --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%) !important;
+  --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%);
   --text-selection: rgba(200, 200, 200, 0.15);
   --text-highlight-bg: color-mix(in srgb, #38717f, transparent 55%);
   --code-background: #1f1f1f;
@@ -1010,11 +1010,11 @@ body.theme-dark {
   --checkbox-bg-unchecked: #2f2f2f;
 
   /* Interactive Elements & UI */
-  --interactive-accent-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%) !important;
+  --interactive-accent-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%);
   --interactive-normal: #323232;
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-dark);
-  --icon-color-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%) !important;
+  --icon-color-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%);
   --input-border: transparent;
   --canvas-node-border-color: #c0c0c0;
   --checkbox-color: var(--dark-accent-custom);
@@ -1037,7 +1037,7 @@ body.theme-dark {
   --settings-bg-color: #3c3c3c;
 
   /* Tabs */
-  --tab-outline-color: transparent !important;
+  --tab-outline-color: transparent;
   --tab-hover-bg-doc: var(--surface-highlight);
   --tab-hover-text-ui: var(--text-muted);
   --tab-active-bg-sidebar: color-mix(in srgb, #ffffff, transparent 95%);
@@ -1093,7 +1093,7 @@ body.theme-dark {
 }
 
 /* LIGHT MODE MAPPING */
-body.theme-light {
+html body.obsidian-app.theme-light {
   /* Accents & Palette */
   --text-accent: var(--light-accent-custom);
   --input-bg-std: #cdcdcd;
@@ -1138,11 +1138,10 @@ body.theme-light {
   --checkbox-bg-unchecked: #a9a9a9;
 
   /* Interactive Elements & UI */
-  --interactive-accent-hover: #000000 !important;
-  --icon-color-hover: #000000 !important;
+  --interactive-accent-hover: #000000;
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-light);
-  --icon-color-hover: color-mix(in srgb, var(--light-accent-custom), black 25%) !important;
+  --icon-color-hover: color-mix(in srgb, var(--light-accent-custom), black 25%);
   --input-border: transparent;
   --canvas-node-border-color: #232323;
   --checkbox-color: var(--light-accent-custom);
@@ -1165,7 +1164,7 @@ body.theme-light {
   --settings-bg-color: #B0B0B0;
 
   /* Tabs */
-  --tab-outline-color: transparent !important;
+  --tab-outline-color: transparent;
   --tab-hover-bg-doc: var(--surface-highlight);
   --tab-hover-text-ui: var(--text-muted);
   --tab-active-bg-sidebar: color-mix(in srgb, #FFFFFF, transparent 60%);
@@ -1229,49 +1228,49 @@ body.theme-light {
 /* ================================================================= */
 
 /* Global Text Selection */
-::selection {
+html body.obsidian-app ::selection {
   background-color: var(--text-selection);
 }
 
 /* Light Mode Selection Text Color */
-body.theme-light ::selection {
+html body.obsidian-app.theme-light ::selection {
   color: var(--text-normal);
 }
 
 /* Editor Selection States (CM6) */
-.cm-selectionBackground,
-.cm-line::selection,
-.cm-content::selection,
-.cm-scroller ::selection {
+html body.obsidian-app .cm-selectionBackground,
+html body.obsidian-app .cm-line::selection,
+html body.obsidian-app .cm-content::selection,
+html body.obsidian-app .cm-scroller ::selection {
   background-color: var(--text-selection);
 }
 
 /* Lists and Text Colour */
-.markdown-preview-view ul>li,
-.markdown-preview-view ol>li,
-.markdown-preview-view ul>li>p,
-.markdown-preview-view ol>li>p,
-.cm-s-obsidian .HyperMD-list-line,
-.cm-line {
+html body.obsidian-app .markdown-preview-view ul>li,
+html body.obsidian-app .markdown-preview-view ol>li,
+html body.obsidian-app .markdown-preview-view ul>li>p,
+html body.obsidian-app .markdown-preview-view ol>li>p,
+html body.obsidian-app .cm-s-obsidian .HyperMD-list-line,
+html body.obsidian-app .cm-line {
   color: var(--text-normal);
 }
 
 /* Markers */
-body .markdown-preview-view ul>li::marker,
-body .markdown-preview-view ol>li::marker,
-body .markdown-preview-view blockquote ul>li::marker,
-body .markdown-preview-view blockquote ol>li::marker,
-body .cm-formatting-list,
-body .cm-formatting-list-ul,
-body .cm-formatting-list-ol,
-body .cm-s-obsidian .cm-quote .cm-formatting-list {
+ html body.obsidian-app .markdown-preview-view ul>li::marker,
+ html body.obsidian-app .markdown-preview-view ol>li::marker,
+ html body.obsidian-app .markdown-preview-view blockquote ul>li::marker,
+ html body.obsidian-app .markdown-preview-view blockquote ol>li::marker,
+ html body.obsidian-app .cm-formatting-list,
+ html body.obsidian-app .cm-formatting-list-ul,
+ html body.obsidian-app .cm-formatting-list-ol,
+ html body.obsidian-app .cm-s-obsidian .cm-quote .cm-formatting-list {
   color: var(--list-marker-color);
   font-weight: bold;
   opacity: 1;
 }
 
 /* Light Mode Ordered List Markers */
-body.theme-light .cm-formatting-list-ol {
+html body.obsidian-app.theme-light .cm-formatting-list-ol {
   color: var(--text-accent);
 }
 
@@ -1280,37 +1279,37 @@ body.theme-light .cm-formatting-list-ol {
 /* ================================================================= */
 
 /* Zero Gap & Separators */
-.workspace-tab-header-container {
+html body.obsidian-app .workspace-tab-header-container {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-body div.workspace-tab-header-inner::after {
+ html body.obsidian-app div.workspace-tab-header-inner::after {
   display: none;
 }
 
 /* Hover States - Document Tabs */
-body .mod-root .workspace-tab-header:not(.is-active):not(.workspace-tab-header-new-tab):not(.workspace-tab-header-tab-list):hover .workspace-tab-header-inner {
+ html body.obsidian-app .mod-root .workspace-tab-header:not(.is-active):not(.workspace-tab-header-new-tab):not(.workspace-tab-header-tab-list):hover .workspace-tab-header-inner {
   background-color: var(--tab-hover-bg-doc);
 }
 
 /* Hover States - Sidebar & UI Tabs */
-body .mod-left-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
-body .mod-right-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
-body .workspace-tab-header-new-tab:hover .workspace-tab-header-inner,
-body .workspace-tab-header-tab-list:hover .workspace-tab-header-inner {
+ html body.obsidian-app .mod-left-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+ html body.obsidian-app .mod-right-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+ html body.obsidian-app .workspace-tab-header-new-tab:hover .workspace-tab-header-inner,
+ html body.obsidian-app .workspace-tab-header-tab-list:hover .workspace-tab-header-inner {
   background-color: var(--tab-hover-bg-ui);
   color: var(--tab-hover-text-ui);
 }
 
 /* Active Tabs - Title and Inner Layout follow UI Font */
-body .workspace-tab-header.is-active .workspace-tab-header-inner,
-body .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: var(--text-muted) !important;
+ html body.obsidian-app .workspace-tab-header.is-active .workspace-tab-header-inner,
+ html body.obsidian-app .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--text-muted);
 }
 
 /* Active Tabs - Root Container */
-body .mod-root .workspace-tab-header.is-active {
+ html body.obsidian-app .mod-root .workspace-tab-header.is-active {
   background-color: var(--background-primary);
   padding: 3px;
   margin-bottom: -1px;
@@ -1318,40 +1317,40 @@ body .mod-root .workspace-tab-header.is-active {
 }
 
 /* Active Tabs - Root Inner Layout */
-body .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+ html body.obsidian-app .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
   background-color: var(--background-primary);
   width: 100%;
   margin: 0;
 }
 
 /* Active Tabs - Sidebar Background */
-body .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-body .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner {
+ html body.obsidian-app .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
+ html body.obsidian-app .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner {
   background-color: var(--tab-active-bg-sidebar);
 }
 
 /* Inactive Tabs (Root) */
-body .mod-root .workspace-tab-header:not(.is-active) {
+ html body.obsidian-app .mod-root .workspace-tab-header:not(.is-active) {
   background-color: var(--background-secondary);
   margin: 4px 2px 0 0;
 }
 
-body .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+ html body.obsidian-app .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
   background: transparent;
   color: var(--text-normal);
 }
 
 /* View Header Title - Active */
-body .workspace-leaf.mod-active .view-header-title {
+ html body.obsidian-app .workspace-leaf.mod-active .view-header-title {
   color: var(--text-accent);
 }
 
-body.theme-light .workspace-leaf.mod-active .view-header-title {
+html body.obsidian-app.theme-light .workspace-leaf.mod-active .view-header-title {
   font-weight: bold;
 }
 
 /* View Header Title - Inactive */
-body .workspace-leaf:not(.mod-active) .view-header-title {
+ html body.obsidian-app .workspace-leaf:not(.mod-active) .view-header-title {
   color: var(--text-normal);
 }
 
@@ -1360,14 +1359,14 @@ body .workspace-leaf:not(.mod-active) .view-header-title {
 /* ================================================================= */
 
 /* Settings Icon (Custom SVG Mask) */
-.svg-icon.lucide-settings,
-.side-dock-ribbon-action[aria-label="Settings"] .svg-icon,
-.workspace-drawer-header-icon.mod-settings>.svg-icon {
+html body.obsidian-app .svg-icon.lucide-settings,
+html body.obsidian-app .side-dock-ribbon-action[aria-label="Settings"] .svg-icon,
+html body.obsidian-app .workspace-drawer-header-icon.mod-settings>.svg-icon {
   fill: none;
   stroke: none;
   stroke-width: 0;
-  border: none !important;
-  box-shadow: none !important;
+  border: none;
+  box-shadow: none;
   --icon-settings-svg: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-70%20-70%20652%20652%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M175.576%20430.027C237.876%20303.719%20177.358%20246.189%20138.563%20220.91M199.593%20302.823C260.138%20288.119%20319.001%20288.974%20360.236%20377.756M263.64%20296.151C204.786%20148.805%20301.519%20142.938%20277.563%2064.4366M360.236%20377.756C361.585%20375.292%20363.038%20372.884%20364.603%20370.549C381.579%20345.235%20393.569%20325.505%20399.638%20315.229C402.426%20310.512%20401.92%20304.599%20398.621%20300.226C390.022%20288.832%20373.568%20265.675%20364.603%20244.234C355.387%20222.192%20354.012%20187.968%20353.933%20171.298C353.903%20164.963%20351.895%20158.774%20347.977%20153.794L278.719%2065.8101C278.346%2065.336%20277.96%2064.8782%20277.563%2064.4366M360.236%20377.756C351.502%20393.715%20347.15%20412.011%20345.031%20427.753C342.57%20446.036%20324.681%20460.318%20306.903%20455.387C281.572%20448.408%20252.243%20437.522%20225.853%20435.493C222.374%20435.226%20185.407%20432.423%20185.407%20432.423C178.868%20431.957%20172.73%20429.099%20168.163%20424.396L98.4698%20352.623C90.8534%20344.78%2088.7918%20333.084%2093.2672%20323.109C93.2672%20323.109%20136.362%20228.393%20137.962%20223.467C138.122%20222.975%20138.325%20222.104%20138.563%20220.91M277.563%2064.4366C267.794%2053.5856%20250.924%2052.5615%20239.902%2062.4764L157.458%20136.645C152.859%20140.781%20149.84%20146.388%20148.917%20152.504C145.784%20173.277%20140.712%20210.156%20138.563%20220.91%20306.903%20455.387C281.572%20448.408%20252.243%20437.522%20225.853%20435.493C222.374%20435.226%20185.407%20432.423%20185.407%20432.423C178.868%20431.957%20172.73%20429.099%20168.163%20424.396L98.4698%20352.623C90.8534%20344.78%2088.7918%20333.084%2093.2672%20323.109C93.2672%20323.109%20136.362%20228.393%20137.962%20223.467C138.122%20222.975%20138.325%20222.104%20138.563%20220.91M277.563%2064.4366C267.794%2053.5856%20250.924%2052.5615%20239.902%2062.4764L157.458%20136.645C152.859%20140.781%20149.84%20146.388%20148.917%20152.504C145.784%20173.277%20140.712%20210.156%20138.563%20220.91%22%20stroke%3D%22currentColor%22%20stroke-width%3D%2240%22%2F%3E%3C%2Fsvg%3E");
   -webkit-mask-image: var(--icon-settings-svg);
   mask-image: var(--icon-settings-svg);
@@ -1383,31 +1382,31 @@ body .workspace-leaf:not(.mod-active) .view-header-title {
 }
 
 /* Settings Icon - Hover State */
-.clickable-icon:hover .svg-icon.lucide-settings,
-.side-dock-ribbon-action[aria-label="Settings"]:hover .svg-icon,
-.workspace-drawer-header-icon.mod-settings:hover>.svg-icon {
-  background-color: var(--icon-color-hover) !important;
+html body.obsidian-app .clickable-icon:hover .svg-icon.lucide-settings,
+html body.obsidian-app .side-dock-ribbon-action[aria-label="Settings"]:hover .svg-icon,
+html body.obsidian-app .workspace-drawer-header-icon.mod-settings:hover>.svg-icon {
+  background-color: var(--icon-color-hover);
 }
 
 /* Hide Internal SVG Elements (Masked Icon) */
-.svg-icon.lucide-settings>*,
-.side-dock-ribbon-action[aria-label="Settings"] .svg-icon>*,
-.workspace-drawer-header-icon.mod-settings>.svg-icon>* {
+html body.obsidian-app .svg-icon.lucide-settings>*,
+html body.obsidian-app .side-dock-ribbon-action[aria-label="Settings"] .svg-icon>*,
+html body.obsidian-app .workspace-drawer-header-icon.mod-settings>.svg-icon>* {
   display: none;
 }
 
 /* Chevrons */
-body .svg-icon.right-triangle {
-  color: var(--text-normal) !important;
-  stroke: var(--text-normal) !important;
+ html body.obsidian-app .svg-icon.right-triangle {
+  color: var(--text-normal);
+  stroke: var(--text-normal);
 }
 
 /* Active States (Desktop) */
-body .clickable-icon.is-active,
-body .side-dock-ribbon-action.is-active,
-body .nav-action-button.is-active,
-body .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-body .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
+ html body.obsidian-app .clickable-icon.is-active,
+ html body.obsidian-app .side-dock-ribbon-action.is-active,
+ html body.obsidian-app .nav-action-button.is-active,
+ html body.obsidian-app .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
+ html body.obsidian-app .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
   box-shadow: none;
   border-radius: var(--radius-s);
   color: var(--text-accent);
@@ -1415,124 +1414,124 @@ body .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inn
 }
 
 /* Active & Hover Color on Vault Name and Sidebar Items (Files/Folders) */ 
-.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-name, 
-.workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon, 
-.tree-item-self.is-active .tree-item-inner { 
-  color: var(--text-accent-hover) !important; 
+html body.obsidian-app .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-name,
+html body.obsidian-app .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon,
+html body.obsidian-app .tree-item-self.is-active .tree-item-inner {
+  color: var(--text-accent-hover); 
 }
 
 /* Settings Button Container */
-body div.workspace-drawer-header-icon.mod-settings {
-  border: var(--settings-border-width) solid var(--settings-border-color) !important;
+ html body.obsidian-app div.workspace-drawer-header-icon.mod-settings {
+  border: var(--settings-border-width) solid var(--settings-border-color);
   background-color: var(--settings-bg-color);
   background-image: none;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
 /* Modal Buttons (Dynamic Semantics) */
-body .modal button:not(.mod-cta):not(.mod-warning):not(.mod-destructive) {
+ html body.obsidian-app .modal button:not(.mod-cta):not(.mod-warning):not(.mod-destructive) {
   background-color: var(--button-bg-dynamic);
   color: var(--button-text-dynamic);
   transition: background-color 0.2s ease;
 }
 
-body .modal button:not(.mod-cta):not(.mod-warning):not(.mod-destructive):hover {
+ html body.obsidian-app .modal button:not(.mod-cta):not(.mod-warning):not(.mod-destructive):hover {
   background-color: var(--button-bg-hover-dynamic);
   color: var(--button-text-hover-dynamic);
 }
 
 /* CTA Buttons */
-body .modal button.mod-cta {
+ html body.obsidian-app .modal button.mod-cta {
   background-color: var(--cta-bg-dynamic);
   color: var(--cta-text-dynamic);
   transition: background-color 0.2s ease;
 }
 
-body .modal button.mod-cta:hover {
+ html body.obsidian-app .modal button.mod-cta:hover {
   background-color: var(--cta-bg-hover-dynamic);
   color: var(--cta-text-dynamic);
   text-shadow: 0 0 0.65px currentColor;
 }
 
 /* Unified Destructive & Warning Buttons */
-body :is(button.mod-destructive, button.mod-warning),
-body .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning) {
-  background: #d32f2f !important;
-  color: #ffffff !important;
-  font-weight: bold !important;
-  border: none !important;
-  box-shadow: none !important;
+ html body.obsidian-app :is(button.mod-destructive, button.mod-warning),
+ html body.obsidian-app .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning) {
+  background: #d32f2f;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  box-shadow: none;
 }
 
 /* Hover State */
-body :is(button.mod-destructive, button.mod-warning):hover,
-body .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning):hover {
-  background: #b71c1c !important;
-  color: #ffffff !important;
+ html body.obsidian-app :is(button.mod-destructive, button.mod-warning):hover,
+ html body.obsidian-app .modal-container .modal .modal-button-container :is(button.mod-destructive, button.mod-warning):hover {
+  background: #b71c1c;
+  color: #ffffff;
 }
 
 /* Removes pseudo-elements — Light Mode */
-body.is-mobile.theme-light .view-actions::before,
-body.is-mobile.theme-light .view-actions::after,
-body.is-mobile.theme-light .view-header-nav-buttons::before,
-body.is-mobile.theme-light .view-header-nav-buttons::after,
-body.is-mobile.theme-light .mobile-navbar.mod-raised::before,
-body.is-mobile.theme-light .mobile-navbar.mod-raised::after,
-body.is-mobile.theme-light .sidebar-toggle-button.mod-raised::before,
-body.is-mobile.theme-light .sidebar-toggle-button.mod-raised::after,
-body.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::before,
-body.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::after,
-body.is-mobile.theme-light .modal-close-button.mod-raised::before,
-body.is-mobile.theme-light .modal-close-button.mod-raised::after,
-body.is-mobile.theme-light .modal-setting-back-button.mod-raised::before,
-body.is-mobile.theme-light .modal-setting-back-button.mod-raised::after {
-  display: none !important;
+html body.obsidian-app.is-mobile.theme-light .view-actions::before,
+html body.obsidian-app.is-mobile.theme-light .view-actions::after,
+html body.obsidian-app.is-mobile.theme-light .view-header-nav-buttons::before,
+html body.obsidian-app.is-mobile.theme-light .view-header-nav-buttons::after,
+html body.obsidian-app.is-mobile.theme-light .mobile-navbar.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .mobile-navbar.mod-raised::after,
+html body.obsidian-app.is-mobile.theme-light .sidebar-toggle-button.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .sidebar-toggle-button.mod-raised::after,
+html body.obsidian-app.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::after,
+html body.obsidian-app.is-mobile.theme-light .modal-close-button.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .modal-close-button.mod-raised::after,
+html body.obsidian-app.is-mobile.theme-light .modal-setting-back-button.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .modal-setting-back-button.mod-raised::after {
+  display: none;
 }
 
 /* Removes borders, shadows & pseudo-elements — Dark Mode Navbar */
-body.is-mobile.theme-dark .mobile-navbar,
-body.is-mobile.theme-dark .mobile-navbar * {
-  outline: none !important;
-  box-shadow: none !important;
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar,
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar * {
+  outline: none;
+  box-shadow: none;
 }
 
-body.is-mobile.theme-dark .mobile-navbar::before,
-body.is-mobile.theme-dark .mobile-navbar::after,
-body.is-mobile.theme-dark .mobile-navbar *::before,
-body.is-mobile.theme-dark .mobile-navbar *::after {
-  display: none !important;
-  content: none !important;
-  border: none !important;
-  box-shadow: none !important;
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar::before,
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar::after,
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar *::before,
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar *::after {
+  display: none;
+  content: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* Force tab header status icons (e.g., pinned) to follow UI font colour */
-body .workspace-tab-header-status-icon {
-  color: var(--text-muted) !important;
+ html body.obsidian-app .workspace-tab-header-status-icon {
+  color: var(--text-muted);
 }
 
 /* Maintain UI font colour on main tab icons (like Bases) even during hover */
-body .workspace-tab-header:hover .workspace-tab-header-inner-icon,
-body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon {
-  color: var(--text-muted) !important;
+ html body.obsidian-app .workspace-tab-header:hover .workspace-tab-header-inner-icon,
+ html body.obsidian-app .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon {
+  color: var(--text-muted);
 }
 
 /* ================================================================= */
 /* 5. STATUS BAR                                                     */
 /* ================================================================= */
 
-body .status-bar,
-body .status-bar-item {
+ html body.obsidian-app .status-bar,
+ html body.obsidian-app .status-bar-item {
   border-radius: var(--button-radius);
   border: 0;
 }
 
-body .status-bar {
+ html body.obsidian-app .status-bar {
   color: var(--text-normal);
   background-color: var(--background-secondary);
 }
 
-body .status-bar-item {
+ html body.obsidian-app .status-bar-item {
   padding: 2px 6px;
   margin: 0;
   color: var(--text-normal);
@@ -1540,9 +1539,9 @@ body .status-bar-item {
 }
 
 /* Hover State - Keeps your grey selection background */
-body .status-bar-item:hover {
-  background-color: var(--text-highlight-bg) !important;
-  color: var(--icon-color-hover) !important;
+ html body.obsidian-app .status-bar-item:hover {
+  background-color: var(--text-highlight-bg);
+  color: var(--icon-color-hover);
 }
 
 /* ================================================================= */
@@ -1550,7 +1549,7 @@ body .status-bar-item:hover {
 /* ================================================================= */
 
 /* Today Text Highlight */
-body #calendar-container .day.today {
+ html body.obsidian-app #calendar-container .day.today {
   background-color: transparent;
   border: 0;
   border-radius: var(--button-radius);
@@ -1559,7 +1558,7 @@ body #calendar-container .day.today {
 }
 
 /* Calendar Event Dot */
-body #calendar-container .day .dot {
+ html body.obsidian-app #calendar-container .day .dot {
   border: 0;
   width: 6px;
   height: 6px;
@@ -1570,23 +1569,23 @@ body #calendar-container .day .dot {
 }
 
 /* Calendar Dot SVG Circle */
-body #calendar-container .day .dot circle {
+ html body.obsidian-app #calendar-container .day .dot circle {
   fill: var(--calendar-dot-bg);
   stroke: none;
 }
 
 /* Calendar Headers */
-body #calendar-container th {
+ html body.obsidian-app #calendar-container th {
   color: var(--calendar-header-color);
 }
 
 /* Generic Calendar Day Styling */
-body #calendar-container .day {
-  border-radius: var(--button-radius) !important;
+ html body.obsidian-app #calendar-container .day {
+  border-radius: var(--button-radius);
 }
 
 /* Light Mode Hover Background */
-body.theme-light #calendar-container .day:hover {
+html body.obsidian-app.theme-light #calendar-container .day:hover {
   background-color: var(--background-primary);
   color: var(--text-normal);
 }
@@ -1596,115 +1595,115 @@ body.theme-light #calendar-container .day:hover {
 /* ================================================================= */
 
 /* Forced UI Font Overrides (Excludes .tooltip) */
-body .metadata-container,
-body .inline-title,
-body .view-header-title,
-body .cm-header,
-body .status-bar,
-body .workspace-ribbon,
-body .modal,
-body .menu,
-body .nav-file-tag,
-body .tag-pane-tag-count,
-body .tree-item-flair,
-body .tree-item-inner:not(.nav-file-title-content):not(.nav-folder-title-content),
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6 {
-  font-family: var(--font-interface-override) !important;
+ html body.obsidian-app .metadata-container,
+ html body.obsidian-app .inline-title,
+ html body.obsidian-app .view-header-title,
+ html body.obsidian-app .cm-header,
+ html body.obsidian-app .status-bar,
+ html body.obsidian-app .workspace-ribbon,
+ html body.obsidian-app .modal,
+ html body.obsidian-app .menu,
+ html body.obsidian-app .nav-file-tag,
+ html body.obsidian-app .tag-pane-tag-count,
+ html body.obsidian-app .tree-item-flair,
+ html body.obsidian-app .tree-item-inner:not(.nav-file-title-content):not(.nav-folder-title-content),
+ html body.obsidian-app h1,
+ html body.obsidian-app h2,
+ html body.obsidian-app h3,
+ html body.obsidian-app h4,
+ html body.obsidian-app h5,
+ html body.obsidian-app h6 {
+  font-family: var(--font-interface-override);
   font-weight: normal;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
 }
 
 /* Tooltip Exception */
-body .tooltip {
+ html body.obsidian-app .tooltip {
   font-family: var(--font-interface-override, 'Sen', sans-serif);
   font-weight: normal;
   color: #ffffff;
 }
 
 /* Inline Title Alignment */
-body .inline-title {
+ html body.obsidian-app .inline-title {
   text-align: var(--inline-title-align);
 }
 
 /* Editor Typography */
-body .inline-title,
-body .markdown-source-view .cm-content .inline-title {
+ html body.obsidian-app .inline-title,
+ html body.obsidian-app .markdown-source-view .cm-content .inline-title {
   font-synthesis: none;
   -webkit-font-smoothing: subpixel-antialiased;
   text-rendering: optimizeLegibility;
-  font-size: var(--inline-title-size) !important;
+  font-size: var(--inline-title-size);
 }
 
 /* Heading Rendering Fix */
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6,
-body .cm-header {
+ html body.obsidian-app h1,
+ html body.obsidian-app h2,
+ html body.obsidian-app h3,
+ html body.obsidian-app h4,
+ html body.obsidian-app h5,
+ html body.obsidian-app h6,
+ html body.obsidian-app .cm-header {
   font-synthesis: none;
   -webkit-font-smoothing: subpixel-antialiased;
   text-rendering: optimizeLegibility;
 }
 
 /* Editor Color */
-body .markdown-source-view,
-body .markdown-preview-view,
-body .cm-s-obsidian .cm-line {
+ html body.obsidian-app .markdown-source-view,
+ html body.obsidian-app .markdown-preview-view,
+ html body.obsidian-app .cm-s-obsidian .cm-line {
   color: var(--text-normal);
 }
 
 /* Nav Typography */
-body .nav-folder-title-content,
-body .nav-file-title-content {
+ html body.obsidian-app .nav-folder-title-content,
+ html body.obsidian-app .nav-file-title-content {
   color: var(--text-normal);
 }
 
 /* Nav Guide Lines - Synchronised with Global Indentation Variables */
-body .nav-folder-children,
-body .nav-folder-children::before,
-body .nav-folder-children>.nav-folder-item {
+ html body.obsidian-app .nav-folder-children,
+ html body.obsidian-app .nav-folder-children::before,
+ html body.obsidian-app .nav-folder-children>.nav-folder-item {
   border-left: var(--nav-guide-border-width) solid var(--indentation-guide-color);
 }
 
 /* Active Nav Guide - When folder is expanded/focused */
-body .nav-folder-children:hover,
-body .nav-item.is-active + .nav-folder-children {
+ html body.obsidian-app .nav-folder-children:hover,
+ html body.obsidian-app .nav-item.is-active + .nav-folder-children {
   border-left-color: var(--indentation-guide-color-active);
 }
 
 /* Remove Lines for Files */
-body .nav-file-title::before {
+ html body.obsidian-app .nav-file-title::before {
   border-left: none;
   content: none;
 }
 
 /* Text Alignment */
-body .markdown-preview-view p,
-body .markdown-source-view.mod-cm6 .cm-line {
+ html body.obsidian-app .markdown-preview-view p,
+ html body.obsidian-app .markdown-source-view.mod-cm6 .cm-line {
   text-align: var(--text-align-mode);
   text-justify: inter-word;
 }
 
 /* Line Height Spacing */
-body .markdown-source-view.mod-cm6 .cm-scroller,
-body .markdown-source-view.mod-cm6 .cm-content,
-body .markdown-source-view.mod-cm6 .cm-line,
-body .markdown-preview-view p,
-body .markdown-preview-view ul,
-body .markdown-preview-view ol,
-body .markdown-preview-view li {
-  line-height: var(--line-height-custom, 1.7) !important;
+ html body.obsidian-app .markdown-source-view.mod-cm6 .cm-scroller,
+ html body.obsidian-app .markdown-source-view.mod-cm6 .cm-content,
+ html body.obsidian-app .markdown-source-view.mod-cm6 .cm-line,
+ html body.obsidian-app .markdown-preview-view p,
+ html body.obsidian-app .markdown-preview-view ul,
+ html body.obsidian-app .markdown-preview-view ol,
+ html body.obsidian-app .markdown-preview-view li {
+  line-height: var(--line-height-custom, 1.7);
 }
 
 /* Blockquotes */
-body .markdown-preview-view blockquote {
+ html body.obsidian-app .markdown-preview-view blockquote {
   border-left: 4px solid var(--quote-opening-modifier);
   font-size: 95%;
   text-align: center;
@@ -1715,125 +1714,125 @@ body .markdown-preview-view blockquote {
 }
 
 /* LIGHT MODE HOVER - Internal Links (Darker) */
-body.theme-light a.internal-link:hover,
-body.theme-light .cm-s-obsidian .cm-hmd-internal-link:hover,
-body.theme-light .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
-    color: #000000 !important;
-    text-decoration: underline !important;
-    text-decoration-color: #000000 !important;
+html body.obsidian-app.theme-light a.internal-link:hover,
+html body.obsidian-app.theme-light .cm-s-obsidian .cm-hmd-internal-link:hover,
+html body.obsidian-app.theme-light .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #000000;
     text-decoration-thickness: 1px;
 }
 
 /* DARK MODE HOVER - Internal Links (Lighter 45% White) */
-body.theme-dark a.internal-link:hover,
-body.theme-dark .markdown-preview-view a.internal-link:hover,
-body.theme-dark .cm-s-obsidian .cm-hmd-internal-link:hover,
-body.theme-dark .cm-s-obsidian span.cm-hmd-internal-link:hover,
-body.theme-dark .metadata-link:hover,
-body.theme-dark .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
-    color: color-mix(in srgb, var(--link-color), white 45%) !important;
-    text-decoration: underline !important;
-    text-decoration-color: color-mix(in srgb, var(--link-color), white 45%) !important;
+html body.obsidian-app.theme-dark a.internal-link:hover,
+html body.obsidian-app.theme-dark .markdown-preview-view a.internal-link:hover,
+html body.obsidian-app.theme-dark .cm-s-obsidian .cm-hmd-internal-link:hover,
+html body.obsidian-app.theme-dark .cm-s-obsidian span.cm-hmd-internal-link:hover,
+html body.obsidian-app.theme-dark .metadata-link:hover,
+html body.obsidian-app.theme-dark .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+    color: color-mix(in srgb, var(--link-color), white 45%);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--link-color), white 45%);
     text-decoration-thickness: 1px;
 }
 
 /* Code Blocks */
-body .cm-s-obsidian .cm-inline-code,
-body .markdown-preview-view code,
-body pre {
+ html body.obsidian-app .cm-s-obsidian .cm-inline-code,
+ html body.obsidian-app .markdown-preview-view code,
+ html body.obsidian-app pre {
   color: var(--text-normal);
   font-family: var(--font-monospace);
   border-radius: var(--code-radius);
 }
 
 /* Callouts */
-.callout {
+html body.obsidian-app .callout {
   border-left: 4px solid rgb(var(--callout-color));
   background-color: rgba(var(--callout-color), 0.15);
 }
 
-.callout-title {
+html body.obsidian-app .callout-title {
   color: rgb(var(--callout-color));
 }
 
-.callout-icon {
+html body.obsidian-app .callout-icon {
   color: rgb(var(--callout-color));
 }
 
 /* Default Callout Colors */
-.theme-light .callout {
+html body.obsidian-app .theme-light .callout {
   --callout-color: 35, 35, 35;
 }
 
-.theme-dark .callout {
+html body.obsidian-app .theme-dark .callout {
   --callout-color: 192, 192, 192;
 }
 
 /* Mapped Types */
-.callout[data-callout="note"] {
+html body.obsidian-app .callout[data-callout="note"] {
   --callout-color: var(--callout-note);
 }
 
-.callout[data-callout="info"] {
+html body.obsidian-app .callout[data-callout="info"] {
   --callout-color: var(--callout-info);
 }
 
-.callout[data-callout="abstract"],
-.callout[data-callout="summary"],
-.callout[data-callout="tldr"] {
+html body.obsidian-app .callout[data-callout="abstract"],
+html body.obsidian-app .callout[data-callout="summary"],
+html body.obsidian-app .callout[data-callout="tldr"] {
   --callout-color: var(--callout-abstract);
 }
 
-.callout[data-callout="tip"],
-.callout[data-callout="success"],
-.callout[data-callout="check"] {
+html body.obsidian-app .callout[data-callout="tip"],
+html body.obsidian-app .callout[data-callout="success"],
+html body.obsidian-app .callout[data-callout="check"] {
   --callout-color: var(--callout-tip);
 }
 
-.callout[data-callout="question"],
-.callout[data-callout="help"],
-.callout[data-callout="warning"],
-.callout[data-callout="caution"],
-.callout[data-callout="attention"],
-.callout[data-callout="todo"] {
+html body.obsidian-app .callout[data-callout="question"],
+html body.obsidian-app .callout[data-callout="help"],
+html body.obsidian-app .callout[data-callout="warning"],
+html body.obsidian-app .callout[data-callout="caution"],
+html body.obsidian-app .callout[data-callout="attention"],
+html body.obsidian-app .callout[data-callout="todo"] {
   --callout-color: var(--callout-warning);
 }
 
-.callout[data-callout="failure"],
-.callout[data-callout="fail"],
-.callout[data-callout="missing"],
-.callout[data-callout="danger"],
-.callout[data-callout="error"],
-.callout[data-callout="bug"] {
+html body.obsidian-app .callout[data-callout="failure"],
+html body.obsidian-app .callout[data-callout="fail"],
+html body.obsidian-app .callout[data-callout="missing"],
+html body.obsidian-app .callout[data-callout="danger"],
+html body.obsidian-app .callout[data-callout="error"],
+html body.obsidian-app .callout[data-callout="bug"] {
   --callout-color: var(--callout-fail);
 }
 
-.callout[data-callout="example"] {
+html body.obsidian-app .callout[data-callout="example"] {
   --callout-color: var(--callout-example);
 }
 
-.callout[data-callout="quote"] {
+html body.obsidian-app .callout[data-callout="quote"] {
   --callout-color: var(--callout-quote);
   background-color: transparent;
 }
 
 /* Universal Dragged Items */
-body .is-being-dragged {
-  opacity: 1 !important;
-  box-shadow: none !important;
-  border: var(--drag-border-width) var(--drag-border) !important;
-  background-color: var(--drag-bg) !important;
+ html body.obsidian-app .is-being-dragged {
+  opacity: 1;
+  box-shadow: none;
+  border: var(--drag-border-width) var(--drag-border);
+  background-color: var(--drag-bg);
 }
 
-body .is-being-dragged :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner) {
-  color: var(--text-normal) !important;
-  background-color: transparent !important;
+ html body.obsidian-app .is-being-dragged :is(.nav-file-title-content, .nav-folder-title-content, .tree-item-inner) {
+  color: var(--text-normal);
+  background-color: transparent;
 }
 
 /* Separators (---) Colour */
-.markdown-rendered hr,
-.markdown-source-view.mod-cm6 .cm-content hr,
-.markdown-source-view.mod-cm6 .cm-hr {
+html body.obsidian-app .markdown-rendered hr,
+html body.obsidian-app .markdown-source-view.mod-cm6 .cm-content hr,
+html body.obsidian-app .markdown-source-view.mod-cm6 .cm-hr {
   display: block;
   border: none;
   border-top: 1px solid var(--text-muted);
@@ -1844,42 +1843,41 @@ body .is-being-dragged :is(.nav-file-title-content, .nav-folder-title-content, .
 /* BOOK STYLE INDENTATION (Toggleable)                               */
 /* --- READING VIEW ONLY --- */
 /* Default State: No margin, No indent */
-body.enable-book-style .markdown-preview-view p {
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+html body.obsidian-app.enable-book-style .markdown-preview-view p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   text-indent: 0;
 }
 
-/* The Magic Rule: Indent ONLY if the previous element was ALSO a paragraph wrapper.
-   This automatically excludes paragraphs after Headers, Lists, or manual breaks. */
-body.enable-book-style .markdown-preview-view div:has(> p)+div:has(> p)>p {
+/* Indent paragraphs in Book Style */
+html body.obsidian-app.enable-book-style .markdown-preview-view p {
   text-indent: 1em;
 }
 
 /* Fix for Blockquotes (Don't indent inside quotes) */
-body.enable-book-style .markdown-preview-view blockquote p {
-  text-indent: 0 !important;
-  margin-bottom: 1rem !important;
+html body.obsidian-app.enable-book-style .markdown-preview-view blockquote p {
+  text-indent: 0;
+  margin-bottom: 1rem;
 }
 
 /* Editor Indentation Guides - Notes and Lists */
-.cm-indentation-marker,
-.markdown-rendered .indentation-guide {
-  --indentation-guide-color: var(--indentation-guide-color) !important;
-  --indentation-guide-color-active: var(--indentation-guide-color-active) !important;
+html body.obsidian-app .cm-indentation-marker,
+html body.obsidian-app .markdown-rendered .indentation-guide {
+  --indentation-guide-color: var(--indentation-guide-color);
+  --indentation-guide-color-active: var(--indentation-guide-color-active);
 }
 
 /* Ensure unresolved links use the defined colour and full opacity */
-.internal-link.is-unresolved,
-.cm-link.is-unresolved,
-.metadata-link-inner.is-unresolved,
-.multi-select-pill-content.is-unresolved {
-  color: var(--link-unresolved-color) !important;
-  opacity: var(--link-unresolved-opacity) !important;
+html body.obsidian-app .internal-link.is-unresolved,
+html body.obsidian-app .cm-link.is-unresolved,
+html body.obsidian-app .metadata-link-inner.is-unresolved,
+html body.obsidian-app .multi-select-pill-content.is-unresolved {
+  color: var(--link-unresolved-color);
+  opacity: var(--link-unresolved-opacity);
   text-decoration-style: dashed; /* Optional: adds a brutalist "incomplete" feel */
 }
 
@@ -1888,43 +1886,43 @@ body.enable-book-style .markdown-preview-view blockquote p {
 /* ================================================================= */
 
 /* Global Checkbox Base - NO BORDERS */
-input[type="checkbox"] {
+ html body.obsidian-app input[type="checkbox"] {
     border: none !important;
     background-color: var(--checkbox-bg-unchecked) !important;
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    cursor: pointer !important;
     box-shadow: none !important;
 }
 
 /* Checked State - Solid Fill */
-input[type="checkbox"]:checked {
+ html body.obsidian-app input[type="checkbox"]:checked {
     background-color: var(--checkbox-color) !important;
     box-shadow: none !important;
 }
 
 /* Hide the Checkmark Icon */
-input[type="checkbox"]:checked::after {
+ html body.obsidian-app input[type="checkbox"]:checked::after {
     display: none !important;
 }
 
 /* 8A. FRONTMATTER & BASES SYNC                                     */
-body .metadata-container input[type="checkbox"],
-body div.bases-view input[type="checkbox"] {
+ html body.obsidian-app .metadata-container input[type="checkbox"],
+ html body.obsidian-app div.bases-view input[type="checkbox"] {
     border: none !important;
     background-color: var(--checkbox-bg-unchecked) !important;
     box-shadow: none !important;
 }
 
-body .metadata-container input[type="checkbox"]:checked,
-body div.bases-view input[type="checkbox"]:checked {
+ html body.obsidian-app .metadata-container input[type="checkbox"]:checked,
+ html body.obsidian-app div.bases-view input[type="checkbox"]:checked {
     background-color: var(--text-muted) !important;
     border: none !important;
     box-shadow: none !important;
 }
 
 /* Toggles */
-body .checkbox-container {
+ html body.obsidian-app .checkbox-container {
   width: 42px !important;
   height: 22px !important;
   border-radius: var(--toggle-track-radius) !important;
@@ -1936,8 +1934,8 @@ body .checkbox-container {
 }
 
 /* Toggle Thumb */
-body .checkbox-container::after,
-body .checkbox-container:active::after {
+ html body.obsidian-app .checkbox-container::after,
+ html body.obsidian-app .checkbox-container:active::after {
   content: "" !important;
   display: block !important;
   position: absolute !important;
@@ -1955,18 +1953,18 @@ body .checkbox-container:active::after {
 }
 
 /* Toggle 'On' State Container */
-body .checkbox-container.is-enabled {
+ html body.obsidian-app .checkbox-container.is-enabled {
   background: var(--toggle-on-color) !important;
 }
 
 /* Toggle 'On' State Thumb Movement */
-body .checkbox-container.is-enabled::after,
-body .checkbox-container.is-enabled:active::after {
+ html body.obsidian-app .checkbox-container.is-enabled::after,
+ html body.obsidian-app .checkbox-container.is-enabled:active::after {
   transform: translate3d(20px, -50%, 0) !important;
 }
 
 /* Global Input Fields - Structure */
-:is(input[type="text"],
+html body.obsidian-app :is(input[type="text"],
   input[type="search"],
   input[type="number"],
   select,
@@ -1975,14 +1973,14 @@ body .checkbox-container.is-enabled:active::after {
   textarea,
   .rename-textarea):not(.excalidraw-text-editor):not(div.excalidraw textarea) {
   border: var(--input-border-width) solid var(--input-border);
-  border-radius: var(--input-radius) !important;
+  border-radius: var(--input-radius);
   color: var(--text-normal);
   -webkit-appearance: none;
   appearance: none;
 }
 
 /* Global Input Fields - Base Background (Excludes Metadata) */
-:is(input[type="text"],
+html body.obsidian-app :is(input[type="text"],
   input[type="search"],
   input[type="number"],
   input[type="password"],
@@ -1994,11 +1992,11 @@ body .checkbox-container.is-enabled:active::after {
   .search-input-container input,
   textarea,
   .rename-textarea):not(:is(.metadata-property-key-input, .metadata-property-value-input, .metadata-input-number)):not(.excalidraw-text-editor):not(div.excalidraw textarea) {
-  background-color: var(--input-bg-std) !important;
+  background-color: var(--input-bg-std);
 }
 
 /* Global Input Fields - Focus State */
-:is(input[type="text"],
+html body.obsidian-app :is(input[type="text"],
   input[type="search"],
   input[type="number"],
   select,
@@ -2006,149 +2004,149 @@ body .checkbox-container.is-enabled:active::after {
   .search-input-container input,
   textarea,
   .rename-textarea):focus:not(.excalidraw-text-editor):not(div.excalidraw textarea) {
-  box-shadow: none !important;
-  outline: none !important;
+  box-shadow: none;
+  outline: none;
 }
 
 /* Input Helpers & Decorators */
-.search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
-  background-color: var(--toggle-on-color) !important;
-  color: var(--text-normal) !important;
+html body.obsidian-app .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
+  background-color: var(--toggle-on-color);
+  color: var(--text-normal);
   border-radius: 4px;
   z-index: 10;
 }
 
 /* Font color of the decorator only in dark mode */
-.theme-dark .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
-  color: #ffffff !important;
+html body.obsidian-app .theme-dark .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
+  color: #ffffff;
 }
 
 /* Removes default background and borders from the input */
-body input[type="range"] {
-  background: transparent !important;
-  border: none !important;
+ html body.obsidian-app input[type="range"] {
+  background: transparent;
+  border: none;
 }
 
 /* Styles the slider track */
-body input[type="range"]::-webkit-slider-runnable-track {
-  background-color: var(--toggle-on-color) !important;
+ html body.obsidian-app input[type="range"]::-webkit-slider-runnable-track {
+  background-color: var(--toggle-on-color);
   height: 4px;
   border-radius: 0px;
   width: 100%;
 }
 
 /* Styles the slider thumb */
-body input[type="range"]::-webkit-slider-thumb,
-body .slider-thumb {
-  background-color: var(--toggle-on-color) !important;
-  border-color: var(--toggle-on-color) !important;
+ html body.obsidian-app input[type="range"]::-webkit-slider-thumb,
+ html body.obsidian-app .slider-thumb {
+  background-color: var(--toggle-on-color);
+  border-color: var(--toggle-on-color);
 }
 
 /* Global rule that also targets the thumb to remove roundness and apply border */
-.slider-thumb {
-  border-radius: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: var(--border-width) solid var(--toggle-on-color) !important;
+html body.obsidian-app .slider-thumb {
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border: var(--border-width) solid var(--toggle-on-color);
 }
 
-body input::placeholder {
+ html body.obsidian-app input::placeholder {
   color: var(--text-muted);
 }
 
-body :is(.input-right-decorator, .input-left-decorator) {
-  border-radius: var(--input-radius) !important;
+ html body.obsidian-app :is(.input-right-decorator, .input-left-decorator) {
+  border-radius: var(--input-radius);
 }
 
 /* Search Hover */
-:is(input[type="search"], .search-input-container input):hover {
-  border: var(--input-border) !important;
+html body.obsidian-app :is(input[type="search"], .search-input-container input):hover {
+  border: var(--input-border);
 }
 
 /* Front Matter Metadata - Light Mode Text */
-body.theme-light .metadata-property-key,
-body.theme-light .metadata-property-value,
-body.theme-light .metadata-label,
-body.theme-light .multi-select-pill-content,
-body.theme-light .metadata-input-longtext {
+html body.obsidian-app.theme-light .metadata-property-key,
+html body.obsidian-app.theme-light .metadata-property-value,
+html body.obsidian-app.theme-light .metadata-label,
+html body.obsidian-app.theme-light .multi-select-pill-content,
+html body.obsidian-app.theme-light .metadata-input-longtext {
   color: var(--text-muted);
 }
 
 /* Front Matter Metadata - Light Mode Inputs */
-body.theme-light .metadata-property-key-input,
-body.theme-light .metadata-property-value-input {
+html body.obsidian-app.theme-light .metadata-property-key-input,
+html body.obsidian-app.theme-light .metadata-property-value-input {
   color: var(--text-normal);
 }
 
 /* Front Matter Metadata - Light Mode Links */
-body.theme-light .metadata-link,
-body.theme-light .metadata-property-value .external-link,
-body.theme-light .metadata-property-value a {
+html body.obsidian-app.theme-light .metadata-link,
+html body.obsidian-app.theme-light .metadata-property-value .external-link,
+html body.obsidian-app.theme-light .metadata-property-value a {
   color: var(--link-external-color); 
   text-decoration-color: var(--link-external-color);
 }
 
 /* Front Matter Metadata - Light Mode Placeholders */
-body.theme-light .metadata-input-longtext:empty::before,
-body.theme-light .metadata-property-value-input:empty::before {
+html body.obsidian-app.theme-light .metadata-input-longtext:empty::before,
+html body.obsidian-app.theme-light .metadata-property-value-input:empty::before {
   color: var(--text-muted);
   opacity: 1;
 }
 
 /* Metadata Hover/Active States */
-body .metadata-property:hover,
-body .metadata-property.is-active,
-body .metadata-property-value-input:hover,
-body .metadata-property-value-input:focus,
-body .metadata-property-key-input:focus {
-  border-color: transparent !important;
-  box-shadow: none !important;
-  background-color: var(--surface-highlight) !important;
+ html body.obsidian-app .metadata-property:hover,
+ html body.obsidian-app .metadata-property.is-active,
+ html body.obsidian-app .metadata-property-value-input:hover,
+ html body.obsidian-app .metadata-property-value-input:focus,
+ html body.obsidian-app .metadata-property-key-input:focus {
+  border-color: transparent;
+  box-shadow: none;
+  background-color: var(--surface-highlight);
   z-index: 10;
-  border-radius: var(--radius-s) !important;
+  border-radius: var(--radius-s);
 }
 
 /* Metadata Containers - Force Radius & Remove Borders */
-body .metadata-container,
-body .metadata-property,
-body .metadata-property-key-input,
-body .metadata-property-value-input {
-  border-radius: var(--radius-s) !important;
-  border: none !important;
-  box-shadow: none !important;
+ html body.obsidian-app .metadata-container,
+ html body.obsidian-app .metadata-property,
+ html body.obsidian-app .metadata-property-key-input,
+ html body.obsidian-app .metadata-property-value-input {
+  border-radius: var(--radius-s);
+  border: none;
+  box-shadow: none;
 }
 
 /* Context-Aware Sidebar Metadata */
-body.theme-dark .workspace-leaf-content[data-type="file-properties"] .metadata-content,
-body.theme-light:not(.is-mobile) .workspace-leaf-content[data-type="file-properties"] .metadata-content {
-  background-color: var(--background-primary) !important;
-  border: 1px solid var(--background-modifier-border) !important;
+html body.obsidian-app.theme-dark .workspace-leaf-content[data-type="file-properties"] .metadata-content,
+html body.obsidian-app.theme-light:not(.is-mobile) .workspace-leaf-content[data-type="file-properties"] .metadata-content {
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
 }
 
 /* Suggestion Containers */
-.suggestion-container {
-  border-radius: var(--suggestion-radius) !important;
-  overflow: hidden !important;
-  border: none !important;
-  background-color: var(--surface-highlight) !important;
+html body.obsidian-app .suggestion-container {
+  border-radius: var(--suggestion-radius);
+  overflow: hidden;
+  border: none;
+  background-color: var(--surface-highlight);
 }
 
 /* Force Radius on Metadata Container (Mobile) */
-body.is-mobile .metadata-content,
-body.is-mobile .metadata-container {
-  border-radius: var(--metadata-content-radius) !important;
-  --metadata-border-radius: var(--metadata-content-radius) !important;
+html body.obsidian-app.is-mobile .metadata-content,
+html body.obsidian-app.is-mobile .metadata-container {
+  border-radius: var(--metadata-content-radius);
+  --metadata-border-radius: var(--metadata-content-radius);
 }
 
 /* Installed/Active Theme Flair */
-body .flair.mod-pop {
-  background-color: var(--toggle-on-color) !important;
-  border: none !important;
-  color: #000000 !important;
+ html body.obsidian-app .flair.mod-pop {
+  background-color: var(--toggle-on-color);
+  border: none;
+  color: #000000;
 }
 
-body.theme-light .flair.mod-pop {
-  color: #ffffff !important;
+html body.obsidian-app.theme-light .flair.mod-pop {
+  color: #ffffff;
 }
 
 /* ================================================================= */
@@ -2167,27 +2165,27 @@ body.theme-light .flair.mod-pop {
   }
 
   /* CSS Class Overrides */
-  .width-800 {
+  html body.obsidian-app .width-800 {
     --editor-width: 800px;
   }
 
-  .width-900 {
+  html body.obsidian-app .width-900 {
     --editor-width: 900px;
   }
 
-  .width-1000 {
+  html body.obsidian-app .width-1000 {
     --editor-width: 1000px;
   }
 
-  .width-1200 {
+  html body.obsidian-app .width-1200 {
     --editor-width: 1200px;
   }
 
-  .width-1600 {
+  html body.obsidian-app .width-1600 {
     --editor-width: 1600px;
   }
 
-  .full-width {
+  html body.obsidian-app .full-width {
     --editor-width: 100%;
   }
 
@@ -2212,57 +2210,57 @@ body.theme-light .flair.mod-pop {
   .width-1600 .markdown-preview-sizer,
   .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
   .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
-    max-width: var(--editor-width) !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    max-width: var(--editor-width);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,
   .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer {
-    max-width: none !important;
+    max-width: none;
   }
 
   /* Scrollbar Positioning (Desktop Layout) */
   .markdown-source-view.mod-cm6 .cm-scroller,
   .markdown-preview-view {
-    width: 100% !important;
-    max-width: 100% !important;
-    position: relative !important;
-    margin: 0 !important;
-    border: none !important;
-    overflow: auto !important;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    margin: 0;
+    border: none;
+    overflow: auto;
   }
 
   .markdown-source-view.mod-cm6 .cm-contentContainer {
-    width: 100% !important;
+    width: 100%;
   }
 
   .view-content {
-    position: relative !important;
+    position: relative;
   }
 }
 
 /* Scrollbar Styling (Global) */
-::-webkit-scrollbar {
+html body.obsidian-app ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+html body.obsidian-app ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb-bg) !important;
-  border-radius: var(--scrollbar-radius) !important;
+html body.obsidian-app ::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-bg);
+  border-radius: var(--scrollbar-radius);
 }
 
-body:not(:hover) ::-webkit-scrollbar-thumb {
-  background-color: transparent !important;
+html body.obsidian-app:not(:hover) ::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
-::-webkit-scrollbar-corner {
+html body.obsidian-app ::-webkit-scrollbar-corner {
   background: transparent;
 }
 
@@ -2271,95 +2269,95 @@ body:not(:hover) ::-webkit-scrollbar-thumb {
 /* ================================================================= */
 
 /* Shared Layout (Layout & Geometry) */
-div.bases-view,
-div.bases-view * {
-  border-radius: var(--table-selection-border-radius) !important;
+html body.obsidian-app div.bases-view,
+html body.obsidian-app div.bases-view * {
+  border-radius: var(--table-selection-border-radius);
 }
 
-.bases-table-view-cell.is-focused,
-.bases-table-view-cell:focus,
-.bases-file-container .is-focused {
+html body.obsidian-app .bases-table-view-cell.is-focused,
+html body.obsidian-app .bases-table-view-cell:focus,
+html body.obsidian-app .bases-file-container .is-focused {
   border-width: 3px;
   border-style: solid;
-  border-radius: var(--table-selection-border-radius) !important;
+  border-radius: var(--table-selection-border-radius);
 }
 
-.bases-view .bases-td.is-focused,
-.bases-view .bases-td:focus,
-.bases-view .bases-table-cell:focus,
-.bases-view .bases-rendered-value:focus,
-.bases-view .internal-link:focus {
+html body.obsidian-app .bases-view .bases-td.is-focused,
+html body.obsidian-app .bases-view .bases-td:focus,
+html body.obsidian-app .bases-view .bases-table-cell:focus,
+html body.obsidian-app .bases-view .bases-rendered-value:focus,
+html body.obsidian-app .bases-view .internal-link:focus {
   box-shadow: var(--shadow-focus-inset);
   outline: 2px solid var(--text-normal);
   border-color: var(--text-normal);
-  border-radius: var(--table-selection-border-radius) !important;
+  border-radius: var(--table-selection-border-radius);
 }
 
-.bases-cards-item {
-  border-radius: var(--table-selection-border-radius) !important;
+html body.obsidian-app .bases-cards-item {
+  border-radius: var(--table-selection-border-radius);
   background-color: var(--background-secondary);
 }
 
 /* Theme Specific Colours - Cascade Enabled */
-body.theme-light div.bases-view {
+html body.obsidian-app.theme-light div.bases-view {
   color: var(--text-normal);
 }
 
-body.theme-dark div.bases-view {
+html body.obsidian-app.theme-dark div.bases-view {
   color: var(--bases-text-color);
 }
 
 /* Bases Cell Backgrounds (Active/Focused) */
-body .metadata-input-longtext:focus,
-body .metadata-input-longtext.is-focused {
-  background-color: var(--surface-highlight) !important;
+ html body.obsidian-app .metadata-input-longtext:focus,
+ html body.obsidian-app .metadata-input-longtext.is-focused {
+  background-color: var(--surface-highlight);
 }
 
 /* Force Bases table cells to match font colour */
-body div.bases-view .bases-table-cell,
-body div.bases-view .bases-table-header,
-body div.bases-view .bases-table-row,
-body div.bases-view .bases-td,
-body div.bases-view .bases-th {
-  border-color: var(--text-normal) !important;
+ html body.obsidian-app div.bases-view .bases-table-cell,
+ html body.obsidian-app div.bases-view .bases-table-header,
+ html body.obsidian-app div.bases-view .bases-table-row,
+ html body.obsidian-app div.bases-view .bases-td,
+ html body.obsidian-app div.bases-view .bases-th {
+  border-color: var(--text-normal);
 }
 
 /* NO BORDER Checkboxes Sync */ 
-body div.bases-view input[type="checkbox"] { 
-  border: none !important;
-  background-color: var(--checkbox-bg-unchecked) !important;
-  box-shadow: none !important;
+ html body.obsidian-app div.bases-view input[type="checkbox"] { 
+  border: none;
+  background-color: var(--checkbox-bg-unchecked);
+  box-shadow: none;
   appearance: none;
   -webkit-appearance: none;
 } 
 
-body div.bases-view input[type="checkbox"]:checked { 
-  background-color: var(--text-muted) !important; 
-  border: none !important;
-  box-shadow: none !important;
+ html body.obsidian-app div.bases-view input[type="checkbox"]:checked { 
+  background-color: var(--text-muted); 
+  border: none;
+  box-shadow: none;
 }
 
 /* Toolbar Buttons */
-.text-icon-button,
-.text-icon-button .text-button-label,
-.text-icon-button .text-button-icon .svg-icon {
-    color: var(--text-muted) !important;
-    stroke: var(--text-muted) !important;
+html body.obsidian-app .text-icon-button,
+html body.obsidian-app .text-icon-button .text-button-label,
+html body.obsidian-app .text-icon-button .text-button-icon .svg-icon {
+    color: var(--text-muted);
+    stroke: var(--text-muted);
 }
 
-.text-icon-button .flair.toolbar-badge {
-    background-color: var(--text-muted) !important;
-    color: var(--background-primary) !important;
+html body.obsidian-app .text-icon-button .flair.toolbar-badge {
+    background-color: var(--text-muted);
+    color: var(--background-primary);
 }
 
-.text-icon-button:hover {
-    background-color: var(--surface-highlight) !important;
+html body.obsidian-app .text-icon-button:hover {
+    background-color: var(--surface-highlight);
 }
 
-.text-icon-button:hover .text-button-label,
-.text-icon-button:hover .svg-icon {
-    color: var(--text-accent-hover) !important;
-    stroke: var(--text-accent-hover) !important;
+html body.obsidian-app .text-icon-button:hover .text-button-label,
+html body.obsidian-app .text-icon-button:hover .svg-icon {
+    color: var(--text-accent-hover);
+    stroke: var(--text-accent-hover);
 }
 
 /* ================================================================= */
@@ -2367,15 +2365,15 @@ body div.bases-view input[type="checkbox"]:checked {
 /* ================================================================= */
 
 /* Base state: Force typeface and UI color */
-body .empty-state-title,
-body .empty-state-action {
-  font-family: var(--font-interface-override) !important;
-  color: var(--text-muted) !important;
+ html body.obsidian-app .empty-state-title,
+ html body.obsidian-app .empty-state-action {
+  font-family: var(--font-interface-override);
+  color: var(--text-muted);
 }
 
 /* Hover state: Already exists in your code */
-body .empty-state-action:hover,
-body .empty-state-action.is-focused {
+ html body.obsidian-app .empty-state-action:hover,
+ html body.obsidian-app .empty-state-action.is-focused {
   color: var(--new-tab-hover-text);
   background-color: var(--new-tab-hover-bg);
 }
@@ -2385,265 +2383,324 @@ body .empty-state-action.is-focused {
 /* ================================================================= */
 
 /* Menus & Drawers (Brutalist Overrides) */
-body.is-mobile .menu,
-body.is-mobile .menu-container,
-body.is-mobile .bottom-sheet,
-body.is-mobile .menu .menu-item,
-body.is-mobile .menu .menu-group,
-body.is-mobile .tree-item-self,
-body .workspace-drawer .nav-file-title,
-body .workspace-drawer .nav-folder-title,
-body .workspace-drawer .nav-file-title-content,
-body .workspace-tab-header-inner,
-body .workspace-tab-header.workspace-drawer-tab-select,
-body .workspace-tab-header.tappable,
-body .workspace-tab-header.tappable.is-active,
-body .workspace-drawer-tab-options,
-body .workspace-drawer-tab-options.is-collapsed,
-body .workspace-drawer-tab-options-list,
-body.is-mobile .nav-buttons-container .nav-action-button {
-  border-radius: var(--menu-radius) !important;
+html body.obsidian-app.is-mobile .menu,
+html body.obsidian-app.is-mobile .menu-container,
+html body.obsidian-app.is-mobile .bottom-sheet,
+html body.obsidian-app.is-mobile .menu .menu-item,
+html body.obsidian-app.is-mobile .menu .menu-group,
+html body.obsidian-app.is-mobile .tree-item-self,
+ html body.obsidian-app .workspace-drawer .nav-file-title,
+ html body.obsidian-app .workspace-drawer .nav-folder-title,
+ html body.obsidian-app .workspace-drawer .nav-file-title-content,
+ html body.obsidian-app .workspace-tab-header-inner,
+ html body.obsidian-app .workspace-tab-header.workspace-drawer-tab-select,
+ html body.obsidian-app .workspace-tab-header.tappable,
+ html body.obsidian-app .workspace-tab-header.tappable.is-active,
+ html body.obsidian-app .workspace-drawer-tab-options,
+ html body.obsidian-app .workspace-drawer-tab-options.is-collapsed,
+ html body.obsidian-app .workspace-drawer-tab-options-list,
+html body.obsidian-app.is-mobile .nav-buttons-container .nav-action-button {
+  border-radius: var(--menu-radius);
 }
 
+/* Extreme Brutalist Reset for Settings Groups */
+html body.obsidian-app.is-mobile.theme-dark .vertical-tab-header-group-items[data-section],
+html body.obsidian-app.is-mobile.theme-light .vertical-tab-header-group-items[data-section],
+html body.obsidian-app.is-mobile.theme-dark .vertical-tab-header-group,
+html body.obsidian-app.is-mobile.theme-light .vertical-tab-header-group {
+    border-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Brutalist Reset for Sync Button & Raised Icons (Mobile) */
+html body.obsidian-app.is-mobile.theme-light .sync-status-icon.mod-raised,
+html body.obsidian-app.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised,
+html body.obsidian-app.is-mobile.theme-dark .sync-status-icon.mod-raised,
+html body.obsidian-app.is-mobile.theme-dark .workspace-drawer-header-icon.mod-raised {
+    border: none;
+    box-shadow: none;
+}
+
+html body.obsidian-app.is-mobile.theme-light .sync-status-icon.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .sync-status-icon.mod-raised::after,
+html body.obsidian-app.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::before,
+html body.obsidian-app.is-mobile.theme-light .workspace-drawer-header-icon.mod-raised::after {
+    display: none;
+    content: none;
+    border: none;
+}
+
+
 /* Applies color to the settings button background as well */
-body.is-mobile {
+html body.obsidian-app.is-mobile {
   --settings-bg-color: var(--mobile-drawer-bg);
 }
 
 /* Active States (Global) */
-body.is-mobile .clickable-icon.is-active,
-body.is-mobile .side-dock-ribbon-action.is-active,
-body.is-mobile .nav-action-button.is-active,
-body.is-mobile .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
-body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
+html body.obsidian-app.is-mobile .clickable-icon.is-active,
+html body.obsidian-app.is-mobile .side-dock-ribbon-action.is-active,
+html body.obsidian-app.is-mobile .nav-action-button.is-active,
+html body.obsidian-app.is-mobile .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
+html body.obsidian-app.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner {
   background-color: var(--mobile-active-bg);
 }
 
 /* Dimming the Persistent Bottom Bar */
 /* Targets the mirrored selection inside the options container ONLY when it is NOT collapsed */
-body.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
-body.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-title {
-  opacity: 0 !important;
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-title {
+  opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 /* Ensures full visibility when the container is collapsed (acting as the standard bottom bar) */
-body.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
-body.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-title {
-  opacity: 1 !important;
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-title {
+  opacity: 1;
 }
 
 /* Settings Form Elements */
-body.is-mobile .setting-items,
-body.is-mobile .setting-item,
-body.is-mobile .setting-item-control button,
-body.is-mobile .setting-item-control input,
-body.is-mobile .setting-item-control select,
-body.is-mobile input[type="search"],
-body.is-mobile .vertical-tab-header-group-items,
-body.is-mobile .vertical-tab-nav-item {
-  border-radius: 0 !important;
+html body.obsidian-app.is-mobile .setting-items,
+html body.obsidian-app.is-mobile .setting-item,
+html body.obsidian-app.is-mobile .setting-item-control button,
+html body.obsidian-app.is-mobile .setting-item-control input,
+html body.obsidian-app.is-mobile .setting-item-control select,
+html body.obsidian-app.is-mobile input[type="search"],
+html body.obsidian-app.is-mobile .vertical-tab-header-group-items,
+html body.obsidian-app.is-mobile .vertical-tab-nav-item {
+  border-radius: 0;
 }
 
 /* Navigation Bar (Shared Structure) */
-body.is-mobile .view-actions.mod-raised,
-body.is-mobile .sidebar-toggle-button.mod-raised,
-body.is-mobile .mobile-navbar {
-  border-style: solid !important;
+html body.obsidian-app.is-mobile .view-actions.mod-raised,
+html body.obsidian-app.is-mobile .sidebar-toggle-button.mod-raised,
+html body.obsidian-app.is-mobile .mobile-navbar {
+  border-style: solid;
 }
 
-body.is-mobile .mobile-navbar-actions {
+html body.obsidian-app.is-mobile .mobile-navbar-actions {
   background-color: transparent;
   border: none;
 }
 
 /* Navigation Bar (Light Mode) */
-body.is-mobile.theme-light .view-actions.mod-raised,
-body.is-mobile.theme-light .sidebar-toggle-button.mod-raised,
-body.is-mobile.theme-light .mobile-navbar {
+html body.obsidian-app.is-mobile.theme-light .view-actions.mod-raised,
+html body.obsidian-app.is-mobile.theme-light .sidebar-toggle-button.mod-raised,
+html body.obsidian-app.is-mobile.theme-light .mobile-navbar {
   background: color-mix(in srgb, var(--mobile-navbar-color-light), transparent calc((1 - var(--mobile-navbar-opacity-light)) * 100%));
   box-shadow: none;
-  border-width: var(--mobile-navbar-border-width-light) !important;
-  border-style: var(--mobile-navbar-border-style-light) !important;
-  border-color: var(--mobile-navbar-border-color-light) !important;
-  border-radius: var(--mobile-navbar-radius) !important;
+  border-width: var(--mobile-navbar-border-width-light);
+  border-style: var(--mobile-navbar-border-style-light);
+  border-color: var(--mobile-navbar-border-color-light);
+  border-radius: var(--mobile-navbar-radius);
 }
 
-body.is-mobile.theme-light .mobile-navbar-actions {
+html body.obsidian-app.is-mobile.theme-light .mobile-navbar-actions {
   box-shadow: none;
 }
 
 /* Navigation Bar (Dark Mode) */
-body.is-mobile.theme-dark .view-actions.mod-raised,
-body.is-mobile.theme-dark .sidebar-toggle-button.mod-raised,
-body.is-mobile.theme-dark .mobile-navbar {
+html body.obsidian-app.is-mobile.theme-dark .view-actions.mod-raised,
+html body.obsidian-app.is-mobile.theme-dark .sidebar-toggle-button.mod-raised,
+html body.obsidian-app.is-mobile.theme-dark .mobile-navbar {
   background-color: color-mix(in srgb, var(--mobile-navbar-color-dark), transparent calc((1 - var(--mobile-navbar-opacity-dark)) * 100%));
-  background-image: none !important;
-  filter: none !important;
-  backdrop-filter: blur(6px) saturate(1.5) !important;
-  box-shadow: none !important;
-  border-width: var(--mobile-navbar-border-width-dark) !important;
-  border-style: var(--mobile-navbar-border-style-dark) !important;
-  border-color: var(--mobile-navbar-border-color-dark) !important;
-  border-radius: var(--mobile-navbar-radius) !important;
+  background-image: none;
+  filter: none;
+  backdrop-filter: blur(6px) saturate(1.5);
+  box-shadow: none;
+  border-width: var(--mobile-navbar-border-width-dark);
+  border-style: var(--mobile-navbar-border-style-dark);
+  border-color: var(--mobile-navbar-border-color-dark);
+  border-radius: var(--mobile-navbar-radius);
 }
 
 /* Menu Items (Dark Mode) */
-body.is-mobile.theme-dark .menu .menu-item {
+html body.obsidian-app.is-mobile.theme-dark .menu .menu-item {
   background-color: var(--background-primary);
 }
 
 /* Menu Items selection background */
-body.is-mobile .menu .menu-item.is-selected,
-body.is-mobile .menu .menu-item:active {
+html body.obsidian-app.is-mobile .menu .menu-item.is-selected,
+html body.obsidian-app.is-mobile .menu .menu-item:active {
   background-color: var(--background-secondary);
 }
 
 /* Force mobile menu text and icons to follow UI font colour */
- body.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-title,
- body.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-icon {
-   color: var(--text-muted) !important;
+ html body.obsidian-app.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-title,
+ html body.obsidian-app.is-mobile .menu .menu-item:not(.is-warning):not(.is-disabled) .menu-item-icon {
+   color: var(--text-muted);
  }
 
 /* Settings Items selection background */
-body.is-mobile .setting-item.is-selected,
-body.is-mobile .setting-item.mod-action:active {
+html body.obsidian-app.is-mobile .setting-item.is-selected,
+html body.obsidian-app.is-mobile .setting-item.mod-action:active {
   background-color: var(--background-secondary);
 }
 
 /* Modal Buttons & Radius */
-body.is-mobile.theme-light .modal .mod-raised,
-body.is-mobile.theme-dark .modal .mod-raised {
+html body.obsidian-app.is-mobile.theme-light .modal .mod-raised,
+html body.obsidian-app.is-mobile.theme-dark .modal .mod-raised {
   border: none;
-  box-shadow: none !important;
-  filter: none !important;
+  box-shadow: none;
+  filter: none;
 }
 
-body.is-mobile .modal,
-body.is-mobile .modal-container,
-body.is-mobile .modal-header,
-body.is-mobile .bottom-sheet,
-body.is-mobile .setting-group-search {
-  border-radius: 0 !important;
+html body.obsidian-app.is-mobile .modal,
+html body.obsidian-app.is-mobile .modal-container,
+html body.obsidian-app.is-mobile .modal-header,
+html body.obsidian-app.is-mobile .bottom-sheet,
+html body.obsidian-app.is-mobile .setting-group-search {
+  border-radius: 0;
   --modal-radius: 0px !important;
-  overflow: visible !important;
+  overflow: visible;
 }
 
-.community-item.tappable,
-.community-modal-meta,
-.community-modal-readme,
-.community-modal-info-name,
-.community-modal-info-author,
-.community-modal-button-container button.mod-cta {
-  border-radius: var(--button-radius) !important;
+html body.obsidian-app .community-item.tappable,
+html body.obsidian-app .community-modal-meta,
+html body.obsidian-app .community-modal-readme,
+html body.obsidian-app .community-modal-info-name,
+html body.obsidian-app .community-modal-info-author,
+html body.obsidian-app .community-modal-button-container button.mod-cta {
+  border-radius: var(--button-radius);
 }
 
 /* Hide Tooltips on Mobile */
-body.is-mobile .tooltip {
-  display: none !important;
+html body.obsidian-app.is-mobile .tooltip {
+  display: none;
 }
 
 /* Mobile Drawer - Variable Definitions */
-body.is-mobile.theme-dark {
+html body.obsidian-app.is-mobile.theme-dark {
   --mobile-drawer-bg: var(--mobile-drawer-color-dark);
 }
 
-body.is-mobile.theme-light {
+html body.obsidian-app.is-mobile.theme-light {
   --mobile-drawer-bg: var(--mobile-drawer-color-light);
 }
 
 /* Mobile Drawer - Top Navigation Buttons */
-body.is-mobile .nav-buttons-container .clickable-icon.nav-action-button,
-body.is-mobile .workspace-drawer-tab-options .workspace-tab-header-inner,
-body.is-mobile .workspace-drawer-tab-options-list {
+html body.obsidian-app.is-mobile .nav-buttons-container .clickable-icon.nav-action-button,
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options .workspace-tab-header-inner,
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options-list {
   background-color: var(--mobile-drawer-bg);
 }
 
-body.is-mobile .nav-buttons-container .clickable-icon.nav-action-button.is-active {
+html body.obsidian-app.is-mobile .nav-buttons-container .clickable-icon.nav-action-button.is-active {
   background-color: var(--mobile-active-bg);
 }
 
 /* Active Drawer Tab - Distinct Background */
-body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner {
-  background-color: var(--mobile-active-bg) !important;
+html body.obsidian-app.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: var(--mobile-active-bg);
 }
 
 /* Command Palette & Suggestions */
-body.is-mobile .prompt-results,
-body.is-mobile .suggestion-item,
-body.is-mobile .suggestion-item.is-selected,
-body.is-mobile .prompt-input,
-body.is-mobile .prompt-input-container,
-body.is-mobile .prompt {
-  border-radius: 0 !important;
+html body.obsidian-app.is-mobile .prompt-results,
+html body.obsidian-app.is-mobile .suggestion-item,
+html body.obsidian-app.is-mobile .suggestion-item.is-selected,
+html body.obsidian-app.is-mobile .prompt-input,
+html body.obsidian-app.is-mobile .prompt-input-container,
+html body.obsidian-app.is-mobile .prompt {
+  border-radius: 0;
 }
 
 /* Command Palette Input Pseudo-element Removal */
-body.is-mobile .prompt-input::before,
-body.is-mobile .prompt-input::after,
-body.is-mobile .prompt-input-container::before,
-body.is-mobile .prompt-input-container::after {
-  display: none !important;
-  content: none !important;
-  border: none !important;
+html body.obsidian-app.is-mobile .prompt-input::before,
+html body.obsidian-app.is-mobile .prompt-input::after,
+html body.obsidian-app.is-mobile .prompt-input-container::before,
+html body.obsidian-app.is-mobile .prompt-input-container::after {
+  display: none;
+  content: none;
+  border: none;
 }
 
-body.is-mobile .suggestion-item.is-selected {
+html body.obsidian-app.is-mobile .suggestion-item.is-selected {
   background-color: var(--background-modifier-hover);
 }
 
 /* Active option on drawer font and icon colour */
-body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner,
-body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-body.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-body.is-mobile .workspace-drawer .nav-action-button.is-active,
-body.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-content {
-  color: var(--text-accent-hover) !important;
+html body.obsidian-app.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner,
+html body.obsidian-app.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+html body.obsidian-app.is-mobile .workspace-drawer .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+html body.obsidian-app.is-mobile .workspace-drawer .nav-action-button.is-active,
+html body.obsidian-app.is-mobile .workspace-drawer .nav-file-title.is-active .nav-file-title-content {
+  color: var(--text-accent-hover);
 }
 
 /* Sync Button Mobile */
 /* Default (Light Mode) background and clear filters */
-.is-mobile .sync-status-icon,
-.is-mobile .plugin-sync {
-    background-color: var(--background-secondary) !important;
-    background-image: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
+html body.obsidian-app .is-mobile .sync-status-icon,
+html body.obsidian-app .is-mobile .plugin-sync {
+    background-color: var(--background-secondary);
+    background-image: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
 }
 
 /* Dark Mode override: Chained classes for the body tag */
-.theme-dark.is-mobile .sync-status-icon,
-.theme-dark.is-mobile .plugin-sync {
-    background-color: var(--background-primary) !important;
+html body.obsidian-app .theme-dark.is-mobile .sync-status-icon,
+html body.obsidian-app .theme-dark.is-mobile .plugin-sync {
+    background-color: var(--background-primary);
 }
 
 /* Completely remove pseudo-elements */
-.is-mobile .sync-status-icon::before,
-.is-mobile .sync-status-icon::after,
-.is-mobile .plugin-sync::before,
-.is-mobile .plugin-sync::after {
-    display: none !important;
-    content: none !important;
+html body.obsidian-app .is-mobile .sync-status-icon::before,
+html body.obsidian-app .is-mobile .sync-status-icon::after,
+html body.obsidian-app .is-mobile .plugin-sync::before,
+html body.obsidian-app .is-mobile .plugin-sync::after {
+    display: none;
+    content: none;
+}
+
+/* Hyper-specific overrides for Brutalist aesthetic on Mobile */
+html body.obsidian-app.is-mobile .vertical-tab-header-group,
+html body.obsidian-app.is-mobile .community-modal-meta,
+html body.obsidian-app.is-mobile .community-modal-readme.markdown-rendered,
+html body.obsidian-app.is-mobile .workspace-drawer.mod-right,
+html body.obsidian-app.is-mobile .workspace-drawer.mod-left {
+    border-radius: var(--radius-s);
+}
+
+/* Ensure sync button pseudo-elements are removed with hyper-specificity */
+html body.obsidian-app.is-mobile .sync-status-icon::before,
+html body.obsidian-app.is-mobile .sync-status-icon::after,
+html body.obsidian-app.is-mobile .plugin-sync::before,
+html body.obsidian-app.is-mobile .plugin-sync::after {
+    display: none;
+    content: none;
+}
+
+/* Restoration of square corners for mobile settings components */
+html body.obsidian-app.is-mobile .vertical-tab-nav-item.tappable,
+html body.obsidian-app.is-mobile .vertical-tab-nav-item,
+html body.obsidian-app.is-mobile .vertical-tab-header-group,
+html body.obsidian-app.is-mobile .vertical-tab-header-group-items,
+html body.obsidian-app.is-mobile .setting-items,
+html body.obsidian-app.is-mobile .setting-item {
+    border-radius: var(--radius-s);
 }
 
 /* GLOBAL MOBILE FIX: Stop Obsidian from hiding mobile modal nav buttons */
 
 /* 1. Primary Action Buttons (e.g., Save, Confirm) */
-body.is-mobile.theme-light .modal button.modal-nav-action.mod-cta {
-    color: #ffffff !important;
-    background-color: var(--cta-bg-dynamic) !important;
+html body.obsidian-app.is-mobile.theme-light .modal button.modal-nav-action.mod-cta {
+    color: #ffffff;
+    background-color: var(--cta-bg-dynamic);
 }
 
-body.is-mobile.theme-dark .modal button.modal-nav-action.mod-cta {
-    color: #000000 !important;
-    background-color: var(--cta-bg-dynamic) !important;
+html body.obsidian-app.is-mobile.theme-dark .modal button.modal-nav-action.mod-cta {
+    color: #000000;
+    background-color: var(--cta-bg-dynamic);
 }
 
 /* 2. Secondary Action Buttons (e.g., Cancel) */
-body.is-mobile .modal button.modal-nav-action:not(.mod-cta) {
-    color: var(--text-normal) !important;
+html body.obsidian-app.is-mobile .modal button.modal-nav-action:not(.mod-cta) {
+    color: var(--text-normal);
 }
 
 /* ================================================================= */
@@ -2651,92 +2708,92 @@ body.is-mobile .modal button.modal-nav-action:not(.mod-cta) {
 /* ================================================================= */
 
 /* Dark Mode Modal Overrides */
-body.theme-dark .modal {
+html body.obsidian-app.theme-dark .modal {
   --text-normal: var(--body-font-color-dark);
   --text-muted: var(--ui-font-color-dark);
 }
 
 /* Light Mode Modal Overrides */
-body.theme-light .modal {
+html body.obsidian-app.theme-light .modal {
   --text-normal: var(--body-font-color-light);
   --text-muted: var(--ui-font-color-light);
 }
 
 /* Vertical Tabs Styling */
-body .vertical-tab-nav-item {
+ html body.obsidian-app .vertical-tab-nav-item {
   border-radius: var(--menu-radius);
   border: 2px solid transparent;
-  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Active setting option: Theme-specific UI font colour */
-body .vertical-tab-nav-item.is-active {
+ html body.obsidian-app .mod-settings .vertical-tab-nav-item.is-active {
   border-radius: var(--menu-radius);
-  background-color: var(--background-secondary);
+  background-color: var(--background-primary);
+  border: none;
 }
 
-body.theme-dark .vertical-tab-nav-item.is-active {
-  color: color-mix(in srgb, var(--text-muted), white 40%) !important;
+html body.obsidian-app.theme-dark .mod-settings .vertical-tab-nav-item.is-active {
+  color: color-mix(in srgb, var(--text-muted), white 40%);
 }
 
-body.theme-light .vertical-tab-nav-item.is-active {
-  color: color-mix(in srgb, var(--text-muted), black 60%) !important;
-  font-weight: bold !important;
+html body.obsidian-app.theme-light .mod-settings .vertical-tab-nav-item.is-active {
+  color: color-mix(in srgb, var(--text-muted), black 60%);
+  font-weight: bold;
 }
-
 /* Ensure the icon and chevron also follow the inherited colour */
-body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
-body .vertical-tab-nav-item.is-active .vertical-tab-nav-item-chevron {
-  color: inherit !important;
+ html body.obsidian-app .vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
+ html body.obsidian-app .vertical-tab-nav-item.is-active .vertical-tab-nav-item-chevron {
+  color: inherit;
 }
 
 /* Vertical Tab Group Headers */
-body .vertical-tab-header-group-title {
-  color: var(--vertical-tab-header-color) !important;
+ html body.obsidian-app .vertical-tab-header-group-title {
+  color: var(--vertical-tab-header-color);
   font-weight: normal;
   text-shadow: 0 0 0.3px currentColor;
 }
 
 /* Settings Modal Container */
-body .mod-settings .setting-items {
-  border-radius: var(--button-radius) !important;
+ html body.obsidian-app .mod-settings .setting-items {
+  border-radius: var(--button-radius);
 }
 
 /* Settings Items Mobile Tap Highlight Fix */
-body.is-mobile .setting-item {
-  -webkit-tap-highlight-color: transparent !important;
+html body.obsidian-app.is-mobile .setting-item {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Modals without borders */
-body .modal {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+ html body.obsidian-app .modal {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* ================================================================= */
 /* 14. GRAPH VIEW                                                    */
 /* ================================================================= */
 
-.graph-view.color-line {
+html body.obsidian-app .graph-view.color-line {
   color: var(--graph-line);
   opacity: 1;
 }
 
-.graph-view.color-text {
+html body.obsidian-app .graph-view.color-text {
   color: var(--text-normal);
 }
 
-.graph-view.color-fill {
+html body.obsidian-app .graph-view.color-fill {
   color: var(--text-accent);
 }
 
-.graph-view.color-arrow {
+html body.obsidian-app .graph-view.color-arrow {
   color: var(--graph-line);
 }
 
-.community-item {
-  border-radius: var(--radius-s) !important;
+html body.obsidian-app .community-item {
+  border-radius: var(--radius-s);
 }
 
 /* ================================================================= */
@@ -2744,9 +2801,9 @@ body .modal {
 /* ================================================================= */
 
 /* Lines: Stroke Only, No Fill */
-body.theme-light .canvas-wrapper path.canvas-display-path,
-body.theme-light .canvas-wrapper path.canvas-connection-line,
-body.theme-light .canvas-edge path {
+html body.obsidian-app.theme-light .canvas-wrapper path.canvas-display-path,
+html body.obsidian-app.theme-light .canvas-wrapper path.canvas-connection-line,
+html body.obsidian-app.theme-light .canvas-edge path {
   stroke: var(--canvas-ink-light);
   fill: none;
   stroke-opacity: 1;
@@ -2754,9 +2811,9 @@ body.theme-light .canvas-edge path {
 }
 
 /* Shapes: Stroke and Fill */
-body.theme-light .canvas-wrapper polygon,
-body.theme-light .canvas-wrapper polyline,
-body.theme-light .canvas-node-connection-arrow {
+html body.obsidian-app.theme-light .canvas-wrapper polygon,
+html body.obsidian-app.theme-light .canvas-wrapper polyline,
+html body.obsidian-app.theme-light .canvas-node-connection-arrow {
   stroke: var(--canvas-ink-light);
   fill: var(--canvas-ink-light);
   stroke-opacity: 1;
@@ -2764,11 +2821,11 @@ body.theme-light .canvas-node-connection-arrow {
 }
 
 /* Canvas - Card Borders (Unified) */
-.canvas-node,
-.canvas-node-container,
-.canvas-node.is-focused,
-.canvas-node.is-selected {
-  border-color: var(--canvas-node-border-color) !important;
+html body.obsidian-app .canvas-node,
+html body.obsidian-app .canvas-node-container,
+html body.obsidian-app .canvas-node.is-focused,
+html body.obsidian-app .canvas-node.is-selected {
+  border-color: var(--canvas-node-border-color);
 }
 
 /* ================================================================= */
@@ -2776,28 +2833,30 @@ body.theme-light .canvas-node-connection-arrow {
 /* ================================================================= */
 
 /* Hide Help Icon */
-.clickable-icon:has(.svg-icon.help),
-.side-dock-ribbon-action:has(.svg-icon.help) {
+html body.obsidian-app .workspace-drawer-vault-actions .clickable-icon:first-child,
+html body.obsidian-app .clickable-icon[aria-label="Help"],
+html body.obsidian-app .side-dock-ribbon-action[aria-label="Help"],
+html body.obsidian-app .side-dock-ribbon-action[aria-label="Open help"] {
   display: none;
 }
 
 /* Remove Focus Ring from Modal Buttons */
-body .modal button:focus,
-body .modal button:focus-visible {
+ html body.obsidian-app .modal button:focus,
+ html body.obsidian-app .modal button:focus-visible {
   box-shadow: none;
   outline: none;
 }
 
 /* Search Params Radius */
-.search-input-container,
-.search-result-container,
-div.search-params {
-  border-radius: var(--radius-s) !important;
+html body.obsidian-app .search-input-container,
+html body.obsidian-app .search-result-container,
+html body.obsidian-app div.search-params {
+  border-radius: var(--radius-s);
 }
 
 /* CREATE CAPTIONS UNDER IMAGES IN NOTES */
 /* Combined: Only targets images with a non-empty alt attribute */
-.markdown-rendered .image-embed[alt]:not([alt=""])::after {
+html body.obsidian-app .markdown-rendered .image-embed[alt]:not([alt=""])::after {
   content: attr(alt);
   display: block;
   text-align: center;
@@ -2810,51 +2869,51 @@ div.search-params {
 /* Menus background and border color on desktop only */
 @media (hover: hover) {
   /* Only style the container; children will sit on this background */
-  body .menu {
-    background-color: var(--menu-custom-bg) !important;
-    border: 1px solid var(--menu-custom-bg) !important;
+ html body.obsidian-app .menu {
+    background-color: var(--menu-custom-bg);
+    border: 1px solid var(--menu-custom-bg);
   }
 
-  body .menu .menu-item:hover {
-    background-color: var(--background-modifier-hover) !important;
+ html body.obsidian-app .menu .menu-item:hover {
+    background-color: var(--background-modifier-hover);
   }
 }
 
 /* Active state on files and folders on left panel */
-body .tree-item-self.has-focus {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background-color: var(--surface-highlight) !important;
+ html body.obsidian-app .tree-item-self.has-focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: var(--surface-highlight);
 }
 
 /* Forces expansion of fields in the front matter */
-.toggle-expand-longtext .metadata-property {
-    height: auto !important;
+html body.obsidian-app .toggle-expand-longtext .metadata-property {
+    height: auto;
 }
 
-.toggle-expand-longtext .metadata-property-value .metadata-input-longtext {
-    -webkit-line-clamp: unset !important;
-    max-height: none !important;
-    height: auto !important;
-    white-space: pre-wrap !important;
-    overflow: visible !important;
+html body.obsidian-app .toggle-expand-longtext .metadata-property-value .metadata-input-longtext {
+    -webkit-line-clamp: unset;
+    max-height: none;
+    height: auto;
+    white-space: pre-wrap;
+    overflow: visible;
 }
 
 /* Footnotes */
-.footnote-link, 
-.footnote-backref {
-    color: var(--footnote-link-color) !important;
+html body.obsidian-app .footnote-link,
+html body.obsidian-app .footnote-backref {
+    color: var(--footnote-link-color);
     text-decoration: none;
 }
 
-.footnote-link {
+html body.obsidian-app .footnote-link {
     font-size: 0.8em;
 }
 
-/* Hover: Removed the redundant color line */
-.footnote-link:hover, 
-.footnote-backref:hover {
+/* Hover States */
+html body.obsidian-app .footnote-link:hover,
+html body.obsidian-app .footnote-backref:hover {
     text-decoration: underline;
 }
 
@@ -2863,180 +2922,177 @@ body .tree-item-self.has-focus {
 /* ================================================================= */
 
 /* Global Hide */
-.hide-all .metadata-container,
-.hide-all .frontmatter-container,
-.hide-all .frontmatter-section-container,
-.hide-all .frontmatter,
-.hide-all .cm-frontmatter-container,
-.hide-all .inline-title {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
+html body.obsidian-app .hide-all .metadata-container,
+html body.obsidian-app .hide-all .frontmatter-container,
+html body.obsidian-app .hide-all .frontmatter-section-container,
+html body.obsidian-app .hide-all .frontmatter,
+html body.obsidian-app .hide-all .cm-frontmatter-container,
+html body.obsidian-app .hide-all .inline-title {
+  display: none;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
 }
 
 /* Desktop Banner Logic - Offset Content */
-body:not(.is-mobile) .dashboard .markdown-preview-section:has(.callout[data-callout="banner"]),
-body:not(.is-mobile) .dashboard .markdown-source-view .cm-content:has(.callout[data-callout="banner"]) {
-  padding-top: var(--dashboard-banner-offset, 150px) !important;
-}
-
-body:not(.is-mobile) .dashboard .markdown-preview-section:not(:has(.callout[data-callout="banner"])),
-body:not(.is-mobile) .dashboard .markdown-source-view .cm-content:not(:has(.callout[data-callout="banner"])) {
-  padding-top: 40px !important;
+html body.obsidian-app:not(.is-mobile) .dashboard .markdown-preview-section,
+html body.obsidian-app:not(.is-mobile) .dashboard .markdown-source-view .cm-content {
+  padding-top: 10px;
 }
 
 /* Banner Container */
-body:not(.is-mobile) .dashboard .callout[data-callout="banner"],
-body:not(.is-mobile) .persistent-banner-wrapper {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  height: var(--dashboard-banner-height, 600px) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
+html body.obsidian-app:not(.is-mobile) .dashboard .callout[data-callout="banner"],
+html body.obsidian-app:not(.is-mobile) .persistent-banner-wrapper {
+  position: relative;
+  width: 100%;
+  height: var(--dashboard-banner-offset, 150px) !important;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
   z-index: 0;
   pointer-events: none;
-  display: block !important;
+  display: block;
 }
 
 /* Banner Image */
-body:not(.is-mobile) .dashboard .callout[data-callout="banner"] img,
-body:not(.is-mobile) .persistent-banner-wrapper img {
+html body.obsidian-app:not(.is-mobile) .dashboard .callout[data-callout="banner"] img,
+html body.obsidian-app:not(.is-mobile) .persistent-banner-wrapper img {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--dashboard-banner-height, 600px) !important;
   object-fit: cover;
   object-position: center;
-  border: none !important;
-  border-radius: 0 !important;
+  border: none;
+  border-radius: 0;
   opacity: var(--dashboard-banner-opacity, 1.0) !important;
-  -webkit-mask-image: linear-gradient(to bottom, black 5%, transparent 90%) !important;
-  mask-image: linear-gradient(to bottom, black 5%, transparent 90%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, black 5%, transparent 90%);
+  mask-image: linear-gradient(to bottom, black 5% , transparent 90%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Banner Content Cleanup */
-.dashboard .callout[data-callout="banner"] .callout-title {
-  display: none !important;
+html body.obsidian-app .dashboard .callout[data-callout="banner"] .callout-title {
+  display: none;
 }
 
-.dashboard .callout[data-callout="banner"] .callout-content,
-.dashboard .callout[data-callout="banner"] p {
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 100% !important;
+html body.obsidian-app .dashboard .callout[data-callout="banner"] .callout-content,
+html body.obsidian-app .dashboard .callout[data-callout="banner"] p {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 /* Mobile Logic */
-.is-mobile .dashboard .callout[data-callout="banner"] {
-  display: none !important;
+html body.obsidian-app .is-mobile .dashboard .callout[data-callout="banner"] {
+  display: none;
 }
 
-.is-mobile .dashboard .markdown-preview-section,
-.is-mobile .dashboard .markdown-source-view .cm-content {
+html body.obsidian-app .is-mobile .dashboard .markdown-preview-section,
+html body.obsidian-app .is-mobile .dashboard .markdown-source-view .cm-content {
   padding-top: var(--dashboard-gap, 4px) !important;
 }
 
 /* Desktop Header Overlay */
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-header,
-body:not(.is-mobile) .dashboard.hide-all .view-header {
-  display: flex !important;
-  visibility: visible !important;
-  position: absolute !important;
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-header,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header {
+  display: flex;
+  visibility: visible;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 20;
-  background-color: transparent !important;
-  border-bottom: none !important;
-  pointer-events: none !important;
-  width: 100% !important;
+  background-color: transparent;
+  border-bottom: none;
+  pointer-events: none;
+  width: 100%;
 }
 
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-header-title-container,
-body:not(.is-mobile) .dashboard.hide-all .view-header-title-container {
-  visibility: hidden !important;
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-header-title-container,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header-title-container {
+  visibility: hidden;
 }
 
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-header-left,
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-actions,
-body:not(.is-mobile) .dashboard.hide-all .view-header-left,
-body:not(.is-mobile) .dashboard.hide-all .view-actions {
-  pointer-events: auto !important;
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-header-left,
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-actions,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header-left,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-actions {
+  pointer-events: auto;
 }
 
 /* Header Buttons */
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-header .clickable-icon,
-body:not(.is-mobile) .dashboard.hide-all .view-header .clickable-icon {
-  background-color: color-mix(in srgb, var(--background-secondary), transparent 50%) !important;
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-header .clickable-icon,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header .clickable-icon {
+  background-color: color-mix(in srgb, var(--background-secondary), transparent 50%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: var(--radius-s, 4px) !important;
+  border-radius: var(--radius-s, 4px);
   opacity: 0.9;
   color: var(--text-normal);
   transition: all 0.2s ease;
   margin: 0 2px;
 }
 
-body:not(.is-mobile) .workspace-leaf:has(.dashboard.hide-all) .view-header .clickable-icon:hover,
-body:not(.is-mobile) .dashboard.hide-all .view-header .clickable-icon:hover {
-  background-color: var(--interactive-accent) !important;
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard.hide-all .view-header .clickable-icon:hover,
+html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header .clickable-icon:hover {
+  background-color: var(--interactive-accent);
   color: var(--text-on-accent);
   opacity: 1;
 }
 
 /* Shared Layout & Grid */
-.dashboard .markdown-preview-section,
-.dashboard .markdown-source-view .cm-content,
-.dashboard-grid {
+html body.obsidian-app .dashboard .markdown-preview-section,
+html body.obsidian-app .dashboard .markdown-source-view .cm-content,
+html body.obsidian-app .dashboard-grid {
   max-width: 1400px;
   margin: 0 auto;
   padding-left: var(--dashboard-gap, 4px);
   padding-right: var(--dashboard-gap, 4px);
-  padding-bottom: 150px !important;
+  padding-bottom: 150px;
   font-family: var(--font-ui);
-  display: block !important;
+  display: block;
   width: 100%;
   column-gap: var(--dashboard-gap, 4px);
   columns: var(--dashboard-col-width, 300px) auto !important;
-  grid-template-columns: none !important;
-  grid-auto-rows: auto !important;
+  grid-template-columns: none;
+  grid-auto-rows: auto;
 }
 
-.markdown-source-view.dashboard {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+html body.obsidian-app .markdown-source-view.dashboard {
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Desktop Layering Restoration */
-body:not(.is-mobile) .dashboard .markdown-preview-section,
-body:not(.is-mobile) .dashboard .markdown-source-view .cm-content,
-body:not(.is-mobile) .dashboard-grid {
+html body.obsidian-app:not(.is-mobile) .dashboard .markdown-preview-section,
+html body.obsidian-app:not(.is-mobile) .dashboard .markdown-source-view .cm-content,
+html body.obsidian-app:not(.is-mobile) .dashboard-grid {
   position: relative;
   z-index: 1;
 }
 
 /* Tooltip Suppression */
-body:has(.dashboard:hover) .tooltip,
-.dashboard .tooltip,
-.dashboard .aria-label {
-  display: none !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
+html body.obsidian-app .dashboard .tooltip,
+html body.obsidian-app .dashboard .aria-label {
+  display: none;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 /* Callout Cards */
-.dashboard .callout {
+html body.obsidian-app .dashboard .callout {
   display: block;
   break-inside: avoid-column;
   page-break-inside: avoid;
@@ -3049,23 +3105,23 @@ body:has(.dashboard:hover) .tooltip,
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: var(--callout-border-width, 1px) solid var(--background-modifier-border);
-  border-radius: var(--radius-m) !important;
-  box-shadow: none !important;
-  mix-blend-mode: normal !important;
+  border-radius: var(--radius-m);
+  box-shadow: none;
+  mix-blend-mode: normal;
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   z-index: 5;
 }
 
-body:not(.is-mobile) .dashboard .callout {
+html body.obsidian-app:not(.is-mobile) .dashboard .callout {
   transform: translateZ(0);
 }
 
-.dashboard .callout-icon {
+html body.obsidian-app .dashboard .callout-icon {
   display: none;
 }
 
-.dashboard .callout-title {
+html body.obsidian-app .dashboard .callout-title {
   padding: 0;
   margin-bottom: 16px;
   background-color: transparent;
@@ -3076,37 +3132,37 @@ body:not(.is-mobile) .dashboard .callout {
   color: var(--text-muted);
 }
 
-.dashboard .callout-content {
+html body.obsidian-app .dashboard .callout-content {
   padding: 0;
   background-color: transparent;
 }
 
-.dashboard .callout-content ul,
-.dashboard .callout-content ol {
+html body.obsidian-app .dashboard .callout-content ul,
+html body.obsidian-app .dashboard .callout-content ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.dashboard .callout-content li {
+html body.obsidian-app .dashboard .callout-content li {
   margin: 0 0 6px 0;
   padding: 0;
 }
 
 /* Buttons */
-.dashboard .callout-content li>a.internal-link,
-.dashboard .callout-content li>a.external-link {
+html body.obsidian-app .dashboard .callout-content li>a.internal-link,
+html body.obsidian-app .dashboard .callout-content li>a.external-link {
   display: block;
   width: 100%;
   padding: 8px 12px;
   background-color: var(--background-primary);
   border: 1px solid transparent;
-  border-radius: var(--button-radius, 4px) !important;
+  border-radius: var(--button-radius, 4px);
   color: var(--text-muted);
   font-weight: 500;
-  text-decoration: none !important;
+  text-decoration: none;
   transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   -webkit-touch-callout: none;
   user-select: none;
@@ -3119,12 +3175,12 @@ body:not(.is-mobile) .dashboard .callout {
     transition: color 0.3s ease;
   }
 
-  body.theme-dark .dashboard .callout:hover .callout-title {
-    color: color-mix(in srgb, var(--text-muted), white 40%) !important;
+  html body.obsidian-app.theme-dark .dashboard .callout:hover .callout-title {
+    color: color-mix(in srgb, var(--text-muted), white 40%);
   }
 
-  body.theme-light .dashboard .callout:hover .callout-title {
-    color: color-mix(in srgb, var(--text-muted), black 60%) !important;
+  html body.obsidian-app.theme-light .dashboard .callout:hover .callout-title {
+    color: color-mix(in srgb, var(--text-muted), black 60%);
   }
 
   /* Base layout for button hover */
@@ -3132,23 +3188,23 @@ body:not(.is-mobile) .dashboard .callout {
   .dashboard .callout-content li>a.external-link:hover {
     padding-left: 18px;
     font-weight: bold;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   /* Dark Mode: Bright background, dark text */
-  body.theme-dark .dashboard .callout-content li>a.internal-link:hover,
-  body.theme-dark .dashboard .callout-content li>a.external-link:hover {
-    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
-    color: var(--background-secondary) !important;
-    text-decoration: none !important;
+  html body.obsidian-app.theme-dark .dashboard .callout-content li>a.internal-link:hover,
+  html body.obsidian-app.theme-dark .dashboard .callout-content li>a.external-link:hover {
+    background-color: color-mix(in srgb, var(--text-muted), white 30%);
+    color: var(--background-secondary);
+    text-decoration: none;
   }
 
   /* Light Mode: Dark background, pure white text */
-  body.theme-light .dashboard .callout-content li>a.internal-link:hover,
-  body.theme-light .dashboard .callout-content li>a.external-link:hover {
-    background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
+  html body.obsidian-app.theme-light .dashboard .callout-content li>a.internal-link:hover,
+  html body.obsidian-app.theme-light .dashboard .callout-content li>a.external-link:hover {
+    background-color: color-mix(in srgb, var(--text-muted), black 30%);
+    color: #ffffff;
+    text-decoration: none;
   }
 }
 
@@ -3157,55 +3213,55 @@ body:not(.is-mobile) .dashboard .callout {
   .dashboard .callout-content li>a.internal-link:active,
   .dashboard .callout-content li>a.external-link:active {
     opacity: 1;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   /* Dark Mode */
-  body.theme-dark .dashboard .callout-content li>a.internal-link:active,
-  body.theme-dark .dashboard .callout-content li>a.external-link:active {
-    background-color: color-mix(in srgb, var(--text-muted), white 30%) !important;
-    color: var(--background-secondary) !important;
-    text-decoration: none !important;
+  html body.obsidian-app.theme-dark .dashboard .callout-content li>a.internal-link:active,
+  html body.obsidian-app.theme-dark .dashboard .callout-content li>a.external-link:active {
+    background-color: color-mix(in srgb, var(--text-muted), white 30%);
+    color: var(--background-secondary);
+    text-decoration: none;
   }
 
   /* Light Mode */
-  body.theme-light .dashboard .callout-content li>a.internal-link:active,
-  body.theme-light .dashboard .callout-content li>a.external-link:active {
-    background-color: color-mix(in srgb, var(--text-muted), black 30%) !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
+  html body.obsidian-app.theme-light .dashboard .callout-content li>a.internal-link:active,
+  html body.obsidian-app.theme-light .dashboard .callout-content li>a.external-link:active {
+    background-color: color-mix(in srgb, var(--text-muted), black 30%);
+    color: #ffffff;
+    text-decoration: none;
   }
 }
 
 /* Editing Toolbar Compatibility */
-body:not(.is-mobile) .dashboard .editingToolbarModalBar,
-body:not(.is-mobile) .workspace-leaf:has(.dashboard) .editingToolbarModalBar {
-  top: 35px !important;
+html body.obsidian-app:not(.is-mobile) .dashboard .editingToolbarModalBar,
+html body.obsidian-app:not(.is-mobile) .workspace-leaf.dashboard .editingToolbarModalBar {
+  top: 35px;
 }
 
 /* Reset line height for Dashboard cards to maintain a compact grid */
-.dashboard .markdown-preview-view p,
-.dashboard .markdown-preview-view ul,
-.dashboard .markdown-preview-view ol,
-.dashboard .markdown-preview-view li,
-.dashboard .markdown-source-view.mod-cm6 .cm-line,
-.dashboard .callout-content,
-.dashboard .callout-title,
-.dashboard .callout-content li > a.internal-link {
-    line-height: 1.2 !important; /* Adjust this value if you want it tighter or looser */
+html body.obsidian-app .dashboard .markdown-preview-view p,
+html body.obsidian-app .dashboard .markdown-preview-view ul,
+html body.obsidian-app .dashboard .markdown-preview-view ol,
+html body.obsidian-app .dashboard .markdown-preview-view li,
+html body.obsidian-app .dashboard .markdown-source-view.mod-cm6 .cm-line,
+html body.obsidian-app .dashboard .callout-content,
+html body.obsidian-app .dashboard .callout-title,
+html body.obsidian-app .dashboard .callout-content li > a.internal-link {
+    line-height: 1.2; /* Adjust this value if you want it tighter or looser */
 }
 
 /* Ensure list items in dashboard cards don't inherit large vertical padding */
-.dashboard .callout-content li {
-    margin-bottom: 4px !important;
+html body.obsidian-app .dashboard .callout-content li {
+    margin-bottom: 4px;
 }
 
 /* Prevent global hover underlines from bleeding into dashboard buttons during mobile taps */
-body.theme-light .dashboard .callout-content li > a.internal-link:hover,
-body.theme-light .dashboard .callout-content li > a.external-link:hover,
-body.theme-dark .dashboard .callout-content li > a.internal-link:hover,
-body.theme-dark .dashboard .callout-content li > a.external-link:hover {
-    text-decoration: none !important;
+html body.obsidian-app.theme-light .dashboard .callout-content li > a.internal-link:hover,
+html body.obsidian-app.theme-light .dashboard .callout-content li > a.external-link:hover,
+html body.obsidian-app.theme-dark .dashboard .callout-content li > a.internal-link:hover,
+html body.obsidian-app.theme-dark .dashboard .callout-content li > a.external-link:hover {
+    text-decoration: none;
 }
 
 /* ================================================================= */
@@ -3213,44 +3269,44 @@ body.theme-dark .dashboard .callout-content li > a.external-link:hover {
 /* ================================================================= */
 
 /* Hide Ribbon Feature */
-body.hide-ribbon:not(.is-mobile) .workspace-ribbon {
-  width: 12px !important;
+html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon {
+  width: 12px;
   transition: width 0.2s ease, background-color 0.2s ease;
   overflow: hidden;
-  background-color: var(--background-secondary) !important;
-  opacity: 1 !important;
+  background-color: var(--background-secondary);
+  opacity: 1;
 }
 
-body.hide-ribbon:not(.is-mobile) .workspace-ribbon>* {
+html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon>* {
   opacity: 0;
   transition: opacity 0.1s ease;
   pointer-events: none;
 }
 
-body.hide-ribbon:not(.is-mobile) .workspace-ribbon:hover {
-  width: 50px !important;
-  background-color: var(--background-secondary) !important;
+html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon:hover {
+  width: 50px;
+  background-color: var(--background-secondary);
 }
 
-body.hide-ribbon:not(.is-mobile) .workspace-ribbon:hover>* {
+html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon:hover>* {
   opacity: 1;
   transition: opacity 0.2s ease 0.1s;
   pointer-events: auto;
 }
 
 /* Mobile Panel Expansion (Fixed for iPad) */
-body.is-mobile .workspace-drawer {
-  width: var(--drawer-width) !important;
-  max-width: 100vw !important;
+html body.obsidian-app.is-mobile .workspace-drawer {
+  width: var(--drawer-width);
+  max-width: 100vw;
 }
 
-body.is-mobile .workspace-drawer-inner {
-  width: 100% !important;
+html body.obsidian-app.is-mobile .workspace-drawer-inner {
+  width: 100%;
 }
 
 @media screen and (max-width: 480px) {
-  body.is-mobile .workspace-drawer {
-    width: 100vw !important;
+  html body.obsidian-app.is-mobile .workspace-drawer {
+    width: 100vw;
   }
 }
 
@@ -3260,139 +3316,139 @@ body.is-mobile .workspace-drawer-inner {
 
 /* 19A. GRID LAYOUT + VERTICAL DASHED LINE */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul) {
-  display: grid !important;
-  grid-template-columns: var(--tl-date-width) 1fr !important;
-  column-gap: 0 !important;
-  list-style: none !important;
-  padding: 2rem 1rem !important;
-  margin: 0 !important;
-  position: relative !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul) {
+  display: grid;
+  grid-template-columns: var(--tl-date-width) 1fr;
+  column-gap: 0;
+  list-style: none;
+  padding: 2rem 1rem;
+  margin: 0;
+  position: relative;
   background-image: repeating-linear-gradient(to bottom,
       var(--text-muted) 0px,
       var(--text-muted) 6px,
       transparent 6px,
-      transparent 12px) !important;
-  background-size: 4px 100% !important;
-  background-position: calc(1rem + var(--tl-date-width) - 2px) 0 !important;
-  background-repeat: repeat-y !important;
+      transparent 12px);
+  background-size: 4px 100%;
+  background-position: calc(1rem + var(--tl-date-width) - 2px) 0;
+  background-repeat: repeat-y;
 }
 
 /* 19B. LIST ITEM RESETS */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li>.list-bullet {
-  display: none !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li>.list-bullet {
+  display: none;
 }
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li {
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  position: relative !important;
-  align-self: start !important;
-  transition: background-color 0.4s ease !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  align-self: start;
+  transition: background-color 0.4s ease;
 }
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li>p {
-  margin: 0 !important;
-  padding: 0 !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li>p {
+  margin: 0;
+  padding: 0;
 }
 
 /* 19C. DATE ITEM (every 3n+1) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
-  grid-column: 1 !important;
-  grid-row: span 2 !important;
-  align-self: start !important;
-  text-align: right !important;
-  padding-right: 2rem !important;
-  padding-top: 0.15rem !important;
-  padding-bottom: var(--tl-row-gap) !important;
-  font-size: 1.4rem !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.3 !important;
-  word-break: break-word !important;
-  overflow-wrap: break-word !important;
-  color: var(--color-accent, var(--text-accent)) !important;
-  font-family: var(--font-interface) !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
+  grid-column: 1;
+  grid-row: span 2;
+  align-self: start;
+  text-align: right;
+  padding-right: 2rem;
+  padding-top: 0.15rem;
+  padding-bottom: var(--tl-row-gap);
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  color: var(--color-accent, var(--text-accent));
+  font-family: var(--font-interface);
   transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 
 /* 19D. DOT MARKER (::before on date item) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  right: 0px !important;
-  top: 8px !important;
-  height: var(--tl-dot-size) !important;
-  width: var(--tl-dot-size) !important;
-  background-color: var(--tl-dot-color) !important;
-  border-radius: 50% !important;
-  transform: translateX(50%) !important;
-  z-index: 2 !important;
-  transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 8px;
+  height: var(--tl-dot-size);
+  width: var(--tl-dot-size);
+  background-color: var(--tl-dot-color);
+  border-radius: 50%;
+  transform: translateX(50%);
+  z-index: 2;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* 19E. ::after RESERVED */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::after {
-  display: none !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::after {
+  display: none;
 }
 
 /* 19F. TITLE ITEM (every 3n+2) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
-  grid-column: 2 !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  color: var(--text-normal) !important;
-  font-family: var(--font-interface) !important;
-  padding: 0.15rem 0 0.15rem 2rem !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
+  grid-column: 2;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+  padding: 0.15rem 0 0.15rem 2rem;
 }
 
 /* 19G. CONTENT ITEM (every 3n) */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
-  grid-column: 2 !important;
-  font-size: 0.88rem !important;
-  color: var(--text-muted) !important;
-  line-height: 1.7 !important;
-  padding: 0 0 var(--tl-row-gap) 2rem !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
+  grid-column: 2;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 0 0 var(--tl-row-gap) 2rem;
 }
 
 /* 19H. MAX WIDTH CONSTRAINT */
 
-.markdown-preview-view.custom-timeline .markdown-preview-sizer {
-  max-width: 800px !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline .markdown-preview-sizer {
+  max-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 19I. HOVER — FULL ROW HIGHLIGHT */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
-  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
-  border-radius: 6px !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
+  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  border-radius: 6px;
 }
 
 /* 19J. HOVER — DOT SCALE + GLOW */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover::before {
-  transform: translateX(50%) scale(1.4) !important;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tl-dot-color) 30%, transparent) !important;
-  transition: all 0.2s ease !important;
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover::before {
+  transform: translateX(50%) scale(1.4);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tl-dot-color) 30%, transparent);
+  transition: all 0.2s ease;
 }
 
 /* 19K. ENTRANCE ANIMATION — SLIDE IN FROM RIGHT */
 
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2),
-.markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2),
+html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
   animation: slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
@@ -3416,178 +3472,156 @@ body.is-mobile .workspace-drawer-inner {
 
 @media (max-width: 480px) {
 
-  .markdown-preview-view.custom-timeline {
+  html body.obsidian-app .markdown-preview-view.custom-timeline {
     --tl-row-gap: 2rem;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul) {
-    grid-template-columns: 1fr !important;
-    padding: 1rem 1rem 1rem 2rem !important;
-    background-position: 8px 0 !important;
-    background-size: 4px 12px !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul) {
+    grid-template-columns: 1fr;
+    padding: 1rem 1rem 1rem 2rem;
+    background-position: 8px 0;
+    background-size: 4px 12px;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
-    grid-column: 1 !important;
-    grid-row: auto !important;
-    text-align: left !important;
-    padding: 0.15rem 0 0.1rem 1.5rem !important;
-    font-size: 1rem !important;
-    font-weight: 900 !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1) {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+    padding: 0.15rem 0 0.1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 900;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
-    right: auto !important;
-    left: -2px !important;
-    top: 8px !important;
-    height: var(--tl-dot-size) !important;
-    width: var(--tl-dot-size) !important;
-    transform: translateX(-50%) !important;
-    animation: none !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1)::before {
+    right: auto;
+    left: -2px;
+    top: 8px;
+    height: var(--tl-dot-size);
+    width: var(--tl-dot-size);
+    transform: translateX(-50%);
+    animation: none;
   }
 
   .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover::before {
-    transform: translateX(-50%) scale(1) !important;
-    box-shadow: none !important;
-    transition: none !important;
+    transform: translateX(-50%) scale(1);
+    box-shadow: none;
+    transition: none;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
-    background-color: transparent !important;
-    transition: none !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover,
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li,
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+1):hover+li+li {
+    background-color: transparent;
+    transition: none;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
-    grid-column: 1 !important;
-    padding: 0 0 0.15rem 1.5rem !important;
-    font-size: 1rem !important;
-    animation: none !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n+2) {
+    grid-column: 1;
+    padding: 0 0 0.15rem 1.5rem;
+    font-size: 1rem;
+    animation: none;
   }
 
-  .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
-    grid-column: 1 !important;
-    padding: 0 0 var(--tl-row-gap) 1.5rem !important;
-    font-size: 0.85rem !important;
-    animation: none !important;
+    html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul)>li:nth-child(3n) {
+    grid-column: 1;
+    padding: 0 0 var(--tl-row-gap) 1.5rem;
+    font-size: 0.85rem;
+    animation: none;
   }
 }
 
 /* ================================================================= */
 /* 20. TAGS                                                          */
 /* ================================================================= */
-body a.tag,
-body .cm-hashtag,
-body .markdown-preview-view .tag {
-  font-family: var(--font-ui) !important;
-  background-color: var(--tag-background) !important;
-  color: var(--tag-color) !important;
-  border: var(--tag-border-width) solid var(--tag-border-color) !important;
-  outline: none !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  border-radius: var(--tag-radius) !important;
-  line-height: inherit !important;
-  padding-block: 0 !important;
-  transition: none !important;
+ html body.obsidian-app a.tag,
+ html body.obsidian-app .cm-hashtag,
+ html body.obsidian-app .markdown-preview-view .tag {
+  font-family: var(--font-ui);
+  background-color: var(--tag-background);
+  color: var(--tag-color);
+  border: var(--tag-border-width) solid var(--tag-border-color);
+  outline: none;
+  text-decoration: none;
+  box-shadow: none;
+  border-radius: var(--tag-radius);
+  line-height: inherit;
+  padding-block: 0;
+  transition: none;
 }
 
-body .cm-hashtag-begin {
-  border-right: none !important;
-  padding-right: 0 !important;
+ html body.obsidian-app .cm-hashtag-begin {
+  border-right: none;
+  padding-right: 0;
 }
 
-body .cm-hashtag-end {
-  border-left: none !important;
-  padding-left: 0 !important;
+ html body.obsidian-app .cm-hashtag-end {
+  border-left: none;
+  padding-left: 0;
 }
 
-/* Metadata & Bases Pills - Styling for actual tags only */
-body .metadata-property .multi-select-pill:not(:has(.internal-link)),
-body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus,
-body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus-within,
-body .metadata-property .multi-select-pill:not(:has(.internal-link)):focus-visible,
-body .metadata-property .multi-select-pill:not(:has(.internal-link)).is-active,
-body .metadata-property .multi-select-pill:not(:has(.internal-link))[tabindex]:focus,
-body div.bases-view .multi-select-pill:not(:has(.internal-link)),
-body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus,
-body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus-within,
-body div.bases-view .multi-select-pill:not(:has(.internal-link)):focus-visible,
-body div.bases-view .multi-select-pill:not(:has(.internal-link)).is-active,
-body div.bases-view .multi-select-pill:not(:has(.internal-link))[tabindex]:focus {
-  font-family: var(--font-ui) !important;
-  background-color: var(--tag-background) !important;
-  color: var(--tag-color) !important;
-  border: var(--tag-border-width) solid transparent !important;
-  border-radius: var(--tag-radius) !important;
-  box-shadow: none !important;
-  outline: none !important;
-  transition: none !important;
-}
-
-/* Metadata Links - Neutralise container background */
-body .metadata-property .multi-select-pill:has(.internal-link) {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin-right: 8px !important;
+/* Metadata & Bases Pills - Styling for all pills */
+ html body.obsidian-app :is(.metadata-property, div.bases-view) .multi-select-pill:is(:focus, :focus-within, :focus-visible, .is-active, [tabindex]:focus, &) {
+  font-family: var(--font-ui);
+  background-color: var(--tag-background);
+  color: var(--tag-color);
+  border: var(--tag-border-width) solid transparent;
+  border-radius: var(--tag-radius);
+  box-shadow: none;
+  outline: none;
+  transition: none;
 }
 
 /* Unresolved Links - Metadata Behaviour */
-body .metadata-property .multi-select-pill-content.internal-link.is-unresolved {
-  color: var(--link-unresolved-color) !important;
-  text-decoration: underline !important;
-  text-decoration-color: var(--text-faint) !important;
-  font-family: var(--font-ui) !important;
+ html body.obsidian-app .metadata-property .multi-select-pill-content.internal-link.is-unresolved {
+  color: var(--link-unresolved-color);
+  text-decoration: underline;
+  text-decoration-color: var(--text-faint);
+  font-family: var(--font-ui);
   transition: text-decoration-color 0.1s ease;
 }
 
 /* Unresolved Links - Hover Effect */
-body .metadata-property .multi-select-pill-content.internal-link.is-unresolved:hover {
-  text-decoration-color: var(--link-unresolved-color) !important;
+ html body.obsidian-app .metadata-property .multi-select-pill-content.internal-link.is-unresolved:hover {
+  text-decoration-color: var(--link-unresolved-color);
 }
 
 /* Resolved Links in Metadata */
-body .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved) {
-  color: var(--link-color) !important;
-  text-decoration: underline !important;
-  text-decoration-color: var(--text-faint) !important;
+ html body.obsidian-app .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved) {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-color: var(--text-faint);
 }
 
-body .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
-  text-decoration-color: var(--link-color) !important;
+ html body.obsidian-app .metadata-property .multi-select-pill-content.internal-link:not(.is-unresolved):hover {
+  text-decoration-color: var(--link-color);
 }
 
-body .metadata-property .multi-select-pill::after,
-body .metadata-property .multi-select-pill:focus::after,
-body .metadata-property .multi-select-pill:focus-visible::after,
-body .metadata-property .multi-select-pill[tabindex]:focus::after {
-  display: none !important;
+ html body.obsidian-app .metadata-property .multi-select-pill::after,
+ html body.obsidian-app .metadata-property .multi-select-pill:focus::after,
+ html body.obsidian-app .metadata-property .multi-select-pill:focus-visible::after,
+ html body.obsidian-app .metadata-property .multi-select-pill[tabindex]:focus::after {
+  display: none;
 }
 
 @media (hover: hover) {
-  body a.tag:hover,
-  body .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
-  body div.bases-view .multi-select-pill:not(:has(.internal-link)):hover {
-    background-color: var(--toggle-on-color) !important;
-    border-color: var(--tag-border-color) !important;
+ html body.obsidian-app :is(a.tag, .metadata-property .multi-select-pill, div.bases-view .multi-select-pill):hover {
+    background-color: var(--toggle-on-color);
+    border-color: var(--tag-border-color);
   }
 
-  body.theme-dark a.tag:hover,
-  body.theme-dark .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
-  body.theme-dark .metadata-property .multi-select-pill:not(:has(.internal-link)):hover *,
-  body.theme-dark div.bases-view .multi-select-pill:not(:has(.internal-link)):hover,
-  body.theme-dark div.bases-view .multi-select-pill:not(:has(.internal-link)):hover * {
-    color: #ffffff !important;
+  html body.obsidian-app.theme-dark a.tag:hover,
+  html body.obsidian-app.theme-dark .metadata-property .multi-select-pill:hover,
+  html body.obsidian-app.theme-dark .metadata-property .multi-select-pill:hover *,
+  html body.obsidian-app.theme-dark div.bases-view .multi-select-pill:hover,
+  html body.obsidian-app.theme-dark div.bases-view .multi-select-pill:hover * {
+    color: #ffffff;
   }
 
-  body.theme-light a.tag:hover,
-  body.theme-light .metadata-property .multi-select-pill:not(:has(.internal-link)):hover,
-  body.theme-light .metadata-property .multi-select-pill:not(:has(.internal-link)):hover *,
-  body.theme-light div.bases-view .multi-select-pill:not(:has(.internal-link)):hover,
-  body.theme-light div.bases-view .multi-select-pill:not(:has(.internal-link)):hover * {
-    color: #000000 !important;
+  html body.obsidian-app.theme-light a.tag:hover,
+  html body.obsidian-app.theme-light .metadata-property .multi-select-pill:hover,
+  html body.obsidian-app.theme-light .metadata-property .multi-select-pill:hover *,
+  html body.obsidian-app.theme-light div.bases-view .multi-select-pill:hover,
+  html body.obsidian-app.theme-light div.bases-view .multi-select-pill:hover * {
+    color: #000000;
   }
 }

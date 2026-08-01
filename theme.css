@@ -1082,14 +1082,14 @@ html body.obsidian-app.theme-dark {
   --footnote-link-color: #7bb3c0;
 
   /* Callouts */
-  --callout-note: 96, 138, 176;
-  --callout-info: 93, 148, 166;
-  --callout-abstract: 109, 163, 174;
-  --callout-tip: 122, 163, 125;
-  --callout-warning: 212, 163, 85;
-  --callout-fail: 209, 109, 103;
-  --callout-example: 166, 117, 176;
-  --callout-quote: 119, 119, 119;
+  --callout-note: rgb(96, 138, 176);
+  --callout-info: rgb(93, 148, 166);
+  --callout-abstract: rgb(109, 163, 174);
+  --callout-tip: rgb(122, 163, 125);
+  --callout-warning: rgb(212, 163, 85);
+  --callout-fail: rgb(209, 109, 103);
+  --callout-example: rgb(166, 117, 176);
+  --callout-quote: rgb(119, 119, 119);
 }
 
 /* LIGHT MODE MAPPING */
@@ -1213,14 +1213,14 @@ html body.obsidian-app.theme-light {
   --footnote-link-color: #bd4b00;
 
   /* Callouts */
-  --callout-note: 84, 122, 155;
-  --callout-info: 74, 130, 148;
-  --callout-abstract: 88, 139, 150;
-  --callout-tip: 99, 138, 102;
-  --callout-warning: 191, 140, 59;
-  --callout-fail: 186, 84, 78;
-  --callout-example: 143, 94, 153;
-  --callout-quote: 136, 136, 136;
+  --callout-note: rgb(84, 122, 155);
+  --callout-info: rgb(74, 130, 148);
+  --callout-abstract: rgb(88, 139, 150);
+  --callout-tip: rgb(99, 138, 102);
+  --callout-warning: rgb(191, 140, 59);
+  --callout-fail: rgb(186, 84, 78);
+  --callout-example: rgb(143, 94, 153);
+  --callout-quote: rgb(136, 136, 136);
 }
 
 /* ================================================================= */
@@ -1747,25 +1747,25 @@ html body.obsidian-app.theme-dark .metadata-property .multi-select-pill-content.
 
 /* Callouts */
 html body.obsidian-app .callout {
-  border-left: 4px solid rgb(var(--callout-color));
-  background-color: rgba(var(--callout-color), 0.15);
+  border-left: 4px solid var(--callout-color);
+  background-color: color-mix(in srgb, var(--callout-color) 15%, transparent);
 }
 
 html body.obsidian-app .callout-title {
-  color: rgb(var(--callout-color));
+  color: var(--callout-color);
 }
 
 html body.obsidian-app .callout-icon {
-  color: rgb(var(--callout-color));
+  color: var(--callout-color);
 }
 
 /* Default Callout Colors */
 html body.obsidian-app .theme-light .callout {
-  --callout-color: 35, 35, 35;
+  --callout-color: rgb(35, 35, 35);
 }
 
 html body.obsidian-app .theme-dark .callout {
-  --callout-color: 192, 192, 192;
+  --callout-color: rgb(192, 192, 192);
 }
 
 /* Mapped Types */

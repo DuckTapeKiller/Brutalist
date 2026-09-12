@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.0 */
+/* 5.0.1 */
 /* ================================================================= */
 
 @font-face {
@@ -548,6 +548,33 @@ settings:
     description: Forces the Long Text property fields to expand fully without needing to click them.
     type: class-toggle
     default: false
+  - id: section-editor-headings
+    title: Editor & Headings
+    type: heading
+    level: 2
+  - id: active-line-highlight
+    title: Highlight Current Line
+    description: A band in the surface colour behind the line the cursor is on. Editor only; a text selection still shows on top of it.
+    type: class-toggle
+    default: false
+  - id: heading-numbering
+    title: Numbered Headings
+    description: Numbers h2 to h6 as 1, 1.1, 1.1.1 and leaves h1 as a title. Correct in short notes and in PDF export. In a long note scrolled well down the count restarts, because Obsidian unloads the part of the note that is off screen.
+    type: class-toggle
+    default: false
+  - id: heading-scale
+    title: Heading Size Scale
+    description: How much larger each heading level is than body text.
+    type: class-select
+    allowEmpty: false
+    default: heading-scale-default
+    options:
+      - label: Obsidian Default
+        value: heading-scale-default
+      - label: Compact
+        value: heading-scale-compact
+      - label: Large
+        value: heading-scale-large
 */
 
 /* @settings
@@ -736,29 +763,37 @@ settings:
 /* ======================================================================= */
 /* TABLE OF CONTENTS                                                  line */
 /* ======================================================================= */
-/* 0.   VARIABLES & PALETTE                                            499 */
-/* 1.   THEME MAPPING (LIGHT/DARK)                                     680 */
-/* 2.   SELECTION & LIST MARKERS                                       933 */
-/* 3.   TABS                                                           985 */
-/* 4.   ICONS & BUTTONS                                               1065 */
-/* 5.   STATUS BAR                                                    1193 */
-/* 6.   CALENDAR                                                      1221 */
-/* 7.   TYPOGRAPHY & TEXT                                             1268 */
-/* 8.   FORMS & CONTROLS                                              1556 */
-/* 9.   LAYOUT & SCROLLBARS                                           1798 */
-/* 10.  TABLES                                                        1921 */
-/* 11.  BASES                                                         1967 */
-/* 12.  NEW TAB PAGE                                                  2062 */
-/* 13.  MOBILE                                                        2081 */
-/* 14.  MODALS & SETTINGS                                             2457 */
-/* 15.  GRAPH VIEW                                                    2536 */
-/* 16.  CANVAS                                                        2558 */
-/* 17.  MISCELLANEOUS                                                 2591 */
-/* 18.  DASHBOARD                                                     2674 */
-/* 19.  TOGGLEABLE FEATURES                                           3152 */
-/* 20.  TIMELINE                                                      3199 */
-/* 21.  TAGS & PILLS                                                  3399 */
-/* 22.  COLOUR PRESETS                                                3497 */
+/* 0.   VARIABLES & PALETTE                                            534 */
+/* 1.   THEME MAPPING (LIGHT/DARK)                                     716 */
+/* 2.   SELECTION & LIST MARKERS                                       975 */
+/* 3.   TABS                                                          1027 */
+/* 4.   ICONS & BUTTONS                                               1107 */
+/* 5.   STATUS BAR                                                    1235 */
+/* 6.   CALENDAR                                                      1263 */
+/* 7.   TYPOGRAPHY & TEXT                                             1310 */
+/* 8.   FORMS & CONTROLS                                              1615 */
+/* 9.   LAYOUT & SCROLLBARS                                           1857 */
+/* 10.  TABLES                                                        1980 */
+/* 11.  BASES                                                         2026 */
+/* 12.  NEW TAB PAGE                                                  2121 */
+/* 13.  MOBILE                                                        2140 */
+/* 14.  MODALS & SETTINGS                                             2516 */
+/* 15.  GRAPH VIEW                                                    2595 */
+/* 16.  CANVAS                                                        2617 */
+/* 17.  MISCELLANEOUS                                                 2650 */
+/* 18.  DASHBOARD                                                     2733 */
+/* 19.  TOGGLEABLE FEATURES                                           3211 */
+/* 20.  TIMELINE                                                      3258 */
+/* 21.  TAGS & PILLS                                                  3458 */
+/* 22.  COLOUR PRESETS                                                3556 */
+/* 23.  ALTERNATIVE TASKS                                             3866 */
+/* 24.  IMAGE GRID                                                    3911 */
+/* 25.  EMBEDS                                                        3954 */
+/* 26.  MERMAID                                                       3977 */
+/* 27.  HEADINGS                                                      4032 */
+/* 28.  CURRENT LINE                                                  4087 */
+/* 29.  REDUCED MOTION                                                4100 */
+/* 30.  PRINT & PDF EXPORT                                            4130 */
 /* ======================================================================= */
 
 /* ======================================================================= */
@@ -872,8 +907,9 @@ html body.obsidian-app {
   --icon-size: 20px;
   /* Shared Computed Variables (resolve per-mode via lazy var()) */
   --tab-hover-bg-ui: color-mix(in srgb, var(--text-muted), transparent 90%);
-  --scrollbar-active-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 80%);
-  --scrollbar-thumb-bg: color-mix(in srgb, var(--text-muted), transparent 85%);
+  /* Scrollbar thumbs read the raw palette in section 1, so a preset can colour them. */
+  --scrollbar-active-thumb-bg: var(--raw-scrollbar-active-thumb);
+  --scrollbar-thumb-bg: var(--raw-scrollbar-thumb);
   /* Global Thickness */
   /* Obsidian draws the command palette, modals and menus with their own border
      variables, which do NOT read --background-modifier-border. Zeroing the
@@ -965,6 +1001,8 @@ html body.obsidian-app.theme-dark {
   --raw-mobile-active: #505050;
   --raw-input-bg: var(--light-accent-custom);
   --raw-button-bg: var(--light-accent-custom);
+  --raw-scrollbar-thumb: color-mix(in srgb, var(--text-muted), transparent 85%);
+  --raw-scrollbar-active-thumb: color-mix(in srgb, var(--text-muted), transparent 80%);
   /* Accents & Palette */
   --text-accent: var(--dark-accent-custom);
   --input-bg-std: var(--raw-input-bg);
@@ -1063,6 +1101,7 @@ html body.obsidian-app.theme-dark {
   --link-unresolved-opacity: 0.85;
   --footnote-link-color: var(--footnote-color-dark-custom, #7bb3c0);
   /* Callouts */
+  --callout-default: rgb(192, 192, 192);
   --callout-note: rgb(96, 138, 176);
   --callout-info: rgb(93, 148, 166);
   --callout-abstract: rgb(109, 163, 174);
@@ -1086,6 +1125,8 @@ html body.obsidian-app.theme-light {
   --raw-mobile-active: #d6d6d6;
   --raw-input-bg: #cdcdcd;
   --raw-button-bg: #d0d0d0;
+  --raw-scrollbar-thumb: color-mix(in srgb, var(--text-muted), transparent 85%);
+  --raw-scrollbar-active-thumb: color-mix(in srgb, var(--text-muted), transparent 80%);
   /* Accents & Palette */
   --text-accent: var(--light-accent-custom);
   --input-bg-std: var(--raw-input-bg);
@@ -1185,6 +1226,7 @@ html body.obsidian-app.theme-light {
   --link-unresolved-opacity: 0.8;
   --footnote-link-color: var(--footnote-color-light-custom, #bd4b00);
   /* Callouts */
+  --callout-default: rgb(35, 35, 35);
   --callout-note: rgb(84, 122, 155);
   --callout-info: rgb(74, 130, 148);
   --callout-abstract: rgb(88, 139, 150);
@@ -1702,11 +1744,11 @@ html body.obsidian-app .callout-icon {
 
 /* Default Callout Colors */
 html body.obsidian-app.theme-light .callout {
-  --callout-color: rgb(35, 35, 35);
+  --callout-color: var(--callout-default);
 }
 
 html body.obsidian-app.theme-dark .callout {
-  --callout-color: rgb(192, 192, 192);
+  --callout-color: var(--callout-default);
 }
 
 /* Mapped Types */
@@ -1753,6 +1795,23 @@ html body.obsidian-app .callout[data-callout="example"] {
 }
 
 html body.obsidian-app .callout[data-callout="quote"] {
+  --callout-color: var(--callout-quote);
+  background-color: transparent;
+}
+
+/* Obsidian's aliases. Its own alias rules are less specific than the default
+   colour above, so without these a [!hint] or [!cite] fell through to it. */
+html body.obsidian-app .callout[data-callout="hint"],
+html body.obsidian-app .callout[data-callout="important"],
+html body.obsidian-app .callout[data-callout="done"] {
+  --callout-color: var(--callout-tip);
+}
+
+html body.obsidian-app .callout[data-callout="faq"] {
+  --callout-color: var(--callout-warning);
+}
+
+html body.obsidian-app .callout[data-callout="cite"] {
   --callout-color: var(--callout-quote);
   background-color: transparent;
 }
@@ -3790,6 +3849,7 @@ html body.obsidian-app.theme-light.preset-ocean {
   --raw-input-bg: #B9E0FE;
   --raw-button-bg: #B9E0FE;
   --surface-highlight-light: #A5D6FF;
+  --background-modifier-hover: #90CAF9;
   --preset-on-hue: #000000;
 }
 
@@ -3803,6 +3863,7 @@ html body.obsidian-app.theme-dark.preset-ocean {
   --raw-checkbox-bg: #0C1822;
   --raw-mobile-active: #354452;
   --surface-highlight-dark: #0B1620;
+  --background-modifier-hover: #273B4F;
   --preset-on-hue: #000000;
 }
 
@@ -3819,6 +3880,7 @@ html body.obsidian-app.theme-light.preset-forest {
   --raw-input-bg: #D8EED9;
   --raw-button-bg: #D8EED9;
   --surface-highlight-light: #C8E6C9;
+  --background-modifier-hover: #A5D6A7;
   --preset-on-hue: #000000;
 }
 
@@ -3832,6 +3894,7 @@ html body.obsidian-app.theme-dark.preset-forest {
   --raw-checkbox-bg: #0C1510;
   --raw-mobile-active: #37443D;
   --surface-highlight-dark: #0B140F;
+  --background-modifier-hover: #2A4030;
   --preset-on-hue: #000000;
 }
 
@@ -3848,6 +3911,7 @@ html body.obsidian-app.theme-light.preset-sunset {
   --raw-input-bg: #FFE0CE;
   --raw-button-bg: #FFE0CE;
   --surface-highlight-light: #FFCCBC;
+  --background-modifier-hover: #FFAB91;
   --preset-on-hue: #000000;
 }
 
@@ -3861,6 +3925,7 @@ html body.obsidian-app.theme-dark.preset-sunset {
   --raw-checkbox-bg: #150E0B;
   --raw-mobile-active: #443A35;
   --surface-highlight-dark: #140E0A;
+  --background-modifier-hover: #4A3028;
   --preset-on-hue: #000000;
 }
 
@@ -3877,6 +3942,7 @@ html body.obsidian-app.theme-light.preset-amber {
   --raw-input-bg: #FFC74A;
   --raw-button-bg: #FFC74A;
   --surface-highlight-light: #FFC74A;
+  --background-modifier-hover: #FFC107;
   --preset-on-hue: #FFFFFF;
 }
 
@@ -3890,6 +3956,7 @@ html body.obsidian-app.theme-dark.preset-amber {
   --raw-checkbox-bg: #2A1E00;
   --raw-mobile-active: #232323;
   --surface-highlight-dark: #2A1E00;
+  --background-modifier-hover: #402B00;
   --preset-on-hue: #000000;
 }
 
@@ -3923,6 +3990,7 @@ html body.obsidian-app.theme-light.preset-reader {
   --raw-input-bg: #EEEEE8;
   --raw-button-bg: #EEEEE8;
   --surface-highlight-light: #E8E8E0;
+  --background-modifier-hover: #D8D8D0;
   --preset-on-hue: #FFFFFF;
 }
 
@@ -3936,7 +4004,109 @@ html body.obsidian-app.theme-dark.preset-reader {
   --raw-checkbox-bg: #181816;
   --raw-mobile-active: #444442;
   --surface-highlight-dark: #161615;
+  --background-modifier-hover: #3A3A38;
   --preset-on-hue: #000000;
+}
+
+/* -- Callouts on a preset ---------------------------------------------- */
+/* Asphalt's callout colours are muted for a grey page, and on a coloured one
+   they go muddy or disappear: a green tip on Forest, an amber warning on
+   Amber. On a preset each type starts from a clear hue, Aubade's callout hues,
+   mixed toward a colour taken from the preset: its text colour in light mode,
+   and that text colour lightened in dark mode, where a hue mixed only with the
+   text stayed too dark to read. --callout-hue-strength is how much hue
+   survives. The values were chosen by measuring: every title and body text
+   reaches 4.5:1 on its tinted callout, in every preset and mode, with the font
+   colours at their defaults. */
+html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --callout-hue-strength: 45%;
+  --callout-mix-target: var(--text-normal);
+  --callout-default: var(--text-muted);
+  --callout-note: color-mix(in srgb, rgb(8, 109, 221) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-info: color-mix(in srgb, rgb(8, 109, 221) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-abstract: color-mix(in srgb, rgb(0, 191, 188) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-tip: color-mix(in srgb, rgb(8, 185, 78) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-warning: color-mix(in srgb, rgb(236, 163, 0) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-fail: color-mix(in srgb, rgb(233, 49, 71) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-example: color-mix(in srgb, rgb(120, 82, 238) var(--callout-hue-strength), var(--callout-mix-target));
+  --callout-quote: color-mix(in srgb, rgb(158, 158, 158) var(--callout-hue-strength), var(--callout-mix-target));
+}
+
+html body.obsidian-app.theme-dark:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --callout-mix-target: color-mix(in srgb, var(--text-normal), white 60%);
+}
+
+/* Amber's light page is itself a strong hue, so more of the text colour goes
+   into the mix there. */
+html body.obsidian-app.theme-light.preset-amber {
+  --callout-hue-strength: 32%;
+}
+
+/* In dark mode the tint lifts a callout's background toward its hue, which
+   costs body text contrast; a lighter tint keeps it at 4.5:1 or better. */
+html body.obsidian-app.theme-dark:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .callout:not([data-callout="quote"]):not([data-callout="cite"]) {
+  background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
+}
+
+/* -- Hover surfaces and scrollbars -------------------------------------- */
+/* Obsidian paints its hover and selected states (icon buttons, file rows, tabs,
+   menu items, suggestions, settings rows) with --background-modifier-hover, a
+   grey it defines for every theme, and the scrollbar thumb was the UI text
+   colour; both stayed grey on every preset. On a preset the hover colour is
+   Aubade's for the same preset (set in each block above), the active hover and
+   the scrollbar thumbs are tints of the preset's hue, and the status bar hover
+   takes the hover colour instead of the highlight colour it shared with marked
+   text. Ocean's dark hover is one shade darker than Aubade's #2A4055, which
+   left body text just under 4.5:1 on it. Asphalt keeps Obsidian's grey and its
+   own scrollbar. */
+html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --raw-scrollbar-thumb: color-mix(in srgb, var(--raw-hue) 40%, transparent);
+  --raw-scrollbar-active-thumb: color-mix(in srgb, var(--raw-hue) 60%, transparent);
+  --background-modifier-active-hover: color-mix(in srgb, var(--raw-hue) 20%, transparent);
+}
+
+html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .status-bar-item:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* -- Tags, links, calendar and the new tab page ------------------------- */
+/* These were drawn from the font colours or from fixed colours, so on every
+   preset but Amber a tag was grey, external and footnote links kept Asphalt's
+   rust and teal, and the calendar's today stayed red or orange. On a preset
+   each takes the preset's hue, mixed toward the same colour callouts use (the
+   text colour, lightened in dark mode) so it stays readable on the page.
+   External and footnote links only fall back to it: a colour chosen in Style
+   Settings still wins. Unresolved links take less hue than resolved ones and
+   keep their lighter opacity, so the two stay distinct. */
+html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --tag-color: color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target));
+  --tag-background: color-mix(in srgb, var(--raw-hue) 18%, transparent);
+  --tag-border-color: var(--raw-hue);
+  --tag-background-hover: var(--toggle-on-color);
+  --link-unresolved-color: color-mix(in srgb, var(--raw-hue) 40%, var(--callout-mix-target));
+  --calendar-today-color: color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target));
+  --calendar-dot-bg: var(--raw-hue);
+  --new-tab-hover-bg: var(--background-modifier-hover);
+  --new-tab-hover-text: var(--text-normal);
+}
+
+html body.obsidian-app.theme-light:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --link-external-color: var(--link-ext-color-light-custom, color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target)));
+  --footnote-link-color: var(--footnote-color-light-custom, color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target)));
+}
+
+html body.obsidian-app.theme-dark:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+  --link-external-color: var(--link-ext-color-dark-custom, color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target)));
+  --footnote-link-color: var(--footnote-color-dark-custom, color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target)));
+}
+
+/* Property and Bases pills use the tag colours, but in light mode section 8
+   sets every pill's text to the UI colour, which left grey text on the new tint.
+   On a preset a pill's text takes the tag colour too. Pills that are links keep
+   their link colours. */
+html body.obsidian-app.theme-light:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) :is(.metadata-property, div.bases-view) .multi-select-pill-content:not(.internal-link) {
+  color: var(--tag-color);
 }
 
 /* -- Text on the preset's hue ------------------------------------------ */
@@ -3955,5 +4125,368 @@ html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-f
   html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) :is(a.tag, .metadata-property .multi-select-pill, div.bases-view .multi-select-pill):hover,
   html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) :is(.metadata-property .multi-select-pill, div.bases-view .multi-select-pill):hover * {
     color: var(--preset-on-hue);
+  }
+}
+
+/* ======================================================================= */
+/* 23. ALTERNATIVE TASKS                                                   */
+/* - [>] - [!] - [?] - [-]: a solid square with one glyph each.            */
+/* ======================================================================= */
+
+/* Obsidian treats any character other than a space as checked, so these drew
+   the same solid square as a done task and could not be told apart. They keep
+   the square and each prints one glyph in it, in the page colour, which stands
+   out from the square exactly as body text stands out from the page, in every
+   mode and preset. Any other character keeps the plain done square.
+   Reading view carries the character on the list item, Live Preview on the
+   checkbox itself; both are covered. */
+html body.obsidian-app :is(li.task-list-item, .HyperMD-task-line)[data-task=">"] { --task-glyph: ">"; }
+html body.obsidian-app :is(li.task-list-item, .HyperMD-task-line)[data-task="!"] { --task-glyph: "!"; }
+html body.obsidian-app :is(li.task-list-item, .HyperMD-task-line)[data-task="?"] { --task-glyph: "?"; }
+html body.obsidian-app :is(li.task-list-item, .HyperMD-task-line)[data-task="-"] { --task-glyph: "–"; }
+
+html body.obsidian-app :is(
+  li.task-list-item:is([data-task=">"], [data-task="!"], [data-task="?"], [data-task="-"]) > .task-list-item-checkbox,
+  li.task-list-item:is([data-task=">"], [data-task="!"], [data-task="?"], [data-task="-"]) > p > .task-list-item-checkbox,
+  .HyperMD-task-line:is([data-task=">"], [data-task="!"], [data-task="?"], [data-task="-"]) .task-list-item-checkbox
+):checked::after {
+  content: var(--task-glyph) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  background: none !important;
+  color: var(--background-primary);
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Cancelled reads like done: struck through. The others stay plain text, which
+   is what Obsidian already does for them. */
+html body.obsidian-app li.task-list-item[data-task="-"],
+html body.obsidian-app .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] {
+  text-decoration: var(--checklist-done-decoration);
+}
+
+/* ======================================================================= */
+/* 24. IMAGE GRID                                                          */
+/* The `img-grid` cssclass: images on consecutive lines form columns.      */
+/* ======================================================================= */
+
+/* Images written on consecutive lines render as one paragraph with a line
+   break between each, and that paragraph becomes the grid. A blank line starts
+   a new paragraph, so an image on its own is left alone.
+   Columns rather than a grid: each image keeps its height and the columns stack
+   tight, for the same reason as dashboard cards, using the dashboard gap. The
+   column is narrower than a card: at the default 600px note width a 300px card
+   column would leave room for one, which is no grid at all. Set
+   --img-grid-col-width in a snippet to change it. Reading view and PDF; in Live
+   Preview every image is its own editor line and cannot be grouped. */
+html body.obsidian-app .markdown-preview-view.img-grid p:is(:has(> .image-embed ~ .image-embed), :has(> img ~ img)) {
+  columns: var(--img-grid-col-width, 180px) auto;
+  column-gap: var(--dashboard-gap, 4px);
+}
+
+html body.obsidian-app .markdown-preview-view.img-grid p:is(:has(> .image-embed ~ .image-embed), :has(> img ~ img)) > br {
+  display: none;
+}
+
+html body.obsidian-app .markdown-preview-view.img-grid p:is(:has(> .image-embed ~ .image-embed), :has(> img ~ img)) > :is(.image-embed, img) {
+  display: block;
+  break-inside: avoid;
+  margin: 0 0 var(--dashboard-gap, 4px);
+}
+
+html body.obsidian-app .markdown-preview-view.img-grid p:is(:has(> .image-embed ~ .image-embed), :has(> img ~ img)) :is(.image-embed > img, > img) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Obsidian gives an embed with no caption its file name as alt text, and the
+   image captions in section 17 print alt text under the picture. In a grid that
+   labels every picture with its file name, so a caption that is only a file
+   name is hidden here; a caption written into the embed still shows. */
+html body.obsidian-app .markdown-preview-view.img-grid p:is(:has(> .image-embed ~ .image-embed), :has(> img ~ img)) > .image-embed:is([alt$=".png" i], [alt$=".jpg" i], [alt$=".jpeg" i], [alt$=".gif" i], [alt$=".webp" i], [alt$=".svg" i], [alt$=".avif" i], [alt$=".bmp" i])::after {
+  display: none;
+}
+
+/* ======================================================================= */
+/* 25. EMBEDS                                                              */
+/* Transcluded notes and sections: a hard bar on a surface band.           */
+/* ======================================================================= */
+
+/* Obsidian draws a transclusion with a 2px accent line and no background, so an
+   embedded note reads as part of the note around it. Through Obsidian's own
+   embed variables it becomes a 4px bar in the text colour on the surface
+   colour, in reading view and Live Preview alike. */
+html body.obsidian-app {
+  --embed-border-start: 4px solid var(--text-normal);
+  --embed-background: var(--surface-highlight);
+  --embed-padding: var(--size-4-3) var(--size-4-4);
+}
+
+/* A table draws its grid by letting the page show between cells filled with
+   the surface colour, which inside an embed is the background too. There the
+   cells take the page colour instead, so the grid still shows. */
+html body.obsidian-app .markdown-embed {
+  --table-cell-bg: var(--background-primary);
+  --table-header-bg: var(--background-primary);
+}
+
+/* ======================================================================= */
+/* 26. MERMAID                                                             */
+/* Diagrams drawn from the palette instead of Mermaid's own colours.       */
+/* ======================================================================= */
+
+/* Mermaid puts its colours in a <style> inside each diagram, keyed to the
+   diagram's id, which outranks any theme selector, and Obsidian then inverts
+   the whole drawing in dark mode. The inversion is removed and each part takes
+   the palette, with !important because of that id. Shapes are squared off.
+   Flowchart, sequence, class and state diagrams are covered; other kinds take
+   the text colour and keep Mermaid's fills. */
+html body.obsidian-app .mermaid > svg {
+  filter: none !important;
+}
+
+html body.obsidian-app .mermaid :is(.node rect, .node circle, .node ellipse, .node polygon, .node path, rect.actor, g.classGroup rect, .classLabel .box, g.stateGroup rect, .labelBox) {
+  fill: var(--surface-highlight) !important;
+  stroke: var(--text-normal) !important;
+}
+
+/* Start and end dots of a state diagram stay solid. */
+html body.obsidian-app .mermaid :is(.node circle.state-start, .node circle.state-end, .node .state-end, circle.state-start, circle.state-end) {
+  fill: var(--text-normal) !important;
+  stroke: var(--text-normal) !important;
+}
+
+html body.obsidian-app .mermaid :is(.cluster rect, rect.note, .note) {
+  fill: var(--background-secondary) !important;
+  stroke: var(--text-muted) !important;
+}
+
+html body.obsidian-app .mermaid :is(.edgePath .path, .flowchart-link, .messageLine0, .messageLine1, .actor-line, .relation, .transition, .loopLine, g.classGroup line) {
+  stroke: var(--text-muted) !important;
+}
+
+html body.obsidian-app .mermaid :is(.arrowheadPath, .arrowMarkerPath, .marker, marker path) {
+  fill: var(--text-muted) !important;
+  stroke: var(--text-muted) !important;
+}
+
+html body.obsidian-app .mermaid :is(text, tspan, .label, .nodeLabel, .edgeLabel, .cluster-label, .messageText, .noteText, .loopText, .labelText, span, p) {
+  fill: var(--text-normal) !important;
+  color: var(--text-normal) !important;
+}
+
+html body.obsidian-app .mermaid :is(.edgeLabel, .edgeLabel p, .edgeLabel rect, .labelBkg) {
+  background-color: var(--background-primary) !important;
+  fill: var(--background-primary) !important;
+}
+
+html body.obsidian-app .mermaid rect {
+  rx: 0 !important;
+  ry: 0 !important;
+}
+
+/* ======================================================================= */
+/* 27. HEADINGS                                                            */
+/* Style Settings: heading size scale and numbered headings.               */
+/* ======================================================================= */
+
+/* Size scale. Obsidian's own scale is the default; the others replace its six
+   size variables, which headings read in reading view and in the editor. */
+html body.obsidian-app.heading-scale-compact {
+  --h1-size: 1.3em;
+  --h2-size: 1.22em;
+  --h3-size: 1.15em;
+  --h4-size: 1.1em;
+  --h5-size: 1.05em;
+  --h6-size: 1em;
+}
+
+html body.obsidian-app.heading-scale-large {
+  --h1-size: 2.2em;
+  --h2-size: 1.85em;
+  --h3-size: 1.55em;
+  --h4-size: 1.3em;
+  --h5-size: 1.12em;
+  --h6-size: 1em;
+}
+
+/* Numbered headings, h2 to h6 as 1, 1.1, 1.1.1; h1 is left as a title.
+   CSS counters count what is on the page, and Obsidian unloads the parts of a
+   long note that are off screen, in reading view and in the editor. The count
+   then starts again from what is still loaded. A short note numbers correctly,
+   and so does a PDF export, which renders the whole note at once. The export
+   puts each block in a plain wrapper rather than reading view's sections, so
+   it has its own selectors here. A long note scrolled well down does not
+   number correctly. counter-set rather than counter-reset keeps one counter
+   per level for the whole note instead of a new one per heading. */
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section, .cm-content, .print > .markdown-preview-view) {
+  counter-reset: h2 h3 h4 h5 h6;
+}
+
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h2, .cm-line.HyperMD-header-2, .print > .markdown-preview-view > div:has(> h2)) { counter-increment: h2; counter-set: h3 0 h4 0 h5 0 h6 0; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h3, .cm-line.HyperMD-header-3, .print > .markdown-preview-view > div:has(> h3)) { counter-increment: h3; counter-set: h4 0 h5 0 h6 0; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h4, .cm-line.HyperMD-header-4, .print > .markdown-preview-view > div:has(> h4)) { counter-increment: h4; counter-set: h5 0 h6 0; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h5, .cm-line.HyperMD-header-5, .print > .markdown-preview-view > div:has(> h5)) { counter-increment: h5; counter-set: h6 0; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h6, .cm-line.HyperMD-header-6, .print > .markdown-preview-view > div:has(> h6)) { counter-increment: h6; }
+
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h2 > h2, .cm-line.HyperMD-header-2, .print > .markdown-preview-view > div > h2)::before { content: counter(h2) ". "; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h3 > h3, .cm-line.HyperMD-header-3, .print > .markdown-preview-view > div > h3)::before { content: counter(h2) "." counter(h3) ". "; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h4 > h4, .cm-line.HyperMD-header-4, .print > .markdown-preview-view > div > h4)::before { content: counter(h2) "." counter(h3) "." counter(h4) ". "; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h5 > h5, .cm-line.HyperMD-header-5, .print > .markdown-preview-view > div > h5)::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "; }
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > .el-h6 > h6, .cm-line.HyperMD-header-6, .print > .markdown-preview-view > div > h6)::before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "; }
+
+html body.obsidian-app.heading-numbering :is(.markdown-preview-section > :is(.el-h2, .el-h3, .el-h4, .el-h5, .el-h6) > :is(h2, h3, h4, h5, h6), .cm-line:is(.HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6), .print > .markdown-preview-view > div > :is(h2, h3, h4, h5, h6))::before {
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ======================================================================= */
+/* 28. CURRENT LINE                                                        */
+/* Style Settings toggle: highlight the line the cursor is on.             */
+/* ======================================================================= */
+
+/* Obsidian marks the line the cursor is on with .cm-active. The band is the
+   surface colour, so it follows the preset, and is only drawn in the editor.
+   Obsidian draws a text selection as the browser's own selection, on top of
+   the text, so a selection stays visible on a highlighted line. */
+html body.obsidian-app.active-line-highlight .markdown-source-view.mod-cm6 .cm-line.cm-active {
+  background-color: var(--surface-highlight);
+}
+
+/* ======================================================================= */
+/* 29. REDUCED MOTION                                                      */
+/* Honours the system setting to reduce motion.                            */
+/* ======================================================================= */
+
+/* Cards, buttons, toggles, the ribbon and the timeline all animate. With
+   reduced motion asked for, every transition and animation, the theme's and
+   Obsidian's, finishes at once in its end state. Durations are cut to almost
+   nothing rather than removed, so anything waiting for a transitionend or
+   animationend event still gets one. */
+@media (prefers-reduced-motion: reduce) {
+  html body.obsidian-app {
+    --anim-duration-superfast: 0ms;
+    --anim-duration-fast: 0ms;
+    --anim-duration-moderate: 0ms;
+    --anim-duration-slow: 0ms;
+  }
+
+  html body.obsidian-app *,
+  html body.obsidian-app *::before,
+  html body.obsidian-app *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ======================================================================= */
+/* 30. PRINT & PDF EXPORT                                                  */
+/* Black on white in any mode or preset; ruled tables; page breaks.        */
+/* ======================================================================= */
+
+/* Obsidian's export renders the note into a .print element in a hidden
+   window that copies this window's styles and body classes, then switches that
+   window to light mode. A preset's classes come through with the rest, so
+   without this the export printed the preset's light-mode page colours. The
+   palette is replaced for print only. This is the last section, so at equal
+   specificity it wins over the modes and presets. */
+@media print {
+  html body.obsidian-app:is(.theme-light, .theme-dark) {
+    --background-primary: #ffffff;
+    --background-primary-alt: #ffffff;
+    --background-secondary: #ffffff;
+    --background-secondary-alt: #ffffff;
+    --surface-highlight: #f0f0f0;
+    --text-normal: #000000;
+    --text-muted: #333333;
+    --text-faint: #666666;
+    --text-accent: #000000;
+    --h1-color: #000000;
+    --h2-color: #000000;
+    --h3-color: #000000;
+    --h4-color: #000000;
+    --h5-color: #000000;
+    --h6-color: #000000;
+    --link-color: #000000;
+    --link-external-color: #000000;
+    --link-unresolved-color: #555555;
+    --footnote-link-color: #000000;
+    --code-background: #f0f0f0;
+    --text-highlight-bg: #fff0a0;
+    --quote-opening-modifier: #000000;
+    --list-marker-color: #000000;
+    --checkbox-color: #000000;
+    --checkbox-bg-unchecked: #ffffff;
+    --tag-color: #000000;
+    --tag-background: transparent;
+    --tag-border-color: #000000;
+    /* Callouts in Asphalt's light-mode colours, which are made for a pale page. */
+    --callout-default: rgb(35, 35, 35);
+    --callout-note: rgb(84, 122, 155);
+    --callout-info: rgb(74, 130, 148);
+    --callout-abstract: rgb(88, 139, 150);
+    --callout-tip: rgb(99, 138, 102);
+    --callout-warning: rgb(191, 140, 59);
+    --callout-fail: rgb(186, 84, 78);
+    --callout-example: rgb(143, 94, 153);
+    --callout-quote: rgb(136, 136, 136);
+    --embed-background: transparent;
+    --embed-border-start: 3px solid #000000;
+  }
+
+  /* On screen a table's grid is the page showing between filled cells, which
+     on white paper is nothing at all. On paper the cells are ruled. */
+  html body.obsidian-app .print .markdown-rendered table {
+    border-collapse: collapse;
+  }
+
+  html body.obsidian-app .print .markdown-rendered :is(th, td) {
+    background-color: transparent !important;
+    border: 1px solid #000000 !important;
+    color: #000000;
+  }
+
+  html body.obsidian-app .print .markdown-rendered th {
+    font-weight: 700;
+    border-bottom-width: 2px !important;
+  }
+
+  /* An unchecked box is white on white; give it an outline. */
+  html body.obsidian-app .print input[type="checkbox"]:not(:checked) {
+    box-shadow: inset 0 0 0 1px #000000 !important;
+  }
+
+  /* Keep headings with what follows them, and blocks in one piece. */
+  html body.obsidian-app .print :is(h1, h2, h3, h4, h5, h6) {
+    break-after: avoid;
+  }
+
+  html body.obsidian-app .print :is(pre, blockquote, table, .callout, img, .mermaid, .markdown-embed) {
+    break-inside: avoid;
+  }
+
+  /* Dashboards: the banner image is position: fixed, which on paper repeats on
+     every page; cards lose their see-through fill and get a rule instead. */
+  html body.obsidian-app .print .dashboard .callout[data-callout="banner"] {
+    display: none !important;
+  }
+
+  html body.obsidian-app .print .dashboard .callout {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border: 1px solid #000000 !important;
   }
 }

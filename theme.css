@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 4.0.9 */
+/* 5.0.0 */
 /* ================================================================= */
 
 @font-face {
@@ -271,6 +271,30 @@
     size-adjust: 110%;
 }
 
+/* @settings
+name: Colour Presets
+id: brutalist-presets
+settings:
+  - id: color-preset
+    title: Colour Preset
+    description: Palette for backgrounds, surfaces, selection, code and the accent used by toggles, sliders and tags. Font colours still come from Typography & Typeface, except with Amber, which sets its own terminal colours.
+    type: class-select
+    allowEmpty: false
+    default: preset-asphalt
+    options:
+      - label: Asphalt (Default)
+        value: preset-asphalt
+      - label: Ocean (Deep Blue)
+        value: preset-ocean
+      - label: Forest (Earthy Green)
+        value: preset-forest
+      - label: Sunset (Orange/Pink)
+        value: preset-sunset
+      - label: Amber (IBM Terminal)
+        value: preset-amber
+      - label: Reader (Newspaper)
+        value: preset-reader
+*/
 
 /* @settings
 name: Typography & Typeface
@@ -531,8 +555,8 @@ name: Dashboard Layout Settings
 id: brutalist-dashboard
 settings:
   - id: dashboard-col-width
-    title: Minimum Card Width
-    description: The grid will fit as many columns as possible based on this width.
+    title: Card Width
+    description: Every card is this wide. As many columns as fit the note are used, and the cards are centred.
     type: variable-number-slider
     default: 300
     min: 200
@@ -712,28 +736,29 @@ settings:
 /* ======================================================================= */
 /* TABLE OF CONTENTS                                                  line */
 /* ======================================================================= */
-/* 0.   VARIABLES & PALETTE                                            473 */
-/* 1.   THEME MAPPING (LIGHT/DARK)                                     652 */
-/* 2.   SELECTION & LIST MARKERS                                       878 */
-/* 3.   TABS                                                           930 */
-/* 4.   ICONS & BUTTONS                                               1010 */
-/* 5.   STATUS BAR                                                    1138 */
-/* 6.   CALENDAR                                                      1166 */
-/* 7.   TYPOGRAPHY & TEXT                                             1213 */
-/* 8.   FORMS & CONTROLS                                              1501 */
-/* 9.   LAYOUT & SCROLLBARS                                           1743 */
-/* 10.  TABLES                                                        1866 */
-/* 11.  BASES                                                         1912 */
-/* 12.  NEW TAB PAGE                                                  2007 */
-/* 13.  MOBILE                                                        2026 */
-/* 14.  MODALS & SETTINGS                                             2402 */
-/* 15.  GRAPH VIEW                                                    2481 */
-/* 16.  CANVAS                                                        2503 */
-/* 17.  MISCELLANEOUS                                                 2536 */
-/* 18.  DASHBOARD                                                     2619 */
-/* 19.  TOGGLEABLE FEATURES                                           2968 */
-/* 20.  TIMELINE                                                      3015 */
-/* 21.  TAGS & PILLS                                                  3215 */
+/* 0.   VARIABLES & PALETTE                                            499 */
+/* 1.   THEME MAPPING (LIGHT/DARK)                                     680 */
+/* 2.   SELECTION & LIST MARKERS                                       933 */
+/* 3.   TABS                                                           985 */
+/* 4.   ICONS & BUTTONS                                               1065 */
+/* 5.   STATUS BAR                                                    1193 */
+/* 6.   CALENDAR                                                      1221 */
+/* 7.   TYPOGRAPHY & TEXT                                             1268 */
+/* 8.   FORMS & CONTROLS                                              1556 */
+/* 9.   LAYOUT & SCROLLBARS                                           1798 */
+/* 10.  TABLES                                                        1921 */
+/* 11.  BASES                                                         1967 */
+/* 12.  NEW TAB PAGE                                                  2062 */
+/* 13.  MOBILE                                                        2081 */
+/* 14.  MODALS & SETTINGS                                             2457 */
+/* 15.  GRAPH VIEW                                                    2536 */
+/* 16.  CANVAS                                                        2558 */
+/* 17.  MISCELLANEOUS                                                 2591 */
+/* 18.  DASHBOARD                                                     2674 */
+/* 19.  TOGGLEABLE FEATURES                                           3152 */
+/* 20.  TIMELINE                                                      3199 */
+/* 21.  TAGS & PILLS                                                  3399 */
+/* 22.  COLOUR PRESETS                                                3497 */
 /* ======================================================================= */
 
 /* ======================================================================= */
@@ -804,6 +829,7 @@ body {
   --dashboard-banner-height: 600px;
   --dashboard-banner-offset: 150px;
   --dashboard-card-transparency: 20%;
+  --dashboard-max-width: 1400px;
 }
 html body.obsidian-app {
   /* Typography & Style */
@@ -826,7 +852,8 @@ html body.obsidian-app {
   /* Palette & Colors */
   --light-accent-custom: #000000;
   --dark-accent-custom: color-mix(in srgb, var(--ui-font-color-dark), white 20%);
-  /* Surface Highlight (unified interactive surface) */
+  /* Surface Highlight (unified interactive surface). Colour presets in
+     section 22 replace both values. */
   --surface-highlight-dark: #262626;
   --surface-highlight-light: #d6d6d6;
   /* Tables & Bases share one surface. Cells are filled and the grid is the page
@@ -920,11 +947,27 @@ html body.obsidian-app .markdown-preview-view.custom-timeline {
 /* Maps the palette onto Obsidian's own variables, once per colour scheme. */
 /* ======================================================================= */
 
+/* Each block opens with a raw palette. Those values, and the surface
+   highlights in section 0, are all a colour preset replaces (section 22);
+   every mapping below reads them, so a preset changes one place and the
+   rest follows. As written here they are Asphalt, the default. */
+
 /* DARK MODE MAPPING */
 html body.obsidian-app.theme-dark {
+  /* Raw palette: what a colour preset replaces. As written, Asphalt. */
+  --raw-bg-primary: #3c3c3c;
+  --raw-bg-secondary: #323232;
+  --raw-code-bg: #1f1f1f;
+  --raw-selection-bg: rgba(200, 200, 200, 0.15);
+  --raw-highlight-bg: color-mix(in srgb, #38717f, transparent 55%);
+  --raw-hue: #448494;
+  --raw-checkbox-bg: #2f2f2f;
+  --raw-mobile-active: #505050;
+  --raw-input-bg: var(--light-accent-custom);
+  --raw-button-bg: var(--light-accent-custom);
   /* Accents & Palette */
   --text-accent: var(--dark-accent-custom);
-  --input-bg-std: var(--light-accent-custom);
+  --input-bg-std: var(--raw-input-bg);
   --interactive-accent: var(--dark-accent-custom);
   --accent-h: 0;
   --accent-s: 0%;
@@ -935,9 +978,9 @@ html body.obsidian-app.theme-dark {
   --text-faint: color-mix(in srgb, var(--text-muted), transparent 30%);
   --text-on-accent: #323232;
   --text-accent-hover: color-mix(in srgb, var(--text-muted), white 40%);
-  --text-selection: rgba(200, 200, 200, 0.15);
-  --text-highlight-bg: color-mix(in srgb, #38717f, transparent 55%);
-  --code-background: #1f1f1f;
+  --text-selection: var(--raw-selection-bg);
+  --text-highlight-bg: var(--raw-highlight-bg);
+  --code-background: var(--raw-code-bg);
   --background-modifier-border-focus: #FFFFFF;
   --bases-text-color: var(--body-font-color-dark);
   /* Headings */
@@ -948,21 +991,21 @@ html body.obsidian-app.theme-dark {
   --h5-color: var(--dark-accent-custom);
   --h6-color: var(--dark-accent-custom);
   /* Backgrounds */
-  --background-primary: #3c3c3c;
-  --background-primary-alt: #323232;
-  --background-secondary: #323232;
-  --background-secondary-alt: #323232;
-  --background-modifier-form-field: #323232;
+  --background-primary: var(--raw-bg-primary);
+  --background-primary-alt: var(--raw-bg-secondary);
+  --background-secondary: var(--raw-bg-secondary);
+  --background-secondary-alt: var(--raw-bg-secondary);
+  --background-modifier-form-field: var(--raw-bg-secondary);
   --background-modifier-border: transparent;
-  --modal-background: #323232;
-  --prompt-background: #323232;
-  --mobile-drawer-bg: #3c3c3c;
+  --modal-background: var(--raw-bg-secondary);
+  --prompt-background: var(--raw-bg-secondary);
+  --mobile-drawer-bg: var(--raw-bg-primary);
   --surface-highlight: var(--surface-highlight-dark);
   --menu-custom-bg: var(--surface-highlight);
-  --checkbox-bg-unchecked: #2f2f2f;
+  --checkbox-bg-unchecked: var(--raw-checkbox-bg);
   /* Interactive Elements & UI */
   --interactive-accent-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%);
-  --interactive-normal: #323232;
+  --interactive-normal: var(--raw-bg-secondary);
   --slider-track-background: #ffffff;
   --icon-color: var(--ui-font-color-dark);
   --icon-color-hover: color-mix(in srgb, var(--dark-accent-custom), white 25%);
@@ -971,9 +1014,9 @@ html body.obsidian-app.theme-dark {
   --checkbox-color: var(--dark-accent-custom);
   --drag-border: none;
   --drag-bg: #000000;
-  --toggle-on-color: #448494;
+  --toggle-on-color: var(--raw-hue);
   /* Buttons & CTAs */
-  --button-bg-dynamic: var(--light-accent-custom);
+  --button-bg-dynamic: var(--raw-button-bg);
   --button-bg-hover-dynamic: #000000;
   --button-text-dynamic: var(--text-normal);
   --button-text-hover-dynamic: #ffffff;
@@ -983,7 +1026,7 @@ html body.obsidian-app.theme-dark {
   /* Settings */
   --settings-icon-fill: var(--ui-font-color-dark);
   --settings-border-color: #6a6a6a;
-  --settings-bg-color: #3c3c3c;
+  --settings-bg-color: var(--raw-bg-primary);
   /* Tabs */
   --tab-outline-color: transparent;
   --tab-hover-bg-doc: var(--surface-highlight);
@@ -993,7 +1036,7 @@ html body.obsidian-app.theme-dark {
   --new-tab-hover-text: #ffffff;
   --vertical-tab-header-color: var(--ui-font-color-dark);
   /* Mobile */
-  --mobile-active-bg: #505050;
+  --mobile-active-bg: var(--raw-mobile-active);
   /* Lists & Indentation */
   --list-marker-color: color-mix(in srgb, var(--text-normal), white 25%);
   --indentation-guide-color: color-mix(in srgb, var(--text-muted), transparent 10%);
@@ -1032,9 +1075,20 @@ html body.obsidian-app.theme-dark {
 
 /* LIGHT MODE MAPPING */
 html body.obsidian-app.theme-light {
+  /* Raw palette: what a colour preset replaces. As written, Asphalt. */
+  --raw-bg-primary: #C5C5C5;
+  --raw-bg-secondary: #B0B0B0;
+  --raw-code-bg: #e1e1e1;
+  --raw-selection-bg: rgba(120, 120, 120, 0.2);
+  --raw-highlight-bg: color-mix(in srgb, #ff7700, transparent 55%);
+  --raw-hue: #ff7700;
+  --raw-checkbox-bg: #a9a9a9;
+  --raw-mobile-active: #d6d6d6;
+  --raw-input-bg: #cdcdcd;
+  --raw-button-bg: #d0d0d0;
   /* Accents & Palette */
   --text-accent: var(--light-accent-custom);
-  --input-bg-std: #cdcdcd;
+  --input-bg-std: var(--raw-input-bg);
   --interactive-accent: var(--light-accent-custom);
   --accent-h: 0;
   --accent-s: 0%;
@@ -1045,9 +1099,9 @@ html body.obsidian-app.theme-light {
   --text-faint: color-mix(in srgb, var(--text-muted), transparent 30%);
   --text-on-accent: #ffffff;
   --text-accent-hover: #000000;
-  --text-selection: rgba(120, 120, 120, 0.2);
-  --text-highlight-bg: color-mix(in srgb, #ff7700, transparent 55%);
-  --code-background: #e1e1e1;
+  --text-selection: var(--raw-selection-bg);
+  --text-highlight-bg: var(--raw-highlight-bg);
+  --code-background: var(--raw-code-bg);
   --background-modifier-border-focus: #1A3319;
   --bases-text-color: var(--text-normal);
   /* Headings */
@@ -1058,19 +1112,19 @@ html body.obsidian-app.theme-light {
   --h5-color: var(--text-normal);
   --h6-color: var(--text-normal);
   /* Backgrounds */
-  --background-primary: #C5C5C5;
-  --background-primary-alt: #B0B0B0;
-  --background-secondary: #B0B0B0;
-  --background-secondary-alt: #B0B0B0;
+  --background-primary: var(--raw-bg-primary);
+  --background-primary-alt: var(--raw-bg-secondary);
+  --background-secondary: var(--raw-bg-secondary);
+  --background-secondary-alt: var(--raw-bg-secondary);
   --background-modifier-border: transparent;
-  --background-modifier-form-field: #B0B0B0;
-  --modal-background: #B0B0B0;
-  --prompt-background: #B0B0B0;
-  --mobile-drawer-bg: #B0B0B0;
-  --toggle-on-color: #ff7700;
+  --background-modifier-form-field: var(--raw-bg-secondary);
+  --modal-background: var(--raw-bg-secondary);
+  --prompt-background: var(--raw-bg-secondary);
+  --mobile-drawer-bg: var(--raw-bg-secondary);
+  --toggle-on-color: var(--raw-hue);
   --surface-highlight: var(--surface-highlight-light);
   --menu-custom-bg: var(--surface-highlight);
-  --checkbox-bg-unchecked: #a9a9a9;
+  --checkbox-bg-unchecked: var(--raw-checkbox-bg);
   /* Interactive Elements & UI */
   --interactive-accent-hover: #000000;
   --slider-track-background: #ffffff;
@@ -1082,7 +1136,7 @@ html body.obsidian-app.theme-light {
   --drag-border: none;
   --drag-bg: #ffffff;
   /* Buttons & CTAs */
-  --button-bg-dynamic: #d0d0d0;
+  --button-bg-dynamic: var(--raw-button-bg);
   --button-bg-hover-dynamic: #ffffff;
   --button-text-dynamic: var(--text-normal);
   --button-text-hover-dynamic: #000000;
@@ -1092,7 +1146,7 @@ html body.obsidian-app.theme-light {
   /* Settings */
   --settings-icon-fill: var(--ui-font-color-light);
   --settings-border-color: #000000;
-  --settings-bg-color: #B0B0B0;
+  --settings-bg-color: var(--raw-bg-secondary);
   /* Tabs */
   --tab-outline-color: transparent;
   --tab-hover-bg-doc: var(--surface-highlight);
@@ -1102,7 +1156,7 @@ html body.obsidian-app.theme-light {
   --new-tab-hover-text: #000000;
   --vertical-tab-header-color: var(--ui-font-color-light);
   /* Mobile */
-  --mobile-active-bg: #d6d6d6;
+  --mobile-active-bg: var(--raw-mobile-active);
   /* Lists & Indentation */
   --list-marker-color: var(--light-accent-custom);
   --indentation-guide-color: var(--light-accent-custom);
@@ -3017,10 +3071,129 @@ html body.obsidian-app:not(.is-mobile) .dashboard.hide-all .view-header .clickab
 }
 
 /* Shared Layout & Grid */
-html body.obsidian-app .dashboard .markdown-preview-section,
-html body.obsidian-app .dashboard .markdown-source-view .cm-content,
+/* Cards keep one width everywhere (--dashboard-col-width) and stack in columns
+   at their own height, so no card carries empty space. The column box is sized
+   to a whole number of columns and centred, so its edges are the cards' edges.
+
+   Columns that fit: the width available, capped by the note's width class (or
+   --dashboard-max-width), rounded down to whole card-plus-gap steps. Columns
+   used: that, but never more than the longest run of cards, so one or two
+   cards sit centred instead of filling the first columns of a wider box.
+
+   `columns: <width> auto` on its own let the columns stretch to fill the note:
+   cards came out wider than the Card Width setting, a lone card sat in the left
+   half, and width classes were ignored. Where round() is unsupported the width
+   stays 100%, which is that older behaviour. */
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section {
+  --dashboard-cards: 99;
+  --dashboard-banners: 0;
+  --dashboard-step: calc(var(--dashboard-col-width, 300px) + var(--dashboard-gap, 4px));
+  display: block;
+  columns: var(--dashboard-col-width, 300px) auto !important;
+  column-gap: var(--dashboard-gap, 4px);
+  box-sizing: border-box;
+  width: 100%;
+  width: calc(var(--dashboard-gap, 4px) + max(var(--dashboard-step), min((var(--dashboard-cards) - var(--dashboard-banners)) * var(--dashboard-step), round(down, min(100%, var(--dashboard-max-width, 1400px)) - var(--dashboard-gap, 4px), var(--dashboard-step)))));
+  max-width: 100% !important;
+  margin: 0 auto;
+  padding-left: var(--dashboard-gap, 4px);
+  padding-right: var(--dashboard-gap, 4px);
+  padding-bottom: 150px;
+  font-family: var(--font-ui);
+}
+
+/* A width class caps a dashboard as it caps any other note. Scoped like the
+   classes themselves, which only set --editor-width from 768px up. */
+@media screen and (min-width: 768px) {
+  html body.obsidian-app .dashboard:is(.width-800, .width-900, .width-1000, .width-1200, .width-1600, .full-width) {
+    --dashboard-max-width: var(--editor-width);
+  }
+}
+
+/* The cap above: the most cards in one unbroken run. A heading or text
+   between cards starts a new run, so a dashboard split into groups is only as
+   wide as its largest group. A note with no cards is not capped. It only
+   matters while a run is shorter than the columns that fit, so counting stops
+   at twelve. */
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div) {
+  --dashboard-cards: 1;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div) {
+  --dashboard-cards: 2;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div) {
+  --dashboard-cards: 3;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 4;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 5;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 6;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 7;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 8;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 9;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 10;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 11;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 12;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div + .el-div) {
+  --dashboard-cards: 99;
+}
+
+/* A banner is a callout but not a card, so it is taken back off the count.
+   That assumes it sits directly above the first group of cards, where it is
+   designed to go: :has() cannot be nested, so a callout's type cannot be
+   checked inside a run. A dashboard whose only callout is the banner is not
+   capped at all. */
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:has(> .el-div > .callout[data-callout="banner"]) {
+  --dashboard-banners: 1;
+}
+
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section:not(:has(> .el-div > .callout:not([data-callout="banner"]))) {
+  --dashboard-cards: 99 !important;
+  --dashboard-banners: 0 !important;
+}
+
+/* Everything that is not a card spans all columns: the spacer, header,
+   frontmatter and footer, any heading or text written between cards, and the
+   banner, which otherwise takes the top of the first column and pushes that
+   column's cards down by its own height. */
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section > :not(:has(> .callout)),
+html body.obsidian-app .markdown-preview-view.dashboard .markdown-preview-section > .el-div:has(> .callout[data-callout="banner"]) {
+  column-span: all;
+}
+
+/* A hand-written <div class="dashboard-grid"> keeps the plain column layout it
+   always had: its children are not .el-div runs, so there is nothing to count. */
 html body.obsidian-app .dashboard-grid {
-  max-width: 1400px;
+  max-width: var(--dashboard-max-width, 1400px);
   margin: 0 auto;
   padding-left: var(--dashboard-gap, 4px);
   padding-right: var(--dashboard-gap, 4px);
@@ -3038,6 +3211,16 @@ html body.obsidian-app .markdown-source-view.dashboard {
   max-width: none;
   margin: 0;
   padding: 0;
+}
+
+/* Live Preview stays one column: the blank lines between callouts are
+   editable lines. Cards take their reading-view width there and sit centred.
+   Obsidian zeroes every margin on the editor's direct children with
+   !important, since vertical margins would break its height measurements; side
+   margins do not, so these may override it. */
+html body.obsidian-app .markdown-source-view.dashboard .cm-embed-block.cm-callout {
+  max-width: var(--dashboard-col-width, 300px);
+  margin-inline: auto !important;
 }
 
 /* Desktop Layering Restoration */
@@ -3573,5 +3756,204 @@ html body.obsidian-app .metadata-property .multi-select-pill[tabindex]:focus::af
   html body.obsidian-app.theme-light div.bases-view .multi-select-pill:hover,
   html body.obsidian-app.theme-light div.bases-view .multi-select-pill:hover * {
     color: #000000;
+  }
+}
+
+/* ======================================================================= */
+/* 22. COLOUR PRESETS                                                      */
+/* Asphalt is the palette in section 1. Each preset replaces its raw       */
+/* values and the surface highlights, per colour scheme. Colours are       */
+/* Aubade's presets of the same name; Amber dark selection is darker so    */
+/* amber text stays readable on it.                                        */
+/* ======================================================================= */
+
+/* Asphalt needs no block: it is the default the other presets replace. */
+
+/* Aubade has no equivalent for some of these, so they are derived from the
+   preset's own colours. Light: menus and tables use the sidebar colour,
+   inputs and buttons sit halfway between page and sidebar (so they still
+   show inside a modal, which is sidebar-coloured), checkboxes are the sidebar
+   darkened by 10%. Dark: menus and tables are the sidebar darkened by 25%,
+   checkboxes by 20%, the mobile active item is the page lightened by 12%.
+   Amber differs where black would vanish on its near-black page. */
+
+/* -- Ocean (deep blue) ------------------------------------------------- */
+html body.obsidian-app.theme-light.preset-ocean {
+  --raw-bg-primary: #CDEAFE;
+  --raw-bg-secondary: #A5D6FF;
+  --raw-code-bg: color-mix(in srgb, #7AB8E8 22%, #ffffff);
+  --raw-selection-bg: #FFE0C8;
+  --raw-highlight-bg: #FFF4D1;
+  --raw-hue: #2196F3;
+  --raw-checkbox-bg: #94C1E6;
+  --raw-mobile-active: #A5D6FF;
+  --raw-input-bg: #B9E0FE;
+  --raw-button-bg: #B9E0FE;
+  --surface-highlight-light: #A5D6FF;
+  --preset-on-hue: #000000;
+}
+
+html body.obsidian-app.theme-dark.preset-ocean {
+  --raw-bg-primary: #1A2A3A;
+  --raw-bg-secondary: #0F1E2B;
+  --raw-code-bg: #152535;
+  --raw-selection-bg: #5A3A2F;
+  --raw-highlight-bg: #4A3A2A;
+  --raw-hue: #64B5F6;
+  --raw-checkbox-bg: #0C1822;
+  --raw-mobile-active: #354452;
+  --surface-highlight-dark: #0B1620;
+  --preset-on-hue: #000000;
+}
+
+/* -- Forest (earthy green) --------------------------------------------- */
+html body.obsidian-app.theme-light.preset-forest {
+  --raw-bg-primary: #E8F5E9;
+  --raw-bg-secondary: #C8E6C9;
+  --raw-code-bg: color-mix(in srgb, rgba(208, 235, 197, 0.8) 22%, #ffffff);
+  --raw-selection-bg: #E8D5E8;
+  --raw-highlight-bg: #F4E3D7;
+  --raw-hue: #4CAF50;
+  --raw-checkbox-bg: #B4CFB5;
+  --raw-mobile-active: #C8E6C9;
+  --raw-input-bg: #D8EED9;
+  --raw-button-bg: #D8EED9;
+  --surface-highlight-light: #C8E6C9;
+  --preset-on-hue: #000000;
+}
+
+html body.obsidian-app.theme-dark.preset-forest {
+  --raw-bg-primary: #1C2A22;
+  --raw-bg-secondary: #0F1A14;
+  --raw-code-bg: #152018;
+  --raw-selection-bg: #3F2A44;
+  --raw-highlight-bg: #3A2A3F;
+  --raw-hue: #81C784;
+  --raw-checkbox-bg: #0C1510;
+  --raw-mobile-active: #37443D;
+  --surface-highlight-dark: #0B140F;
+  --preset-on-hue: #000000;
+}
+
+/* -- Sunset (orange / pink) -------------------------------------------- */
+html body.obsidian-app.theme-light.preset-sunset {
+  --raw-bg-primary: #FFF3E0;
+  --raw-bg-secondary: #FFCCBC;
+  --raw-code-bg: color-mix(in srgb, #FFB090 22%, #ffffff);
+  --raw-selection-bg: #C8E0F0;
+  --raw-highlight-bg: #D1E8F0;
+  --raw-hue: #FF5722;
+  --raw-checkbox-bg: #E6B8A9;
+  --raw-mobile-active: #FFCCBC;
+  --raw-input-bg: #FFE0CE;
+  --raw-button-bg: #FFE0CE;
+  --surface-highlight-light: #FFCCBC;
+  --preset-on-hue: #000000;
+}
+
+html body.obsidian-app.theme-dark.preset-sunset {
+  --raw-bg-primary: #2A1F1A;
+  --raw-bg-secondary: #1A120E;
+  --raw-code-bg: #201510;
+  --raw-selection-bg: #2F4A4A;
+  --raw-highlight-bg: #2A3A4A;
+  --raw-hue: #FF8A65;
+  --raw-checkbox-bg: #150E0B;
+  --raw-mobile-active: #443A35;
+  --surface-highlight-dark: #140E0A;
+  --preset-on-hue: #000000;
+}
+
+/* -- Amber (IBM terminal) ---------------------------------------------- */
+html body.obsidian-app.theme-light.preset-amber {
+  --raw-bg-primary: #FFB000;
+  --raw-bg-secondary: #CC8E00;
+  --raw-code-bg: color-mix(in srgb, #A87000 22%, #ffffff);
+  --raw-selection-bg: #A06F00;
+  --raw-highlight-bg: #92BBDB;
+  --raw-hue: #332300;
+  --raw-checkbox-bg: #B88000;
+  --raw-mobile-active: #FFC74A;
+  --raw-input-bg: #FFC74A;
+  --raw-button-bg: #FFC74A;
+  --surface-highlight-light: #FFC74A;
+  --preset-on-hue: #FFFFFF;
+}
+
+html body.obsidian-app.theme-dark.preset-amber {
+  --raw-bg-primary: #050505;
+  --raw-bg-secondary: #000000;
+  --raw-code-bg: #2A1E00;
+  --raw-selection-bg: #5C3D00;
+  --raw-highlight-bg: #1A2A3A;
+  --raw-hue: #FFB000;
+  --raw-checkbox-bg: #2A1E00;
+  --raw-mobile-active: #232323;
+  --surface-highlight-dark: #2A1E00;
+  --preset-on-hue: #000000;
+}
+
+/* A terminal draws in one colour, so Amber sets the font and link colours
+   too. It outranks Style Settings on purpose: while Amber is chosen, the font
+   and link colour pickers have no effect, and they apply again on any other
+   preset. */
+html body.obsidian-app.preset-amber {
+  --body-font-color-light: #000000;
+  --ui-font-color-light: #252525;
+  --link-color-light-custom: #000000;
+  --link-ext-color-light-custom: #252525;
+  --footnote-color-light-custom: #252525;
+  --body-font-color-dark: #FFB000;
+  --ui-font-color-dark: #CC8E00;
+  --link-color-dark-custom: #FFB000;
+  --link-ext-color-dark-custom: #CC8E00;
+  --footnote-color-dark-custom: #CC8E00;
+}
+
+/* -- Reader (newspaper) ------------------------------------------------ */
+html body.obsidian-app.theme-light.preset-reader {
+  --raw-bg-primary: #F5F5F0;
+  --raw-bg-secondary: #E8E8E0;
+  --raw-code-bg: color-mix(in srgb, #C8C8BE 22%, #ffffff);
+  --raw-selection-bg: #D0D8E8;
+  --raw-highlight-bg: #E8F0D8;
+  --raw-hue: #666666;
+  --raw-checkbox-bg: #D1D1CA;
+  --raw-mobile-active: #E8E8E0;
+  --raw-input-bg: #EEEEE8;
+  --raw-button-bg: #EEEEE8;
+  --surface-highlight-light: #E8E8E0;
+  --preset-on-hue: #FFFFFF;
+}
+
+html body.obsidian-app.theme-dark.preset-reader {
+  --raw-bg-primary: #2A2A28;
+  --raw-bg-secondary: #1E1E1C;
+  --raw-code-bg: #363634;
+  --raw-selection-bg: #3A3A48;
+  --raw-highlight-bg: #2A3A2A;
+  --raw-hue: #A0A0A0;
+  --raw-checkbox-bg: #181816;
+  --raw-mobile-active: #444442;
+  --surface-highlight-dark: #161615;
+  --preset-on-hue: #000000;
+}
+
+/* -- Text on the preset's hue ------------------------------------------ */
+/* Asphalt's hue is dark enough for white text in dark mode and bright enough
+   for black in light mode, and its rules hard-code exactly that. The presets
+   do not all follow it: every dark-mode hue is a light tint, and Amber and
+   Reader are dark in light mode. So where text sits on the hue, a preset's
+   text takes --preset-on-hue: Aubade's on-accent-hover colour for the same
+   preset, whose contrast ratios are recorded there. Asphalt keeps its rules. */
+html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .flair.mod-pop,
+html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .search-input-container :is(.input-right-decorator, .clickable-icon).is-active {
+  color: var(--preset-on-hue);
+}
+
+@media (hover: hover) {
+  html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) :is(a.tag, .metadata-property .multi-select-pill, div.bases-view .multi-select-pill):hover,
+  html body.obsidian-app:is(.theme-dark, .theme-light):is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) :is(.metadata-property .multi-select-pill, div.bases-view .multi-select-pill):hover * {
+    color: var(--preset-on-hue);
   }
 }

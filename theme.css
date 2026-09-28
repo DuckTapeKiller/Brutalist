@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.1 */
+/* 5.0.2 */
 /* ================================================================= */
 
 @font-face {
@@ -2184,6 +2184,17 @@ html body.obsidian-app.theme-light .flair.mod-pop {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Text Column Follows the Width */
+  /* Obsidian also caps .cm-content and every .cm-line at --file-line-width
+     (700px), with selectors that outrank the width classes above. Wider
+     notes then got a 1000px title and Properties over a 700px text column.
+     Same selectors as Obsidian's, so these win by coming later. Table rows
+     keep Obsidian's own 100% rule, which is more specific. */
+  .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+  .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+    max-width: var(--editor-width);
   }
 
   .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer,

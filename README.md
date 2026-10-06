@@ -792,12 +792,24 @@ Link colours are covered in [§4.2](#42-font-and-link-colours).
 * **Buttons** are flat. The main button in a dialog is shown in reverse, and buttons that delete something or call for care are solid red with white text, so they're hard to press by accident.
 * **Settings icon:** a custom icon replaces the standard gear, in the ribbon and in the mobile drawer.
 * **Help button:** hidden from the ribbon and the vault menu, to keep them tidy.
-* **File explorer:** thin guide lines show how folders are nested.
+* **File explorer:** folders are marked with fold bars, and open branches hang from an accent guide line (see below).
 * **Graph view and Canvas** draw their lines, nodes and cards in the theme's colours.
 * **Menus** on desktop use the surface colour.
 * **Status bar:** items sit on the page colour and highlight when you hover over them.
-* **New tab page:** its actions use the interface font and a quiet hover band.
+* **New tab page:** its actions are square buttons on the sidebar colour, in the interface font, with the hover colour laid over them.
 * **Calendar plugin:** today's date is bold (orange in dark mode and red in light mode on Asphalt, the accent colour on other presets), and days with notes are marked with a dot.
+
+### Fold bars
+
+Brutalist has no chevrons. Everything that opens and closes is marked with a bar instead: thin in the guide colour while closed, thick in your preset's accent colour while open.
+
+![Fold bars in the file explorer, in dark and light mode](screenshots/fold-bars.png)
+
+* **Folders and every other tree** (bookmarks, outline, tags, search results and backlinks): an open folder's bar leads into a 2px guide line in the accent colour, so you can trace each open branch.
+* **Headings, lists, callouts, the Properties panel and HTML `<details>`** fold with the same bar.
+* **Menus and pickers:** the vault switcher, the tab list, submenus, navigable rows in Settings and the Bases views menu show a thin bar that thickens in the accent when you point at it or open its menu.
+* **Collapse all:** the button above the file explorer shows a thick bar while any folder is open.
+* **Dropdowns** end in a bar instead of an arrow.
 
 ## 18. Print and PDF Export
 
@@ -875,6 +887,15 @@ html body.obsidian-app .markdown-preview-view.custom-timeline {
   --tl-row-gap: 1.5rem;                /* default 2.5rem */
   --tl-dot-size: 0.9rem;               /* default 1.2rem */
   --tl-dot-color: var(--text-muted);   /* default: the preset's accent */
+}
+
+/* Fold bars: widths, height and the open colour */
+html body.obsidian-app {
+  --fold-bar-width: 3px;                       /* closed, default 2px */
+  --fold-bar-width-open: 5px;                  /* open, default 4px */
+  --fold-bar-height: 14px;                     /* default 13px */
+  --fold-bar-color-open: var(--text-accent);   /* default: the preset's accent */
+  --nav-guide-border-width-open: 1px;          /* open branch line, default 2px */
 }
 
 /* Tables: a wider gap between cells (default 1px) */

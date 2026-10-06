@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.3 */
+/* 5.0.4 */
 /* ================================================================= */
 
 @font-face {
@@ -922,6 +922,14 @@ html body.obsidian-app {
   --input-border-width: 0px;
   --drag-border-width: 3px;
   --nav-guide-border-width: 1px;
+  /* Fold bars: every chevron is a bar, thin in the guide colour while closed and thick in
+     the accent while open. An open branch hangs from a guide line in the same accent. */
+  --fold-bar-width: 2px;
+  --fold-bar-width-open: 4px;
+  --fold-bar-height: 13px;
+  --fold-bar-color: var(--indentation-guide-color);
+  --fold-bar-color-open: var(--raw-hue);
+  --nav-guide-border-width-open: 2px;
   --tag-border-width: var(--input-border-width);
   /* Brutalist Geometry (Radius) */
   --menu-radius: 0;
@@ -1500,6 +1508,93 @@ html body.obsidian-app .workspace-tab-header:not(.is-active):hover .workspace-ta
   color: var(--text-muted);
 }
 
+/* Fold Bars - No Chevrons Anywhere */
+/* Fold toggles (every tree, properties, headings, lists, callouts, details) are bars:
+   thin in the guide colour while closed, thick in the accent while open. Collapsed state
+   sits on the toggle itself or on an ancestor (.is-collapsed), so either undoes it. */
+html body.obsidian-app .tree-item-self .collapse-icon {
+  opacity: 1;
+}
+
+html body.obsidian-app :is(.collapse-icon, .callout-fold) {
+  justify-content: center;
+}
+
+html body.obsidian-app :is(.collapse-icon, .callout-fold) svg.svg-icon {
+  display: none;
+}
+
+html body.obsidian-app :is(.collapse-icon, .callout-fold)::after {
+  content: "";
+  flex: none;
+  width: var(--fold-bar-width-open);
+  height: var(--fold-bar-height);
+  background-color: var(--fold-bar-color-open);
+  transition: width 120ms ease, background-color 120ms ease;
+}
+
+html body.obsidian-app :is(.collapse-icon.is-collapsed, .is-collapsed .collapse-icon, .callout-fold.is-collapsed)::after {
+  width: var(--fold-bar-width);
+  background-color: var(--fold-bar-color);
+}
+
+/* HTML details: the disclosure triangle becomes the same bar, in a fixed box so the
+   summary text does not move when it opens */
+html body.obsidian-app details > summary {
+  list-style: none;
+}
+
+html body.obsidian-app details > summary::-webkit-details-marker {
+  display: none;
+}
+
+html body.obsidian-app details > summary::before {
+  content: "";
+  display: inline-block;
+  width: var(--fold-bar-width-open);
+  height: 0.9em;
+  margin-inline-end: 0.6em;
+  vertical-align: -0.1em;
+  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) 100% no-repeat;
+}
+
+html body.obsidian-app details[open] > summary::before {
+  background: var(--fold-bar-color-open);
+}
+
+/* Menus and pickers: the chevron icon is cleared and painted with a thin bar, which
+   thickens into the accent while hovered or while its menu is open. The collapse-all
+   button is thick while anything is open, which is when it collapses everything. */
+html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux) svg.svg-icon,
+html body.obsidian-app .nav-action-button > svg.svg-icon:is(.lucide-chevrons-down-up, .lucide-chevrons-up-down) {
+  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) var(--fold-bar-height) no-repeat;
+}
+
+html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux) svg.svg-icon > *,
+html body.obsidian-app .nav-action-button > svg.svg-icon:is(.lucide-chevrons-down-up, .lucide-chevrons-up-down) > * {
+  display: none;
+}
+
+html body.obsidian-app :is(.workspace-drawer-vault-switcher:hover, .workspace-drawer-vault-switcher.has-active-menu, .workspace-tab-header-tab-list:hover, .menu-item.selected, .menu-item.has-submenu.is-active, .setting-item.mod-navigable:hover, .vertical-tab-nav-item:hover, .bases-toolbar .text-icon-button:hover, .bases-toolbar .text-icon-button.has-active-menu) :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .text-button-icon.mod-aux) svg.svg-icon,
+html body.obsidian-app .workspace-tab-header-tab-list :is(:hover, .has-active-menu) > svg.svg-icon,
+html body.obsidian-app .nav-action-button > svg.svg-icon.lucide-chevrons-down-up {
+  background: linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open)) center / var(--fold-bar-width-open) var(--fold-bar-height) no-repeat;
+}
+
+/* Dropdowns: the chevron drawn in the background becomes the bar */
+html body.obsidian-app .dropdown {
+  background-image: linear-gradient(var(--fold-bar-color), var(--fold-bar-color));
+  background-position: right 0.95em center;
+  background-size: var(--fold-bar-width) var(--fold-bar-height);
+  background-repeat: no-repeat;
+  background-blend-mode: normal;
+}
+
+html body.obsidian-app .dropdown:hover {
+  background-image: linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open));
+  background-size: var(--fold-bar-width-open) var(--fold-bar-height);
+}
+
 /* ======================================================================= */
 /* 5. STATUS BAR                                                           */
 /* The bottom status bar and its items.                                    */
@@ -1651,17 +1746,11 @@ html body.obsidian-app .nav-file-title-content {
   color: var(--text-normal);
 }
 
-/* Nav Guide Lines - Synchronised with Global Indentation Variables */
-html body.obsidian-app .nav-folder-children,
-html body.obsidian-app .nav-folder-children::before,
-html body.obsidian-app .nav-folder-children>.nav-folder-item {
-  border-left: var(--nav-guide-border-width) solid var(--indentation-guide-color);
-}
-
-/* Active Nav Guide - When folder is expanded/focused */
-html body.obsidian-app .nav-folder-children:hover,
-html body.obsidian-app .nav-item.is-active + .nav-folder-children {
-  border-left-color: var(--indentation-guide-color-active);
+/* Nav Guide Lines - An open branch hangs from a solid line in the accent, led by its
+   fold bar and centred under it (every tree: files, bookmarks, outline, tags, search) */
+html body.obsidian-app .tree-item-children {
+  border-inline-start: var(--nav-guide-border-width-open) solid var(--fold-bar-color-open);
+  margin-inline-start: calc(var(--nav-item-children-margin-start, var(--size-4-3)) - var(--nav-guide-border-width-open) / 2);
 }
 
 /* Remove Lines for Files */

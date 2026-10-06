@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.2 */
+/* 5.0.3 */
 /* ================================================================= */
 
 @font-face {
@@ -938,6 +938,9 @@ html body.obsidian-app {
   --modal-radius: 0 !important;
   --checkbox-radius: 0 !important;
   --toggle-thumb-radius: 50% !important;
+  /* Obsidian 1.14 rounds pills (new-tab buttons, property values, settings filters) and hotkey chips with these */
+  --pill-radius: 0;
+  --hotkey-radius: 0;
   --toggle-track-radius: 0 !important;
   --suggestion-radius: 0 !important;
   --callout-radius: 0 !important;
@@ -2406,11 +2409,28 @@ html body.obsidian-app .empty-state-action {
   color: var(--text-muted);
 }
 
-/* Hover state: Already exists in your code */
+/* Buttons. Obsidian 1.14 builds them as .text-icon-button.mod-pill inside
+   .empty-state-action-list, whose rules outrank a plain .empty-state-action, so
+   these name the list too. At rest: the secondary background, so each button
+   reads as a button. On hover: the hover tint laid over that background. */
+html body.obsidian-app .empty-state-action-list > .empty-state-action {
+  background-color: var(--background-secondary);
+  border-color: transparent;
+}
+
+html body.obsidian-app .empty-state-action-list > .empty-state-action:hover,
+html body.obsidian-app .empty-state-action-list > .empty-state-action.is-focused,
 html body.obsidian-app .empty-state-action:hover,
 html body.obsidian-app .empty-state-action.is-focused {
   color: var(--new-tab-hover-text);
-  background-color: var(--new-tab-hover-bg);
+  background-color: var(--background-secondary);
+  background-image: linear-gradient(var(--new-tab-hover-bg), var(--new-tab-hover-bg));
+  border-color: transparent;
+}
+
+/* The hotkey chip shares the hover colour, so on a hovered button it takes the resting one */
+html body.obsidian-app .empty-state-action-list > .empty-state-action:is(:hover, .is-focused) .empty-state-hotkey {
+  background-color: var(--background-secondary);
 }
 
 /* ======================================================================= */

@@ -575,6 +575,29 @@ settings:
         value: heading-scale-compact
       - label: Large
         value: heading-scale-large
+  - id: section-fold-markers
+    title: Fold Markers
+    type: heading
+    level: 2
+  - id: fold-marker
+    title: Fold Marker
+    description: The mark that replaces every chevron, on folders and other trees, headings, lists, callouts, Properties, details blocks, menus and pickers. It turns the accent colour when open; the line also thickens.
+    type: class-select
+    allowEmpty: false
+    default: fold-marker-ellipsis
+    options:
+      - label: Three Vertical Dots (Default)
+        value: fold-marker-ellipsis
+      - label: Line (Original)
+        value: fold-marker-line
+      - label: Line Dot Bottom Vertical
+        value: fold-marker-line-dot
+      - label: Asterisk
+        value: fold-marker-asterisk
+      - label: Git Commit Vertical
+        value: fold-marker-commit
+      - label: Arrow Down to Dot
+        value: fold-marker-arrow-dot
 */
 
 /* @settings
@@ -929,6 +952,21 @@ html body.obsidian-app {
   --fold-bar-height: 13px;
   --fold-bar-color: var(--indentation-guide-color);
   --fold-bar-color-open: var(--raw-hue);
+  /* The marker's shape and size. Every fold toggle, picker and menu chevron uses them,
+     so these two lines change them all. The default is three vertical dots. none and
+     0px draw the plain bar above (the widths and height apply to it). An image, such as
+     an SVG as a data: URL, is drawn at the size given, in the colours above. Style
+     Settings > Page Layout & Geometry > Fold Marker picks from the icons below, from
+     Lucide (ISC licence); the dots began as Feather's more-vertical (MIT licence).
+     Dropdowns cannot be masked, so section 4 draws each option for them a second time
+     from gradients; adding an icon means adding its drawing there too. */
+  --fold-marker-ellipsis: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='1'/%3E%3Ccircle cx='12' cy='5' r='1'/%3E%3Ccircle cx='12' cy='19' r='1'/%3E%3C/svg%3E");
+  --fold-marker-line-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3C/svg%3E");
+  --fold-marker-asterisk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14'/%3E%3Cpath d='m18.065 8.496-12.125 7'/%3E%3Cpath d='m5.94 8.504 12.125 7'/%3E%3C/svg%3E");
+  --fold-marker-commit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v6'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 15v6'/%3E%3C/svg%3E");
+  --fold-marker-arrow-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v14'/%3E%3Cpath d='m19 9-7 7-7-7'/%3E%3Ccircle cx='12' cy='21' r='1'/%3E%3C/svg%3E");
+  --fold-bar-shape: var(--fold-marker-ellipsis);
+  --fold-bar-shape-size: 13px;
   --nav-guide-border-width-open: 2px;
   --tag-border-width: var(--input-border-width);
   /* Brutalist Geometry (Radius) */
@@ -1050,6 +1088,9 @@ html body.obsidian-app.theme-dark {
   --prompt-background: var(--raw-bg-secondary);
   --mobile-drawer-bg: var(--raw-bg-primary);
   --surface-highlight: var(--surface-highlight-dark);
+  /* The focused row in a tree, drawn see-through so the guide line shows under it.
+     Over the sidebar it is exactly --surface-highlight. Presets replace it. */
+  --tree-row-focus: rgba(0, 0, 0, 0.24);
   --menu-custom-bg: var(--surface-highlight);
   --checkbox-bg-unchecked: var(--raw-checkbox-bg);
   /* Interactive Elements & UI */
@@ -1175,6 +1216,9 @@ html body.obsidian-app.theme-light {
   --mobile-drawer-bg: var(--raw-bg-secondary);
   --toggle-on-color: var(--raw-hue);
   --surface-highlight: var(--surface-highlight-light);
+  /* The focused row in a tree, drawn see-through so the guide line shows under it.
+     Over the sidebar it is exactly --surface-highlight. Presets replace it. */
+  --tree-row-focus: rgba(255, 255, 255, 0.49);
   --menu-custom-bg: var(--surface-highlight);
   --checkbox-bg-unchecked: var(--raw-checkbox-bg);
   /* Interactive Elements & UI */
@@ -1508,10 +1552,36 @@ html body.obsidian-app .workspace-tab-header:not(.is-active):hover .workspace-ta
   color: var(--text-muted);
 }
 
+/* Fold Marker picked in Style Settings. The default, three vertical dots, is set in
+   section 0 and needs no rule. :where() keeps these at the specificity of that variable
+   block, so they beat it by coming later, and a snippet that sets --fold-bar-shape
+   still beats them. */
+html body.obsidian-app:where(.fold-marker-line) {
+  --fold-bar-shape: none;
+  --fold-bar-shape-size: 0px;
+}
+
+html body.obsidian-app:where(.fold-marker-line-dot) {
+  --fold-bar-shape: var(--fold-marker-line-dot);
+}
+
+html body.obsidian-app:where(.fold-marker-asterisk) {
+  --fold-bar-shape: var(--fold-marker-asterisk);
+}
+
+html body.obsidian-app:where(.fold-marker-commit) {
+  --fold-bar-shape: var(--fold-marker-commit);
+}
+
+html body.obsidian-app:where(.fold-marker-arrow-dot) {
+  --fold-bar-shape: var(--fold-marker-arrow-dot);
+}
+
 /* Fold Bars - No Chevrons Anywhere */
 /* Fold toggles (every tree, properties, headings, lists, callouts, details) are bars:
    thin in the guide colour while closed, thick in the accent while open. Collapsed state
-   sits on the toggle itself or on an ancestor (.is-collapsed), so either undoes it. */
+   sits on the toggle itself or on an ancestor (.is-collapsed), so either undoes it.
+   Every marker below takes its shape from --fold-bar-shape (section 0). */
 html body.obsidian-app .tree-item-self .collapse-icon {
   opacity: 1;
 }
@@ -1527,14 +1597,16 @@ html body.obsidian-app :is(.collapse-icon, .callout-fold) svg.svg-icon {
 html body.obsidian-app :is(.collapse-icon, .callout-fold)::after {
   content: "";
   flex: none;
-  width: var(--fold-bar-width-open);
-  height: var(--fold-bar-height);
+  width: max(var(--fold-bar-width-open), var(--fold-bar-shape-size));
+  height: max(var(--fold-bar-height), var(--fold-bar-shape-size));
   background-color: var(--fold-bar-color-open);
+  -webkit-mask: var(--fold-bar-shape) center / 100% 100% no-repeat;
+  mask: var(--fold-bar-shape) center / 100% 100% no-repeat;
   transition: width 120ms ease, background-color 120ms ease;
 }
 
 html body.obsidian-app :is(.collapse-icon.is-collapsed, .is-collapsed .collapse-icon, .callout-fold.is-collapsed)::after {
-  width: var(--fold-bar-width);
+  width: max(var(--fold-bar-width), var(--fold-bar-shape-size));
   background-color: var(--fold-bar-color);
 }
 
@@ -1551,11 +1623,13 @@ html body.obsidian-app details > summary::-webkit-details-marker {
 html body.obsidian-app details > summary::before {
   content: "";
   display: inline-block;
-  width: var(--fold-bar-width-open);
-  height: 0.9em;
+  width: max(var(--fold-bar-width-open), var(--fold-bar-shape-size));
+  height: max(0.9em, var(--fold-bar-shape-size));
   margin-inline-end: 0.6em;
   vertical-align: -0.1em;
-  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) 100% no-repeat;
+  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) 100% no-repeat, linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  -webkit-mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
 }
 
 html body.obsidian-app details[open] > summary::before {
@@ -1564,35 +1638,114 @@ html body.obsidian-app details[open] > summary::before {
 
 /* Menus and pickers: the chevron icon is cleared and painted with a thin bar, which
    thickens into the accent while hovered or while its menu is open. The collapse-all
-   button is thick while anything is open, which is when it collapses everything. */
-html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux) svg.svg-icon,
+   button is thick while anything is open, which is when it collapses everything.
+   On phones and tablets the drawer has two more: the vault name, and the picker for
+   Files, Search, Bookmarks and the rest. The vault name opens the system's own picker,
+   which leaves no open state behind, so its bar thickens while it is tapped or focused;
+   so do the combobox pickers in Settings. The phone's tab switcher menu and Style
+   Settings' section headings are here too; the headings are thick while their section
+   is open. */
+html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux, .workspace-drawer-header-name-chevron, .workspace-drawer-tab-select .workspace-tab-header-inner-chevron, .combobox-button-chevron, .mobile-tab-switcher-menu-button-chevron, .style-settings-collapse-indicator) svg.svg-icon,
 html body.obsidian-app .nav-action-button > svg.svg-icon:is(.lucide-chevrons-down-up, .lucide-chevrons-up-down) {
-  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) var(--fold-bar-height) no-repeat;
+  background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) var(--fold-bar-height) no-repeat, linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  -webkit-mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
 }
 
-html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux) svg.svg-icon > *,
+html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux, .workspace-drawer-header-name-chevron, .workspace-drawer-tab-select .workspace-tab-header-inner-chevron, .combobox-button-chevron, .mobile-tab-switcher-menu-button-chevron, .style-settings-collapse-indicator) svg.svg-icon > *,
 html body.obsidian-app .nav-action-button > svg.svg-icon:is(.lucide-chevrons-down-up, .lucide-chevrons-up-down) > * {
   display: none;
 }
 
 html body.obsidian-app :is(.workspace-drawer-vault-switcher:hover, .workspace-drawer-vault-switcher.has-active-menu, .workspace-tab-header-tab-list:hover, .menu-item.selected, .menu-item.has-submenu.is-active, .setting-item.mod-navigable:hover, .vertical-tab-nav-item:hover, .bases-toolbar .text-icon-button:hover, .bases-toolbar .text-icon-button.has-active-menu) :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .text-button-icon.mod-aux) svg.svg-icon,
 html body.obsidian-app .workspace-tab-header-tab-list :is(:hover, .has-active-menu) > svg.svg-icon,
-html body.obsidian-app .nav-action-button > svg.svg-icon.lucide-chevrons-down-up {
-  background: linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open)) center / var(--fold-bar-width-open) var(--fold-bar-height) no-repeat;
+html body.obsidian-app .nav-action-button > svg.svg-icon.lucide-chevrons-down-up,
+html body.obsidian-app :is(.workspace-drawer-header-switcher:hover, .workspace-drawer-header-switcher:focus-within) .workspace-drawer-header-name-chevron svg.svg-icon,
+html body.obsidian-app .workspace-drawer-tab-options:not(.is-collapsed) .workspace-drawer-tab-select .workspace-tab-header-inner-chevron svg.svg-icon,
+html body.obsidian-app .workspace-drawer-tab-select:hover .workspace-tab-header-inner-chevron svg.svg-icon,
+html body.obsidian-app .combobox-button:is(:hover, :focus-within, .has-active-menu) .combobox-button-chevron svg.svg-icon,
+html body.obsidian-app .mobile-tab-switcher-menu-button:is(:hover, .mobile-tap, .has-active-menu) .mobile-tab-switcher-menu-button-chevron svg.svg-icon,
+html body.obsidian-app .style-settings-heading:not(.is-collapsed) .style-settings-collapse-indicator svg.svg-icon {
+  background: linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open)) center / var(--fold-bar-width-open) var(--fold-bar-height) no-repeat, linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  -webkit-mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
 }
 
-/* Dropdowns: the chevron drawn in the background becomes the bar */
+/* Style Settings turns its arrow with a rotation while a section is closed; the marker
+   stays upright and shows the state by colour and width instead. */
+html body.obsidian-app .style-settings-collapse-indicator svg.svg-icon {
+  transform: none;
+}
+
+/* Style Settings pulls the marker of a nested heading 17px to the left, outside the
+   heading's name, and Obsidian 1.14 clips that name (overflow: hidden), so nested
+   headings showed no marker at all, in any theme. Heading names are short. */
+html body.obsidian-app .style-settings-heading .setting-item-name {
+  overflow: visible;
+}
+
+/* Dropdowns: the chevron drawn in the background becomes the marker. A <select> can be
+   neither masked nor given a pseudo-element, so each marker is drawn here a second time
+   from gradients, which can take the marker colours (Obsidian draws its own dropdown
+   circle the same way). Coordinates follow Lucide's 24-unit grid, centred on the marker:
+   --u is one unit, and --fold-dropdown-x is how far the marker's centre sits from the
+   right edge. A custom --fold-bar-shape set in a snippet has no drawing here, so
+   dropdowns keep the option picked in Style Settings. */
 html body.obsidian-app .dropdown {
-  background-image: linear-gradient(var(--fold-bar-color), var(--fold-bar-color));
-  background-position: right 0.95em center;
-  background-size: var(--fold-bar-width) var(--fold-bar-height);
+  --fold-dropdown-color: var(--fold-bar-color);
+  --u: calc(var(--fold-bar-shape-size) / 24);
+  --fold-dropdown-x: calc(0.95em + var(--fold-bar-width) / 2);
+  --fold-dot: radial-gradient(closest-side, var(--fold-dropdown-color) calc(100% - 0.3px), transparent);
+  --fold-ring: radial-gradient(closest-side, transparent calc(50% - 0.3px), var(--fold-dropdown-color) 50% calc(100% - 0.3px), transparent);
+  --fold-stroke: linear-gradient(var(--fold-dropdown-color), var(--fold-dropdown-color));
+  --fold-band: transparent calc(50% - var(--u)), var(--fold-dropdown-color) calc(50% - var(--u) + 0.3px) calc(50% + var(--u) - 0.3px), transparent calc(50% + var(--u));
+  /* Three vertical dots, the default */
+  --fold-dropdown-image: var(--fold-dot), var(--fold-dot), var(--fold-dot);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% - 7 * var(--u)), right calc(var(--fold-dropdown-x) - 2 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% + 7 * var(--u));
+  --fold-dropdown-size: calc(4 * var(--u)) calc(4 * var(--u));
+  background-image: var(--fold-dropdown-image);
+  background-position: var(--fold-dropdown-position);
+  background-size: var(--fold-dropdown-size);
   background-repeat: no-repeat;
   background-blend-mode: normal;
 }
 
 html body.obsidian-app .dropdown:hover {
-  background-image: linear-gradient(var(--fold-bar-color-open), var(--fold-bar-color-open));
-  background-size: var(--fold-bar-width-open) var(--fold-bar-height);
+  --fold-dropdown-color: var(--fold-bar-color-open);
+}
+
+html body.obsidian-app:where(.fold-marker-line) .dropdown {
+  --fold-dropdown-image: var(--fold-stroke);
+  --fold-dropdown-position: right 0.95em center;
+  --fold-dropdown-size: var(--fold-bar-width) var(--fold-bar-height);
+}
+
+html body.obsidian-app:where(.fold-marker-line) .dropdown:hover {
+  --fold-dropdown-size: var(--fold-bar-width-open) var(--fold-bar-height);
+}
+
+html body.obsidian-app:where(.fold-marker-line-dot) .dropdown {
+  --fold-dropdown-image: var(--fold-stroke), var(--fold-ring);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 1 * var(--u)) top calc(50% - 3 * var(--u)), right calc(var(--fold-dropdown-x) - 4 * var(--u)) top calc(50% + 6 * var(--u));
+  --fold-dropdown-size: calc(2 * var(--u)) calc(14 * var(--u)), calc(8 * var(--u)) calc(8 * var(--u));
+}
+
+html body.obsidian-app:where(.fold-marker-asterisk) .dropdown {
+  --fold-dropdown-image: var(--fold-stroke), linear-gradient(150deg, var(--fold-band)), linear-gradient(30deg, var(--fold-band));
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 1 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 6.93 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 6.93 * var(--u)) top 50%;
+  --fold-dropdown-size: calc(2 * var(--u)) calc(16 * var(--u)), calc(13.86 * var(--u)) calc(8 * var(--u)), calc(13.86 * var(--u)) calc(8 * var(--u));
+}
+
+html body.obsidian-app:where(.fold-marker-commit) .dropdown {
+  --fold-dropdown-image: var(--fold-stroke), var(--fold-ring), var(--fold-stroke);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 1 * var(--u)) top calc(50% - 6 * var(--u)), right calc(var(--fold-dropdown-x) - 4 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 1 * var(--u)) top calc(50% + 6 * var(--u));
+  --fold-dropdown-size: calc(2 * var(--u)) calc(8 * var(--u)), calc(8 * var(--u)) calc(8 * var(--u)), calc(2 * var(--u)) calc(8 * var(--u));
+}
+
+html body.obsidian-app:where(.fold-marker-arrow-dot) .dropdown {
+  --fold-dropdown-image: var(--fold-stroke), linear-gradient(135deg, var(--fold-band)), linear-gradient(45deg, var(--fold-band)), var(--fold-dot);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 1 * var(--u)) top calc(50% - 3 * var(--u)), right calc(var(--fold-dropdown-x) - 7.705 * var(--u)) top calc(50% + 0.5 * var(--u)), right calc(var(--fold-dropdown-x) - 0.705 * var(--u)) top calc(50% + 0.5 * var(--u)), right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% + 9 * var(--u));
+  --fold-dropdown-size: calc(2 * var(--u)) calc(16 * var(--u)), calc(8.41 * var(--u)) calc(8.41 * var(--u)), calc(8.41 * var(--u)) calc(8.41 * var(--u)), calc(4 * var(--u)) calc(4 * var(--u));
 }
 
 /* ======================================================================= */
@@ -2643,9 +2796,13 @@ html body.obsidian-app.is-mobile .workspace-drawer-tab-options:not(.is-collapsed
 }
 
 /* Ensures full visibility when the container is collapsed (acting as the standard bottom bar) */
+/* It fades back in over the time Obsidian takes to fade the list out, so closing
+   mirrors opening. Without a transition here the label snapped back while the
+   list was still on screen. */
 html body.obsidian-app.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-icon,
 html body.obsidian-app.is-mobile .workspace-drawer-tab-options.is-collapsed .workspace-drawer-tab-select .workspace-tab-header-inner-title {
   opacity: 1;
+  transition: opacity 0.15s ease;
 }
 
 /* Settings Form Elements */
@@ -3077,12 +3234,13 @@ html body.obsidian-app .markdown-rendered .image-embed[alt]:not([alt=""])::after
   }
 }
 
-/* Active state on files and folders on left panel */
+/* Active state on files and folders on left panel. The row overlaps the guide line
+   of its folder, so the fill is see-through (section 1) and the line stays visible. */
 html body.obsidian-app .tree-item-self.has-focus {
   border: none;
   outline: none;
   box-shadow: none;
-  background-color: var(--surface-highlight);
+  background-color: var(--tree-row-focus);
 }
 
 /* Forces expansion of fields in the front matter */
@@ -3971,6 +4129,8 @@ html body.obsidian-app.theme-light.preset-ocean {
   --surface-highlight-light: #A5D6FF;
   --background-modifier-hover: #90CAF9;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(0, 122, 209, 0.13);
+  --tree-row-focus: transparent;
 }
 
 html body.obsidian-app.theme-dark.preset-ocean {
@@ -3985,6 +4145,8 @@ html body.obsidian-app.theme-dark.preset-ocean {
   --surface-highlight-dark: #0B1620;
   --background-modifier-hover: #273B4F;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(156, 201, 255, 0.17);
+  --tree-row-focus: rgba(0, 0, 0, 0.27);
 }
 
 /* -- Forest (earthy green) --------------------------------------------- */
@@ -4002,6 +4164,8 @@ html body.obsidian-app.theme-light.preset-forest {
   --surface-highlight-light: #C8E6C9;
   --background-modifier-hover: #A5D6A7;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(6, 141, 12, 0.18);
+  --tree-row-focus: transparent;
 }
 
 html body.obsidian-app.theme-dark.preset-forest {
@@ -4016,6 +4180,8 @@ html body.obsidian-app.theme-dark.preset-forest {
   --surface-highlight-dark: #0B140F;
   --background-modifier-hover: #2A4030;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(174, 250, 185, 0.17);
+  --tree-row-focus: rgba(0, 4, 0, 0.27);
 }
 
 /* -- Sunset (orange / pink) -------------------------------------------- */
@@ -4033,6 +4199,8 @@ html body.obsidian-app.theme-light.preset-sunset {
   --surface-highlight-light: #FFCCBC;
   --background-modifier-hover: #FFAB91;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(255, 61, 0, 0.23);
+  --tree-row-focus: transparent;
 }
 
 html body.obsidian-app.theme-dark.preset-sunset {
@@ -4047,6 +4215,8 @@ html body.obsidian-app.theme-dark.preset-sunset {
   --surface-highlight-dark: #140E0A;
   --background-modifier-hover: #4A3028;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(255, 161, 138, 0.21);
+  --tree-row-focus: rgba(5, 4, 0, 0.29);
 }
 
 /* -- Amber (IBM terminal) ---------------------------------------------- */
@@ -4064,6 +4234,8 @@ html body.obsidian-app.theme-light.preset-amber {
   --surface-highlight-light: #FFC74A;
   --background-modifier-hover: #FFC107;
   --preset-on-hue: #FFFFFF;
+  --tree-row-hover: rgba(255, 227, 12, 0.6);
+  --tree-row-focus: rgba(255, 237, 123, 0.6);
 }
 
 html body.obsidian-app.theme-dark.preset-amber {
@@ -4078,6 +4250,8 @@ html body.obsidian-app.theme-dark.preset-amber {
   --surface-highlight-dark: #2A1E00;
   --background-modifier-hover: #402B00;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(246, 165, 0, 0.26);
+  --tree-row-focus: rgba(247, 176, 0, 0.17);
 }
 
 /* A terminal draws in one colour, so Amber sets the font and link colours
@@ -4112,6 +4286,8 @@ html body.obsidian-app.theme-light.preset-reader {
   --surface-highlight-light: #E8E8E0;
   --background-modifier-hover: #D8D8D0;
   --preset-on-hue: #FFFFFF;
+  --tree-row-hover: rgba(32, 32, 24, 0.08);
+  --tree-row-focus: transparent;
 }
 
 html body.obsidian-app.theme-dark.preset-reader {
@@ -4126,6 +4302,8 @@ html body.obsidian-app.theme-dark.preset-reader {
   --surface-highlight-dark: #161615;
   --background-modifier-hover: #3A3A38;
   --preset-on-hue: #000000;
+  --tree-row-hover: rgba(245, 245, 243, 0.13);
+  --tree-row-focus: rgba(0, 0, 0, 0.27);
 }
 
 /* -- Callouts on a preset ---------------------------------------------- */
@@ -4188,6 +4366,36 @@ html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset
 html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .status-bar-item:hover {
   background-color: var(--background-modifier-hover);
   color: var(--text-normal);
+}
+
+/* -- Rows in the file tree and other trees ------------------------------ */
+/* A row runs under the guide line of its folder, and the preset hover colour,
+   which also marks the open note, is opaque, so the line broke at every hovered
+   or open row. In a tree the same colour is drawn see-through instead:
+   --tree-row-hover and --tree-row-focus in each preset block are overlays that
+   come out exactly as the hover and highlight colours over the sidebar, while
+   the line shows through them. Light Amber's hover sits at the top of the red
+   channel, which no overlay can reach, so it comes out a shade darker
+   (#EBC107 for #FFC107). Where a preset's highlight is the sidebar colour, the
+   focused row has no fill, as before. */
+html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) .tree-item-self {
+  --nav-item-background-hover: var(--tree-row-hover);
+  --nav-item-background-active: var(--tree-row-hover);
+}
+
+/* -- Fold markers, list bullets and indentation guides ------------------ */
+/* Closed fold markers, list bullets and the indentation guides beside nested
+   lists were drawn in the font colour, so on a preset only an open marker and
+   its branch line took the hue. On a preset they take the hue mixed toward the
+   callout colour, as tags do, which keeps them readable and keeps a closed
+   marker distinct from an open one in the plain hue. The guide beside the list
+   the cursor is in is the plain hue. PDF export keeps its own colours. */
+@media not print {
+  html body.obsidian-app:is(.preset-ocean, .preset-forest, .preset-sunset, .preset-amber, .preset-reader) {
+    --indentation-guide-color: color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target));
+    --indentation-guide-color-active: var(--raw-hue);
+    --list-marker-color: color-mix(in srgb, var(--raw-hue) 55%, var(--callout-mix-target));
+  }
 }
 
 /* -- Tags, links, calendar and the new tab page ------------------------- */
@@ -4484,31 +4692,40 @@ html body.obsidian-app.active-line-highlight .markdown-source-view.mod-cm6 .cm-l
 
 /* ======================================================================= */
 /* 29. REDUCED MOTION                                                      */
-/* Honours the system setting to reduce motion.                            */
+/* Honours the system setting to reduce motion, for the theme's own        */
+/* effects only.                                                           */
 /* ======================================================================= */
 
-/* Cards, buttons, toggles, the ribbon and the timeline all animate. With
-   reduced motion asked for, every transition and animation, the theme's and
-   Obsidian's, finishes at once in its end state. Durations are cut to almost
-   nothing rather than removed, so anything waiting for a transitionend or
-   animationend event still gets one. */
-@media (prefers-reduced-motion: reduce) {
-  html body.obsidian-app {
-    --anim-duration-superfast: 0ms;
-    --anim-duration-fast: 0ms;
-    --anim-duration-moderate: 0ms;
-    --anim-duration-slow: 0ms;
-  }
+/* Modal buttons, fold bars, toggles, the drawer's tab label, the hidden
+   ribbon, dashboard cards and links, the timeline and unresolved pills all
+   animate. With reduced motion asked for, those finish at once in their end
+   state. Durations are cut to almost nothing rather than removed, so anything
+   waiting for a transitionend or animationend event still gets one.
 
-  html body.obsidian-app *,
-  html body.obsidian-app *::before,
-  html body.obsidian-app *::after {
+   Obsidian's own motion is left alone: the drawer sliding in and out, swiping
+   between panels, menu and dialog sheets, the navigation bar, the tap
+   highlight on list rows. Obsidian sets those itself, most of them inline,
+   and an !important rule on every element here used to override them, so on a
+   phone with Reduce Motion on every panel and menu snapped open and shut. */
+@media (prefers-reduced-motion: reduce) {
+  html body.obsidian-app .modal button:not(.mod-cta):not(.mod-warning):not(.mod-destructive),
+  html body.obsidian-app .modal button.mod-cta,
+  html body.obsidian-app :is(.collapse-icon, .callout-fold)::after,
+  html body.obsidian-app .checkbox-container::after,
+  html body.obsidian-app .checkbox-container:active::after,
+  html body.obsidian-app.is-mobile .workspace-drawer-tab-options .workspace-drawer-tab-select :is(.workspace-tab-header-inner-icon, .workspace-tab-header-inner-title),
+  html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon,
+  html body.obsidian-app.hide-ribbon:not(.is-mobile) .workspace-ribbon > *,
+  html body.obsidian-app .dashboard.hide-all .view-header .clickable-icon,
+  html body.obsidian-app .dashboard :is(.callout, .callout-title, .callout-content li > a),
+  html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul) > li,
+  html body.obsidian-app .markdown-preview-view.custom-timeline ul:not(ul ul) > li::before,
+  html body.obsidian-app .metadata-property .multi-select-pill-content.internal-link.is-unresolved {
     animation-duration: 0.01ms !important;
     animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
-    scroll-behavior: auto !important;
   }
 }
 

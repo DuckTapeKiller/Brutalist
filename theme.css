@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.4 */
+/* 5.0.5 */
 /* ================================================================= */
 
 @font-face {
@@ -581,15 +581,19 @@ settings:
     level: 2
   - id: fold-marker
     title: Fold Marker
-    description: The mark that replaces every chevron, on folders and other trees, headings, lists, callouts, Properties, details blocks, menus and pickers. It turns the accent colour when open; the line also thickens.
+    description: The mark that replaces every chevron, on folders and other trees, headings, lists, callouts, Properties, details blocks, menus and pickers. It turns the accent colour when open; the line also thickens. The eye is shut while folded and opens with the fold.
     type: class-select
     allowEmpty: false
-    default: fold-marker-ellipsis
+    default: fold-marker-line
     options:
-      - label: Three Vertical Dots (Default)
-        value: fold-marker-ellipsis
-      - label: Line (Original)
+      - label: Line (Default)
         value: fold-marker-line
+      - label: Small Circle
+        value: fold-marker-circle
+      - label: Eye, Shut While Folded
+        value: fold-marker-eye
+      - label: Three Vertical Dots
+        value: fold-marker-ellipsis
       - label: Line Dot Bottom Vertical
         value: fold-marker-line-dot
       - label: Asterisk
@@ -947,17 +951,19 @@ html body.obsidian-app {
   --nav-guide-border-width: 1px;
   /* Fold bars: every chevron is a bar, thin in the guide colour while closed and thick in
      the accent while open. An open branch hangs from a guide line in the same accent. */
-  --fold-bar-width: 2px;
-  --fold-bar-width-open: 4px;
+  --fold-bar-width: 3px;
+  --fold-bar-width-open: 5px;
   --fold-bar-height: 13px;
   --fold-bar-color: var(--indentation-guide-color);
   --fold-bar-color-open: var(--raw-hue);
   /* The marker's shape and size. Every fold toggle, picker and menu chevron uses them,
-     so these two lines change them all. The default is three vertical dots. none and
-     0px draw the plain bar above (the widths and height apply to it). An image, such as
+     so these two lines change them all. The default, none and 0px, draws the plain
+     bar above (the widths and height apply to it). An image, such as
      an SVG as a data: URL, is drawn at the size given, in the colours above. Style
      Settings > Page Layout & Geometry > Fold Marker picks from the icons below, from
      Lucide (ISC licence); the dots began as Feather's more-vertical (MIT licence).
+     --fold-bar-shape-closed, when set, is the shape while folded or at rest (the eye
+     uses it); unset, both states use --fold-bar-shape.
      Dropdowns cannot be masked, so section 4 draws each option for them a second time
      from gradients; adding an icon means adding its drawing there too. */
   --fold-marker-ellipsis: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='1'/%3E%3Ccircle cx='12' cy='5' r='1'/%3E%3Ccircle cx='12' cy='19' r='1'/%3E%3C/svg%3E");
@@ -965,8 +971,11 @@ html body.obsidian-app {
   --fold-marker-asterisk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14'/%3E%3Cpath d='m18.065 8.496-12.125 7'/%3E%3Cpath d='m5.94 8.504 12.125 7'/%3E%3C/svg%3E");
   --fold-marker-commit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v6'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 15v6'/%3E%3C/svg%3E");
   --fold-marker-arrow-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v14'/%3E%3Cpath d='m19 9-7 7-7-7'/%3E%3Ccircle cx='12' cy='21' r='1'/%3E%3C/svg%3E");
-  --fold-bar-shape: var(--fold-marker-ellipsis);
-  --fold-bar-shape-size: 13px;
+  --fold-marker-circle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3C/svg%3E");
+  --fold-marker-eye: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+  --fold-marker-eye-closed: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15 18-.722-3.25'/%3E%3Cpath d='M2 8a10.645 10.645 0 0 0 20 0'/%3E%3Cpath d='m20 15-1.726-2.05'/%3E%3Cpath d='m4 15 1.726-2.05'/%3E%3Cpath d='m9 18 .722-3.25'/%3E%3C/svg%3E");
+  --fold-bar-shape: none;
+  --fold-bar-shape-size: 0px;
   --nav-guide-border-width-open: 2px;
   --tag-border-width: var(--input-border-width);
   /* Brutalist Geometry (Radius) */
@@ -1552,13 +1561,25 @@ html body.obsidian-app .workspace-tab-header:not(.is-active):hover .workspace-ta
   color: var(--text-muted);
 }
 
-/* Fold Marker picked in Style Settings. The default, three vertical dots, is set in
+/* Fold Marker picked in Style Settings. The default, a plain line, is set in
    section 0 and needs no rule. :where() keeps these at the specificity of that variable
    block, so they beat it by coming later, and a snippet that sets --fold-bar-shape
    still beats them. */
-html body.obsidian-app:where(.fold-marker-line) {
-  --fold-bar-shape: none;
-  --fold-bar-shape-size: 0px;
+html body.obsidian-app:where(.fold-marker-circle, .fold-marker-eye, .fold-marker-ellipsis, .fold-marker-line-dot, .fold-marker-asterisk, .fold-marker-commit, .fold-marker-arrow-dot) {
+  --fold-bar-shape-size: 13px;
+}
+
+html body.obsidian-app:where(.fold-marker-circle) {
+  --fold-bar-shape: var(--fold-marker-circle);
+}
+
+html body.obsidian-app:where(.fold-marker-eye) {
+  --fold-bar-shape: var(--fold-marker-eye);
+  --fold-bar-shape-closed: var(--fold-marker-eye-closed);
+}
+
+html body.obsidian-app:where(.fold-marker-ellipsis) {
+  --fold-bar-shape: var(--fold-marker-ellipsis);
 }
 
 html body.obsidian-app:where(.fold-marker-line-dot) {
@@ -1608,6 +1629,8 @@ html body.obsidian-app :is(.collapse-icon, .callout-fold)::after {
 html body.obsidian-app :is(.collapse-icon.is-collapsed, .is-collapsed .collapse-icon, .callout-fold.is-collapsed)::after {
   width: max(var(--fold-bar-width), var(--fold-bar-shape-size));
   background-color: var(--fold-bar-color);
+  -webkit-mask-image: var(--fold-bar-shape-closed, var(--fold-bar-shape));
+  mask-image: var(--fold-bar-shape-closed, var(--fold-bar-shape));
 }
 
 /* HTML details: the disclosure triangle becomes the same bar, in a fixed box so the
@@ -1628,12 +1651,14 @@ html body.obsidian-app details > summary::before {
   margin-inline-end: 0.6em;
   vertical-align: -0.1em;
   background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) 100% no-repeat, linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
-  -webkit-mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
-  mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  -webkit-mask: var(--fold-bar-shape-closed, var(--fold-bar-shape)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  mask: var(--fold-bar-shape-closed, var(--fold-bar-shape)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
 }
 
 html body.obsidian-app details[open] > summary::before {
   background: var(--fold-bar-color-open);
+  -webkit-mask-image: var(--fold-bar-shape);
+  mask-image: var(--fold-bar-shape);
 }
 
 /* Menus and pickers: the chevron icon is cleared and painted with a thin bar, which
@@ -1648,8 +1673,8 @@ html body.obsidian-app details[open] > summary::before {
 html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux, .workspace-drawer-header-name-chevron, .workspace-drawer-tab-select .workspace-tab-header-inner-chevron, .combobox-button-chevron, .mobile-tab-switcher-menu-button-chevron, .style-settings-collapse-indicator) svg.svg-icon,
 html body.obsidian-app .nav-action-button > svg.svg-icon:is(.lucide-chevrons-down-up, .lucide-chevrons-up-down) {
   background: linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-width) var(--fold-bar-height) no-repeat, linear-gradient(var(--fold-bar-color), var(--fold-bar-color)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
-  -webkit-mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
-  mask: var(--fold-bar-shape) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  -webkit-mask: var(--fold-bar-shape-closed, var(--fold-bar-shape)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
+  mask: var(--fold-bar-shape-closed, var(--fold-bar-shape)) center / var(--fold-bar-shape-size) var(--fold-bar-shape-size) no-repeat;
 }
 
 html body.obsidian-app :is(.workspace-drawer-vault-switcher-icon, .workspace-tab-header-tab-list, .menu-item-icon.mod-submenu, .setting-item-chevron, .vertical-tab-nav-item-chevron, .bases-toolbar .text-button-icon.mod-aux, .workspace-drawer-header-name-chevron, .workspace-drawer-tab-select .workspace-tab-header-inner-chevron, .combobox-button-chevron, .mobile-tab-switcher-menu-button-chevron, .style-settings-collapse-indicator) svg.svg-icon > *,
@@ -1699,10 +1724,11 @@ html body.obsidian-app .dropdown {
   --fold-ring: radial-gradient(closest-side, transparent calc(50% - 0.3px), var(--fold-dropdown-color) 50% calc(100% - 0.3px), transparent);
   --fold-stroke: linear-gradient(var(--fold-dropdown-color), var(--fold-dropdown-color));
   --fold-band: transparent calc(50% - var(--u)), var(--fold-dropdown-color) calc(50% - var(--u) + 0.3px) calc(50% + var(--u) - 0.3px), transparent calc(50% + var(--u));
-  /* Three vertical dots, the default */
-  --fold-dropdown-image: var(--fold-dot), var(--fold-dot), var(--fold-dot);
-  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% - 7 * var(--u)), right calc(var(--fold-dropdown-x) - 2 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% + 7 * var(--u));
-  --fold-dropdown-size: calc(4 * var(--u)) calc(4 * var(--u));
+  /* A plain line, the default, which thickens on hover */
+  --fold-dropdown-bar: var(--fold-bar-width);
+  --fold-dropdown-image: var(--fold-stroke);
+  --fold-dropdown-position: right 0.95em center;
+  --fold-dropdown-size: var(--fold-dropdown-bar) var(--fold-bar-height);
   background-image: var(--fold-dropdown-image);
   background-position: var(--fold-dropdown-position);
   background-size: var(--fold-dropdown-size);
@@ -1712,16 +1738,37 @@ html body.obsidian-app .dropdown {
 
 html body.obsidian-app .dropdown:hover {
   --fold-dropdown-color: var(--fold-bar-color-open);
+  --fold-dropdown-bar: var(--fold-bar-width-open);
 }
 
-html body.obsidian-app:where(.fold-marker-line) .dropdown {
-  --fold-dropdown-image: var(--fold-stroke);
-  --fold-dropdown-position: right 0.95em center;
-  --fold-dropdown-size: var(--fold-bar-width) var(--fold-bar-height);
+/* A small circle: radius 6, so the ring's inside edge is 5/7 of its outside. Its tile is
+   a unit larger all round, because the tile is snapped to whole pixels and a ring touching
+   its edge loses a side at 13px. The eye's tiles have the same slack. */
+html body.obsidian-app:where(.fold-marker-circle) .dropdown {
+  --fold-dropdown-image: radial-gradient(circle calc(7 * var(--u)) at center, transparent calc(71.43% - 0.3px), var(--fold-dropdown-color) 71.43% calc(100% - 0.3px), transparent);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 8 * var(--u)) top 50%;
+  --fold-dropdown-size: calc(16 * var(--u)) calc(16 * var(--u));
 }
 
-html body.obsidian-app:where(.fold-marker-line) .dropdown:hover {
-  --fold-dropdown-size: var(--fold-bar-width-open) var(--fold-bar-height);
+html body.obsidian-app:where(.fold-marker-ellipsis) .dropdown {
+  --fold-dropdown-image: var(--fold-dot), var(--fold-dot), var(--fold-dot);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% - 7 * var(--u)), right calc(var(--fold-dropdown-x) - 2 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 2 * var(--u)) top calc(50% + 7 * var(--u));
+  --fold-dropdown-size: calc(4 * var(--u)) calc(4 * var(--u));
+}
+
+/* The eye is shut at rest and opens on hover. Shut: the lid is the lower part of a
+   circle (centre 12 4.355, radius 10.645) cut flat at y 8, and four lashes, the inner
+   pair drawn upright. Open: the lens is an elliptical ring, the pupil a ring of radius 3. */
+html body.obsidian-app:where(.fold-marker-eye) .dropdown {
+  --fold-dropdown-image: radial-gradient(circle at 50% calc(-3.645 * var(--u)), transparent calc(9.645 * var(--u) - 0.3px), var(--fold-dropdown-color) calc(9.645 * var(--u)) calc(11.645 * var(--u) - 0.3px), transparent calc(11.645 * var(--u))), linear-gradient(to bottom right, var(--fold-band)), linear-gradient(to top right, var(--fold-band)), var(--fold-stroke), var(--fold-stroke);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 12 * var(--u)) top calc(50% + 0.5 * var(--u)), right calc(var(--fold-dropdown-x) + 5.63 * var(--u)) top calc(50% + 1.98 * var(--u)), right calc(var(--fold-dropdown-x) - 8.64 * var(--u)) top calc(50% + 1.98 * var(--u)), right calc(var(--fold-dropdown-x) + 1.64 * var(--u)) top calc(50% + 4.38 * var(--u)), right calc(var(--fold-dropdown-x) - 3.64 * var(--u)) top calc(50% + 4.38 * var(--u));
+  --fold-dropdown-size: calc(24 * var(--u)) calc(9 * var(--u)), calc(3.01 * var(--u)) calc(3.58 * var(--u)), calc(3.01 * var(--u)) calc(3.58 * var(--u)), calc(2 * var(--u)) calc(4 * var(--u)), calc(2 * var(--u)) calc(4 * var(--u));
+}
+
+html body.obsidian-app:where(.fold-marker-eye) .dropdown:hover {
+  --fold-dropdown-image: radial-gradient(calc(11 * var(--u)) calc(7.8 * var(--u)) at center, transparent calc(75% - 0.3px), var(--fold-dropdown-color) 75% calc(100% - 0.3px), transparent), var(--fold-ring);
+  --fold-dropdown-position: right calc(var(--fold-dropdown-x) - 12 * var(--u)) top 50%, right calc(var(--fold-dropdown-x) - 4 * var(--u)) top 50%;
+  --fold-dropdown-size: calc(24 * var(--u)) calc(18 * var(--u)), calc(8 * var(--u)) calc(8 * var(--u));
 }
 
 html body.obsidian-app:where(.fold-marker-line-dot) .dropdown {

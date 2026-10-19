@@ -1,4 +1,7 @@
 # Brutalist: A Theme for Obsidian
+
+<a href="https://community.obsidian.md/themes/brutalist"><img alt="Get it on Obsidian" src="assets/get-it-on-obsidian.svg"></a>
+
 [![GitHub Repo stars](https://img.shields.io/github/stars/DuckTapeKiller/Brutalist?style=flat&logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/DuckTapeKiller/Brutalist?logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/DuckTapeKiller/Brutalist?logo=obsidian&color=%23483699)](https://github.com/DuckTapeKiller/Brutalist/issues?q=is%3Aissue+is%3Aclosed)

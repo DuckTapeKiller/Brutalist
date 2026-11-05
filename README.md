@@ -856,7 +856,7 @@ Brutalist has its own settings for Obsidian on phones and tablets, in **Style Se
 | **Nav Bar Border Color** (light and dark mode) | Any colour | Follows the preset's sidebar colour |
 | **Nav Bar Radius** (both modes) | 0 to 30px | 20px |
 
-Until you change them, the colour pickers display Asphalt's greys, but the drawer and navigation bar actually follow whichever preset you've chosen. In dark mode the navigation bar also blurs whatever is behind it, for a frosted look.
+Until you change them, the colour pickers display Asphalt's greys, but the drawer and navigation bar actually follow whichever preset you've chosen. In dark mode the navigation bar also blurs whatever is behind it, for a frosted look. When a note scrolls, the navigation bar hides and comes back at once, without Obsidian's slide and fade.
 
 ![brutalist](screenshots/mobile_navbar_1.png)
 ![brutalist](screenshots/mobile_navbar_2.png)

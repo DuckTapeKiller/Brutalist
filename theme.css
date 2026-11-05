@@ -1,7 +1,7 @@
 /* ================================================================= */
 /* BRUTALIST THEME by DuckTapeKiller */
 /* https://github.com/DuckTapeKiller/Brutalist */
-/* 5.0.5 */
+/* 5.0.6 */
 /* ================================================================= */
 
 @font-face {
@@ -2869,6 +2869,13 @@ html body.obsidian-app.is-mobile .view-actions.mod-raised,
 html body.obsidian-app.is-mobile .sidebar-toggle-button.mod-raised,
 html body.obsidian-app.is-mobile .mobile-navbar {
   border-style: solid;
+}
+
+/* Obsidian slides and fades the floating navbar out and back in as a
+   note scrolls (.is-hidden-nav). Show and hide it at once instead. The
+   drawer push is an inline transition set by Obsidian and still applies. */
+html body.obsidian-app.is-mobile .mobile-navbar {
+  transition: none;
 }
 
 html body.obsidian-app.is-mobile .mobile-navbar-actions {
